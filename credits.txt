@@ -1,0 +1,85 @@
+MIT License
+https://github.com/shashi278/TapTargetView.git
+
+MIT License
+https://github.com/shashi278/KivyShaderTransitions.git
+
+GNU GENERAL PUBLIC LICENSE
+https://github.com/FilipeMarch/Resizable-Widget-in-Kivy.git
+
+None
+https://github.com/Neizvestnyj/kivy-pipette.git
+
+MIT License
+https://github.com/Guhan-SenSam/NeuKivy.git
+
+MIT License
+https://github.com/shashi278/kivy-gradient.git
+
+MIT License
+https://github.com/TheCodeSummoner/kivy-circular-progress-bar.git
+
+MIT License
+https://github.com/shashi278/svg-anim-kivy.git
+
+Licença MIT
+https://github.com/kivy-garden/frostedglass.git
+
+MIT License
+https://github.com/kivy-garden/drag_n_drop.git
+
+BSD 3-Clause
+https://github.com/kivy-garden/garden.pizza.git
+
+MIT license
+https://github.com/kivy-garden/garden.rotabox.git
+
+None
+https://github.com/kivy-garden/garden.animlabel_bezier.git
+
+None
+https://github.com/kivy-garden/garden.animlabel.git
+
+None
+https://github.com/quitegreensky/CurvyKivy.git
+
+None
+https://github.com/adywizard/kivy_shader.git
+
+
+---------------------------------------------------------------------------
+Not Allowed yet
+---------------------------------------------------------------------------
+
+MIT license
+https://github.com/kivy-garden/garden.simpletablelayout.git
+
+MIT license
+https://github.com/kivy-garden/garden.segment.git
+
+MIT license
+https://github.com/kivy-garden/garden.circularlayout.git
+
+MIT license
+https://github.com/kivy-garden/garden.navigationdrawer.git
+
+MIT license
+https://github.com/kivy-garden/radialslider.git
+
+MIT license
+https://github.com/kivy-garden/garden.scrolllabel.git
+
+MIT license
+https://github.com/kivy-garden/garden.circulardatetimepicker.git
+
+MIT license
+https://github.com/kivy-garden/garden.progressspinner.git
+
+MIT license
+https://github.com/kivy-garden/garden.joystick.git
+
+MIT license
+https://github.com/kivy-garden/garden.swipetodelete.git
+
+MIT license
+https://github.com/kivy-garden/garden.androidtabs.git
