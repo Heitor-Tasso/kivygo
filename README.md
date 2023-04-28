@@ -55,42 +55,23 @@ Como alternativa, consulte a documentação do GitHub em [como criar uma solicit
 
 Agradecemos às seguintes pessoas que contribuíram para este projeto:
 
-
-<a href="https://www.youtube.com/channel/UCtzSRMR6zsv8ywCmm3O2XqQ" target="_blank"><img src="https://avatars.githubusercontent.com/u/87236158?v=4"></a>
-
-<!-- <table>
+<table>
   <tr>
     <td align="center">
       <a href="#">
-        <img src="https://avatars.githubusercontent.com/u/87236158?v=4" width="100px;" alt="Foto do Heitor-Tasso no GitHub"/><br>
+        <img src="https://avatars.githubusercontent.com/u/87236158?v=4" width="70px;" alt="Foto do Heitor-Tasso no GitHub"/><br>
         <sub>
           <b>Heitor Tasso</b>
         </sub>
       </a>
     </td>
-    <td align="center">
-      <a href="#">
-        <img src="https://s2.glbimg.com/FUcw2usZfSTL6yCCGj3L3v3SpJ8=/smart/e.glbimg.com/og/ed/f/original/2019/04/25/zuckerberg_podcast.jpg" width="100px;" alt="Foto do Mark Zuckerberg"/><br>
-        <sub>
-          <b>Mark Zuckerberg</b>
-        </sub>
-      </a>
-    </td>
-    <td align="center">
-      <a href="#">
-        <img src="https://miro.medium.com/max/360/0*1SkS3mSorArvY9kS.jpg" width="100px;" alt="Foto do Steve Jobs"/><br>
-        <sub>
-          <b>Steve Jobs</b>
-        </sub>
-      </a>
-    </td>
   </tr>
-</table> -->
+</table>
 
 
 ## 📝 Licença
 
-Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
+Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE) para mais detalhes.
 Para ver a licença dos repositórios utilizados, Veja o arquivo [LICENÇA](LIB_LICENSE.md) para mais detalhes.
 
 [⬆ Voltar ao topo](#kivygo)<br>
