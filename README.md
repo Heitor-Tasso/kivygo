@@ -8,9 +8,20 @@
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/Heitor-Tasso/kivygo?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/Heitor-Tasso/kivygo?style=for-the-badge)
 
-<img src="kivygo/icons/kivy_logo.png" alt="Imagem de Exemplo">
 
-> Exemplo do design do projeto KivyGo, um toolkit de widgets para Kivy, que visa criar interfaces de usuário modernas e elegantes em aplicativos Python. O design apresenta uma paleta de cores vibrante, tipografia limpa e elementos de interface intuitivos.
+KivyGO
+====
+
+<img align="right" height="256" src="https://raw.githubusercontent.com/kivy/kivy/master/kivy/data/logo/kivy-icon-256.png"/>
+
+Interfaces de usuário inovadoras facilitadas.
+
+KivyGO é um framework [Python] de plataforma cruzada de código aberto (https://www.python.org)
+utilizado para o desenvolvimento de aplicações que fazem uso de tecnologias inovadoras,
+interfaces de usuário com design complexo e inovador.
+
+KivyGO é licenciado pelo MIT, para ser utilizado em um framework
+chamado Kivy [Kivy Organization](https://kivy.org/#organization).
 
 ### Ajustes e melhorias
 
