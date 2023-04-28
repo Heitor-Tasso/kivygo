@@ -56,7 +56,7 @@ Para contribuir com o kivygo, siga estas etapas:
 
 1. Bifurque este repositório.
 2. Crie um branch: `git checkout -b dev`.
-3. Faça suas alterações e confirme-as: `git commit -m '<mensagem_commit>'` | [COMMITS](GOOD_PRACTICES.MD)
+3. Faça suas alterações e confirme-as: `git commit -m '<mensagem_commit>'` | [COMMITS EXAMPLE](COMMIT.MD)
 4. Envie para o branch: `git push origin dev`
 5. Crie a solicitação de pull.
 
@@ -83,7 +83,7 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
 ## 📝 Licença
 
 Esse projeto está sob licença. Veja o arquivo [LICENCE](LICENSE) para mais detalhes.
-Para ver a licença dos repositórios utilizados, Veja o arquivo [LIBRARIES LICENCE](LIB_LICENSE.MD) para mais detalhes.
+Para ver a licença dos repositórios utilizados, Veja o arquivo [LIBRARIES CREDITS](CREDITS.MD) para mais detalhes.
 
 [⬆ Voltar ao topo](#kivygo)<br>
 # kivygo
