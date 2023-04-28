@@ -2,7 +2,7 @@
 KivyGO
 ====
 
-<img align="right" height="256" src="https://raw.githubusercontent.com/kivy/kivy/master/kivy/data/logo/kivy-icon-256.png"/>
+<img align="right" height="256" src="images/icon-kivygo.png"/>
 
 Interfaces de usuário inovadoras facilitadas.
 
