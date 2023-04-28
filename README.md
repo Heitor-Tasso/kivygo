@@ -1,16 +1,16 @@
-# ESP8266-AutomatedIrrigation
+# kivygo
 
 <!---Esses são exemplos. Veja https://shields.io para outras pessoas ou para personalizar este conjunto de escudos. Você pode querer incluir dependências, status do projeto e informações de licença aqui--->
 
-![GitHub repo size](https://img.shields.io/github/repo-size/Heitor-Tasso/ESP8266-AutomatedIrrigation?style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/Heitor-Tasso/ESP8266-AutomatedIrrigation?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/Heitor-Tasso/ESP8266-AutomatedIrrigation?style=for-the-badge)
-![Bitbucket open issues](https://img.shields.io/bitbucket/issues/Heitor-Tasso/ESP8266-AutomatedIrrigation?style=for-the-badge)
-![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/Heitor-Tasso/ESP8266-AutomatedIrrigation?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/Heitor-Tasso/kivygo?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/Heitor-Tasso/kivygo?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/Heitor-Tasso/kivygo?style=for-the-badge)
+![Bitbucket open issues](https://img.shields.io/bitbucket/issues/Heitor-Tasso/kivygo?style=for-the-badge)
+![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/Heitor-Tasso/kivygo?style=for-the-badge)
 
-<img src="exemplo-image.png" alt="Imagem de Exemplo">
+<img src="kivygo/icons/kivy_logo.png" alt="Imagem de Exemplo">
 
-> Utilizamos o ESP8266 para automatizar os cuidados de uma planta, sendo possível visualizar a saúde. Assim, facilitando os cuidados e consequêntemente aumentando a venda de plantas domésticas. 
+> Exemplo do design do projeto KivyGo, um toolkit de widgets para Kivy, que visa criar interfaces de usuário modernas e elegantes em aplicativos Python. O design apresenta uma paleta de cores vibrante, tipografia limpa e elementos de interface intuitivos.
 
 ### Ajustes e melhorias
 
@@ -29,12 +29,7 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 * Você tem uma máquina `Windows / Linux / Mac / Android`.
 
 
-Downloads MorePlant:
- - `Windows` -> [Download MorePlant]()
- - `Mac` -> [Download MorePlant]()
- - `Android` -> [Download MorePlant]()
-
-## ☕ Utilizando o ESP8266-AutomatedIrrigation
+## ☕ Utilizando o kivygo
 
 Para usar o MorePlant, siga estas etapas:
 
@@ -44,9 +39,9 @@ Para usar o MorePlant, siga estas etapas:
  - Agora é só apertar em iniciar e deixar que sua planta seja monitorada.
 
 
-## 📫 Contribuindo para o ESP8266-AutomatedIrrigation
+## 📫 Contribuindo para o kivygo
 <!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->
-Para contribuir com o ESP8266-AutomatedIrrigation, siga estas etapas:
+Para contribuir com o kivygo, siga estas etapas:
 
 1. Bifurque este repositório.
 2. Crie um branch: `git checkout -b dev`.
@@ -60,7 +55,10 @@ Como alternativa, consulte a documentação do GitHub em [como criar uma solicit
 
 Agradecemos às seguintes pessoas que contribuíram para este projeto:
 
-<table>
+
+<a href="https://www.youtube.com/channel/UCtzSRMR6zsv8ywCmm3O2XqQ" target="_blank"><img src="https://avatars.githubusercontent.com/u/87236158?v=4"></a>
+
+<!-- <table>
   <tr>
     <td align="center">
       <a href="#">
@@ -87,15 +85,17 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
       </a>
     </td>
   </tr>
-</table>
+</table> -->
 
 
 ## 📝 Licença
 
 Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
+Para ver a licença dos repositórios utilizados, Veja o arquivo [LICENÇA](LIB_LICENSE.md) para mais detalhes.
 
-[⬆ Voltar ao topo](#ESP8266-AutomatedIrrigation)<br>
-# ESP8266-AutomatedIrrigation
+[⬆ Voltar ao topo](#kivygo)<br>
+# kivygo
 
-Ver quantidade de linhas do código:
+
+Para ver quantidade de linhas do código no Visual Studio Code:
  - `(gci -include *.kv,*.py -recurse | select-string .).Count`
