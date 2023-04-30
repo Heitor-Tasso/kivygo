@@ -27,10 +27,12 @@ chamado Kivy [Kivy Organization](https://kivy.org/#organization).
 
 O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
 
-- [ ] Opção de poder utlizar o Wifi residencial
-- [ ] Visualização pela plataforma
-- [ ] Média de saúde de cada planta
-- [x] Configurar WiFi pelo celular
+- [ ] Documentação Baseado na do Kivy
+- [ ] Exemplo de cada Widget e funcionalidade, em Imagem/Vídeo e Código
+- [ ] Definir um theme único para o framework
+- [x] Adicionar todos os créditos devidos
+- [ ] Refatorar todos widgets e deixá-los no padrão do framework
+- [ ] Finalizar o desenvolvimento do uix/codeinput.py
 
 ## 💻 Pré-requisitos
 
@@ -42,12 +44,11 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
 ## ☕ Utilizando o kivygo
 
-Para usar o MorePlant, siga estas etapas:
+Para usar o KivyGO, siga estas etapas:
 
- - Conecte-se à rede Wifi que o ESP8266 está conectado.
- - Inicialize o App e logue com sua conta.
- - Leia o QRCode do ESP8266 e tira e configure a Planta utilizada.
- - Agora é só apertar em iniciar e deixar que sua planta seja monitorada.
+ - Instale a lib pelo comando pip `pip install kivygo`.
+ - Copie o código de exemplo da biblioteca e inicie.
+ - Para fazer a instalação pelo github `pip install git+https://github.com/Heitor-Tasso/kivygo.git#egg=kivygo`.
 
 
 ## 📫 Contribuindo para o kivygo

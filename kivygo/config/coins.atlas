@@ -1,5 +1,5 @@
 {
-	"kivygo/icons/coins.png": 
+	"../icons/coins.png": 
 		{
 		"0": [0, 0, 85, 90],	
 		"1": [85, 0, 85, 90],
