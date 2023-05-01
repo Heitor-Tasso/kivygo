@@ -366,5 +366,3 @@ class WipeUp(CustomTransition):
 
 class ZoomInCircles(CustomTransition):
     glsl_file = StringProperty("ZoomInCircles.glsl")
-
-

@@ -24,10 +24,10 @@ Builder.load_string('''
     texture: app.texture
 
 <ITextureProgressSpinner@TextureProgressSpinner>:
-    source: 'images/demoimage.jpg'
+    source: 'kivygo/images/demoimage.jpg'
 
 <IRotatingTextureProgressSpinner@RotatingTextureProgressSpinner>:
-    source: 'images/demoimage.jpg'
+    source: 'kivygo/images/demoimage.jpg'
 
 <MainWidget>:
     BoxLayout:

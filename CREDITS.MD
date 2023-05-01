@@ -25,6 +25,7 @@ Abaixo estão as informações das licenças de cada biblioteca utilizada no pro
     - [garden.joystick](https://github.com/kivy-garden/garden.joystick.git)
     - [garden.androidtabs](https://github.com/kivy-garden/garden.androidtabs.git)
     - [kivy-particle](https://github.com/skitoo/kivy-particle.git)
+    - [gl-transitions](https://github.com/gl-transitions/gl-transitions.git)
 
 - **GNU GENERAL PUBLIC LICENSE:** Utilizada em:
     - [Resizable-Widget-in-Kivy](https://github.com/FilipeMarch/Resizable-Widget-in-Kivy.git)

@@ -67,7 +67,7 @@ Builder.load_string("""
                     on_release: scr_manager.current = "home"
                 Image:
                     id: layout_2
-                    source: 'images/test.jpg'
+                    source: 'kivygo/images/test.jpg'
 
 
 """)

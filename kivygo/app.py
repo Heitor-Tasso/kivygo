@@ -3,6 +3,7 @@ from kivy.properties import (
 	StringProperty, ColorProperty,
 	ObjectProperty
 )
+from kivy.clock import Clock
 from kivy.utils import get_color_from_hex
 from kivy.app import App
 from .utils import do_correction_path
@@ -103,4 +104,12 @@ class kivygoApp(App):
 		return f'{root_path}/{do_correction_path(local)}'
 
 	
+	# def _run_prepare(self, *args):
+	# 	print("root -=> ", self.root)
+	# 	print("args -=> ", args)
+	# 	from kivy.core.window import Window
+	# 	if Window == None:
+	# 		Clock.schedule_once(self._run_prepare)
+	# 		return None
 
+	# 	return super()._run_prepare()

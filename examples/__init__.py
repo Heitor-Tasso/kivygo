@@ -1,3 +1,4 @@
+from kivy.core.window import Window
 from kivy.config import Config
 Config.set('modules', 'monitor', '')
 

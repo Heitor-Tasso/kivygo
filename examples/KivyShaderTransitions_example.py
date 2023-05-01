@@ -46,17 +46,17 @@ Builder.load_string('''
 	MyScreen:
 		label_text:"Screen 1"
 		name: "screen0"
-		source: "images/busan.jpg"
+		source: "kivygo/images/busan.jpg"
 	
 	MyScreen:
 		label_text:"Screen 2"
 		name: "screen1"
-		source:"images/lion.jpg"
+		source:"kivygo/images/lion.jpg"
 	
 	MyScreen:
 		label_text:"Screen 3"
 		name: "screen2"
-		source: "images/iris.jpg"
+		source: "kivygo/images/iris.jpg"
 
 
 ''')
