@@ -20,11 +20,9 @@ Abaixo estão as informações das licenças de cada biblioteca utilizada no pro
     - [garden.circularlayout](https://github.com/kivy-garden/garden.circularlayout.git)
     - [garden.navigationdrawer](https://github.com/kivy-garden/garden.navigationdrawer.git)
     - [radialslider](https://github.com/kivy-garden/radialslider.git)
-    - [garden.scrolllabel](https://github.com/kivy-garden/garden.scrolllabel.git)
     - [garden.circulardatetimepicker](https://github.com/kivy-garden/garden.circulardatetimepicker.git)
     - [garden.progressspinner](https://github.com/kivy-garden/garden.progressspinner.git)
     - [garden.joystick](https://github.com/kivy-garden/garden.joystick.git)
-    - [garden.swipetodelete](https://github.com/kivy-garden/garden.swipetodelete.git)
     - [garden.androidtabs](https://github.com/kivy-garden/garden.androidtabs.git)
     - [kivy-particle](https://github.com/skitoo/kivy-particle.git)
 

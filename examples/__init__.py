@@ -1,3 +1,5 @@
+from kivy.config import Config
+Config.set('modules', 'monitor', '')
 
 import sys
 import os
