@@ -22,7 +22,6 @@ chamado Kivy [Kivy Organization](https://kivy.org/#organization).
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/Heitor-Tasso/kivygo?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/Heitor-Tasso/kivygo?style=for-the-badge)
 ====
-[✅ GoodPractices](#Commit-Pattern)
 
 ### Ajustes e melhorias
 
@@ -58,30 +57,12 @@ Para contribuir com o kivygo, siga estas etapas:
 
 1. Bifurque este repositório.
 2. Crie um branch: `git checkout -b dev`.
-3. Faça suas alterações e confirme-as: `git commit -m '<mensagem_commit>'` | [COMMITS EXAMPLE](COMMIT.MD)
+3. Faça suas alterações e confirme-as: `git commit -m '<mensagem_commit>'`
 4. Envie para o branch: `git push origin dev`
 5. Crie a solicitação de pull.
 
 Como alternativa, consulte a documentação do GitHub em [como criar uma solicitação pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-## 🤝 Colaboradores
-
-Agradecemos às seguintes pessoas que contribuíram para este projeto:
-
-<table>
-  <tr>
-    <td align="center">
-      <a href="#">
-        <img src="https://avatars.githubusercontent.com/u/87236158?v=4" width="70px;" alt="Foto do Heitor-Tasso no GitHub"/><br>
-        <sub>
-          <b>Heitor Tasso</b>
-        </sub>
-      </a>
-    </td>
-  </tr>
-</table>
-
----
 # 🦄 Commit-Pattern
 
 O commit semântico possui os elementos estruturais abaixo (tipos), que informam a intenção do seu commit ao utilizador(a) de seu código.
@@ -227,6 +208,24 @@ Abaixo estão as informações das licenças de cada biblioteca utilizada no pro
 
 Esse projeto está sob licença. Veja o arquivo [LICENCE](LICENSE) para mais detalhes.
 Para ver a licença dos repositórios utilizados, Veja o arquivo [LIBRARIES CREDITS](CREDITS.MD) para mais detalhes.
+
+## 🤝 Colaboradores
+
+Agradecemos às seguintes pessoas que contribuíram para este projeto:
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="#">
+        <img src="https://avatars.githubusercontent.com/u/87236158?v=4" width="70px;" alt="Foto do Heitor-Tasso no GitHub"/><br>
+        <sub>
+          <b>Heitor Tasso</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
 
 [⬆ Voltar ao topo](#kivygo)<br>
 
