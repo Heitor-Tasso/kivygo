@@ -1274,7 +1274,7 @@ Note that these values are also automatically updated as the thumb is dragged.
 
 <br><br>
 
-<img align="right" width="320" height="445" src="../images_example/radial.gif"/>
+<img align="right" width="320" height="449" src="../images_example/radial.gif"/>
 
 ```python
 RadialSlider:
