@@ -18,7 +18,7 @@ root = Builder.load_string("""
         and (not "pie" in self.svg_icon) \
         and (not "text" in self.svg_icon) \
         else \
-        app.shape_animate(self.svg_icon, self.svg_icon[6:-4]+'_config')
+        app.shape_animate(self.svg_icon, self.svg_icon.split("/")[-1].split(".")[0]+'_config')
 
 
 BoxLayout:
@@ -114,6 +114,7 @@ class KivgDemo(kivygoApp):
     def shape_animate(self, svg_file, config):
         self.sf = svg_file
         self.con = config
+        print("pie_chart_config -=> ", config)
 
         pie_chart_config = [
             {"id_":"neck", "from_":"center_y","d":.45, "t":"out_cubic"},
@@ -152,12 +153,7 @@ class KivgDemo(kivygoApp):
             {"id_":"v","from_":"top", "t":"out_quint", "d":.4},
             {"id_":"y","from_":"bottom", "t":"out_back", "d":.4}
         ]
-        self.s.shape_animate(svg_file, anim_config_list=eval(config), on_complete=self.completed)
-    
-    def completed(self, *args):
-        pass
-        # Repeat animation
-        # Clock.schedule_once(lambda *args: self.shape_animate(self.sf, self.con), .5)
+        self.s.shape_animate(svg_file, anim_config_list=eval(config))
 
 
 if __name__ == "__main__":

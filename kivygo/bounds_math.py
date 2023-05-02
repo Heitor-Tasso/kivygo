@@ -1,6 +1,5 @@
 
 from math import sin, cos
-
 from array import array
 peers = {}
 

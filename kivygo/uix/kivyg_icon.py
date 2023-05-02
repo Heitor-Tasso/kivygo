@@ -169,6 +169,7 @@ class Kivg():
                         else:
                             l.append(i[1])
 
+            base_point = 0
             if from_ in ("top", "right"):
                 # rightmost/topmost point to start animation from
                 base_point = max(l)
