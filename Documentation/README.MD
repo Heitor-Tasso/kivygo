@@ -1269,8 +1269,8 @@ You can define the position of the **thumb** via the `angle`, the `value`, or th
 Note that these values are also automatically updated as the thumb is dragged.
 
 <div>
-<img align="right" width="350" height="204" src="../images_example/radialsilder_example.gif"/>
-<img align="right" width="350" height="203" src="../images_example/radialsilder_demo.gif"/>
+<img align="right" width="350" height="204" src="../images_example/radialslider_example.gif"/>
+<img align="right" width="350" height="203" src="../images_example/radialslider_demo.gif"/>
 
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
