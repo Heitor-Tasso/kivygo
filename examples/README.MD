@@ -1,13 +1,13 @@
 # KivyGO UIX DOC
 ---
-<img align="center" width="100%" src="../images_example/example_2.gif"/>
+<img align="center" width="100%" src="../images_example/how_to_check_widget.gif"/>
 
 <details>
 <summary>AnchorLayout</summary>
 <ul>
 
 ## `kivygo/uix/anchorlayout.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -53,7 +53,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\androidtabs.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -99,7 +99,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\bezier.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -145,7 +145,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\boxlayout.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -191,7 +191,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\button.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -237,7 +237,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\camera.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -284,7 +284,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\circular_bar.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -330,7 +330,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\circulardatetimepicker.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -376,7 +376,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\circularlayout.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -422,7 +422,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\codeinput.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -468,7 +468,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\curvelayout.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -514,7 +514,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\effect.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -560,7 +560,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\floatlayout.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -653,7 +653,7 @@ FrostedGlass:
 <ul>
 
 ## `kivygo\uix\gradient.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -699,7 +699,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\gridlayout.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -745,7 +745,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\icon.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -791,7 +791,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\image.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -837,7 +837,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\input.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -883,7 +883,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\joystick.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -929,7 +929,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\kivyg_icon.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -975,7 +975,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\label.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -1021,7 +1021,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\navigationdrawer.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -1067,7 +1067,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\particle.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -1113,7 +1113,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\pizza_graph.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -1159,7 +1159,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\popup.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -1205,7 +1205,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\progressspinner.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -1251,7 +1251,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\radialslider.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -1297,7 +1297,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\rotabox.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -1343,7 +1343,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\screenmanager.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -1389,7 +1389,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\scrollview.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -1435,7 +1435,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\segment.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -1481,7 +1481,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\shader.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -1527,7 +1527,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\simpletablelayout.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -1573,7 +1573,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\slider.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -1619,7 +1619,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\table.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -1665,7 +1665,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\taptargetview.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -1711,7 +1711,7 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\terminal.py`
-### `examples/anchorlayout_example.py`
+### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
