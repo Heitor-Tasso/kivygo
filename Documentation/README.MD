@@ -1270,9 +1270,11 @@ Note that these values are also automatically updated as the thumb is dragged.
 
 <div>
 
+<div style="display: flex; flex-direction: row-reverse;">
+
 <div width="350">
-<img align="right" height="204" src="../images_example/radialslider_example.gif"/>
-<img align="right" height="203" src="../images_example/radialslider_demo.gif"/>
+<img align="right" width="350" height="204" src="../images_example/radialslider_example.gif"/>
+<img align="right" width="350" height="203" src="../images_example/radialslider_demo.gif"/>
 </div>
 
 <!-- Need to have 21 lines for a image with 407 of height-->
