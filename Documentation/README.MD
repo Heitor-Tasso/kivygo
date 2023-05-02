@@ -1268,10 +1268,12 @@ ranging from 0 to 360 degrees.
 You can define the position of the **thumb** via the `angle`, the `value`, or the `normalized_value`. 
 Note that these values are also automatically updated as the thumb is dragged.
 
-<div align="right" width="350" height="407">
+<div style="display: flex; align-items: stretch; flex-wrap: wrap; flex-direction: row;">
+<div align="right" width="350" height="407" style="display: flex; align-items: stretch; flex-wrap: wrap; flex-direction: column;">
 <img src="../images_example/radialslider_example.gif"/>
 <img src="../images_example/radialslider_demo.gif"/>
 </div>
+<div>
 
 ```python
 RadialSlider:
@@ -1296,6 +1298,8 @@ RadialSlider:
         text: "{}%".format(int(self.parent.value))
         color: "#808080"
 ```
+</div>
+</div>
 
 |[Click to the Source Code](https://github.com/Heitor-Tasso/kivygo/blob/main/kivygo/uix/radialslider.py)|
 |---|
