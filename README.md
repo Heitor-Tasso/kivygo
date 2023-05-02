@@ -22,6 +22,7 @@ chamado Kivy [Kivy Organization](https://kivy.org/#organization).
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/Heitor-Tasso/kivygo?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/Heitor-Tasso/kivygo?style=for-the-badge)
 ====
+[✅ GoodPractices](#Commit-Pattern)
 
 ### Ajustes e melhorias
 
@@ -80,21 +81,8 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
   </tr>
 </table>
 
-
-## 📝 Licença
-
-Esse projeto está sob licença. Veja o arquivo [LICENCE](LICENSE) para mais detalhes.
-Para ver a licença dos repositórios utilizados, Veja o arquivo [LIBRARIES CREDITS](CREDITS.MD) para mais detalhes.
-
-[⬆ Voltar ao topo](#kivygo)<br>
-# kivygo
-
-
-Para ver quantidade de linhas do código no Visual Studio Code:
- - `(gci -include *.kv,*.py -recurse | select-string .).Count`
-
 ---
-## 🦄 Commit-Pattern
+# 🦄 Commit-Pattern
 
 O commit semântico possui os elementos estruturais abaixo (tipos), que informam a intenção do seu commit ao utilizador(a) de seu código.
 
@@ -234,4 +222,14 @@ Abaixo estão as informações das licenças de cada biblioteca utilizada no pro
 
 ---
 
-<br>[✅ GoodPractices](#Commit-Pattern) <br>
+
+## 📝 Licença
+
+Esse projeto está sob licença. Veja o arquivo [LICENCE](LICENSE) para mais detalhes.
+Para ver a licença dos repositórios utilizados, Veja o arquivo [LIBRARIES CREDITS](CREDITS.MD) para mais detalhes.
+
+[⬆ Voltar ao topo](#kivygo)<br>
+
+
+Para ver quantidade de linhas do código no Visual Studio Code:
+ - `(gci -include *.kv,*.py -recurse | select-string .).Count`
