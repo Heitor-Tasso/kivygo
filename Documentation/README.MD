@@ -1,10 +1,9 @@
 KivyGO UIX DOC
-====
+<br><br>
 
 <img align="center" width="100%" src="../images_example/how_to_check_widget.gif"/>
 
-====
-
+<br><br>
 
 ---
 

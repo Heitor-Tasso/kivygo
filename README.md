@@ -208,7 +208,8 @@ Abaixo estão as informações das licenças de cada biblioteca utilizada no pro
 ## 📝 Licença
 
 Esse projeto está sob licença. Veja o arquivo [LICENCE](LICENSE) para mais detalhes.
-Para ver a licença dos repositórios utilizados, Veja o arquivo [LIBRARIES CREDITS](CREDITS.MD) para mais detalhes.
+
+---
 
 ## 🤝 Colaboradores
 
@@ -227,9 +228,11 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
   </tr>
 </table>
 
-
-[⬆ Voltar ao topo](#kivygo)<br>
-
+---
 
 Para ver quantidade de linhas do código no Visual Studio Code:
  - `(gci -include *.kv,*.py -recurse | select-string .).Count`
+
+<br>
+[⬆ Voltar ao topo](#kivygo)
+<br>
