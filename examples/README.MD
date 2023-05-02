@@ -606,33 +606,34 @@ GridLayout:
 <ul>
 
 ## `kivygo\uix\frostedglass.py`
-### `examples/anchorlayout_example.py`
+### `examples\frostglass_main.py`
 
-Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
+The effect created is based on the widget/layout passed in as the background. You can control the blur size, saturation, luminosity,
+overlay color, noise opacity, border radius and the outline (color and width).
 
 <div>
 <img align="right" width="350" height="407" src="../images_example/example_2.gif"/>
 
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
-GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+Image:
+    id: bg_image
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+    source: 'FrostedgGlass_overview.png'
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
-
-
-
-
-
-
-
-
+FrostedGlass:
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+    size_hint: (None, None)
+    size: (180, 130)
+    background: bg_image
+    blur_size: 20
+    saturation: 1.0
+    luminosity: 1.5
+    overlay_color: "#FFB9008C"
+    noise_opacity: 0.15
+    border_radius:  dp(0), dp(100), dp(0), dp(100)
+    outline_color: "#000000"
+    outline_width: 1.2
 
 
 
