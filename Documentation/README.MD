@@ -1301,8 +1301,6 @@ RadialSlider:
 |[Click to the Source Code](https://github.com/Heitor-Tasso/kivygo/blob/main/kivygo/uix/radialslider.py)|
 |---|
 
-</ul>
-</details>
 
 ---
 
@@ -1430,6 +1428,8 @@ size: your_width, your_height # one value must be the same as the other
 > 
 > `value_normalized` is defaults to 0
 
+</ul>
+</details>
 
 <!-- ###############################################################################################
 #                                            (S) Rotabox                                           #
