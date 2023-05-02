@@ -7,7 +7,7 @@
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
 <div>
-<img align="right" width="350" height="413" src="../images_example/example_2.gif"/>
+<img align="right" width="350" height="407" src="../images_example/example_2.gif"/>
 
 ```python
 GridLayout:
