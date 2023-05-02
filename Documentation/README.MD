@@ -1272,7 +1272,7 @@ Note that these values are also automatically updated as the thumb is dragged.
 
 <div style="display: flex; flex-direction: row-reverse;">
 
-<div width="350">
+<div width="350" style="display: flex; flex-direction: column;">
 <img align="right" width="350" height="204" src="../images_example/radialslider_example.gif"/>
 <img align="right" width="350" height="203" src="../images_example/radialslider_demo.gif"/>
 </div>
