@@ -1270,7 +1270,7 @@ Note that these values are also automatically updated as the thumb is dragged.
 
 <div align="center">
 <img width="60%" height="200" src="../images_example/radialslider_demo.gif"/>
-<div>
+</div>
 
 <br><br>
 
