@@ -22,15 +22,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -68,15 +68,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -114,15 +114,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -160,15 +160,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -206,15 +206,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -252,15 +252,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -299,15 +299,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -345,15 +345,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -391,15 +391,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -437,15 +437,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -483,15 +483,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -529,15 +529,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -575,15 +575,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -622,23 +622,23 @@ overlay color, noise opacity, border radius and the outline (color and width).
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 Image:
-    id: bg_image
-    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-    source: 'FrostedgGlass_overview.png'
+	id: bg_image
+	pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+	source: 'FrostedgGlass_overview.png'
 
 FrostedGlass:
-    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-    size_hint: (None, None)
-    size: (180, 130)
-    background: bg_image
-    blur_size: 20
-    saturation: 1.0
-    luminosity: 1.5
-    overlay_color: "#FFB9008C"
-    noise_opacity: 0.15
-    border_radius:  dp(0), dp(100), dp(0), dp(100)
-    outline_color: "#000000"
-    outline_width: 1.2
+	pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+	size_hint: (None, None)
+	size: (180, 130)
+	background: bg_image
+	blur_size: 20
+	saturation: 1.0
+	luminosity: 1.5
+	overlay_color: "#FFB9008C"
+	noise_opacity: 0.15
+	border_radius:  dp(0), dp(100), dp(0), dp(100)
+	outline_color: "#000000"
+	outline_width: 1.2
 
 
 
@@ -668,15 +668,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -714,15 +714,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -760,15 +760,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -806,15 +806,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -852,15 +852,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -898,15 +898,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -944,15 +944,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -990,15 +990,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -1036,15 +1036,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -1082,15 +1082,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -1128,15 +1128,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -1174,15 +1174,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -1220,15 +1220,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -1267,6 +1267,7 @@ ranging from 0 to 360 degrees.
 
 You can define the position of the **thumb** via the `angle`, the `value`, or the `normalized_value`. 
 Note that these values are also automatically updated as the thumb is dragged.
+
 <div align="center">
 <img width="60%" height="200" src="../images_example/radialslider_demo.gif"/>
 <div>
@@ -1277,26 +1278,26 @@ Note that these values are also automatically updated as the thumb is dragged.
 
 ```python
 RadialSlider:
-    size_hint: (None, None)
-    size: 200, 200
-    track_color: "#DEDEDE" # gray track
-    track_thickness: 15
-    canvas.before:
-        Color:
-            rgba: rgba("#FFFFFF")
-        Ellipse:
-            size: self.size
-            pos: self.pos
-    canvas:
-        Color:
-            rgba: rgba("#3086BD")
-        Line:
-            width: 15
-            circle: self.center_x, self.center_y, self.width/2 - 15, 0, self.angle
-    Label:
-        pos: self.parent.center_x - self.width/2, self.parent.center_y - self.height/2
-        text: "{}%".format(int(self.parent.value))
-        color: "#808080"
+	size_hint: (None, None)
+	size: 200, 200
+	track_color: "#DEDEDE" # gray track
+	track_thickness: 15
+	canvas.before:
+		Color:
+			rgba: rgba("#FFFFFF")
+		Ellipse:
+			size: self.size
+			pos: self.pos
+	canvas:
+		Color:
+			rgba: rgba("#3086BD")
+		Line:
+			width: 15
+			circle: self.center_x, self.center_y, self.width/2 - 15, 0, self.angle
+	Label:
+		pos: self.parent.center_x - self.width/2, self.parent.center_y - self.height/2
+		text: "{}%".format(int(self.parent.value))
+		color: "#808080"
 ```
 
 |[Click to the Source Code](https://github.com/Heitor-Tasso/kivygo/blob/main/kivygo/uix/radialslider.py)|
@@ -1355,7 +1356,7 @@ size: your_width, your_height # one value must be the same as the other
 ---
 ## API
 
-    angle
+	angle
 
 > Current angle used for the Radial Slider. You can use it for setting
 > the angle of the thumb in the track in range 0 - 360.
@@ -1364,7 +1365,7 @@ size: your_width, your_height # one value must be the same as the other
 
 <br/>
 
-    max_value
+	max_value
 
 > Maximum value allowed for the Radial Slider.
 > 
@@ -1372,7 +1373,7 @@ size: your_width, your_height # one value must be the same as the other
 
 <br/>
 
-    min_value
+	min_value
 
 > Minimum value allowed for the Radial Slider.
 > 
@@ -1380,7 +1381,7 @@ size: your_width, your_height # one value must be the same as the other
 
 <br/>
 
-    thumb_color
+	thumb_color
 
 > Color of the thumb.
 > 
@@ -1388,7 +1389,7 @@ size: your_width, your_height # one value must be the same as the other
 
 <br/>
 
-    thumb_diameter
+	thumb_diameter
 
 > Diameter of the thumb.
 > 
@@ -1396,7 +1397,7 @@ size: your_width, your_height # one value must be the same as the other
 
 <br/>
 
-    track_color
+	track_color
 
 > Color of the track.
 > 
@@ -1404,7 +1405,7 @@ size: your_width, your_height # one value must be the same as the other
 
 <br/>
 
-    track_thickness
+	track_thickness
 
 > Thickness of the track.
 > 
@@ -1412,7 +1413,7 @@ size: your_width, your_height # one value must be the same as the other
 
 <br/>
 
-    value
+	value
 
 > Normalized value inside the range (min_value - max_value). You can use
 > it for setting the value betwwen the minimum and maximum value.
@@ -1421,7 +1422,7 @@ size: your_width, your_height # one value must be the same as the other
 
 <br/>
 
-    value_normalized
+	value_normalized
 
 > Normalized value inside the range (min_value - max_value) to 0-1
 > range. You can also use it for setting the real value without knowing
@@ -1452,15 +1453,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -1498,15 +1499,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -1544,15 +1545,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -1590,15 +1591,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -1636,15 +1637,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -1682,15 +1683,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -1728,15 +1729,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -1774,15 +1775,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -1820,15 +1821,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
@@ -1866,15 +1867,15 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 GridLayout:
-    size_hint_y: None
-    height: self.minimum_height
+	size_hint_y: None
+	height: self.minimum_height
 
-    canvas:
-        Color:
-            rgba: app.theme_cls.primary_color
-        Rectangle:
-            pos: self.pos
-            size: self.size
+	canvas:
+		Color:
+			rgba: app.theme_cls.primary_color
+		Rectangle:
+			pos: self.pos
+			size: self.size
 
 
 
