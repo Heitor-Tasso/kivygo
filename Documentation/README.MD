@@ -1278,26 +1278,26 @@ Note that these values are also automatically updated as the thumb is dragged.
 
 ```python
 RadialSlider:
-	size_hint: (None, None)
-	size: 200, 200
-	track_color: "#DEDEDE" # gray track
-	track_thickness: 15
-	canvas.before:
-		Color:
-			rgba: rgba("#FFFFFF")
-		Ellipse:
-			size: self.size
-			pos: self.pos
-	canvas:
-		Color:
-			rgba: rgba("#3086BD")
-		Line:
-			width: 15
-			circle: self.center_x, self.center_y, self.width/2 - 15, 0, self.angle
-	Label:
-		pos: self.parent.center_x - self.width/2, self.parent.center_y - self.height/2
-		text: "{}%".format(int(self.parent.value))
-		color: "#808080"
+  size_hint: (None, None)
+  size: 200, 200
+  track_color: "#DEDEDE" # gray track
+  track_thickness: 15
+  canvas.before:
+    Color:
+	  rgba: rgba("#FFFFFF")
+	Ellipse:
+	  size: self.size
+	  pos: self.pos
+  canvas:
+    Color:
+	  rgba: rgba("#3086BD")
+	Line:
+	  width: 15
+	  circle: self.center_x, self.center_y, self.width/2 - 15, 0, self.angle
+  Label:
+    pos: self.parent.center_x - self.width/2, self.parent.center_y - self.height/2
+	text: "{}%".format(int(self.parent.value))
+	color: "#808080"
 ```
 
 |[Click to the Source Code](https://github.com/Heitor-Tasso/kivygo/blob/main/kivygo/uix/radialslider.py)|
