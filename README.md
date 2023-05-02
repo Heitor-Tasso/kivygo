@@ -22,6 +22,7 @@ chamado Kivy [Kivy Organization](https://kivy.org/#organization).
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/Heitor-Tasso/kivygo?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/Heitor-Tasso/kivygo?style=for-the-badge)
 ====
+[✅ GoodPractices](#commit-pattern)<br>
 
 ### Ajustes e melhorias
 
@@ -63,7 +64,7 @@ Para contribuir com o kivygo, siga estas etapas:
 
 Como alternativa, consulte a documentação do GitHub em [como criar uma solicitação pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-# 🦄 Commit-Pattern
+# Commit Pattern
 
 O commit semântico possui os elementos estruturais abaixo (tipos), que informam a intenção do seu commit ao utilizador(a) de seu código.
 
