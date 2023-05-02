@@ -22,6 +22,8 @@ chamado Kivy [Kivy Organization](https://kivy.org/#organization).
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/Heitor-Tasso/kivygo?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/Heitor-Tasso/kivygo?style=for-the-badge)
 ====
+<br>[✅ GoodPractices](#Commit-Pattern) <br>
+---
 
 ### Ajustes e melhorias
 
@@ -92,3 +94,143 @@ Para ver a licença dos repositórios utilizados, Veja o arquivo [LIBRARIES CRED
 
 Para ver quantidade de linhas do código no Visual Studio Code:
  - `(gci -include *.kv,*.py -recurse | select-string .).Count`
+
+---
+## 🦄 Commit-Pattern
+
+O commit semântico possui os elementos estruturais abaixo (tipos), que informam a intenção do seu commit ao utilizador(a) de seu código.
+
+- `FEATURE`- Commits do tipo FEATURE indicam que seu trecho de código está incluindo um **novo recurso** (se relaciona com o MINOR do versionamento semântico).
+
+- `FIXED` - Commits do tipo FIXED indicam que seu trecho de código commitado está **solucionando um problema** (bug FIXED), (se relaciona com o PATCH do versionamento semântico).
+
+- `DOC` - Commits do tipo DOC indicam que houveram **mudanças na documentação**, como por exemplo no Readme do seu repositório. (Não inclui alterações em código).
+
+- `TEST` - Commits do tipo TEST são utilizados quando são realizadas **alterações em testes**, seja criando, alterando ou excluindo testes unitários. (Não inclui alterações em código)
+
+- `REQUIRE` - Commits do tipo REQUIRE são utilizados quando são realizadas modificações em **arquivos de REQUIRE e dependências**.
+
+- `PERFORM` - Commits do tipo PERFORM servem para identificar quaisquer alterações de código que estejam relacionadas a **performance**.
+
+- `STYLE` - Commits do tipo STYLE indicam que houveram alterações referentes a **formatações de código**, semicolons, trailing spaces, lint... (Não inclui alterações em código).
+
+- `REFACTOR` - Commits do tipo REFACTOR referem-se a mudanças devido a **refatorações que não alterem sua funcionalidade**, como por exemplo, uma alteração no formato como é processada determinada parte da tela, mas que manteve a mesma funcionalidade, ou melhorias de performance devido a um code review.
+
+## ☑️ Recomendações
+
+- Adicione um título consistente com o título do conteúdo;
+- Recomendamos que na primeira linha deve ter no máximo 4 palavras;
+- Para descrever com detalhes, usar a descrição do commit;
+- Usar um emoji no início da mensagem de commit representando sobre o commit;
+- Um link precisa ser adicionado em sua forma mais autêntica, ou seja: sem encurtadores de link e links afiliados;
+
+## 💻 Exemplos
+<table>
+  <thead>
+    <tr>
+      <th>Comando git</th>
+      <th>Resultado no GitHub</th>
+    </tr>
+  </thead>
+ <tbody>
+    <tr>
+      <td>
+        <code>git commit -m ":tada: Commit inicial"</code>
+      </td>
+      <td>🎉 Commit inicial</td>
+    </tr>
+    <tr>
+      <td>
+        <code>git commit -m ":books: [ DOC ] - Atualizaçao do README"</code>
+      </td>
+      <td>📚 [ DOC ] - Atualizaçao do README</td>
+    </tr>
+    <tr>
+      <td>
+        <code>git commit -m ":bug: [ FIXED ] - Loop infinito na linha 50"</code>
+      </td>
+      <td>🐛 [ FIXED ] - Loop infinito na linha 50</td>
+    </tr>
+    <tr>
+      <td>
+        <code>git commit -m ":sparkles: [ FEATURE ] - Pagina de login"</code>
+      </td>
+      <td>✨ [ FEATURE ] - Pagina de login</td>
+    </tr>
+    <tr>
+      <td>
+        <code>git commit -m ":recycle: [ REFACTOR ] - Passando para arrow functions"</code>
+      </td>
+      <td>♻️ [ REFACTOR ] - Passando para arrow functions</td>
+    </tr>
+    <tr>
+      <td>
+        <code>git commit -m ":zap: [ PERFORM ] - Melhoria no tempo de resposta"</code>
+      </td>
+      <td>⚡ [ PERFORM ] - Melhoria no tempo de resposta</td>
+    </tr>
+    <tr>
+      <td>
+        <code>git commit -m ":boom: [ FIXED ] - Revertendo mudanças ineficientes"</code>
+      </td>
+      <td>💥 [ FIXED ] - Revertendo mudanças ineficientes</td>
+    </tr>
+    <tr>
+      <td>
+        <code>git commit -m ":lipstick: [ FEATURE ] - Estilizaçao CSS do formulario"</code>
+      </td>
+      <td>💄 [ FEATURE ] - Estilizaçao CSS do formulario</td>
+    </tr>
+    <tr>
+      <td>
+        <code>git commit -m ":test_tube: [ TEST ] - Criando novo teste"</code>
+      </td>
+      <td>🧪 [ TEST ] - Criando novo teste</td>
+    </tr>
+    <tr>
+      <td>
+        <code>git commit -m ":bulb: [ DOC ] - Comentários sobre a função LoremIpsum( )"</code>
+      </td>
+      <td>💡 [ DOC ] - Comentários sobre a função LoremIpsum( )</td>
+    </tr>
+  </tbody>
+</table>
+---
+# Licenças de Bibliotecas utilizadas no Projeto
+
+Abaixo estão as informações das licenças de cada biblioteca utilizada no projeto:
+
+## Bibliotecas com Licenças Permitidas
+
+- **MIT License:** Utilizada em:
+    - [TapTargetView](https://github.com/shashi278/TapTargetView.git)
+    - [KivyShaderTransitions](https://github.com/shashi278/KivyShaderTransitions.git)
+    - [NeuKivy](https://github.com/Guhan-SenSam/NeuKivy.git)
+    - [kivy-gradient](https://github.com/shashi278/kivy-gradient.git)
+    - [kivy-circular-progress-bar](https://github.com/TheCodeSummoner/kivy-circular-progress-bar.git)
+    - [svg-anim-kivy](https://github.com/shashi278/svg-anim-kivy.git)
+    - [frostedglass](https://github.com/kivy-garden/frostedglass.git)
+    - [drag_n_drop](https://github.com/kivy-garden/drag_n_drop.git)
+    - [garden.pizza](https://github.com/kivy-garden/garden.pizza.git)
+    - [garden.rotabox](https://github.com/kivy-garden/garden.rotabox.git)
+    - [garden.simpletablelayout](https://github.com/kivy-garden/garden.simpletablelayout.git)
+    - [garden.segment](https://github.com/kivy-garden/garden.segment.git)
+    - [garden.circularlayout](https://github.com/kivy-garden/garden.circularlayout.git)
+    - [garden.navigationdrawer](https://github.com/kivy-garden/garden.navigationdrawer.git)
+    - [radialslider](https://github.com/kivy-garden/radialslider.git)
+    - [garden.circulardatetimepicker](https://github.com/kivy-garden/garden.circulardatetimepicker.git)
+    - [garden.progressspinner](https://github.com/kivy-garden/garden.progressspinner.git)
+    - [garden.joystick](https://github.com/kivy-garden/garden.joystick.git)
+    - [garden.androidtabs](https://github.com/kivy-garden/garden.androidtabs.git)
+    - [kivy-particle](https://github.com/skitoo/kivy-particle.git)
+    - [gl-transitions](https://github.com/gl-transitions/gl-transitions.git)
+
+- **GNU GENERAL PUBLIC LICENSE:** Utilizada em:
+    - [Resizable-Widget-in-Kivy](https://github.com/FilipeMarch/Resizable-Widget-in-Kivy.git)
+
+- **Nenhuma Licença** Utilizada em:
+    - [kivy-pipette](https://github.com/Neizvestnyj/kivy-pipette.git)
+    - [CurvyKivy](https://github.com/quitegreensky/CurvyKivy.git)
+    - [kivy_shader](https://github.com/adywizard/kivy_shader.git)
+
+---
