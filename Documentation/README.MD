@@ -1268,16 +1268,9 @@ ranging from 0 to 360 degrees.
 You can define the position of the **thumb** via the `angle`, the `value`, or the `normalized_value`. 
 Note that these values are also automatically updated as the thumb is dragged.
 
-<div>
+<table cellpadding="0">
+  <tr>
 
-<div style="display: flex; flex-direction: row-reverse;">
-
-<div width="350" style="display: flex; flex-direction: column;">
-<img align="right" width="350" height="204" src="../images_example/radialslider_example.gif"/>
-<img align="right" width="350" height="203" src="../images_example/radialslider_demo.gif"/>
-</div>
-
-<!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 RadialSlider:
     size_hint: (None, None)
@@ -1301,7 +1294,15 @@ RadialSlider:
         text: "{}%".format(int(self.parent.value))
         color: "#808080"
 ```
-</div>
+</tr>
+  <tr style="padding: 0">
+    <!-- GitHub Stats Card -->  
+    <td valign="top"><img align="right" width="350" height="204" src="../images_example/radialslider_example.gif"/></td>
+    <!-- GitHub Top Language Card -->
+    <td valign="top"><img align="right" width="350" height="203" src="../images_example/radialslider_demo.gif"/></td>
+  </tr>
+</table>
+
 
 |[Click to the Source Code](https://github.com/Heitor-Tasso/kivygo/blob/main/kivygo/uix/radialslider.py)|
 |---|
