@@ -22,8 +22,6 @@ chamado Kivy [Kivy Organization](https://kivy.org/#organization).
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/Heitor-Tasso/kivygo?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/Heitor-Tasso/kivygo?style=for-the-badge)
 ====
-<br>[✅ GoodPractices](#Commit-Pattern) <br>
----
 
 ### Ajustes e melhorias
 
@@ -195,6 +193,7 @@ O commit semântico possui os elementos estruturais abaixo (tipos), que informam
     </tr>
   </tbody>
 </table>
+
 ---
 # Licenças de Bibliotecas utilizadas no Projeto
 
@@ -234,3 +233,5 @@ Abaixo estão as informações das licenças de cada biblioteca utilizada no pro
     - [kivy_shader](https://github.com/adywizard/kivy_shader.git)
 
 ---
+
+<br>[✅ GoodPractices](#Commit-Pattern) <br>
