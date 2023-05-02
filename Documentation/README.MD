@@ -1268,13 +1268,12 @@ ranging from 0 to 360 degrees.
 You can define the position of the **thumb** via the `angle`, the `value`, or the `normalized_value`. 
 Note that these values are also automatically updated as the thumb is dragged.
 
-<div align="center" style="display: flex;">
-  <div style="width: 350;">
+<div style="display: grid; grid-template-areas: 'a a'; grid-auto-rows: 100px;
+">
     <img align="right" width="350" height="204" src="../images_example/radialslider_example.gif"/>
     <img align="right" width="350" height="203" src="../images_example/radialslider_demo.gif"/>
-  </div>
 
-<div style="width: auto;">
+<div>
 
 ```python
 RadialSlider:
