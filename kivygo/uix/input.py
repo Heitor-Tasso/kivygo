@@ -70,8 +70,13 @@ Builder.load_string("""
 
 			AnchorLayout:
 				anchor_y: 'center'
-				# MyTextInput:
-				InputEditor:
+				anchor_x: 'center'
+				padding: root.padding
+				MyTextInput:
+				# InputEditor:
+					id: input
+					size_hint_y: None
+					height: self.minimum_height			
 					id: input
 					text: root.input_text
 					on_text: root.input_text = self.text
@@ -80,11 +85,10 @@ Builder.load_string("""
 					password: root.hide
 					foreground_color: root.text_input_color
 					multiline: root.multiline
-					size_hint_y: None
-					height: min(box.height, self.input_minimum_height)
-					change_width: False
-					bar_color: [0, 0, 0, 0]
-					bar_inactive_color: [0, 0, 0, 0]
+					# height: min(box.height, self.input_minimum_height)
+					# change_width: False
+					# bar_color: [0, 0, 0, 0]
+					# bar_inactive_color: [0, 0, 0, 0]
 					# on_text_validate: root.dispatch('on_enter')
 
 		AnchorLayout:

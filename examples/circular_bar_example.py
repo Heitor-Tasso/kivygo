@@ -1,6 +1,6 @@
 import __init__
 from kivygo.app import kivygoApp
-from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.boxlayout import BoxLayout
 from kivy.animation import Animation
 from kivy.lang.builder import Builder
 from kivy.clock import Clock
@@ -12,49 +12,65 @@ Builder.load_string('''
 #:import Label kivy.uix.label.Label
 
 <Root>:
-	CircularProgressBar:
-		size_hint: None, None
-		size: [self.widget_size] * 2
-		pos: 50, 100
-		border_width: 15
-		cap_style: "round"
-		progress_color: [0, 1, 0, 1]
-		background_colour: [0, 0, 1, 1]
-		cap_precision: 3
-		max_progress: 150
-		min_progress: 100
-		widget_size: 300
-		label: Label(text="I am a label\\ninjected in kivy\\nmarkup string :)\\nEnjoy! --={}=--", font_size=25, halign="center")
-		label_color: [0, 0, 1, 1]
-
-	CircularProgressBar:
-		size_hint: None, None
-		size: [self.widget_size] * 2
-		pos: 400, 100
-		max_progress: 200
-		min_progress: 10
-		cap_precision: 100
-		label_text: "Ola mundo"
-
-	CircularProgressBar:
-		size_hint: None, None
-		size: [self.widget_size] * 2
-		pos: 650, 100
-		cap_style: "square"
-		border_width: 5
-		progress_color: 0.8, 0.8, 0.5, 1
-		cap_precision: 100
-		max_progress: 10
-		widget_size: 100
-        
-		label_args: [round(self.progress, 1)]
-		label: Label(text="Loading...\\n{}%", font_size=10, halign="center")
-		label_color: [1, 0, 0, 1]
-
+    orientation: 'vertical'
+    Widget:
+    AnchorLayout:
+        anchor_x: "center"
+        anchor_y: "center"
+        size_hint_y: None
+        height: first.height + dp(50)
+        CircularProgressBar:
+            id: first
+            size_hint: None, None
+            size: [self.widget_size] * 2
+            border_width: 15
+            cap_style: "round"
+            progress_color: [0, 1, 0, 1]
+            background_colour: [0, 0, 1, 1]
+            cap_precision: 3
+            max_progress: 150
+            min_progress: 100
+            widget_size: 300
+            label: Label(text="I am a label\\ninjected in kivy\\nmarkup string :)\\nEnjoy! --={}=--", font_size=25, halign="center")
+            label_color: [0, 0, 1, 1]
+    Widget:
+    AnchorLayout:
+        anchor_x: "center"
+        anchor_y: "center"
+        size_hint_y: None
+        height: second.height + dp(50)
+        CircularProgressBar:
+            id: second
+            size_hint: None, None
+            size: [self.widget_size] * 2
+            max_progress: 200
+            min_progress: 10
+            cap_precision: 100
+            label_text: "Ola mundo"
+    Widget:
+    AnchorLayout:
+        anchor_x: "center"
+        anchor_y: "center"
+        size_hint_y: None
+        height: last.height + dp(50)
+        CircularProgressBar:
+            id: last
+            size_hint: None, None
+            size: [self.widget_size] * 2
+            cap_style: "square"
+            border_width: 5
+            progress_color: 0.8, 0.8, 0.5, 1
+            cap_precision: 100
+            max_progress: 10
+            widget_size: 100
+            label_args: [round(self.progress, 1)]
+            label: Label(text="Loading...\\n{}%", font_size=10, halign="center")
+            label_color: [1, 0, 0, 1]
+    Widget:
 ''')
 
 
-class Root(FloatLayout):
+class Root(BoxLayout):
     pass
 
 
@@ -62,7 +78,7 @@ class DemoApp(kivygoApp):
 
     # Simple animation to show the circular progress bar in action
     def animate(self, dt):
-        bar = self.root.children[0]
+        bar = self.root.ids.last
         if bar.progress < bar.max_progress:
             bar.progress += 0.02
         else:
@@ -82,7 +98,7 @@ class DemoApp(kivygoApp):
         Clock.schedule_once(self.start_animation_second)
 
     def start_animation_first(self, *args):
-        bar = self.root.children[-1]
+        bar = self.root.ids.first
 
         bar.progress = bar.min_progress
         anim = Animation(progress=bar.max_progress, duration=4)
@@ -91,7 +107,7 @@ class DemoApp(kivygoApp):
         anim.start(bar)
 
     def start_animation_second(self, *args):
-        bar = self.root.children[-2]
+        bar = self.root.ids.second
 
         bar.progress = bar.min_progress
         anim = Animation(progress=bar.max_progress,

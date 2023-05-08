@@ -3,15 +3,16 @@ from kivygo.app import kivygoApp
 from kivy.lang.builder import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivygo.uix.androidtabs import AndroidTabsBase, AndroidTabs
+from kivygo.uix.button import ButtonEffect
 
 Builder.load_string('''
 
-#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import hex kivy.utils.get_color_from_hex
 
 <AndroidTabsBar>:
     canvas.before:
         Color:
-            rgba: get_color_from_hex('#03A9F4')
+            rgba: hex('#03A9F4')
         Rectangle:
             pos: self.pos
             size: self.size
@@ -33,7 +34,7 @@ Builder.load_string('''
             pos: [self.pos[0], self.pos[1] - 3]
             size: [self.size[0], 1]
 <MyTab>:
-    Button:
+    ButtonEffect:
         text: root.text
         
 ''')

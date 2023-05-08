@@ -1,84 +1,16 @@
 
-from kivy.properties import (
-	BooleanProperty, ColorProperty,
-	ListProperty, NumericProperty,
-	StringProperty,
-)
-
-from kivygo.behaviors.neumorph import NeuMorphCircular, NeuMorphRectangle
+from kivy.properties import ListProperty, NumericProperty
 from kivy.lang import Builder
-from kivy.uix.anchorlayout import AnchorLayout
 from kivy.animation import Animation
 from kivy.clock import Clock
+from kivy.uix.label import Label
+
+from kivygo.behaviors.hover import HoverBehavior
 from kivygo.behaviors.touch_effecs import EffectBehavior
 from kivygo.behaviors.button import ButtonBehavior, ToggleButtonBehavior
-from kivygo.behaviors.hover import HoverBehavior
-from kivy.uix.label import Label
-from kivy.metrics import dp
 
 
 Builder.load_string("""
-
-<NeuBaseButton>:
-	size: [dp(100), dp(100)]
-	size_hint: [None, None]
-	anchor_x: "center"
-	anchor_y: "center"
-	
-	canvas.before:
-		Clear
-		Color:
-		
-		RoundedRectangle:
-			size: self.light_shadow_size
-			pos: self.light_shadow_pos
-			texture: self.light_shadow
-		
-		Color:
-			rgba: [1, 1, 1, 1]
-		
-		RoundedRectangle:
-			size: self.dark_shadow_size
-			pos: self.dark_shadow_pos
-			texture: self.dark_shadow
-	
-	Label:
-		id: label
-		text: root.text
-		size: self.texture_size
-		size_hint: [None, None]
-		font_size: root.font_size
-		italic: root.italic
-		color: root.text_color
-		markup: True
-		disabled: root.disabled
-		font_name: root.font_name if root.font_name else 'Arial'
-
-
-<NeuButton>:
-	canvas.before:
-		Color:
-			rgba: self.comp_color
-		RoundedRectangle:
-			size: self.size
-			pos: self.pos
-			radius: self.radius
-			texture: self.border_texture
-		Color:
-			rgba: [1, 1, 1, 1]
-
-
-<NeuCircularButton>:
-	canvas.before:
-		Color:
-			rgba: self.comp_color
-		Ellipse:
-			size: [self.radius] * 2
-			pos: self.pos
-			texture: self.border_texture
-		Color:
-	size: [self.radius] * 2
-
 
 <ButtonEffect>:
 	canvas.before:
@@ -127,7 +59,7 @@ class ButtonEffect(ButtonBehavior, Label, EffectBehavior, HoverBehavior):
 			color_line=self.set_color,
 			color_text=self.set_color)
 		self.type_button = 'rounded'
-		super(ButtonEffect, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		Clock.schedule_once(self.set_color)
 	
 	def set_color(self, *args):
@@ -149,6 +81,7 @@ class ButtonEffect(ButtonBehavior, Label, EffectBehavior, HoverBehavior):
 			self.background_line = self.down_color_line
 
 	def on_touch_down(self, touch):
+		
 		if not self.collide_point(*touch.pos):
 			return False
 
@@ -161,6 +94,7 @@ class ButtonEffect(ButtonBehavior, Label, EffectBehavior, HoverBehavior):
 		return super().on_touch_down(touch)
 
 	def on_touch_up(self, touch):
+
 		if touch.grab_current is self:
 			touch.ungrab(self)
 			self.ripple_fade()
@@ -175,6 +109,7 @@ class ButtonEffect(ButtonBehavior, Label, EffectBehavior, HoverBehavior):
 			duration=self.duration_out)
 		anim.bind(on_complete=self.on_touch_anim_end)
 		anim.start(self)
+
 		return super().on_touch_up(touch)
 
 	def on_touch_anim_end(self, *args):
@@ -205,59 +140,3 @@ class ButtonEffect(ButtonBehavior, Label, EffectBehavior, HoverBehavior):
 
 class ToggleButtonEffect(ToggleButtonBehavior, ButtonEffect):
 	pass
-
-
-class NeuBaseButton(ButtonBehavior, AnchorLayout):
-
-	text = StringProperty("")
-	"""
-	Button text
-	"""
-
-	font_size = NumericProperty("14sp")
-	"""
-	Size of font used
-	"""
-
-	disabled = BooleanProperty(False)
-	"""
-	Whether the button is disabled or not. When a button is disabled its text color
-	is greyed out and it is not longer clickable
-	"""
-
-	font_name = StringProperty(default="Arial")
-	"""
-	Name of the face to be used
-	"""
-
-	text_color = ColorProperty([0, 0, 0, 0])
-	"""
-	Text color
-	"""
-
-	italic = BooleanProperty(False)
-	"""
-	If set tot true the text will be rendered with its italic font type. WIll only
-	work if the given font name has an itallic type.
-	"""
-
-	comp_color = ColorProperty("#ccccd9")
-
-	dark_color = ListProperty([0, 0, 0, 0])
-
-	light_color = ListProperty([0, 0, 0, 0])
-
-
-class NeuButton(NeuBaseButton, NeuMorphRectangle):
-	radius = ListProperty([0, 0, 0, 0])
-
-
-class NeuCircularButton(NeuBaseButton, NeuMorphCircular):
-
-	radius = NumericProperty(dp(20))
-	""" Radius of the button
-	"""
-
-	def on_size(self, *args):
-		self.size = [self.radius] * 2
-

@@ -18,12 +18,16 @@ Builder.load_string("""
 			pos: self.pos
 			size: self.size
 			radius: self.radius
+		Color:
+			rgba: [1, 1, 1, 1]
 	canvas.after:
 		Color:
 			rgba: self.stroke_color
 		Line:
 			rounded_rectangle: [*self.pos, *self.size, *self.radius]
 			width: self.stroke_width
+		Color:
+			rgba: [1, 1, 1, 1]
 
 """)
 

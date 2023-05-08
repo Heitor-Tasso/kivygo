@@ -5,8 +5,8 @@ from kivy.properties import (
 	NumericProperty, ObjectProperty
 )
 from kivy.uix.slider import Slider
-from kivy.uix.floatlayout import FloatLayout
-from kivygo.behaviors.neumorph import NeuMorphRectangle
+from kivygo.behaviors.neumorph import NeuGlowCircular
+from kivygo.behaviors.thumb import Thumb
 from kivy.metrics import dp
 from kivy.graphics.texture import Texture
 from kivygo.utils import dec_2_rgb
@@ -16,28 +16,14 @@ from PIL import Image, ImageDraw, ImageFilter
 Builder.load_string("""
 
 <NeuSlider>
-	canvas.before:
+	canvas:
 		Clear
 		Color:
-		Rectangle:
-			size: self.light_shadow_size
-			pos: self.light_shadow_pos
-			texture: self.light_shadow
-		Color:
-			rgba: self.shadow_behind_color
-		Rectangle:
-			size: self.dark_shadow_size
-			pos: self.dark_shadow_pos
-			texture: self.dark_shadow
-	canvas:
-		Color:
-			rgba: self.shadow_behind_color
+			rgba: self.background_color
 		RoundedRectangle:
 			size: self.size
 			pos: self.pos
-			radius: [ (self.height / 2) ] * 4
-			texture: self.border_texture
-		Color:
+			radius: self.radius
 
 	background_width: 0
 	cursor_size: [0, 0]
@@ -67,15 +53,13 @@ Builder.load_string("""
 """)
 
 
-class NeuSlider(Slider, NeuMorphRectangle):
+class NeuSlider(Slider):
 
 	comp_color = ColorProperty("#333333")
 
 	shadow_behind_color = ColorProperty("#333333")
 
-	dark_color = ListProperty([0, 0, 0, 0])
-
-	light_color = ListProperty([0, 0, 0, 0])
+	background_color = ListProperty([0.6, 0.1, 0.4, 1])
 
 	elevation = NumericProperty(dp(3))
 	"""
@@ -134,7 +118,7 @@ class NeuSlider(Slider, NeuMorphRectangle):
 		self.radius = [(self.height / 2)] * 4
 
 
-class NeuThumb(FloatLayout):
+class NeuThumb(Thumb, NeuGlowCircular):
 
 	glow_color = ColorProperty([0.8, 0.7, 0.5, 1])
 

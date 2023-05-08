@@ -8,11 +8,6 @@ from kivy.utils import platform
 
 from kivygo.uix.frostedglass import FrostedGlass
 
-if platform not in ("android", "ios"):
-	Window.size = (480, 854)
-	Window.top = 50
-
-
 Builder.load_string("""
 
 #: import Factory kivy.factory.Factory

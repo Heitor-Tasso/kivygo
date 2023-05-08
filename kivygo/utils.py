@@ -2,9 +2,10 @@
 from svg.path.path import Line, CubicBezier
 from xml.dom import minidom
 from kivy.utils import get_color_from_hex
+import os
 
 
-def do_correction_path(self, path_filename):
+def do_correction_path(path_filename):
 		bar_init = '/' if path_filename.startswith('/') else ''
 		new_str = []
 
@@ -14,6 +15,7 @@ def do_correction_path(self, path_filename):
 		path = [f'{x}/' for x in new_str[0:-1] if x != '']
 		return ''.join([bar_init] + path + [new_str[-1]])
 
+root_path = do_correction_path(os.path.split(__file__)[0])
 
 
 def rgb_2_dec(color):

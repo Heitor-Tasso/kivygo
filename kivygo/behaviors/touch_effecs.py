@@ -50,7 +50,7 @@ class EffectBehavior(Widget):
 
 	def __init__(self, **kwargs):
 		self.register_event_type('on_touch_anim_end')
-		super(EffectBehavior, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		self.radius_ellipse_default = self.radius_ellipse
 
 		self.bind(touch_pos=self.set_ellipse,
@@ -88,7 +88,7 @@ class EffectBehavior(Widget):
 		anim.start(self)
 
 	def draw_effect(self, *args):
-		if self.ripple_pane is None:
+		if self.ripple_pane == None:
 			return None
 
 		self.reset_CanvasBase()
