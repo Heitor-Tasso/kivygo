@@ -22,13 +22,13 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 ColoredAnchorLayout:
-	anchor_y: "center"
-	anchor_x: "center"
-	background_color: [1, 1, 1, 0.8]
-	ButtonEffect:
-		size_hint: None, None
-		size: "250dp", "100dp"
-		text: "ButtonEffect"
+  anchor_y: "center"
+  anchor_x: "center"
+  background_color: [1, 1, 1, 0.8]
+  ButtonEffect:
+    size_hint: None, None
+    size: "250dp", "100dp"
+    text: "ButtonEffect"
 
 
 
