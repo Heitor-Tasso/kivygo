@@ -7,7 +7,7 @@ from kivy.config import Config
 Config.set('modules', 'monitor', '')
 
 from kivy.core.window import Window
-Window.size = [540, 750]
+Window.size = [700, 814]
 Window.top = 40
 
 import sys, os
