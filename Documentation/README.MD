@@ -17,20 +17,19 @@ KivyGO UIX DOC
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
 <div>
-<img align="right" width="350" height="407" src="../images_example/example_2.gif"/>
+<img align="right" width="350" height="407" src="../images_example/anchorlayout_0.png"/>
 
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
-GridLayout:
-	size_hint_y: None
-	height: self.minimum_height
+ColoredAnchorLayout:
+	anchor_y: "center"
+	anchor_x: "center"
+	background_color: [1, 1, 1, 0.8]
+	ButtonEffect:
+		size_hint: None, None
+		size: "250dp", "100dp"
+		text: "ButtonEffect"
 
-	canvas:
-		Color:
-			rgba: app.theme_cls.primary_color
-		Rectangle:
-			pos: self.pos
-			size: self.size
 
 
 
