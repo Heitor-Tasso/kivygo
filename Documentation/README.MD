@@ -12,7 +12,7 @@ KivyGO UIX DOC
 <ul>
 
 ## `kivygo/uix/anchorlayout.py`
-### `examples\anchorlayout_example.py`
+### `examples/anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -56,33 +56,33 @@ ColoredAnchorLayout:
 <summary>AndroidTabs</summary>
 <ul>
 
-## `kivygo\uix\androidtabs.py`
-### `examples\anchorlayout_example.py`
+## `kivygo/uix/androidtabs.py`
+### `examples/androidtab_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
 <div>
-<img align="right" width="350" height="407" src="../images_example/example_2.gif"/>
+<img align="right" width="350" height="407" src="../images_example/androidtabs_0.gif"/>
 
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
-GridLayout:
-	size_hint_y: None
-	height: self.minimum_height
+<AndroidTabsBar>:
+  background_color: hex('#03A9F4')
 
-	canvas:
-		Color:
-			rgba: app.theme_cls.primary_color
-		Rectangle:
-			pos: self.pos
-			size: self.size
+<ExampleTab>:
+  ButtonEffect:
+    text: root.text
 
 
+class ExampleTab(BoxLayout, AndroidTabsBase): pass
 
+def build(self):
+  android_tabs = AndroidTabs()
+  for n in range(1, 6):
+    tab = ExampleTab(text=f'TAB {n}')
+	android_tabs.add_widget(tab)
 
-
-
-
+  return android_tabs
 
 
 
@@ -90,7 +90,7 @@ GridLayout:
 ```
 </div>
 
-|[Click to the Source Code](https://github.com/Heitor-Tasso/kivygo/blob/main/kivygo/uix/anchorlayout.py)|
+|[Click to the Source Code](https://github.com/Heitor-Tasso/kivygo/blob/main/kivygo/uix/androidtabs.py)|
 |---|
 
 </ul>
