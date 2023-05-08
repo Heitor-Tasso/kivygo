@@ -102,33 +102,33 @@ def build(self):
 <summary>Bezier</summary>
 <ul>
 
-## `kivygo\uix\bezier.py`
-### `examples\anchorlayout_example.py`
+## `kivygo/uix/bezier.py`
+### `examples/bezier_canvas_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
 <div>
-<img align="right" width="350" height="407" src="../images_example/example_2.gif"/>
+<img align="right" width="350" height="407" src="../images_example/bezier_0.gif"/>
 
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
-GridLayout:
-	size_hint_y: None
-	height: self.minimum_height
+<BezierCanvas>:
 
-	canvas:
-		Color:
-			rgba: app.theme_cls.primary_color
-		Rectangle:
-			pos: self.pos
-			size: self.size
+FloatLayout:
+  BezierCanvas:
 
 
+class BezierCanvas(Widget):
+  def on_touch_down(self, touch):
+	if super().on_touch_down(touch):
+	  return True
 
-
-
-
-
+	bezierline = BezierLine()
+	bezierline.points = [touch.pos, touch.pos]
+	touch.ud['selected'] = 1
+	touch.grab(bezierline)
+	self.add_widget(bezierline)
+	return True
 
 
 
@@ -136,7 +136,7 @@ GridLayout:
 ```
 </div>
 
-|[Click to the Source Code](https://github.com/Heitor-Tasso/kivygo/blob/main/kivygo/uix/anchorlayout.py)|
+|[Click to the Source Code](https://github.com/Heitor-Tasso/kivygo/blob/main/kivygo/uix/bezier.py)|
 |---|
 
 </ul>
@@ -148,33 +148,33 @@ GridLayout:
 <summary>BoxLayout</summary>
 <ul>
 
-## `kivygo\uix\boxlayout.py`
-### `examples\anchorlayout_example.py`
+## `kivygo/uix/boxlayout.py`
+### `examples/anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
 <div>
-<img align="right" width="350" height="407" src="../images_example/example_2.gif"/>
+<img align="right" width="350" height="407" src="../images_example/boxlayout_0.png"/>
 
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
-GridLayout:
+ColoredBoxLayout:
+  orientation: 'vertical'
+  background_color: [1, 1, 1, 0.8]
+  padding: "40dp"
+
+  ButtonEffect:
 	size_hint_y: None
-	height: self.minimum_height
+	height: "300dp"
+	text: "ButtonEffect"
 
-	canvas:
-		Color:
-			rgba: app.theme_cls.primary_color
-		Rectangle:
-			pos: self.pos
-			size: self.size
-
-
-
-
-
-
-
+  ColoredBoxLayout:
+	background_color: [0, 1, 0, 1]
+	padding: "40dp"
+	ButtonEffect:
+	  text: 'Effect 1'
+	ButtonEffect:
+	  text: 'Effect 2'
 
 
 
@@ -182,7 +182,7 @@ GridLayout:
 ```
 </div>
 
-|[Click to the Source Code](https://github.com/Heitor-Tasso/kivygo/blob/main/kivygo/uix/anchorlayout.py)|
+|[Click to the Source Code](https://github.com/Heitor-Tasso/kivygo/blob/main/kivygo/uix/boxlayout.py)|
 |---|
 
 </ul>
