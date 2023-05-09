@@ -194,41 +194,41 @@ ColoredBoxLayout:
 <summary>Button</summary>
 <ul>
 
-## `kivygo\uix\button.py`
-### `examples\anchorlayout_example.py`
+## `kivygo/uix/button.py`
+### `examples/button_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
 <div>
-<img align="right" width="350" height="407" src="../images_example/example_2.gif"/>
+<img align="right" width="350" height="407" src="../images_example/button_0.gif"/>
 
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
-GridLayout:
-	size_hint_y: None
-	height: self.minimum_height
-
-	canvas:
-		Color:
-			rgba: app.theme_cls.primary_color
-		Rectangle:
-			pos: self.pos
-			size: self.size
-
-
-
-
-
-
-
-
-
-
-
+ColoredGridLayout:
+  background_color: [1, 1, 1, 0.8]
+  padding: "70dp"
+  spacing: '30dp'
+  rows: 3
+  ButtonEffect:
+	text: "Normal Rectangle Button"
+	background_color: [[0.1, 0.4, 0.1, 1], [0.1, 0.4, 0.7, 1]]
+  ButtonEffect:
+	text: "Normal Rounded Button"
+	radius: [dp(50)] * 4
+	radius_effect: self.radius
+	background_color: [[0.1, 0.4, 0.1, 1], [0.1, 0.4, 0.7, 1]]
+  ToggleButtonEffect:
+	text: "Toggle Rectangle Button"
+	group: "toggle"
+	down_background_color: [[0.3, 0.1, 0.7, 1], [0.7, 0.3, 0.5, 1]]
+  ToggleButtonEffect:
+	text: "Toggle Rounded Button"
+	group: "toggle"
+	down_background_color: [[0.3, 0.1, 0.7, 1], [0.7, 0.3, 0.5, 1]]
 ```
 </div>
 
-|[Click to the Source Code](https://github.com/Heitor-Tasso/kivygo/blob/main/kivygo/uix/anchorlayout.py)|
+|[Click to the Source Code](https://github.com/Heitor-Tasso/kivygo/blob/main/kivygo/uix/button.py)|
 |---|
 
 </ul>
@@ -240,8 +240,8 @@ GridLayout:
 <summary>Camera</summary>
 <ul>
 
-## `kivygo\uix\camera.py`
-### `examples\anchorlayout_example.py`
+## `kivygo/uix/camera.py`
+### `examples/camera_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
@@ -274,7 +274,7 @@ GridLayout:
 ```
 </div>
 
-|[Click to the Source Code](https://github.com/Heitor-Tasso/kivygo/blob/main/kivygo/uix/anchorlayout.py)|
+|[Click to the Source Code](https://github.com/Heitor-Tasso/kivygo/blob/main/kivygo/uix/camera.py)|
 |---|
 
 </ul>
@@ -287,41 +287,42 @@ GridLayout:
 <summary>CircularBar</summary>
 <ul>
 
-## `kivygo\uix\circular_bar.py`
-### `examples\anchorlayout_example.py`
+## `kivygo/uix/circular_bar.py`
+### `examples/ciruclar_bar_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
 
 <div>
-<img align="right" width="350" height="407" src="../images_example/example_2.gif"/>
+<img align="right" width="350" height="407" src="../images_example/circular_bar_0.gif"/>
 
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
-GridLayout:
-	size_hint_y: None
-	height: self.minimum_height
-
-	canvas:
-		Color:
-			rgba: app.theme_cls.primary_color
-		Rectangle:
-			pos: self.pos
-			size: self.size
-
-
-
-
-
-
-
-
-
-
-
+ColoredBoxLayout
+  orientation: 'vertical'
+  padding: "80dp"
+  spacing: "40dp"
+  background_color: hex('#03A9F4')
+  on_kv_post: Animation(progress=bar.max_progress, d=4).start(bar)
+  BoxLayout:
+	CircularProgressBar:
+	  max_progress: 200
+	  min_progress: 10
+	  cap_precision: 100
+	  label_text: "Ola mundo"
+	CircularProgressBar:
+	  id: bar
+	  cap_style: "square"
+	  border_width: 5
+	  progress_color: [0.8, 0.8, 0.5, 1]
+	  cap_precision: 50
+	  widget_size: dp(100)
+	  label_args: [round(self.progress)]
+	  label: Label(text="Loading...\\n{}%", font_size=10, halign="center")
+	  label_color: [1, 0, 0, 1]
 ```
 </div>
 
-|[Click to the Source Code](https://github.com/Heitor-Tasso/kivygo/blob/main/kivygo/uix/anchorlayout.py)|
+|[Click to the Source Code](https://github.com/Heitor-Tasso/kivygo/blob/main/kivygo/uix/circular_bar.py)|
 |---|
 
 </ul>

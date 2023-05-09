@@ -43,6 +43,7 @@ class ButtonEffect(ButtonBehavior, Label, EffectBehavior, HoverBehavior):
 
 	radius = ListProperty([0, 0, 0, 0])
 
+	down_background_color = ListProperty([])
 	background_color = ListProperty([[0.05, 0.0, 0.4, 1], [0.0625, 0.0, 0.5, 1]])
 	color_line = ListProperty([[1, 1, 1, 1], [0.8, 0.925, 1, 1]])
 	color_text = ListProperty([[1, 1, 1, 1], [0.8, 0.925, 1, 1]])
@@ -55,6 +56,7 @@ class ButtonEffect(ButtonBehavior, Label, EffectBehavior, HoverBehavior):
 
 	def __init__(self, **kwargs):
 		self.bind(
+			down_background_color=self.set_color,
 			background_color=self.set_color,
 			color_line=self.set_color,
 			color_text=self.set_color)
@@ -63,7 +65,11 @@ class ButtonEffect(ButtonBehavior, Label, EffectBehavior, HoverBehavior):
 		Clock.schedule_once(self.set_color)
 	
 	def set_color(self, *args):
-		self.background = self.get_color(self.background_color, 0)
+		if self.down_background_color:
+			self.background = self.get_color(self.down_background_color, 0)
+		else:
+			self.background = self.get_color(self.background_color, 0)
+		
 		self.background_line = self.get_color(self.color_line, 0)
 		self.color = self.get_color(self.color_text, 0)
 	
@@ -77,8 +83,12 @@ class ButtonEffect(ButtonBehavior, Label, EffectBehavior, HoverBehavior):
 	def set_pressed(self, *args):
 		if self.down_color_text[-1] != 0:
 			self.color = self.down_color_text
+		
 		if self.down_color_line[-1] != 0:
 			self.background_line = self.down_color_line
+		
+		if self.down_background_color:
+			self.background = self.get_color(self.down_background_color, 1)
 
 	def on_touch_down(self, touch):
 		
@@ -86,18 +96,25 @@ class ButtonEffect(ButtonBehavior, Label, EffectBehavior, HoverBehavior):
 			return False
 
 		Animation.cancel_all(self, 'color', 'background_line')
-		self.set_pressed()
 		
 		touch.grab(self)
 		self.ripple_show(touch)
 		self._pressed = True
-		return super().on_touch_down(touch)
+		result = super().on_touch_down(touch)
+		if self.state == "down":
+			self.set_pressed()
+		return result
 
 	def on_touch_up(self, touch):
 
 		if touch.grab_current is self:
 			touch.ungrab(self)
 			self.ripple_fade()
+		
+		result = super().on_touch_up(touch)
+
+		if self.down_background_color and self.state == "normal":
+			self.background = self.get_color(self.down_background_color, 0)
 		
 		if not self.collide_point(*touch.pos):
 			return False
@@ -110,7 +127,7 @@ class ButtonEffect(ButtonBehavior, Label, EffectBehavior, HoverBehavior):
 		anim.bind(on_complete=self.on_touch_anim_end)
 		anim.start(self)
 
-		return super().on_touch_up(touch)
+		return result
 
 	def on_touch_anim_end(self, *args):
 		self._pressed = False
@@ -121,17 +138,21 @@ class ButtonEffect(ButtonBehavior, Label, EffectBehavior, HoverBehavior):
 		if not self._pressed:
 			self.background_line = self.get_color(self.color_line, 1)
 			self.color = self.get_color(self.color_text, 1)
-		anim = Animation(
-			background=self.get_color(self.background_color, 1),
-			d=self.duration_back, t='out_quad')
-		anim.start(self)
+		
+		if not self.down_background_color:
+			anim = Animation(
+				background=self.get_color(self.background_color, 1),
+				d=self.duration_back, t='out_quad')
+			anim.start(self)
 		return super().on_cursor_enter(*args)
 
 	def on_cursor_leave(self, *args):
-		anim = Animation(
-			background=self.get_color(self.background_color, 0),
-			d=self.duration_back, t='out_quad')
-		anim.start(self)
+		if not self.down_background_color:
+			anim = Animation(
+				background=self.get_color(self.background_color, 0),
+				d=self.duration_back, t='out_quad')
+			anim.start(self)
+		
 		if not self._pressed:
 			self.color = self.get_color(self.color_text, 0)
 			self.background_line = self.get_color(self.color_line, 0)

@@ -125,21 +125,21 @@ class HoverBehavior(Widget):
 		for wid in HoverBehavior.__resizes:
 			
 			pos = args[1]
-			self.cursor_pos = pos
+			wid.cursor_pos = pos
 			#  If widget not in the same position: on_exit event if needed
-			if not self.collide_point(*self.to_widget(*pos)):
+			if not wid.collide_point(*wid.to_widget(*pos)):
 				wid.do_cursor_leave()
 				continue
 
 			# | The pointer is in the same position as the widget
 
-			if self.hovering and not self.repeat_callback:
+			if wid.hovering and not wid.repeat_callback:
 				#  nothing to do here. Not - this does not handle the case where
 				#  a popup comes over an existing hover event.
 				#  This seems reasonable
 				continue
 			
-			self.hovering = True
+			wid.hovering = True
 
 			# | We need to traverse the tree to see if the Widget is visible
 			
@@ -149,9 +149,9 @@ class HoverBehavior(Widget):
 			# - Second - At the root Window check that there is not another branch
 			#   covering the Widget
 
-			self.hover_visible = True
-			if self.detect_visible:
-				widget = self
+			wid.hover_visible = True
+			if wid.detect_visible:
+				widget = wid
 				while 1:
 					# Walk up the Widget tree from the target Widget
 					parent = widget.parent
@@ -163,7 +163,7 @@ class HoverBehavior(Widget):
 						# The collide_point will error when you reach the root Window
 						break
 					if not pinside:
-						self.hover_visible = False
+						wid.hover_visible = False
 						break
 					# Iterate upwards
 					widget = parent
@@ -182,7 +182,7 @@ class HoverBehavior(Widget):
 						break
 					if child.collide_point(*pos):
 						#  this means that the current widget is covered by a modal or popup
-						self.hover_visible = False
+						wid.hover_visible = False
 						break
 					
 			wid.do_cursor_enter()

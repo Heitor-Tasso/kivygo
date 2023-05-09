@@ -1,6 +1,7 @@
 import __init__
 from kivygo.app import kivygoApp
-from kivy.uix.boxlayout import BoxLayout
+from kivygo.uix.anchorlayout import ColoredAnchorLayout
+from kivygo.uix.boxlayout import ColoredBoxLayout
 from kivy.animation import Animation
 from kivy.lang.builder import Builder
 from kivy.clock import Clock
@@ -10,67 +11,35 @@ from kivygo.uix.circular_bar import CircularProgressBar
 Builder.load_string('''
 
 #:import Label kivy.uix.label.Label
+#:import hex kivy.utils.get_color_from_hex
+#:import Animation kivy.animation.Animation
 
 <Root>:
     orientation: 'vertical'
-    Widget:
-    AnchorLayout:
-        anchor_x: "center"
-        anchor_y: "center"
-        size_hint_y: None
-        height: first.height + dp(50)
+    padding: "80dp"
+    spacing: "40dp"
+    background_color: hex('#03A9F4')
+    ColoredBoxLayout:
         CircularProgressBar:
-            id: first
-            size_hint: None, None
-            size: [self.widget_size] * 2
-            border_width: 15
-            cap_style: "round"
-            progress_color: [0, 1, 0, 1]
-            background_colour: [0, 0, 1, 1]
-            cap_precision: 3
-            max_progress: 150
-            min_progress: 100
-            widget_size: 300
-            label: Label(text="I am a label\\ninjected in kivy\\nmarkup string :)\\nEnjoy! --={}=--", font_size=25, halign="center")
-            label_color: [0, 0, 1, 1]
-    Widget:
-    AnchorLayout:
-        anchor_x: "center"
-        anchor_y: "center"
-        size_hint_y: None
-        height: second.height + dp(50)
-        CircularProgressBar:
-            id: second
-            size_hint: None, None
-            size: [self.widget_size] * 2
+            id: last
             max_progress: 200
             min_progress: 10
             cap_precision: 100
             label_text: "Ola mundo"
-    Widget:
-    AnchorLayout:
-        anchor_x: "center"
-        anchor_y: "center"
-        size_hint_y: None
-        height: last.height + dp(50)
         CircularProgressBar:
-            id: last
-            size_hint: None, None
-            size: [self.widget_size] * 2
+            id: bar
             cap_style: "square"
             border_width: 5
-            progress_color: 0.8, 0.8, 0.5, 1
-            cap_precision: 100
-            max_progress: 10
+            progress_color: [0.8, 0.8, 0.5, 1]
+            cap_precision: 50
             widget_size: 100
-            label_args: [round(self.progress, 1)]
+            label_args: [round(self.progress)]
             label: Label(text="Loading...\\n{}%", font_size=10, halign="center")
             label_color: [1, 0, 0, 1]
-    Widget:
 ''')
 
 
-class Root(BoxLayout):
+class Root(ColoredAnchorLayout):
     pass
 
 
@@ -80,7 +49,7 @@ class DemoApp(kivygoApp):
     def animate(self, dt):
         bar = self.root.ids.last
         if bar.progress < bar.max_progress:
-            bar.progress += 0.02
+            bar.progress += 0.4
         else:
             bar.progress = bar.min_progress
             Clock.unschedule(self.animate)
@@ -94,20 +63,10 @@ class DemoApp(kivygoApp):
     def start_animations(self, *args):
         # Animate the progress bar
         Clock.schedule_interval(self.animate, 0.01)
-        Clock.schedule_once(self.start_animation_first)
         Clock.schedule_once(self.start_animation_second)
 
-    def start_animation_first(self, *args):
-        bar = self.root.ids.first
-
-        bar.progress = bar.min_progress
-        anim = Animation(progress=bar.max_progress, duration=4)
-        anim.bind(
-            on_complete=lambda *a: Clock.schedule_once(self.start_animation_first, 1))
-        anim.start(bar)
-
     def start_animation_second(self, *args):
-        bar = self.root.ids.second
+        bar = self.root.ids.bar
 
         bar.progress = bar.min_progress
         anim = Animation(progress=bar.max_progress,

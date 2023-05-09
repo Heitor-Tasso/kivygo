@@ -1,19 +1,37 @@
 
-from kivy.uix.widget import Widget
+from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.label import Label
+from kivy.clock import Clock
 from kivy.graphics import Line, Rectangle, Color, Ellipse
 from kivy.properties import (
 	OptionProperty, BoundedNumericProperty,
 	ColorProperty, NumericProperty,
 	ObjectProperty, AliasProperty,
-	ListProperty, StringProperty
+	ListProperty, StringProperty,
+	BooleanProperty
 )
 
 from kivy.metrics import dp
-	
+from kivy.lang.builder import Builder
 from math import ceil
 
-class CircularProgressBar(Widget):
+
+Builder.load_string("""
+
+<CircularProgressBar>:
+	anchor_x: "center"
+	anchor_y: "center"
+	Widget:
+		id: circular_widget
+		size_hint: None, None
+		size: [root.widget_size] * 2
+
+""")
+
+
+class CircularProgressBar(AnchorLayout):
+
+	started  = BooleanProperty(False)
 
 	# This constant enforces the cap argument to be one of the caps accepted by the kivy.graphics.Line class
 	cap_style = OptionProperty("round", options=["round", "none", "square"])
@@ -138,6 +156,24 @@ class CircularProgressBar(Widget):
 		self.bind(_progress=self._draw)
 		self.bind(label_color=self._draw)
 
+		Clock.schedule_once(self.start)
+
+	def on_kv_post(self, *args):
+		self.ids.circular_widget.bind(size=self.start)
+	
+	def start(self, *args):
+		if self.get_root_window() != None:
+			self.ids.circular_widget.unbind(size=self.start)
+			if not self.started:
+				Clock.schedule_once(self.start)
+				self.started = True
+				return None
+		else:
+			return None
+	
+		self._draw()
+
+
 	def on_max_progress(self, *args):
 		if self.max_progress <= self.min_progress:
 			raise ValueError(
@@ -167,7 +203,6 @@ class CircularProgressBar(Widget):
 		else:
 			self.label.text = self.label_text
 
-		# self.label.refresh()
 		self.label_size = self.label.texture_size
 
 	def _draw(self, *args):
@@ -181,27 +216,28 @@ class CircularProgressBar(Widget):
 				3. Draw the actual progress line (N degrees where n is between 0 and 360)
 				4. Draw the textual representation of progress in the middle of the circle
 		"""
+		wid = self.ids.circular_widget
 
-		with self.canvas:
-			self.canvas.clear()
+		with wid.canvas:
+			wid.canvas.clear()
 			self._refresh_text()
 
 			# Draw the progress line
 			Color(*self.background_color)
-			Ellipse(pos=list(map(lambda v: (v + self.border_width), self.pos)),
-					size=list(map(lambda v: (v - (self.border_width * 2)), self.size)))
+			Ellipse(pos=list(map(lambda v: (v + self.border_width), wid.pos)),
+					size=list(map(lambda v: (v - (self.border_width * 2)), wid.size)))
 
 			# Draw the background progress line
 			Color(*self.progress_background)
-			Line(ellipse=(*self.pos, *self.size), width=self.border_width)
+			Line(ellipse=(*wid.pos, *wid.size), width=self.border_width)
 
 			# Draw the progress line
 			Color(*self.progress_color)
-			Line(ellipse=(*self.pos, *self.size, 0, self.value_normalized * 360),
+			Line(ellipse=(*wid.pos, *wid.size, 0, self.value_normalized * 360),
 				 width=self.border_width, cap=self.cap_style, cap_precision=self.cap_precision)
 
 			# Center and draw the progress text
 			Color(1, 1, 1, 1)
 			Rectangle(texture=self.label.texture, size=self.label_size,
-					  pos=(self.center_x - (self.label_size[0] / 2),
-						   self.center_y - (self.label_size[1] / 2)))
+					  pos=(wid.center_x - (self.label_size[0] / 2),
+						   wid.center_y - (self.label_size[1] / 2)))

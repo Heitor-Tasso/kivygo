@@ -3,10 +3,44 @@ from kivy.clock import Clock
 from kivy.uix.gridlayout import GridLayout
 from kivy.properties import ListProperty
 from kivy.core.window import Window
+from kivygo.behaviors.hover import HoverBehavior
+from kivy.properties import ListProperty, NumericProperty
 from kivygo.behaviors.drag_and_drop import DraggableLayoutBehavior
+from kivy.lang.builder import Builder
 
 
-class AdjustSizeGridLayout(GridLayout):
+Builder.load_string("""
+
+<ColoredGridLayout>:
+	canvas.before: 
+		Color:
+			rgba: self.background_color
+		RoundedRectangle:
+			pos: self.pos
+			size: self.size
+			radius: self.radius
+		Color:
+			rgba: [1, 1, 1, 1]
+	canvas.after:
+		Color:
+			rgba: self.stroke_color
+		Line:
+			rounded_rectangle: [*self.pos, *self.size, *self.radius]
+			width: self.stroke_width
+		Color:
+			rgba: [1, 1, 1, 1]
+
+""")
+
+
+class ColoredGridLayout(GridLayout, HoverBehavior):
+	background_color = ListProperty([0, 0, 0, 0])
+	radius = ListProperty([0, 0, 0, 0])
+	stroke_color = ListProperty([0, 0 ,0 ,0])
+	stroke_width = NumericProperty(dp(2))
+
+
+class AdjustSizeGridLayout(ColoredGridLayout):
 
 	max_size = ListProperty([dp(235), dp(250)])
 
@@ -62,7 +96,7 @@ class AdjustSizeGridLayout(GridLayout):
 		self.spacing = dp(10)
 
 
-class DraggableGridLayout(GridLayout, DraggableLayoutBehavior):
+class DraggableGridLayout(ColoredGridLayout, DraggableLayoutBehavior):
 
 	def compare_pos_to_widget(self, widget, pos):
 		x, y = pos
