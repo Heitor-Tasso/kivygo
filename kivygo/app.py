@@ -5,31 +5,32 @@ from kivy.properties import (
 )
 from kivy.utils import get_color_from_hex
 from kivy.app import App
-from .utils import do_correction_path
+from kivygo.utils import do_correction_path
+from kivygo import colors
 
 
 class kivygoApp(App):
 
-	primary_color = ColorProperty(get_color_from_hex("007AFF"))
-	secondary_color = ColorProperty(get_color_from_hex("5AC8FA"))
-	accent_color = ColorProperty(get_color_from_hex("FF2D55"))
-	background_color = ColorProperty(get_color_from_hex("FFFFFF"))
-	foreground_color = ColorProperty(get_color_from_hex("F2F2F7"))
-	border_color = ColorProperty(get_color_from_hex("C2C2C2"))
-	text_color = ColorProperty(get_color_from_hex("000000"))
-	heading_color = ColorProperty(get_color_from_hex("333333"))
-	subheading_color = ColorProperty(get_color_from_hex("4A4A4A"))
-	error_color = ColorProperty(get_color_from_hex("FF3B30"))
-	success_color = ColorProperty(get_color_from_hex("4CD964"))
-	warning_color = ColorProperty(get_color_from_hex("FF9500"))
-	info_color = ColorProperty(get_color_from_hex("007AFF"))
-	disabled_color = ColorProperty(get_color_from_hex("C7C7CC"))
-	active_color = ColorProperty(get_color_from_hex("007AFF"))
-	inactive_color = ColorProperty(get_color_from_hex("8E8E93"))
-	hover_color = ColorProperty(get_color_from_hex("F2F2F7"))
-	focus_color = ColorProperty(get_color_from_hex("007AFF"))
-	selected_color = ColorProperty(get_color_from_hex("007AFF"))
-	unselected_color = ColorProperty(get_color_from_hex("8E8E93"))
+	# primary_color = ColorProperty("")
+	# secondary_color = ColorProperty("")
+	# accent_color = ColorProperty("")
+	# background_color = ColorProperty("")
+	# foreground_color = ColorProperty("")
+	# border_color = ColorProperty("")
+	# text_color = ColorProperty("")
+	# heading_color = ColorProperty("")
+	# subheading_color = ColorProperty("")
+	# error_color = ColorProperty("")
+	# success_color = ColorProperty("")
+	# warning_color = ColorProperty("")
+	# info_color = ColorProperty("")
+	# disabled_color = ColorProperty("")
+	# active_color = ColorProperty("")
+	# inactive_color = ColorProperty("")
+	# hover_color = ColorProperty("")
+	# focus_color = ColorProperty("")
+	# selected_color = ColorProperty("")
+	# unselected_color = ColorProperty("")
 
 	path_json = StringProperty("pallet")
 	theme_json = ObjectProperty(None)
@@ -45,6 +46,15 @@ class kivygoApp(App):
 
 	_app_file = StringProperty(os.path.split(__file__)[0])
 
+	def __init__(self, *args, **kwargs):
+		# Set all colors properties to the App accordian to the `colors.PALLET_KEY_COLORS`  
+		for _key in colors.PALLET_KEY_COLORS:
+			color = getattr(colors.Light, _key)
+			self.apply_property(
+				**{ _key : ColorProperty(color) }
+			)
+		
+		super().__init__(*args, **kwargs)
 
 	def get_json(self, name, path=None, *args):
 		if path == None:
@@ -101,3 +111,11 @@ class kivygoApp(App):
 			self.root_path
 			
 		return f'{root_path}/{do_correction_path(local)}'
+
+	def change_pallet(self, _obj):
+		if isinstance(_obj, dict):
+			return None
+		
+		for key in colors.PALLET_KEY_COLORS:
+			if hasattr(_obj, key):
+				setattr(self, key, getattr(_obj, key))

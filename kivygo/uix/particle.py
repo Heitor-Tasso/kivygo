@@ -336,7 +336,7 @@ class ParticleSystem(Widget):
         old_capacity = self.capacity
         new_capacity = min(self.max_capacity, self.capacity + by_amount)
 
-        for i in range(int(new_capacity - old_capacity)):
+        for _ in range(int(new_capacity - old_capacity)):
             self.particles.append(self._create_particle())
 
         self.num_particles = int(new_capacity)

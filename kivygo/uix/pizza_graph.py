@@ -20,7 +20,7 @@ class Pizza(RelativeLayout):
     chart_border = NumericProperty(2)
 
     def __init__(self, **kwargs):
-        super(Pizza, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.chart_center = self.chart_size / 2.0
 
         self.bind(

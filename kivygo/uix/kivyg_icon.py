@@ -1,8 +1,7 @@
 
 from kivy.graphics import (
     Line as KivyLine,
-    Color,
-    Mesh,
+    Color, Mesh,
 )
 
 from kivy.graphics.tesselator import (

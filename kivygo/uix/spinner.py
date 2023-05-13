@@ -4,7 +4,6 @@ from kivy.compat import string_types
 from kivy.factory import Factory
 from kivy.properties import ListProperty, ObjectProperty, BooleanProperty
 from kivygo.uix.button import ButtonEffect
-from kivy.metrics import dp
 from kivy.uix.dropdown import DropDown
 
 
@@ -67,6 +66,7 @@ class EffectSpinner(ButtonEffect):
             self._dropdown.unbind(on_dismiss=self._close_dropdown)
             self._dropdown.dismiss()
             self._dropdown = None
+
         cls = self.dropdown_cls
         if isinstance(cls, string_types):
             cls = Factory.get(cls)
@@ -82,7 +82,8 @@ class EffectSpinner(ButtonEffect):
 
         container = self._dropdown.container
         if not container:
-            return
+            return None
+        
         h = self.height
         for item in container.children[:]:
             item.height = h

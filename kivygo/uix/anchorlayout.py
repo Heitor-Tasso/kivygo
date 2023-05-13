@@ -56,6 +56,7 @@ class ColoredAnchorLayout(AnchorLayout, HoverBehavior, EffectBehavior):
 		super().__init__(**kwargs)
 		self.type_button = 'rounded'
 		Clock.schedule_once(self.set_color)
+		self.bind(background_color=self.set_color)
 	
 	def set_color(self, *args):
 		if isinstance(self.background_color[0], (int, float)):

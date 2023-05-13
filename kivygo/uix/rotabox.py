@@ -11,7 +11,7 @@ from kivy.atlas import Atlas
 from kivy.properties import (
 	NumericProperty, ReferenceListProperty,
 	AliasProperty, ObjectProperty, BooleanProperty,
-	ListProperty, BoundedNumericProperty, partial,
+	ListProperty, BoundedNumericProperty,
 	StringProperty
 )
 
@@ -469,6 +469,7 @@ class Rotabox(Widget):
 		for f, frame in project.items():
 			if f in ('image', 'version'):
 				continue
+
 			pols = []
 			i = 0
 			while i < len(frame):
@@ -484,6 +485,7 @@ class Rotabox(Widget):
 						opens.append(p)
 				except KeyError:
 					pass
+				
 				bounds[f].append([(round(float(point[0]) / self.width, 3),
 									round(float(point[1]) / self.height, 3))
 									for point in pol['points']])
@@ -568,8 +570,8 @@ class Rotabox(Widget):
 		angle_diff = angle - self.last_angle
 		if abs(angle_diff) < 0.01:
 			angle_diff = 0
-		self.last_angle = angle
 
+		self.last_angle = angle
 		if not self.allow:
 			self.allow = 1
 			return None
@@ -642,7 +644,6 @@ class Rotabox(Widget):
 		touch.grab(self)
 		self.touches.append(touch)
 		self.last_touch_pos[touch] = x, y
-
 		return True
 
 	def bring_to_front(self, touch):
@@ -678,10 +679,9 @@ class Rotabox(Widget):
 		if (touches == self.single_drag_touch and (self.allow_drag_x or self.allow_drag_y)):
 			dx = (touch.x - self.last_touch_pos[touch][0]) * self.allow_drag_x
 			dy = (touch.y - self.last_touch_pos[touch][1]) * self.allow_drag_y
-			dx = float(dx) / self.single_drag_touch
-			dy = float(dy) / self.single_drag_touch
-			self.x += dx
-			self.y += dy
+			
+			self.x += float(dx) / self.single_drag_touch
+			self.y += float(dy) / self.single_drag_touch
 			changed = True
 
 		if (touches == self.single_trans_touch and (self.single_touch_rotation or self.single_touch_scaling)):

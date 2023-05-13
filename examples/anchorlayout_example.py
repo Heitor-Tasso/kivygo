@@ -6,10 +6,12 @@ from kivygo.uix.button import ButtonEffect
 
 Builder.load_string("""
 
+#:import colors kivygo.colors
+
 <Manager>:
     anchor_y: "center"
 	anchor_x: "center"
-	background_color: [1, 1, 1, 0.8]
+	background_color: app.primary_color
 	ButtonEffect:
 		size_hint: None, None
 		size: "250dp", "100dp"

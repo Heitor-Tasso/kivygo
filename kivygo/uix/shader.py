@@ -1,4 +1,4 @@
-from kivy.lang import Builder
+
 from kivy.core.window import Window
 from kivy.clock import Clock
 from kivy.graphics import (
@@ -11,8 +11,6 @@ from kivy.properties import (
     StringProperty, ListProperty,
     ObjectProperty
 )
-from kivy.uix.screenmanager import Screen
-from kivy.app import App
 
 
 header = '''

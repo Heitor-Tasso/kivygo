@@ -1,4 +1,4 @@
-from kivy.lang import Builder
+
 from kivy.clock import Clock
 from kivy.graphics import (
 	RenderContext, Fbo, Color,
@@ -7,8 +7,6 @@ from kivy.graphics import (
 )
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import StringProperty, ObjectProperty
-from kivy.uix.screenmanager import Screen
-from kivy.app import App
 
 
 shader_gradient = '''
@@ -48,9 +46,9 @@ class GradientWidget(BoxLayout):
 	def __init__(self, **kwargs):
 
 		self.canvas = RenderContext(
-							use_parent_projection=True,
-							use_parent_modelview=True,
-							use_parent_frag_modelview=True
+			use_parent_projection=True,
+			use_parent_modelview=True,
+			use_parent_frag_modelview=True
 		)
 
 		with self.canvas:

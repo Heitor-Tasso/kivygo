@@ -14,7 +14,7 @@ from kivy.lang import Builder
 Builder.load_string('''
 
 <NavigationDrawer>:
-	size_hint: (1,1)
+	size_hint: [1, 1]
 	_side_panel: sidepanel
 	_main_panel: mainpanel
 	_join_image: joinimage
@@ -31,13 +31,13 @@ Builder.load_string('''
 				 (1-root.side_panel_opacity)*root._anim_progress
 		canvas:
 			Color:
-				rgba: (0,0,0,1)
+				rgba: [0, 0, 0, 1]
 			Rectangle:
 				pos: self.pos
 				size: self.size
 		canvas.after:
 			Color:
-				rgba: (0,0,0,(1-root._anim_progress)*root.side_panel_darkness)
+				rgba: [0, 0, 0, (1-root._anim_progress)*root.side_panel_darkness]
 			Rectangle:
 				size: self.size
 				pos: self.pos
@@ -51,20 +51,20 @@ Builder.load_string('''
 		size: root.size
 		canvas:
 			Color:
-				rgba: (0,0,0,1)
+				rgba: [0, 0, 0, 1]
 			Rectangle:
 				pos: self.pos
 				size: self.size
 		canvas.after:
 			Color:
-				rgba: (0,0,0,root._anim_progress*root.main_panel_darkness)
+				rgba: [0, 0,0 , root._anim_progress*root.main_panel_darkness]
 			Rectangle:
 				size: self.size
 				pos: self.pos
 	Image:
 		id: joinimage
 		opacity: min(sidepanel.opacity, 0 if root._anim_progress < 0.00001 \
-				 else min(root._anim_progress*40,1))
+				 else min(root._anim_progress*40, 1))
 		source: root._choose_image(root._main_above, root.separator_image)
 		mipmap: False
 		width: root.separator_image_width
@@ -92,9 +92,9 @@ class NavigationDrawer(StencilView):
 	'''
 
 	# Internal references for side, main and image widgets
-	_side_panel = ObjectProperty()
-	_main_panel = ObjectProperty()
-	_join_image = ObjectProperty()
+	_side_panel = ObjectProperty(None)
+	_main_panel = ObjectProperty(None)
+	_join_image = ObjectProperty(None)
 
 	side_panel = ObjectProperty(None, allownone=True)
 	'''Automatically bound to whatever widget is added as the hidden panel.'''
@@ -189,7 +189,7 @@ class NavigationDrawer(StencilView):
 	'''
 
 	def __init__(self, **kwargs):
-		super(NavigationDrawer, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		Clock.schedule_once(self.on__main_above, 0)
 
 	def on_anim_type(self, *args):
@@ -257,17 +257,21 @@ class NavigationDrawer(StencilView):
 
 	def add_widget(self, widget):
 		if len(self.children) == 0:
-			super(NavigationDrawer, self).add_widget(widget)
+			super().add_widget(widget)
 			self._side_panel = widget
+
 		elif len(self.children) == 1:
-			super(NavigationDrawer, self).add_widget(widget)
+			super().add_widget(widget)
 			self._main_panel = widget
+
 		elif len(self.children) == 2:
-			super(NavigationDrawer, self).add_widget(widget)
+			super().add_widget(widget)
 			self._join_image = widget
+
 		elif self.side_panel is None:
 			self._side_panel.add_widget(widget)
 			self.side_panel = widget
+
 		elif self.main_panel is None:
 			self._main_panel.add_widget(widget)
 			self.main_panel = widget
@@ -316,6 +320,7 @@ class NavigationDrawer(StencilView):
 			self._anim_progress = 1
 		elif self._anim_progress < 0:
 			self._anim_progress = 0
+
 		if self._anim_progress >= 1:
 			self.state = 'open'
 		elif self._anim_progress <= 0:
@@ -323,11 +328,8 @@ class NavigationDrawer(StencilView):
 
 	def on_state(self, *args):
 		Animation.cancel_all(self)
-		if self.state == 'open':
-			self._anim_progress = 1
-		else:
-			self._anim_progress = 0
-
+		self._anim_progress = (1) if self.state == 'open' else (0)
+		
 	def anim_to_state(self, state):
 		'''If not already in state `state`, animates smoothly to it, taking
 		the time given by self.anim_time. State may be either 'open'
@@ -339,11 +341,13 @@ class NavigationDrawer(StencilView):
 							 duration=self.anim_time,
 							 t=self.closing_transition)
 			anim.start(self)
+
 		elif state == 'closed':
 			anim = Animation(_anim_progress=0,
 							 duration=self.anim_time,
 							 t=self.opening_transition)
 			anim.start(self)
+		
 		else:
 			raise NavigationDrawerException(
 				'Invalid state received, should be one of `open` or `closed`')
@@ -387,12 +391,12 @@ class NavigationDrawer(StencilView):
 						self._main_panel.on_touch_down(touch)
 					elif col_side:
 						self._side_panel.on_touch_down(touch)
-				else:
-					if col_side:
-						self._side_panel.on_touch_down(touch)
-					elif col_main:
-						self._main_panel.on_touch_down(touch)
+				elif col_side:
+					self._side_panel.on_touch_down(touch)
+				elif col_main:
+					self._main_panel.on_touch_down(touch)
 				return False
+		
 		Animation.cancel_all(self)
 		self._anim_init_progress = self._anim_progress
 		self._touch = touch
@@ -411,7 +415,7 @@ class NavigationDrawer(StencilView):
 			if self._anim_progress < 0.975:
 				touch.ud['panels_jiggled'] = True
 		else:
-			super(NavigationDrawer, self).on_touch_move(touch)
+			super().on_touch_move(touch)
 			return
 
 	def on_touch_up(self, touch):
@@ -428,7 +432,7 @@ class NavigationDrawer(StencilView):
 			else:
 				self._anim_relax()
 		else:
-			super(NavigationDrawer, self).on_touch_up(touch)
+			super().on_touch_up(touch)
 			return
 
 	def _anim_relax(self):

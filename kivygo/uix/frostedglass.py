@@ -368,12 +368,12 @@ class FrostedGlass(FloatLayout):
             return None
 
         effect = self.frosted_glass_effect
-        effect["position"] = [float(v) for v in self._pos]
-        effect["resolution"] = [float(v) for v in self.size]
+        effect["position"] = list(map(float, self._pos))
+        effect["resolution"] = list(map(float, self.size))
         effect["luminosity"] = float(self.luminosity)
         effect["saturation"] = float(self.saturation)
         effect["noise_opacity"] = float(self.noise_opacity)
-        effect["color_overlay"] = [float(v) for v in self.overlay_color]
+        effect["color_overlay"] = list(map(float, self.overlay_color))
 
         if not self.is_movable:
             self._update_texture_ev()
@@ -459,12 +459,10 @@ class FrostedGlass(FloatLayout):
         self.refresh_effect()
 
     def _update_canvas(self, *args):
-        border_radius = list(
-            map(
-                lambda x: max(1, min(min(self.width, self.height) / 2, x)),
-                self.border_radius,
-            )
-        )
+        def modify_border(round_number):
+            return max(1, min(min(self.width, self.height) / 2, round_number))
+        
+        border_radius = list(map(modify_border, self.border_radius))
         self.fbo_rect.size = self.size
         self.fbo_rect.pos = self.pos
         self.fbo_rect.radius = border_radius
@@ -472,8 +470,7 @@ class FrostedGlass(FloatLayout):
         self._outline_color.rgba = self.outline_color
         self.outline.width = self.outline_width
         self.outline.rounded_rectangle = (
-            self.x, self.y,
-            self.width, self.height,
+            *self.pos, *self.size,
             *reversed(border_radius), 45,
         )
 

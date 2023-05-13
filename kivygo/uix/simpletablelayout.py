@@ -14,7 +14,7 @@ class SimpleTableLayout(Layout):
     _grid = ListProperty([])
 
     def __init__(self, *args, **kwargs):
-        super(SimpleTableLayout, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.bind(
             children=self._trigger_layout,
             size=self._trigger_layout,
@@ -79,5 +79,5 @@ class SimpleTableLayout(Layout):
                 if grid[y][x] == 0:
                     return y, x
         
-        return None, None
+        return [None, None]
 
