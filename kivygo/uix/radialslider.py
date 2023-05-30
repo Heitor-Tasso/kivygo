@@ -137,7 +137,7 @@ class RadialSlider(Widget):
         ]
 
     def on_touch_down(self, touch):
-        if self.disabled or self._touch_control is not None:
+        if self.disabled or self._touch_control != None:
             return None
         
         if not self.collide_point(*touch.pos):

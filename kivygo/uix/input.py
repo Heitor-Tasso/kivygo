@@ -133,7 +133,7 @@ Builder.load_string("""
 class MyTextInput(TextInput):
 	window_root = ObjectProperty(None)
 	def insert_text(self, substring, from_undo=False):
-		r =  super(MyTextInput, self).insert_text(substring, from_undo=from_undo)
+		r =  super().insert_text(substring, from_undo=from_undo)
 
 		if self.window_root != None:
 			self.window_root.dispatch('on_input_text', substring, from_undo)
@@ -188,7 +188,7 @@ class IconInput(AnchorLayout):
 				  'on_icon_right_pos_release', 'on_enter')
 
 	def __init__(self, **kwargs):
-		super(IconInput, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 		self.pdentro = (0, 0)
 		self.pfora = (0, 0)
 		Clock.schedule_once(self.config)
@@ -286,7 +286,7 @@ class IconInput(AnchorLayout):
 				#se .icon_down(self.icon_left)
 				self.dispatch('on_icon_left_press')
 
-		return super(IconInput, self).on_touch_down(touch)
+		return super().on_touch_down(touch)
 	
 	def on_touch_up(self, touch):
 		if touch.is_mouse_scrolling:
@@ -304,7 +304,7 @@ class IconInput(AnchorLayout):
 			if self.icon_left.collide_point(*touch.pos):
 				# self.icon_up(self.icon_left)
 				self.dispatch('on_icon_left_release')
-		return super(IconInput, self).on_touch_up(touch)
+		return super().on_touch_up(touch)
 
 	def on_icon_right_press(self): pass
 	def on_icon_right_release(self): pass

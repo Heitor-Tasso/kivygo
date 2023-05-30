@@ -153,7 +153,7 @@ class Point(ToggleButton):
     def __init__(self, pol, root, mag, **kwargs):
         self.editor = root
         self.piv_x = self.piv_y = 0
-        super(Point, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.size = mag * 6, mag * 6
         self.original_size = self.size
         self.scale = 1.5 / self.editor.scat.scale + .1
@@ -313,7 +313,7 @@ class Point(ToggleButton):
 class Editor(FloatLayout):
 
     def __init__(self, **kwargs):
-        super(Editor, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.rec = {}
         self.keys = []
         self.frame = '0'
@@ -374,7 +374,7 @@ class Editor(FloatLayout):
 # ,,,------------------------ EDITOR -----------------------
     def add_point(self, x=None, y=None, state=True):
         frame = self.rec[self.frame]
-        if self.pol is not None:
+        if self.pol != None:
             pol = frame[self.pol]
 
             if not x or not y:  # If from keyboard
@@ -1234,7 +1234,7 @@ class Editor(FloatLayout):
         if 'button' in touch.profile:
             mouse_btn = touch.button
         if not self.sprite.image:
-            super(Editor, self).on_touch_down(touch)
+            super().on_touch_down(touch)
             return
         if self.trace_mode and not self.trace_box.collide_point(*touch.pos) \
                 and mouse_btn != 'scrolldown' and mouse_btn != 'scrollup' and mouse_btn not in ['right', 'middle']:
@@ -1256,7 +1256,7 @@ class Editor(FloatLayout):
                     or entry == 'save')
                     and widg.collide_point(*widg.to_widget(*touch.pos))):
                 if mouse_btn != 'right' and mouse_btn != 'middle':
-                    super(Editor, self).on_touch_down(touch)
+                    super().on_touch_down(touch)
                     self.update()
                 self.save_state(motion_end=1)
                 return True
@@ -1269,7 +1269,7 @@ class Editor(FloatLayout):
             self.scat.scale = 1
             return True
         if mouse_btn == 'right':
-            super(Editor, self).on_touch_down(touch)
+            super().on_touch_down(touch)
             return True
         elif self.grid.collide_point(*touch.pos):
             if not self.trace_mode:
@@ -1277,13 +1277,13 @@ class Editor(FloatLayout):
                     self.add_point(*pos)
                 else:
                     self.transfer_points()
-            super(Editor, self).on_touch_down(touch)
+            super().on_touch_down(touch)
 
     def touch_point(self, touch, mouse_btn, point):
         if point.state == 'down' and mouse_btn != 'right':
             point.deselect = True
         polpoi = self.pol, self.index
-        super(Editor, self).on_touch_down(touch)
+        super().on_touch_down(touch)
         if self.ctrl:
             self.pick_point(point)
         elif self.to_transfer:
@@ -1470,7 +1470,7 @@ class Editor(FloatLayout):
                 self.add_point()
 
         if key == 32:  # Space
-            if self.index is None:
+            if self.index == None:
                 try:
                     self.frame, self.pol, self.index = self.lasts
                     self.rec[self.frame][self.pol]['btn_points'][self.index]\
@@ -1553,7 +1553,7 @@ class Editor(FloatLayout):
 
         # ---------------- IF SELECTED POINT
 
-        if self.index is not None:
+        if self.index != None:
             pol = self.rec[self.frame][self.pol]
             curr_point = pol['btn_points'][self.index]
 
@@ -2323,7 +2323,7 @@ If not in Windows and the user exits the editor without saving changes (not beca
             for y in range(int(image.height)):
                 pix_clr = read_pixel(x, int(image.height) - y - 1)
 
-                if self.orig_source is None:
+                if self.orig_source == None:
                     shadow[x].append(1 if pix_clr[-1] else 0)
                 else:  # substitude .png
                     shadow[x].append(1 if pix_clr != test else 0)
@@ -2513,7 +2513,7 @@ If not in Windows and the user exits the editor without saving changes (not beca
             nextp = border[(i + 1) % len(border)]
             angle, distance = self.calc_segment(nextp, pt)
 
-            if previous_angle is None:
+            if previous_angle == None:
                 simple_border.append(pt)  # keeping the very first point
                 previous_angle = angle  # establishing new element's angle
                 count = 1  # first point of new element
@@ -2767,14 +2767,14 @@ class ScattBack(ScatterPlane):
 
     def apply_transform(self, trans, post_multiply=False, anchor=(0, 0)):
         '''Overriding, to have the anchor in window center'''
-        super(ScattBack, self).apply_transform(trans, post_multiply=False,
+        super().apply_transform(trans, post_multiply=False,
                                                anchor=(Window.width * .6,
                                                        Window.height * .5))
 
 
 class Sprite(BoxLayout):
     def __init__(self, **kwargs):
-        super(Sprite, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.image = None
 
     def on_size(self, *args):
@@ -2786,7 +2786,7 @@ class TraceBox(BoxLayout):
 
     def on_touch_down(self, touch):
         if self.collide_point(*touch.pos):
-            super(TraceBox, self).on_touch_down(touch)
+            super().on_touch_down(touch)
             return True
 
 
@@ -2811,7 +2811,7 @@ class ScrollLabel(ScrollView):
     text = StringProperty('')
 
     def __init__(self, **kwargs):
-        super(ScrollLabel, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.scroll_type = ['bars', 'content']
         self.bar_color = (.3, .3, .4, .35)
         self.bar_inactive_color = (.3, .3, .4, .15)
@@ -2853,7 +2853,7 @@ class LoadDialog(BoxLayout):
     text_input = ObjectProperty(None)
 
     def __init__(self, **kwargs):
-        super(LoadDialog, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.filechooser.path = './'
         self.create_drives()
 
@@ -2887,7 +2887,7 @@ class SaveDialog(BoxLayout):
     text_input = ObjectProperty(None)
 
     def __init__(self, **kwargs):
-        super(SaveDialog, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.filechooser.path = './'
         self.create_drives()
 

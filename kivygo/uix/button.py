@@ -135,6 +135,7 @@ class ButtonEffect(ButtonBehavior, Label, EffectBehavior, HoverBehavior):
 		self.hover_visible = True
 
 	def on_cursor_enter(self, *args):
+		print("ON_ENTER")
 		if not self._pressed:
 			self.background_line = self.get_color(self.color_line, 1)
 			self.color = self.get_color(self.color_text, 1)
@@ -147,6 +148,7 @@ class ButtonEffect(ButtonBehavior, Label, EffectBehavior, HoverBehavior):
 		return super().on_cursor_enter(*args)
 
 	def on_cursor_leave(self, *args):
+		print("ON_LEAVE")
 		if not self.down_background_color:
 			anim = Animation(
 				background=self.get_color(self.background_color, 0),

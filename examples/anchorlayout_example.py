@@ -6,8 +6,6 @@ from kivygo.uix.button import ButtonEffect
 
 Builder.load_string("""
 
-#:import colors kivygo.colors
-
 <Manager>:
     anchor_y: "center"
 	anchor_x: "center"

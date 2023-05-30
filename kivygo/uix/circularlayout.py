@@ -101,7 +101,7 @@ class CircularLayout(Layout):
         stretch_weight_angle = 0.
         for w in self.children:
             sha = w.size_hint_x
-            if sha is None:
+            if sha == None:
                 raise ValueError("size_hint_x cannot be None in a CircularLayout")
             else:
                 stretch_weight_angle += sha

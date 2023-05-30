@@ -71,7 +71,7 @@ class BarScroll(AnchorLayout):
 		self.bind(size=self.update_scroll)
 		self.bind(pos=self.update_scroll)
 		
-		if self.scroll_view is not None:
+		if self.scroll_view != None:
 			self._last_scroll_view = self.scroll_view
 			self.scroll_view.bind(vbar=self.update_scroll)
 		
@@ -122,7 +122,7 @@ class BarScroll(AnchorLayout):
 		return super().on_touch_up(touch)
 
 	def on_touch_move(self, touch):
-		if not self.can_scroll or self.scroll_view is None:
+		if not self.can_scroll or self.scroll_view == None:
 			return None
 			
 		height = self.scroll_view.height

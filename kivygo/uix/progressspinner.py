@@ -16,7 +16,7 @@ Builder.load_string('''
 <ProgressSpinnerBase>:
 	_size: min(self.height, self.width)
 	_rsize: self._size / 2.0
-	_stroke: max(0.1, self._rsize / 20.0 if self.stroke_width is None else self.stroke_width)
+	_stroke: max(0.1, self._rsize / 20.0 if self.stroke_width == None else self.stroke_width)
 	_radius: self._rsize - self._stroke * 2.0
 
 <ProgressSpinner>:

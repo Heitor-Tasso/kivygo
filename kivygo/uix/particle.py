@@ -114,7 +114,7 @@ class ParticleSystem(Widget):
         self.frame_time = 0.0
         self.num_particles = 0
 
-        if config is not None:
+        if config != None:
             self._parse_config(config)
         self.emission_rate = self.max_num_particles / self.life_span
         self.initial_capacity = self.max_num_particles

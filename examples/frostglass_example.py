@@ -298,7 +298,7 @@ Builder.load_string("""
 		size: dp(150), dp(40)
 		pos_hint: {'center_x': 0.5,'center_y': 0.15}
 		on_release:
-			if root.popup.frosted_glass_bg is None: root.popup.frosted_glass_bg = scroll_view
+			if root.popup.frosted_glass_bg == None: root.popup.frosted_glass_bg = scroll_view
 			root.popup.open()
 
 

@@ -327,7 +327,7 @@ class DraggableLayoutBehavior(Widget):
 			return True
 
 		j = self.get_drop_insertion_index_move(x, y)
-		if j is not None:
+		if j != None:
 			if spacer.parent:
 				i = self.children.index(spacer)
 				self.remove_widget(spacer)

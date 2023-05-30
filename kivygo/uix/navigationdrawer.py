@@ -268,11 +268,11 @@ class NavigationDrawer(StencilView):
 			super().add_widget(widget)
 			self._join_image = widget
 
-		elif self.side_panel is None:
+		elif self.side_panel == None:
 			self._side_panel.add_widget(widget)
 			self.side_panel = widget
 
-		elif self.main_panel is None:
+		elif self.main_panel == None:
 			self._main_panel.add_widget(widget)
 			self.main_panel = widget
 		else:

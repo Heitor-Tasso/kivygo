@@ -33,7 +33,7 @@ class SimpleTableLayout(Layout):
     def on_children(self, *args):
         children_cells = sum([c.rowspan * c.colspan for c in self.children])
         total_cells = self.cols * \
-            self.rows if self.cols is not None and self.rows is not None else None
+            self.rows if self.cols != None and self.rows != None else None
 
         if total_cells and children_cells > total_cells:
             raise NotEnoughCellsException(f"Available cells: {total_cells}. Requested cells: {children_cells}. Increase cols and/or rows")
@@ -53,7 +53,7 @@ class SimpleTableLayout(Layout):
             c.size = cols_width * c.colspan, rows_height * c.rowspan
             # Find next available cell
             cur_row, cur_col = self._next_cell(grid)
-            if cur_row is None or cur_col is None:  # TODO raise exception?
+            if cur_row == None or cur_col == None:  # TODO raise exception?
                 break
 
             # fill cell or cells in grid according to rowspan, colspan

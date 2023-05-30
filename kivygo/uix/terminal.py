@@ -145,7 +145,7 @@ class CodeEditorBase(ScrollView):
 		return max_width + dp(20)
 
 	def update_width_code(self, *args):
-		if self.code is None or len(self.code._cursor) < 2:
+		if self.code == None or len(self.code._cursor) < 2:
 			return None
 
 		labels = self.code._lines_labels

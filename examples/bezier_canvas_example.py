@@ -1,7 +1,7 @@
 import __init__
 from kivygo.app import kivygoApp
 from kivy.uix.widget import Widget
-from kivy.uix.floatlayout import FloatLayout
+from kivygo.uix.boxlayout import ColoredBoxLayout
 from kivy.lang import Builder
 from kivygo.uix.bezier import BezierLine
 
@@ -11,30 +11,31 @@ Builder.load_string("""
 #:import hex kivy.utils.get_color_from_hex
 
 <Manager>:
-    Label:
-        size_hint_y: None
-        text_size: self.width, None
-        height: self.texture_size[1]
-        pos_hint: {'top': 1}
-        color: [0, 0, 0, 1]
-        padding: 10, 10
+    FloatLayout:
+        Label:
+            size_hint_y: None
+            text_size: self.width, None
+            height: self.texture_size[1]
+            pos: self.parent.center_x - (self.width / 2), self.parent.top - self.height
+            color: [0, 0, 0, 1]
+            padding: 10, 10
 
-        text:
-            '\\n'.join((
-            'click to create line',
-            'click near a point to drag it',
-            'click near a line to create a new point in it',
-            'double click a point to delete it'
-            ))
+            text:
+                '\\n'.join((
+                'click to create line',
+                'click near a point to drag it',
+                'click near a line to create a new point in it',
+                'double click a point to delete it'
+                ))
 
-        canvas.before:
-            Color:
-                rgba: [1, 1, 1, 0.8]
-            Rectangle:
-                pos: self.pos
-                size: self.size
+            canvas.before:
+                Color:
+                    rgba: app.accent_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
 
-    BezierCanvas:
+        BezierCanvas:
 """)
 
 
@@ -51,7 +52,7 @@ class BezierCanvas(Widget):
 		self.add_widget(bezierline)
 		return True
 
-class Manager(FloatLayout):
+class Manager(ColoredBoxLayout):
 	pass
 
 class ExampleUixApp(kivygoApp):

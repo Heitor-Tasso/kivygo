@@ -1,8 +1,0 @@
-kivy
-opencv-python
-camera4kivy
-matplotlib
-pyzbar
-requests
-svglib
-pillow

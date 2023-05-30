@@ -9,7 +9,7 @@ from kivygo.uix.particle import ParticleSystem
 
 class DemoParticle(Widget):
     def __init__(self, **kwargs):
-        super(DemoParticle, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.sun = ParticleSystem('kivygo/config/sun.pex')
         self.drugs = ParticleSystem('kivygo/config/drugs.pex')
         self.jellyfish = ParticleSystem('kivygo/config/jellyfish.pex')

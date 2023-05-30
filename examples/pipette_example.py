@@ -199,7 +199,7 @@ class PipetteApp(kivygoApp):
     def get_widget_fbo(self, widget):
         scale = 1
 
-        if widget.parent is not None:
+        if widget.parent != None:
             canvas_parent_index = widget.parent.canvas.indexof(widget.canvas)
             if canvas_parent_index > -1:
                 widget.parent.canvas.remove(widget.canvas)
@@ -222,7 +222,7 @@ class PipetteApp(kivygoApp):
 
         fbo.remove(widget.canvas)
 
-        if widget.parent is not None and canvas_parent_index > -1:
+        if widget.parent != None and canvas_parent_index > -1:
             widget.parent.canvas.insert(canvas_parent_index, widget.canvas)
 
         return pil_img

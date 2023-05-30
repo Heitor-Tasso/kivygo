@@ -5,6 +5,10 @@
 		}
 	],
 	"settings": {
-		"materialkv.pythonFile": "main.py"
+		"materialkv.pythonFile": "main.py",
+		"[python]": {
+			"editor.defaultFormatter": "ms-python.autopep8"
+		},
+		"python.formatting.provider": "none"
 	}
 }

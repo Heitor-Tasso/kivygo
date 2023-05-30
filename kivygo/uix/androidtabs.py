@@ -197,11 +197,11 @@ class AndroidTabsScrollView(ScrollView):
 			if e:
 				e.value = (e.max + e.min) * x
 
-		if not (scroll_x is None):
+		if not (scroll_x == None):
 			self.scroll_x = scroll_x
 			_update(self.effect_x, scroll_x)
 
-		if not (scroll_y is None):
+		if not (scroll_y == None):
 			self.scroll_y = scroll_y
 			_update(self.effect_y, scroll_y)
 
@@ -372,7 +372,7 @@ class AndroidTabsBar(BoxLayout, HoverBehavior, EffectBehavior):
 			indicator_animation = self.parent.tab_indicator_anim
 
 			skip_slide = carousel.slides[carousel._skip_slide] \
-							if carousel._skip_slide is not None else None
+							if carousel._skip_slide != None else None
 			next_slide = carousel.next_slide \
 							if forward else carousel.previous_slide
 			self.target = skip_slide if skip_slide else next_slide

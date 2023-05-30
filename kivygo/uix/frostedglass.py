@@ -598,7 +598,7 @@ class FrostedGlass(FloatLayout):
                     pass
 
     def _trigger_update_effect(self, value=None):
-        if value is None and self.update_by_timeout:
+        if value == None and self.update_by_timeout:
             self.update_effect()
 
         if (
@@ -626,7 +626,7 @@ class FrostedGlass(FloatLayout):
 
     @property
     def not_current_screen(self):
-        if self.parent_screen is None:
+        if self.parent_screen == None:
             return False
         return self.parent_screen.manager.current != self.parent_screen.name
 

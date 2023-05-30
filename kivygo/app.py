@@ -11,27 +11,6 @@ from kivygo import colors
 
 class kivygoApp(App):
 
-	# primary_color = ColorProperty("")
-	# secondary_color = ColorProperty("")
-	# accent_color = ColorProperty("")
-	# background_color = ColorProperty("")
-	# foreground_color = ColorProperty("")
-	# border_color = ColorProperty("")
-	# text_color = ColorProperty("")
-	# heading_color = ColorProperty("")
-	# subheading_color = ColorProperty("")
-	# error_color = ColorProperty("")
-	# success_color = ColorProperty("")
-	# warning_color = ColorProperty("")
-	# info_color = ColorProperty("")
-	# disabled_color = ColorProperty("")
-	# active_color = ColorProperty("")
-	# inactive_color = ColorProperty("")
-	# hover_color = ColorProperty("")
-	# focus_color = ColorProperty("")
-	# selected_color = ColorProperty("")
-	# unselected_color = ColorProperty("")
-
 	path_json = StringProperty("pallet")
 	theme_json = ObjectProperty(None)
 
@@ -43,18 +22,25 @@ class kivygoApp(App):
 
 	font_path = StringProperty("fonts")
 
-
+	current_pallet = ObjectProperty(None)
+	
 	_app_file = StringProperty(os.path.split(__file__)[0])
 
 	def __init__(self, *args, **kwargs):
-		# Set all colors properties to the App accordian to the `colors.PALLET_KEY_COLORS`  
+		# Set all colors properties to the App accordian to the `colors.PALLET_KEY_COLORS`
+		if self.current_pallet == None:
+			self.current_pallet = colors.Light
+		
 		for _key in colors.PALLET_KEY_COLORS:
-			color = getattr(colors.Light, _key)
+			color = getattr(self.current_pallet, _key)
 			self.apply_property(
 				**{ _key : ColorProperty(color) }
 			)
 		
 		super().__init__(*args, **kwargs)
+	
+	def on_current_pallet(self, *args):
+		self.change_pallet(self.current_pallet)
 
 	def get_json(self, name, path=None, *args):
 		if path == None:
@@ -119,3 +105,5 @@ class kivygoApp(App):
 		for key in colors.PALLET_KEY_COLORS:
 			if hasattr(_obj, key):
 				setattr(self, key, getattr(_obj, key))
+			
+		self.current_pallet = _obj

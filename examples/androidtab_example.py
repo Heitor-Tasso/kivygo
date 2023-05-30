@@ -1,7 +1,7 @@
 import __init__
 from kivygo.app import kivygoApp
 from kivy.lang.builder import Builder
-from kivy.uix.boxlayout import BoxLayout
+from kivygo.uix.boxlayout import ColoredBoxLayout
 from kivygo.uix.androidtabs import AndroidTabsBase, AndroidTabs
 from kivygo.uix.button import ButtonEffect
 
@@ -10,16 +10,18 @@ Builder.load_string('''
 #:import hex kivy.utils.get_color_from_hex
 
 <AndroidTabsBar>:
-    background_color: hex('#03A9F4')
+    background_color: app.primary_color
 
 <ExampleTab>:
+    padding: "30dp"
+    background_color: app.secondary_color
     ButtonEffect:
         text: root.text
         
 ''')
 
 
-class ExampleTab(BoxLayout, AndroidTabsBase):
+class ExampleTab(ColoredBoxLayout, AndroidTabsBase):
     pass
 
 

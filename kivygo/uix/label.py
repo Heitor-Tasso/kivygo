@@ -57,14 +57,14 @@ class LabelGradient(Label):
 	bg_color = ListProperty([0, 0, 0, 255])
 
 	def __init__(self, **kwargs):
-		super(LabelGradient, self).__init__(**kwargs)
+		super().__init__(**kwargs)
 
 		# bind to texture to trigger use of gradient
 		self.bind(texture=self.fix_texture)
 
 	def fix_texture(self, instance, texture):
-		if self.gradient is None:
-			return
+		if self.gradient == None:
+			return None
 
 		# unbind, so we don't loop
 		self.unbind(texture=self.fix_texture)

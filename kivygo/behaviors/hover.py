@@ -170,7 +170,7 @@ class HoverBehavior(Widget):
 
 				#  parent = root window
 				#  widget = first Widget on the current branch
-				children = parent.children
+				children = parent.children if parent != None else wid.children
 				for child in children:
 					# For each top level widget - check if is current branch
 					# If it is - then break.

@@ -109,11 +109,11 @@ class Animation(EventDispatcher):
             Animation.cancel_all(widget, 'x')
         .. versionadded:: 1.4.0
         .. versionchanged:: 2.1.0
-            If the parameter ``widget`` is None, all animated widgets will be
+            If the parameter ``widget`` == None, all animated widgets will be
             the target and cancelled. If ``largs`` is also given, animation of
             these properties will be canceled for all animated widgets.
         '''
-        if widget is None:
+        if widget == None:
             if largs:
                 for animation in Animation._instances.copy():
                     for info in tuple(animation._widgets.values()):
@@ -239,7 +239,7 @@ class Animation(EventDispatcher):
             return None
         
         self._clock_installed = False
-        if self._update_ev is not None:
+        if self._update_ev != None:
             self._update_ev.cancel()
             self._update_ev = None
 
@@ -261,7 +261,7 @@ class Animation(EventDispatcher):
                 
                 continue
 
-            if anim['time'] is None:
+            if anim['time'] == None:
                 anim['time'] = 0.0
             else:
                 anim['time'] += dt

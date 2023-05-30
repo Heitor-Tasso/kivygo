@@ -245,13 +245,13 @@ class ToggleButtonBehavior(ButtonBehavior):
 		groups[group].append(r)
 
 	def _release_group(self, current):
-		if self.group is None:
+		if self.group == None:
 			return None
 		
 		group = self.__groups[self.group]
 		for item in group[:]:
 			widget = item()
-			if widget is None:
+			if widget == None:
 				group.remove(item)
 			
 			if widget is current:
