@@ -37,15 +37,22 @@ def glob_paths(pattern):
 
 if __name__ == "__main__":
     setup(
+        name="kivygo",
         version = get_version(),
         packages = find_packages(include=["kivygo", "kivygo.*"]),
         package_dir = {"kivygo": "kivygo"},
         package_data={
-            "kivyfo": [
-                "assets/images/*.png",
-                "assets/icons/*.png",
-                "fonts/*.ttf",
+            "kivygo": [
+                *glob_paths(".png"),
+                *glob_paths(".jpg"),
+                *glob_paths(".svg"),
+                *glob_paths(".ttf"),
                 *glob_paths(".kv"),
+                *glob_paths(".frag"),
+                *glob_paths(".glsl"),
+                *glob_paths(".atlas"),
+                *glob_paths(".pex"),
+                *glob_paths(".bounds"),
             ]
         },
         install_requires=[

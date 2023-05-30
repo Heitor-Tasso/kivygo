@@ -233,4 +233,11 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
 Para ver quantidade de linhas do código no Visual Studio Code:
  - `(gci -include *.kv,*.py -recurse | select-string .).Count`
 
+---
+
+# Build to PYPI
+
+ - `python setup.py sdist`
+ - `twine upload dist/*`
+
 <br>[⬆ Voltar ao topo](#kivygo)<br>
