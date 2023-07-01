@@ -2,29 +2,35 @@ import __init__
 from kivygo.app import kivygoApp
 from kivy.lang import Builder
 from kivygo.uix.anchorlayout import ColoredAnchorLayout
-from kivygo.uix.button import ButtonEffect
+from kivygo.uix.button import RippleButton
+
 
 Builder.load_string("""
 
-<Manager>:
+#:import Dark kivygo.colors.Dark
+#:import Light kivygo.colors.Light
+
+<AnchorLayoutExample>:
     anchor_y: "center"
 	anchor_x: "center"
-	background_color: app.primary_color
-	ButtonEffect:
+	background_color: app.colors.primary_default
+	RippleButton:
 		size_hint: None, None
 		size: "250dp", "100dp"
-		text: "ButtonEffect"
+		text: "RippleButton"
+		on_release:
+			app.change_pallet(Light) if app.colors.current_pallet == Dark else app.change_pallet(Dark)
 """)
 
 
-class Manager(ColoredAnchorLayout):
+class AnchorLayoutExample(ColoredAnchorLayout):
 	pass
 
-class ExampleUixApp(kivygoApp):
+class AnchorLayoutExampleApp(kivygoApp):
 	def build(self):
-		return Manager()
+		return AnchorLayoutExample()
 	
 
 if __name__ == "__main__":
-	ExampleUixApp().run()
+	AnchorLayoutExampleApp().run()
 

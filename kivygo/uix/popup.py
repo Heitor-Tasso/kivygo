@@ -5,7 +5,7 @@ from kivy.lang.builder import Builder
 from kivy.properties import StringProperty
 from kivygo.uix.label import LabelToScroll
 from kivygo.uix.icon import ButtonIcon
-from kivygo.uix.button import ButtonEffect
+from kivygo.uix.button import RippleButton
 from kivygo.uix.anchorlayout import AnchorLayoutButton
 
 
@@ -56,7 +56,7 @@ Builder.load_string("""
 				size_hint_y: None
 				height: lb_t.height + dp(10)
 				padding: [dp(10), 0, 0, 0]
-
+				padding_x: "15dp"
 				LabelToScroll:
 					text: root.title
 					font_size: "30sp"
@@ -77,7 +77,7 @@ Builder.load_string("""
 
 	AnchorLayout:
 		anchor_y: 'center'
-
+		padding_x: "15dp"
 		LabelToScroll:
 			text: root.msg
 			font_size: "20sp"
@@ -88,7 +88,7 @@ Builder.load_string("""
 		size_hint_y: None
 		height: 0 if not self.children else self.children[0].height + dp(30)
 
-		ButtonEffect:
+		RippleButton:
 			text: "Continuar"
 			size_hint: None, None
 			size: '120dp', '55dp'

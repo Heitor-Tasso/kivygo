@@ -16,6 +16,7 @@ and when the mouse cursor goes beyond the widget.
 """
 from kivy.uix.widget import Widget
 from kivy.core.window import Window
+from kivy.metrics import dp
 from kivy.properties import (
 	BooleanProperty, ObjectProperty,
 	ListProperty
@@ -62,12 +63,15 @@ class HoverBehavior(Widget):
 		"""Called when the mouse exits the widget AND the widget is visible."""
 		pass
 
+	def on_window_cursor_leave(self, *args):
+		pass
 
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
 
 		self.register_event_type("on_cursor_enter")
 		self.register_event_type("on_cursor_leave")
+		self.register_event_type("on_window_cursor_leave")
 
 		if not HoverBehavior.__resizes:
 			Window.bind(mouse_pos=self.on_mouse_update)
@@ -91,10 +95,20 @@ class HoverBehavior(Widget):
 			else:
 				HoverBehavior.__resizes.remove(self)
 
+	def on_mouse_pos(self, *args):
+		pass
+
 	def window_cursor_leave(self, *args):
 		for wid in HoverBehavior.__resizes:
 			if wid.hover_visible or wid.repeat_callback:
 				wid.do_cursor_leave()
+
+	def do_window_cursor_leave(self, *args):
+		self.hovering = False
+		self.enter_point = None
+		if self.hover_visible or self.repeat_callback:
+			self.hover_visible = False
+			self.dispatch("on_window_cursor_leave")
 
 	def do_cursor_leave(self, *args):
 		self.hovering = False
@@ -108,23 +122,13 @@ class HoverBehavior(Widget):
 			self.enter_point = self.cursor_pos
 			self.dispatch("on_cursor_enter")
 
-	def new_dispatch(self, *args):
-		"""
-			ARGS:
-			 `option`: 'leave' or 'enter'
-		"""
-		if not self.hovering:
-			self.dispatch("on_cursor_leave")
-		else:
-			self.dispatch("on_cursor_enter")
-
 	def on_mouse_update(self, *args):
 		if not self.get_root_window():
 			return None
 		
 		for wid in HoverBehavior.__resizes:
 			
-			pos = args[1]
+			pos = list(map(dp, args[1]))
 			wid.cursor_pos = pos
 			#  If widget not in the same position: on_exit event if needed
 			if not wid.collide_point(*wid.to_widget(*pos)):

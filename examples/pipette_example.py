@@ -1,5 +1,6 @@
 import __init__
 from kivygo.app import kivygoApp
+from kivygo.uix.button import RippleButton
 from kivy.lang.builder import Builder
 from kivy.uix.image import Image
 from kivy.core.image import Image as CoreImage
@@ -12,7 +13,7 @@ from kivy.uix.label import Label
 from io import BytesIO
 from PIL import Image as PILImage
 from kivy.clock import Clock
-from kivy.event import EventDispatcher
+from kivy.metrics import dp
 
 
 Builder.load_string("""
@@ -32,120 +33,95 @@ Builder.load_string("""
             rectangle: (self.x - 2.4, self.y - 2.4, self.width + 4.8, self.height + 4.8)
 
 
-<TouchableScreen>:
+<PipetteExample>:
     ScreenManager:
         id: scr_manager
 
         Screen:
             name: 'home'
             on_enter:
-                app.mouse.set_cursor_icon('kivygo/icons/transparent.png')
-                app.show_cursor(True)
+                root.mouse.set_cursor_icon('kivygo/icons/transparent.png')
+                root.show_cursor(True)
 
-            BoxLayout:
-                orientation: 'vertical'
-                padding: dp(10)
-                spacing: dp(50)
-                adaptive_size: True
-                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-
-                Button:
-                    text: 'Open demo with image'
-                    on_release: app.change_screen('2')
+            RippleButton:
+                text: 'Open demo with image'
+                on_release: root.change_screen('2')
 
         Screen:
             name: '2'
             on_enter:
-                app.mouse.set_cursor_icon('kivygo/icons/pipette.png')
-                app.show_cursor(False)
+                root.mouse.set_cursor_icon('kivygo/icons/pipette.png')
+                root.show_cursor(False)
             BoxLayout:
                 orientation: "vertical"
-                Button:
+                # Widget:
+                RippleButton:
                     size_hint_y: None
                     height: "40dp"
                     text: "LAST_SCREEN"
                     on_release: scr_manager.current = "home"
+                # AnchorLayout:
+                #     anchor_y: 'center'
+                    # size_hint_y: None
+                    # height: layout_2.height + dp(50)
                 Image:
                     id: layout_2
                     source: 'kivygo/images/test.jpg'
-
+                        # size_hint_y: None
+                        # height: self.texture.size[1] * 0.25
+                # Widget:
 
 """)
-
-
-
-class TouchBehavior(EventDispatcher):
-    duration_long_touch = NumericProperty(0.4)
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.register_event_type('on_long_touch')
-        self.bind(on_touch_down=self.create_clock, on_touch_up=self.delete_clock)
-        self.clock = None
-
-    def create_clock(self, widget, touch, *args):
-        if self.collide_point(touch.x, touch.y):
-            self.clock = Clock.schedule_once(lambda dt: self.clock_callback(touch), self.duration_long_touch)
-
-    def delete_clock(self, widget, touch, *args):
-        if self.collide_point(touch.x, touch.y):
-            if self.clock:
-                self.clock.cancel()
-
-    def clock_callback(self, touch):
-        self.dispatch('on_long_touch', touch)
-
-    def on_long_touch(self, touch):
-        pass
 
 
 class BorderImage(Image):
     border_ = BooleanProperty(False)
 
 
-class TouchableScreen(Screen, TouchBehavior):
-    pass
+class PipetteExample(Screen):
 
+    duration_long_touch = NumericProperty(0.4)
 
-class PipetteMouse(RelativeLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.cursor = Image(source='kivygo/icons/transparent.png', size_hint=(None, None), size=[64, 64])
-        self.scaled_area = BorderImage(source='kivygo/icons/transparent.png', size_hint=(None, None), size=[90, 90])
-        self.label_color = Label(size_hint=(None, None), color=(0.84, 0.78, 0.31, 1))
-
-        self.add_widget(self.scaled_area)
-        self.add_widget(self.cursor)
-        self.add_widget(self.label_color)
-
-    def set_cursor_icon(self, source: str):
-        self.cursor.source = source
-        self.cursor.reload()
-
-
-class PipetteApp(kivygoApp):
-
-    def build(self):
-        screen = TouchableScreen()
-
         Window.bind(mouse_pos=self.mouse_pos)
         Window.bind(on_keyboard=self.keyboard_handler)
-
-        screen.bind(on_long_touch=self.on_long_touch)
-        screen.bind(on_touch_up=self.on_touch_up)
-        screen.bind(on_touch_move=self.touch_move)
-
+        self.can_draw = False
+        self.clock = None
+        self.register_event_type('on_long_touch')
+        self.bind(
+            on_touch_down=self.create_clock,
+            on_touch_up=self.delete_clock
+        )
+        Clock.schedule_once(self.config)
+    
+    def config(self, *args):
         self.mouse = PipetteMouse()
-        screen.add_widget(self.mouse)
+        Window.add_widget(self.mouse)
 
-        return screen
+    def create_clock(self, widget, touch, *args):
+        self.can_draw = False
+        if self.collide_point(*touch.pos):
+            self.can_draw = True
+            self.clock = Clock.schedule_once(
+                lambda dt: self.clock_callback(touch),
+                self.duration_long_touch
+            )
 
-    def on_long_touch(self, inst, touch):
-        if self.root.ids.scr_manager.current != 'home':
-            self.get_pixel(*touch.pos)
+    def delete_clock(self, widget, touch, *args):
+        if self.collide_point(*touch.pos):
+            if self.clock:
+                self.clock.cancel()
+
+    def clock_callback(self, touch):
+        self.dispatch('on_long_touch', touch)
+
+    def on_long_touch(self, touch, *args):
+        if self.ids.scr_manager.current != 'home':
+            self.get_pixel(*self.to_local(*touch.pos))
             self.mouse.scaled_area.border_ = True
 
-    def on_touch_up(self, inst, touch):
+    def on_touch_up(self, touch, *args):
         self.mouse.scaled_area.source = 'kivygo/icons/transparent.png'
         self.mouse.scaled_area.reload()
         self.mouse.scaled_area.border_ = False
@@ -154,38 +130,48 @@ class PipetteApp(kivygoApp):
     def show_cursor(self, show: bool):
         Window.show_cursor = show
 
-    def touch_move(self, inst, touch):
-        self.get_pixel(*touch.pos)
+    def on_touch_move(self, touch, *args):
+        if not self.can_draw:
+            return False
+        
+        self.get_pixel(*self.to_local(*touch.pos))
 
-    def mouse_pos(self, window: Window, pos: tuple):
-        self.mouse.cursor.pos = pos[0] - self.mouse.cursor.width // 2, pos[1] - self.mouse.cursor.height // 2
+    def mouse_pos(self, win, pos):
+        if not self.can_draw:
+            return False
+        
+        x, y = tuple(map(lambda x: dp(x), pos))
 
-        self.mouse.scaled_area.pos = pos[0] - self.mouse.scaled_area.width // 2, pos[
-            1] - self.mouse.scaled_area.height // 2
+        self.mouse.cursor.pos = [
+            x - (self.mouse.cursor.width/2),
+            y - (self.mouse.cursor.height/2)
+        ]
+        
+        self.mouse.scaled_area.pos = [
+            self.mouse.cursor.center_x - (self.mouse.scaled_area.width / 2),
+            self.mouse.cursor.center_y - (self.mouse.scaled_area.height / 2)
+        ]
+        
+        self.mouse.label_color.pos = [
+            self.mouse.cursor.center_x - (self.mouse.label_color.width / 2),
+            self.mouse.cursor.y - self.mouse.label_color.texture_size[1] - dp(10)
+        ]
 
-        self.mouse.label_color.pos = pos[0] - 50, pos[1] - 25
+    def increasing_the_area(self, img, pos):
+        box_size = dp(50)
+        x, y = pos
 
-    def increasing_the_area(self, img: PILImage, pos: tuple):
-        box_size = 50
+        left = int(x - (box_size / 2))
+        upper = int(y - (box_size / 2))
 
-        left = pos[0] - box_size / 2
-        upper = pos[1] - box_size / 2
-
-        right = left + box_size
-        lower = upper + box_size
-
-        """
-        left - upper##############
-        ##########################
-        ##########################
-        ##########################
-        ##########################
-        ##########################
-        ###############right-lower
-        """
+        right = int(left + box_size)
+        lower = int(upper + box_size)
 
         img = img.crop((left, upper, right, lower))
-        img = img.resize((box_size * 4, box_size * 4), PILImage.ANTIALIAS)
+        img = img.resize(
+            ( int(box_size * 4), int(box_size * 4) ),
+            PILImage.ANTIALIAS
+        )
         img = img.convert('RGB')
 
         img_byte_arr = BytesIO()
@@ -193,11 +179,11 @@ class PipetteApp(kivygoApp):
         img_byte_arr = img_byte_arr.getvalue()
 
         im = CoreImage(BytesIO(img_byte_arr), ext='png')
-
         self.mouse.scaled_area.texture = im.texture
 
     def get_widget_fbo(self, widget):
         scale = 1
+        x, y = widget.pos
 
         if widget.parent != None:
             canvas_parent_index = widget.parent.canvas.indexof(widget.canvas)
@@ -213,7 +199,7 @@ class PipetteApp(kivygoApp):
             ClearBuffers()
             Scale(1, -1, 1)
             Scale(scale, scale, 1)
-            Translate(-widget.x, -widget.y - widget.height, 0)
+            Translate(-x, -y - widget.height, 0)
 
         fbo.add(widget.canvas)
         fbo.draw()
@@ -229,15 +215,12 @@ class PipetteApp(kivygoApp):
 
     def get_pixel(self, x: float, y: float):
 
-        if self.root.ids.scr_manager.current == '1':
-            img = self.get_widget_fbo(self.root.ids.layout_1)
-        elif self.root.ids.scr_manager.current == '2':
-            img = self.get_widget_fbo(self.root.ids.layout_2)
+        if self.ids.scr_manager.current == '2':
+            img = self.get_widget_fbo(self.ids.layout_2)
         else:
-            return
+            return None
 
-        coords = int(x), img.height - int(y)
-
+        coords = ( int(x), int(img.height - y) )
         try:
             color = img.getpixel(coords)
 
@@ -250,13 +233,13 @@ class PipetteApp(kivygoApp):
         return color
 
     def change_screen(self, name: str):
-        if self.root.ids.scr_manager.current != name:
+        if self.ids.scr_manager.current != name:
             if name == 'home':
-                self.root.ids.scr_manager.transition.direction = 'right'
+                self.ids.scr_manager.transition.direction = 'right'
             else:
-                self.root.ids.scr_manager.transition.direction = 'left'
+                self.ids.scr_manager.transition.direction = 'left'
 
-            self.root.ids.scr_manager.current = name
+            self.ids.scr_manager.current = name
 
     def keyboard_handler(self, instance, keyboard, keycode, text, modifiers):
         if keyboard in (1001, 27):
@@ -264,5 +247,27 @@ class PipetteApp(kivygoApp):
             return True
 
 
+class PipetteMouse(RelativeLayout):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.cursor = Image(source='kivygo/icons/transparent.png', size_hint=(None, None), size=[dp(64), dp(64)])
+        self.scaled_area = BorderImage(source='kivygo/icons/transparent.png', size_hint=(None, None), size=[dp(90), dp(90)])
+        self.label_color = Label(size_hint=(None, None), color=(0.84, 0.78, 0.31, 1))
+
+        Window.add_widget(self.scaled_area)
+        Window.add_widget(self.cursor)
+        Window.add_widget(self.label_color)
+
+    def set_cursor_icon(self, source: str):
+        self.cursor.source = source
+        self.cursor.reload()
+
+
+class PipetteExampleApp(kivygoApp):
+
+    def build(self):
+        return PipetteExample()
+
+
 if __name__ == "__main__":
-    PipetteApp().run()
+    PipetteExampleApp().run()

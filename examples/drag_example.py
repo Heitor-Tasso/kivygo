@@ -21,7 +21,7 @@ Builder.load_string("""
 <DragLabel@DraggableObjectBehavior+Label>:
 
 
-<Manager>:
+<DragExample>:
     
     DraggableBoxLayout:
         drag_classes: ['LABEL_A']
@@ -88,14 +88,14 @@ Builder.load_string("""
 """)
 
 
-class Manager(BoxLayout):
+class DragExample(BoxLayout):
 	pass
 
-class ExampleUixApp(kivygoApp):
+class DragExampleApp(kivygoApp):
 	def build(self):
-		return Manager()
+		return DragExample()
 	
 
 if __name__ == "__main__":
-	ExampleUixApp().run()
+	DragExampleApp().run()
 

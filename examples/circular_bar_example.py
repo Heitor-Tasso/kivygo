@@ -14,7 +14,7 @@ Builder.load_string('''
 #:import hex kivy.utils.get_color_from_hex
 #:import Animation kivy.animation.Animation
 
-<Root>:
+<CircularBarExample>:
     orientation: 'vertical'
     padding: "80dp"
     spacing: "40dp"
@@ -39,11 +39,11 @@ Builder.load_string('''
 ''')
 
 
-class Root(ColoredAnchorLayout):
+class CircularBarExample(ColoredAnchorLayout):
     pass
 
 
-class DemoApp(kivygoApp):
+class CircularBarExampleApp(kivygoApp):
 
     # Simple animation to show the circular progress bar in action
     def animate(self, dt):
@@ -58,7 +58,7 @@ class DemoApp(kivygoApp):
 
     def build(self):
         Clock.schedule_once(self.start_animations, 1)
-        return Root()
+        return CircularBarExample()
 
     def start_animations(self, *args):
         # Animate the progress bar
@@ -77,4 +77,4 @@ class DemoApp(kivygoApp):
 
 
 if __name__ == '__main__':
-    DemoApp().run()
+    CircularBarExampleApp().run()

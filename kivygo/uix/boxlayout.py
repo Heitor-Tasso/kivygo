@@ -6,38 +6,45 @@ from kivy.lang.builder import Builder
 from kivy.clock import Clock
 from kivy.properties import ListProperty, NumericProperty
 from kivy.metrics import dp
+from kivygo.colors import ColorBase
 
 
 Builder.load_string("""
 
 <ColoredBoxLayout>:
-	canvas.before: 
-		Color:
-			rgba: self.background_color
-		RoundedRectangle:
-			pos: self.pos
-			size: self.size
-			radius: self.radius
-		Color:
-			rgba: [1, 1, 1, 1]
-	canvas.after:
-		Color:
-			rgba: self.stroke_color
-		Line:
-			rounded_rectangle: [*self.pos, *self.size, *self.radius]
-			width: self.stroke_width
-		Color:
-			rgba: [1, 1, 1, 1]
+	background_color: GoAppColor.background_default
+	background_hover: GoAppColor.background_hover
+	background_disabled: GoAppColor.background_disabled
+	border_color: GoAppColor.background_border
+	border_hover: GoAppColor.background_border_pressed
+	border_disabled: GoAppColor.background_border_disabled
+	# canvas.before: 
+	# 	Color:
+	# 		rgba: self.background_color
+	# 	RoundedRectangle:
+	# 		pos: self.pos
+	# 		size: self.size
+	# 		radius: self.radius
+	# 	Color:
+	# 		rgba: [1, 1, 1, 1]
+	# canvas.after:
+	# 	Color:
+	# 		rgba: self.stroke_color
+	# 	Line:
+	# 		rounded_rectangle: [*self.pos, *self.size, *self.radius]
+	# 		width: self.stroke_width
+	# 	Color:
+	# 		rgba: [1, 1, 1, 1]
 
 """)
 
 
-class ColoredBoxLayout(BoxLayout, HoverBehavior):
-
-	background_color = ListProperty([0, 0, 0, 0])
-	radius = ListProperty([0, 0, 0, 0])
-	stroke_color = ListProperty([0, 0 ,0 ,0])
-	stroke_width = NumericProperty(dp(2))
+class ColoredBoxLayout(ColorBase, BoxLayout):
+	pass
+	# background_color = ListProperty([0, 0, 0, 0])
+	# radius = ListProperty([0, 0, 0, 0])
+	# stroke_color = ListProperty([0, 0 ,0 ,0])
+	# stroke_width = NumericProperty(dp(2))
 
 
 class ColoredButtonBoxLayout(ButtonBehavior, ColoredBoxLayout):

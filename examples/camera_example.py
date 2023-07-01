@@ -16,7 +16,7 @@ from kivygo.uix.boxlayout import ColoredBoxLayout
 Builder.load_string("""
 
 
-<ManagerScreen>:
+<CameraExample>:
 
 	SwapScreen:
 		name: "screen_2"
@@ -29,14 +29,14 @@ Builder.load_string("""
 """)
 
 
-class ManagerScreen(ScreenManager):
+class CameraExample(ScreenManager):
 	pass
 
-class ExampleUixApp(kivygoApp):
+class CameraExampleApp(kivygoApp):
 	def build(self):
-		return ManagerScreen()
+		return CameraExample()
 	
 
 if __name__ == "__main__":
-	ExampleUixApp().run()
+	CameraExampleApp().run()
 

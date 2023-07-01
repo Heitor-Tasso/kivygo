@@ -7,7 +7,7 @@ from kivygo.uix.gradient import GradientWidget
 
 Builder.load_string("""
 
-<MainScreen>:
+<GradientExample>:
 	FloatLayout:
 
 		GradientWidget:
@@ -42,14 +42,15 @@ Builder.load_string("""
 """)
 
 
-class MainScreen(Screen):
+class GradientExample(Screen):
 	pass
 
 
-class ShaderTestApp(kivygoApp):
+class GradientExampleApp(kivygoApp):
 	def build(self):
-		return MainScreen()
+		return GradientExample()
 
 
 if __name__ == "__main__":
-	ShaderTestApp().run()
+	GradientExampleApp().run()
+

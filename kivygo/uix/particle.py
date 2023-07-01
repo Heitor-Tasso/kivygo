@@ -1,5 +1,5 @@
 
-from kivy.uix.widget import Widget
+from kivygo.uix.widget import GoWidget
 from kivy.clock import Clock
 from kivy.graphics import (
     Color, Callback, Rotate,
@@ -63,7 +63,7 @@ class Particle(object):
     rotation_delta, scale_delta = 0, 0
 
 
-class ParticleSystem(Widget):
+class ParticleSystem(GoWidget):
     max_num_particles = NumericProperty(200)
     life_span = NumericProperty(2)
     texture = ObjectProperty(None)

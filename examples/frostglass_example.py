@@ -1,10 +1,8 @@
 import __init__
 from kivy.app import App
-from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.floatlayout import FloatLayout
-from kivy.uix.screenmanager import Screen, ScreenManager
-from kivy.utils import platform
+from kivy.uix.screenmanager import Screen
 
 from kivygo.uix.frostedglass import FrostedGlass
 
@@ -40,7 +38,7 @@ Builder.load_string("""
 				on_release:
 					root.dismiss()
 
-<UI>:
+<FrostGlassExample>:
 	ScreenManager:
 		id: sm
 		Screen1:
@@ -305,7 +303,7 @@ Builder.load_string("""
 """)
 
 
-class UI(FloatLayout):
+class FrostGlassExample(FloatLayout):
 	pass
 
 
@@ -325,9 +323,9 @@ class Screen4(Screen):
 	pass
 
 
-class FrostedGlassApp(App):
+class FrostGlassExampleApp(App):
 	def build(self):
-		return UI()
+		return FrostGlassExample()
 
-
-FrostedGlassApp().run()
+if __name__ == "__main__":
+	FrostGlassExampleApp().run()

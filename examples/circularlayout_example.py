@@ -4,7 +4,7 @@ from kivygo.app import kivygoApp
 from kivy.uix.button import Button
 
 
-class CircLayoutApp(kivygoApp):
+class CircLayoutExampleApp(kivygoApp):
     def build(self):
         cly = CircularLayout(direction="cw", start_angle=-75, inner_radius_hint=.7, padding="20dp")
 
@@ -13,4 +13,5 @@ class CircLayoutApp(kivygoApp):
 
         return cly
 
-CircLayoutApp().run()
+if __name__ == "__main__":
+    CircLayoutExampleApp().run()

@@ -1,81 +1,119 @@
 import __init__
 from kivy.app import App
-from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
-from kivy.uix.button import Button
-from kivy.uix.widget import Widget
-
+from kivygo.uix.button import RippleButton
+from kivygo.uix.widget import GoWidget
+from kivy.lang.builder import Builder
+from kivy.clock import Clock
 from kivygo.uix.particle import ParticleSystem
 
-class DemoParticle(Widget):
+Builder.load_string("""
+
+<ParticleExample>:
+    cols: 2
+
+    DemoParticle:
+        id: paint
+    
+    BoxLayout:
+        orientation: "vertical"
+        size_hint_x: None
+        width: "70dp"
+
+        RippleButton:
+            text: 'Sun'
+            on_press: paint.show_sun()
+        
+        RippleButton:
+            text: 'Drugs'
+            on_press: paint.show_drugs()
+        
+        RippleButton:
+            text: 'JellyFish'
+            on_press: paint.show_jellyfish()
+        
+        RippleButton:
+            text: 'Fire'
+            on_press: paint.show_fire()
+
+""")
+
+class DemoParticle(GoWidget):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.can_draw = False
         self.sun = ParticleSystem('kivygo/config/sun.pex')
         self.drugs = ParticleSystem('kivygo/config/drugs.pex')
         self.jellyfish = ParticleSystem('kivygo/config/jellyfish.pex')
         self.fire = ParticleSystem('kivygo/config/fire.pex')
 
         self.current = None
+        Clock.schedule_once(self.config)
+    
+    def config(self, *args):
         self._show(self.sun)
 
     def on_touch_down(self, touch):
+        self.can_draw = False
+        if not self.current:
+            return None
+        
+        if not self.collide_point(*touch.pos):
+            return False
+        
+        self.can_draw = True
         self.current.emitter_x = float(touch.x)
         self.current.emitter_y = float(touch.y)
 
     def on_touch_move(self, touch):
+        if not self.current or not self.can_draw:
+            return None
+        
         self.current.emitter_x = float(touch.x)
         self.current.emitter_y = float(touch.y)
 
-    def show_sun(self, b):
+    def show_sun(self, *args):
         self._show(self.sun)
 
-    def show_drugs(self, b):
+    def show_drugs(self, *args):
         self._show(self.drugs)
 
-    def show_jellyfish(self, b):
+    def show_jellyfish(self, *args):
         self._show(self.jellyfish)
 
-    def show_fire(self, b):
+    def show_fire(self, *args):
         self._show(self.fire)
 
     def _show(self, system):
+        if system == None:
+            return None
+        
         if self.current:
-            self.remove_widget(self.current)
-            self.current.stop(True)
+            if self.current is not system:
+                self.remove_widget(self.current)
+                self.current.stop(True)
         self.current = system
 
-        self.current.emitter_x = 300.0
-        self.current.emitter_y = 300.0
-        self.add_widget(self.current)
-        self.current.start()
+        self.current.emitter_x = self.center_x
+        self.current.emitter_y = self.center_y
+        if self.current is not system or not self.children:
+            self.add_widget(self.current)
+            self.current.start()
+    
+    def on_pos(self, *args):
+        self._show(self.current)
+    
+    def on_size(self, *args):
+        self._show(self.current)
 
 
-class DemoParticleApp(App):
+class ParticleExample(GridLayout):
+    pass
+
+class ParticleExampleApp(App):
     def build(self):
-        root = GridLayout(cols=2)
-        paint = DemoParticle(size_hint_x=None, width=600)
-        root.add_widget(paint)
-        buttons = BoxLayout(orientation='vertical')
-        root.add_widget(buttons)
-
-        sun = Button(text='Sun')
-        sun.bind(on_press=paint.show_sun)
-        buttons.add_widget(sun)
-
-        drugs = Button(text='Drugs')
-        drugs.bind(on_press=paint.show_drugs)
-        buttons.add_widget(drugs)
-
-        jellyfish = Button(text='JellyFish')
-        jellyfish.bind(on_press=paint.show_jellyfish)
-        buttons.add_widget(jellyfish)
-
-        fire = Button(text='Fire')
-        fire.bind(on_press=paint.show_fire)
-        buttons.add_widget(fire)
-
-        return root
+        return ParticleExample()
 
 
 if __name__ == '__main__':
-    DemoParticleApp().run()
+    ParticleExampleApp().run()

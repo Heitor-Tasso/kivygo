@@ -2146,7 +2146,7 @@ Transfer picked points {1}{0}[Enter]{2}{3}
         self.dismiss_popup()
         content = BoxLayout(orientation='vertical')
         scrl_label = ScrollLabel()
-        scrl_label.label.padding_x = dp(10)
+        scrl_label.box_label.padding_x = dp(10)
         scrl_label.scroll_y = 1
         scrl_label.label.font_size = '18sp'
         scrl_label.label.markup = True

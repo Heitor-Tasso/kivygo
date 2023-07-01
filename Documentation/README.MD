@@ -25,10 +25,10 @@ ColoredAnchorLayout:
   anchor_y: "center"
   anchor_x: "center"
   background_color: [1, 1, 1, 0.8]
-  ButtonEffect:
+  RippleButton:
     size_hint: None, None
     size: "250dp", "100dp"
-    text: "ButtonEffect"
+    text: "RippleButton"
 
 
 
@@ -70,7 +70,7 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
   background_color: hex('#03A9F4')
 
 <ExampleTab>:
-  ButtonEffect:
+  RippleButton:
     text: root.text
 
 
@@ -163,17 +163,17 @@ ColoredBoxLayout:
   background_color: [1, 1, 1, 0.8]
   padding: "40dp"
 
-  ButtonEffect:
+  RippleButton:
 	size_hint_y: None
 	height: "300dp"
-	text: "ButtonEffect"
+	text: "RippleButton"
 
   ColoredBoxLayout:
 	background_color: [0, 1, 0, 1]
 	padding: "40dp"
-	ButtonEffect:
+	RippleButton:
 	  text: 'Effect 1'
-	ButtonEffect:
+	RippleButton:
 	  text: 'Effect 2'
 
 
@@ -209,19 +209,19 @@ ColoredGridLayout:
   padding: "70dp"
   spacing: '30dp'
   rows: 3
-  ButtonEffect:
+  RippleButton:
 	text: "Normal Rectangle Button"
 	background_color: [[0.1, 0.4, 0.1, 1], [0.1, 0.4, 0.7, 1]]
-  ButtonEffect:
+  RippleButton:
 	text: "Normal Rounded Button"
 	radius: [dp(50)] * 4
 	radius_effect: self.radius
 	background_color: [[0.1, 0.4, 0.1, 1], [0.1, 0.4, 0.7, 1]]
-  ToggleButtonEffect:
+  RippleToggleButton:
 	text: "Toggle Rectangle Button"
 	group: "toggle"
 	down_background_color: [[0.3, 0.1, 0.7, 1], [0.7, 0.3, 0.5, 1]]
-  ToggleButtonEffect:
+  RippleToggleButton:
 	text: "Toggle Rounded Button"
 	group: "toggle"
 	down_background_color: [[0.3, 0.1, 0.7, 1], [0.7, 0.3, 0.5, 1]]

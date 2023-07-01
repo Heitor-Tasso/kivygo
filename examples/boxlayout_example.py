@@ -2,36 +2,47 @@ import __init__
 from kivygo.app import kivygoApp
 from kivy.lang import Builder
 from kivygo.uix.boxlayout import ColoredBoxLayout
-from kivygo.uix.button import ButtonEffect
+from kivygo.uix.button import RippleButton
 
 Builder.load_string("""
 
-<Manager>:
+#:import Dark kivygo.colors.Dark
+#:import Light kivygo.colors.Light
+
+<BoxLayoutExample>:
     orientation: 'vertical'
 	background_color: [1, 1, 1, 0.8]
 	padding: "40dp"
-	ButtonEffect:
+	RippleButton:
 		size_hint_y: None
 		height: "300dp"
-		text: "ButtonEffect"
+		text: "RippleButton"
+		on_release:
+			app.change_pallet(Light) if app.colors.current_pallet == Dark else app.change_pallet(Dark)
 	ColoredBoxLayout:
 		background_color: [0, 1, 0, 1]
 		padding: "40dp"
-		ButtonEffect:
+		background_color: [0, 0, 0, 1]
+		background_hover: [0, 0, 0, 1]
+		background_disabled: [0, 0, 0, 1]
+		border_color: [0, 0, 0, 1]
+		border_hover: [0, 0, 0, 1]
+		border_disabled: [0, 0, 0, 1]
+		RippleButton:
 			text: 'Effect 1'
-		ButtonEffect:
+		RippleButton:
 			text: 'Effect 2'
 """)
 
 
-class Manager(ColoredBoxLayout):
+class BoxLayoutExample(ColoredBoxLayout):
 	pass
 
-class ExampleUixApp(kivygoApp):
+class BoxLayoutExampleApp(kivygoApp):
 	def build(self):
-		return Manager()
+		return BoxLayoutExample()
 	
 
 if __name__ == "__main__":
-	ExampleUixApp().run()
+	BoxLayoutExampleApp().run()
 

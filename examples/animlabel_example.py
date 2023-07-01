@@ -8,10 +8,7 @@ from kivygo.uix.label import AnimatedLabel
 
 Builder.load_string('''
 
-#:import dp kivy.metrics.dp
-#:import sp kivy.metrics.sp
-
-<ExampleRoot>:
+<AnimLabelExample>:
     orientation: 'vertical'
 
     AnimatedLabel:
@@ -43,11 +40,11 @@ Builder.load_string('''
     Spinner:
         id: font
         text: target.font_name
-        values: app.fonts
+        values: root.fonts
         size_hint_y: None
         height: self.texture_size[1] + dp(10)
         on_text:
-            f = app.font_paths.get(self.text)
+            f = root.font_paths.get(self.text)
             if f: target.font_name = f
 
     Button:
@@ -107,16 +104,15 @@ Builder.load_string('''
 
 
 
-class ExampleRoot(BoxLayout):
-	pass
-
-
-class AnimLabelApp(App):
+class AnimLabelExample(BoxLayout):
 	fonts = ListProperty([])
 	font_paths = DictProperty({})
 
+
+class AnimLabelExampleApp(App):
+
 	def build(self):
-		return ExampleRoot()
+		return AnimLabelExample()
 
-
-AnimLabelApp().run()
+if __name__ == "__main__":
+    AnimLabelExampleApp().run()

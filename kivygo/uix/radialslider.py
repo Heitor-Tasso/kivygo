@@ -1,11 +1,11 @@
 
 from math import sin, cos, atan2, radians
-from kivy.uix.widget import Widget
+from kivygo.uix.widget import GoWidget
 from kivy.graphics import Color, SmoothLine, Ellipse
 from kivy.properties import NumericProperty, ColorProperty, AliasProperty
 
 
-class RadialSlider(Widget):
+class RadialSlider(GoWidget):
     '''A :class:`~kivy.uix.widget.Widget` that provides a radial slider.
     '''
 

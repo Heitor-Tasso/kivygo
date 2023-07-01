@@ -4,7 +4,7 @@ from kivy.lang.builder import Builder
 from kivy.clock import Clock
 from kivy.metrics import dp
 
-from kivy.uix.widget import Widget
+from kivygo.uix.widget import GoWidget
 from kivy.uix.image import Image
 
 from kivy.core.image import Image as CoreImage
@@ -65,7 +65,7 @@ Builder.load_string("""
 """)
 
 
-class RoudedImage(Widget):
+class RoudedImage(GoWidget):
 
 	texture = ObjectProperty(None)
 	source = StringProperty('')

@@ -11,7 +11,7 @@ Builder.load_string("""
 #:import MaskEffect kivygo.uix.effect.MaskEffect
 
 
-<MainWidget>:
+<EffectExample>:
     EffectWidget:
         id: mask
         opacity: 0
@@ -33,7 +33,7 @@ Builder.load_string("""
                 PushMatrix
                 Rotate:
                     origin: label.center
-                    angle: app.time * 10
+                    angle: root.time * 10
                 Color:
                     rgba: [0.3, 0.8, 0.8, 0.9]
                 Rectangle:
@@ -42,19 +42,20 @@ Builder.load_string("""
                 PopMatrix
 """)
 
-class MainWidget(FloatLayout):
-    pass
-
-class MaskApp(App):
+class EffectExample(FloatLayout):
     time = NumericProperty(0)
-
-    def build(self):
-        Clock.schedule_interval(self.update_time, 0)
-        return MainWidget()
-
+    
     def update_time(self, dt):
         self.time += dt
 
 
+class EffectExampleApp(App):
+    
+    def build(self):
+        root = EffectExample()
+        Clock.schedule_interval(root.update_time, 0)
+        return root
+
+
 if __name__ == "__main__":
-    MaskApp().run()
+    EffectExampleApp().run()

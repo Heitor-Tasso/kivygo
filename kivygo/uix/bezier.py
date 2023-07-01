@@ -1,6 +1,6 @@
 
 from kivy.lang import Builder
-from kivy.uix.widget import Widget
+from kivygo.uix.widget import GoWidget
 from kivy.properties import ListProperty, NumericProperty
 from kivy.metrics import dp
 import numpy as np
@@ -39,7 +39,7 @@ def dist(a, b):
 	return ( ((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2) ** 0.5 )
 
 
-class BezierLine(Widget):
+class BezierLine(GoWidget):
 
 	_points = ListProperty([])
 	points = ListProperty([])

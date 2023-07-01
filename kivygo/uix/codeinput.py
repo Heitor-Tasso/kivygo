@@ -14,7 +14,7 @@
 from kivy.app import runTouchApp
 from kivy.core.text.markup import MarkupLabel as CoreLabel
 from kivy.core.text import DEFAULT_FONT
-from kivy.uix.widget import Widget
+from kivygo.uix.widget import GoWidget
 from kivy.core.window import Window
 from kivy.properties import (
 	ListProperty, NumericProperty,
@@ -82,7 +82,7 @@ Builder.load_string("""
 """)
 
 
-class CodeInput(Widget):
+class CodeInput(GoWidget):
 	
 	cursor_color = ListProperty([[1, 0, 0, 1], [0, 1, 0, 1]])
 	_cursor_color = ColorProperty([0, 0, 0, 0])

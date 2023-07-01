@@ -3,14 +3,14 @@ from kivygo.app import kivygoApp
 from kivy.lang.builder import Builder
 from kivygo.uix.curvelayout import CurveLayout
 from kivy.properties import StringProperty
-from kivygo.uix.button import ButtonEffect
+from kivygo.uix.button import RippleButton
 
 
 Builder.load_string("""
 
-<MainLayout>:
+<CurveLayoutExample>:
     color: [1, 0, 0, 1]
-    ButtonEffect:
+    RippleButton:
         text: root.anim_state
         size_hint: None, None
         size: root.width / 2, root.height / 2
@@ -19,7 +19,7 @@ Builder.load_string("""
 """)
 
 
-class MainLayout(CurveLayout):
+class CurveLayoutExample(CurveLayout):
 
     anim_state = StringProperty("Normal")
 
@@ -51,10 +51,10 @@ class MainLayout(CurveLayout):
         self.anim_state = "on_reset_left"
 
 
-class MeshTestApp(kivygoApp):
+class CurveLayoutExampleApp(kivygoApp):
     def build(self):
-        return MainLayout()
+        return CurveLayoutExample()
 
 
 if __name__ == "__main__":
-    MeshTestApp().run()
+    CurveLayoutExampleApp().run()

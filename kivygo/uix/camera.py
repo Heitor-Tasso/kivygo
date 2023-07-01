@@ -30,7 +30,7 @@ Builder.load_string("""
 
 
 #:import IconInput kivygo.uix.input.IconInput
-#:import ButtonEffect kivygo.uix.button.ButtonEffect
+#:import RippleButton kivygo.uix.button.RippleButton
 #:import ButtonIcon kivygo.uix.icon.ButtonIcon
 #:import AnchorLayoutButton kivygo.uix.anchorlayout.AnchorLayoutButton
 #:import hex kivy.utils.get_color_from_hex

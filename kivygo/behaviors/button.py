@@ -1,7 +1,7 @@
 
 from kivy.properties import (
 	OptionProperty, ObjectProperty,
-	BooleanProperty, NumericProperty,
+	BooleanProperty, NumericProperty
 )
 
 from kivy.uix.widget import Widget
@@ -9,7 +9,6 @@ from kivy.clock import Clock
 from kivy.config import Config
 from weakref import ref
 from time import time
-from kivy.app import App
 
 
 class ButtonBehavior(Widget):
@@ -114,7 +113,7 @@ class ButtonBehavior(Widget):
 		if touch.is_mouse_scrolling:
 			return False
 		
-		if not self.collide_point(touch.x, touch.y):
+		if not self.collide_point(*touch.pos):
 			return False
 		
 		if self in touch.ud:
@@ -122,8 +121,8 @@ class ButtonBehavior(Widget):
 	
 		if self.collide_point(*touch.pos) and not self.disabled:
 			self.pressed = True
-			self.elev = self.down_elevation
-			self.dispatch("on_press")
+			self.elevation_setter()
+			self.dispatch('on_press')
 
 			if "label" in self.ids and self.do_text_shrink:
 				self.ids.label.font_size -= self.text_shrink_amount
@@ -133,9 +132,6 @@ class ButtonBehavior(Widget):
 		self.last_touch = touch
 		self.__touch_time = time()
 		self._do_press()
-
-		if App._running_app:
-			self.dispatch('on_press')
 		
 		return True
 
@@ -176,8 +172,6 @@ class ButtonBehavior(Widget):
 		else:
 			self._do_release()
 		
-		if App._running_app:
-			self.dispatch('on_release')
 		
 		return True
 

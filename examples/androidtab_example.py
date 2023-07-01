@@ -3,19 +3,19 @@ from kivygo.app import kivygoApp
 from kivy.lang.builder import Builder
 from kivygo.uix.boxlayout import ColoredBoxLayout
 from kivygo.uix.androidtabs import AndroidTabsBase, AndroidTabs
-from kivygo.uix.button import ButtonEffect
+from kivygo.uix.button import RippleButton
 
 Builder.load_string('''
 
 #:import hex kivy.utils.get_color_from_hex
 
 <AndroidTabsBar>:
-    background_color: app.primary_color
+    background_color: app.colors.primary_default
 
 <ExampleTab>:
     padding: "30dp"
-    background_color: app.secondary_color
-    ButtonEffect:
+    background_color: app.colors.secondary_default
+    RippleButton:
         text: root.text
         
 ''')
@@ -25,7 +25,7 @@ class ExampleTab(ColoredBoxLayout, AndroidTabsBase):
     pass
 
 
-class Example(kivygoApp):
+class AndroidTabExampleApp(kivygoApp):
     def build(self):
         android_tabs = AndroidTabs()
 
@@ -37,4 +37,4 @@ class Example(kivygoApp):
 
 
 if __name__ == "__main__":
-    Example().run()
+    AndroidTabExampleApp().run()

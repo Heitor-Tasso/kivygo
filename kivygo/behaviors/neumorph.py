@@ -9,7 +9,7 @@ from PIL import Image, ImageDraw, ImageFilter
 from kivy.clock import Clock
 
 
-class NeuGlowCircular:
+class NeuGlowCircular(Widget):
 
     glow_radius = NumericProperty(0)
     """

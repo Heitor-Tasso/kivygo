@@ -6,7 +6,7 @@ from kivy.uix.behaviors import ToggleButtonBehavior
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.carousel import Carousel
-from kivy.uix.widget import Widget
+from kivygo.uix.widget import GoWidget
 from kivy.uix.scrollview import ScrollView
 from kivy.graphics import Rectangle
 from kivy.utils import boundary
@@ -17,7 +17,7 @@ from kivy.properties import (
 	BoundedNumericProperty, ListProperty
 )
 
-from kivygo.behaviors.touch_effecs import EffectBehavior
+from kivygo.behaviors.ripple_effect import RippleEffectBehavior
 from kivygo.behaviors.hover import HoverBehavior
 
 
@@ -146,7 +146,7 @@ class AndroidTabsLabel(ToggleButtonBehavior, Label):
 			self.tab_bar.update_indicator(self.x, self.width)
 
 
-class AndroidTabsBase(Widget):
+class AndroidTabsBase(GoWidget):
 
 	'''
 	AndroidTabsBase allow you to create a tab.
@@ -206,7 +206,7 @@ class AndroidTabsScrollView(ScrollView):
 			_update(self.effect_y, scroll_y)
 
 
-class AndroidTabsBar(BoxLayout, HoverBehavior, EffectBehavior):
+class AndroidTabsBar(BoxLayout, HoverBehavior, RippleEffectBehavior):
 	'''
 	AndroidTabsBar is just a boxlayout that contain
 	the scrollview for the tabs.
@@ -254,7 +254,6 @@ class AndroidTabsBar(BoxLayout, HoverBehavior, EffectBehavior):
 	def __init__(self, **kwargs):
 		self._trigger_update_tab_bar = Clock.schedule_once(self._update_tab_bar, 0)
 		super().__init__(**kwargs)
-		self.type_button = 'rounded'
 		Clock.schedule_once(self.set_color)
 	
 	def set_color(self, *args):
@@ -321,7 +320,7 @@ class AndroidTabsBar(BoxLayout, HoverBehavior, EffectBehavior):
 		for t in tabs:
 
 			t.width = t.min_space if tabs_space > width \
-						else t.min_space * ratio if use_ratio is True \
+						else t.min_space * ratio if use_ratio == True \
 						else width / len(tabs)
 
 	def update_indicator(self, x, w):

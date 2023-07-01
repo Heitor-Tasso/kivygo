@@ -3,27 +3,33 @@ from kivy.uix.anchorlayout import AnchorLayout
 from kivy.properties import ListProperty, OptionProperty, NumericProperty
 from kivy.clock import Clock
 from kivy.lang import Builder
-from kivygo.behaviors.touch_effecs import EffectBehavior
+from kivygo.behaviors.ripple_effect import RippleEffectBehavior
 from kivygo.behaviors.hover import HoverBehavior
-
+from kivygo.colors import ColorBase
 
 Builder.load_string("""
 
 
 <ColoredAnchorLayout>:
-	canvas.before: 
-		Color:
-			rgba: self._background_color
-		RoundedRectangle:
-			pos: self.pos
-			size: self.size
-			radius: self.radius
-	canvas.after:
-		Color:
-			rgba: self.stroke_color
-		Line:
-			rounded_rectangle: [*self.pos, *self.size, *self.radius]
-			width: self.stroke_width
+	background_color: [0, 0, 0, 0]
+	background_hover: [0, 0, 0, 0]
+	background_disabled: [0, 0, 0, 0]
+	border_color: [0, 0, 0, 0]
+	border_hover: [0, 0, 0, 0]
+	border_disabled: [0, 0, 0, 0]
+	# canvas.before: 
+	# 	Color:
+	# 		rgba: self._background_color
+	# 	RoundedRectangle:
+	# 		pos: self.pos
+	# 		size: self.size
+	# 		radius: self.radius
+	# canvas.after:
+	# 	Color:
+	# 		rgba: self.stroke_color
+	# 	Line:
+	# 		rounded_rectangle: [*self.pos, *self.size, *self.radius]
+	# 		width: self.stroke_width
 
 <AnchorLayoutBaseBack>:
 	anchor_x: 'center'
@@ -39,51 +45,50 @@ Builder.load_string("""
 """)
 
 
-class ColoredAnchorLayout(AnchorLayout, HoverBehavior, EffectBehavior):
+class ColoredAnchorLayout(ColorBase, AnchorLayout, RippleEffectBehavior):
 
-	stroke_color = ListProperty([0, 0 ,0 ,0])
-	stroke_width = NumericProperty(2)
+	# stroke_color = ListProperty([0, 0 ,0 ,0])
+	# stroke_width = NumericProperty(2)
 
-	background_color = ListProperty([0, 0, 0, 0])
-	background_color_pos = ListProperty([0, 0, 0, 0])
+	# background_color = ListProperty([0, 0, 0, 0])
+	# background_color_pos = ListProperty([0, 0, 0, 0])
 	
-	_background_color = ListProperty([0, 0, 0, 0])
+	# _background_color = ListProperty([0, 0, 0, 0])
 
-	radius = ListProperty([0, 0, 0, 0])
-	effect_color = ListProperty([0, 0, 0, 0])
+	# radius = ListProperty([0, 0, 0, 0])
+	# effect_color = ListProperty([0, 0, 0, 0])
 
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
-		self.type_button = 'rounded'
-		Clock.schedule_once(self.set_color)
-		self.bind(background_color=self.set_color)
+		# Clock.schedule_once(self.set_color)
+		# self.bind(background_color=self.set_color)
 	
-	def set_color(self, *args):
-		if isinstance(self.background_color[0], (int, float)):
+	# def set_color(self, *args):
+	# 	if isinstance(self.background_color[0], (int, float)):
 
-			if self.background_color != [0, 0, 0, 0]:
-				self._background_color = self.background_color
+	# 		if self.background_color != [0, 0, 0, 0]:
+	# 			self._background_color = self.background_color
 
-		elif self.background_color[0] != [0, 0, 0, 0]:
-			self._background_color = self.background_color[0]
+	# 	elif self.background_color[0] != [0, 0, 0, 0]:
+	# 		self._background_color = self.background_color[0]
 		
-		if isinstance(self.background_color_pos[0], (int, float)):
+	# 	if isinstance(self.background_color_pos[0], (int, float)):
 
-			if self.background_color_pos != [0, 0, 0, 0]:
-				self._background_color = self.background_color_pos
+	# 		if self.background_color_pos != [0, 0, 0, 0]:
+	# 			self._background_color = self.background_color_pos
 				
-		elif self.background_color_pos[0] != [0, 0, 0, 0]:
-			self._background_color = self.background_color_pos[0]
+	# 	elif self.background_color_pos[0] != [0, 0, 0, 0]:
+	# 		self._background_color = self.background_color_pos[0]
 
 	def on_cursor_enter(self, *args):
-		if not isinstance(self.background_color_pos[0], (int, float)):
-			self._background_color = self.background_color_pos[1]
+		# if not isinstance(self.background_color_pos[0], (int, float)):
+		# 	self._background_color = self.background_color_pos[1]
 
 		return super().on_cursor_enter(*args)
 
 	def on_cursor_leave(self, *args):
-		if not isinstance(self.background_color_pos[0], (int, float)):
-			self._background_color = self.background_color_pos[0]
+		# if not isinstance(self.background_color_pos[0], (int, float)):
+		# 	self._background_color = self.background_color_pos[0]
 			
 		return super().on_cursor_leave(*args)
 
@@ -91,8 +96,8 @@ class ColoredAnchorLayout(AnchorLayout, HoverBehavior, EffectBehavior):
 		if not self.collide_point(*touch.pos):
 			return False
 		
-		if len(self.background_color) == 2 and isinstance(self.background_color, (list, tuple)):
-			self._background_color = self.background_color[1]
+		# if len(self.background_color) == 2 and isinstance(self.background_color, (list, tuple)):
+		# 	self._background_color = self.background_color[1]
 		
 		self.ripple_show(touch)        
 		return super().on_touch_down(touch)
@@ -101,8 +106,8 @@ class ColoredAnchorLayout(AnchorLayout, HoverBehavior, EffectBehavior):
 		if not self.collide_point(*touch.pos):
 			return False
 		
-		if len(self.background_color) == 2 and isinstance(self.background_color, (list, tuple)):
-			self._background_color = self.background_color[0]
+		# if len(self.background_color) == 2 and isinstance(self.background_color, (list, tuple)):
+		# 	self._background_color = self.background_color[0]
 
 		self.ripple_fade()
 		return super().on_touch_up(touch)

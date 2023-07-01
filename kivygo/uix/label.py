@@ -40,7 +40,6 @@ Builder.load_string("""
 
 <LabelToScroll>:
 	text: 'Section Option'
-	padding_x: '15dp'
 	size_hint_y: None
 	on_size: self.update_content()
 	text_size: self.size

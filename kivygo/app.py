@@ -7,7 +7,16 @@ from kivy.utils import get_color_from_hex
 from kivy.app import App
 from kivygo.utils import do_correction_path
 from kivygo import colors
+from kivy.lang.builder import Builder
 
+Builder.load_string("""
+
+#:import Colors kivygo.colors.Colors
+#:import App kivy.app.App
+
+#:set GoAppColor Colors() if App.get_running_app() == None else app.colors
+
+""")
 
 class kivygoApp(App):
 
@@ -21,26 +30,19 @@ class kivygoApp(App):
 	image_path = StringProperty("assets/images")
 
 	font_path = StringProperty("fonts")
-
-	current_pallet = ObjectProperty(None)
 	
 	_app_file = StringProperty(os.path.split(__file__)[0])
 
+	colors = ObjectProperty(None)
+
 	def __init__(self, *args, **kwargs):
 		# Set all colors properties to the App accordian to the `colors.PALLET_KEY_COLORS`
-		if self.current_pallet == None:
-			self.current_pallet = colors.Light
-		
-		for _key in colors.PALLET_KEY_COLORS:
-			color = getattr(self.current_pallet, _key)
-			self.apply_property(
-				**{ _key : ColorProperty(color) }
-			)
+		self.colors = colors.Colors()
 		
 		super().__init__(*args, **kwargs)
 	
 	def on_current_pallet(self, *args):
-		self.change_pallet(self.current_pallet)
+		self.change_pallet(self.colors.current_pallet)
 
 	def get_json(self, name, path=None, *args):
 		if path == None:
@@ -72,9 +74,9 @@ class kivygoApp(App):
 				raise TypeError("Json theme has an inexistent key!")
 			
 			if isinstance(value, str):
-				setattr(self, key, get_color_from_hex(value))
+				setattr(self.colors, key, get_color_from_hex(value))
 			else:
-				setattr(self, key, value)
+				setattr(self.colors, key, value)
 
 	def on_root_path(self, *args):
 		self.root_path = do_correction_path(self.root_path)
@@ -104,6 +106,6 @@ class kivygoApp(App):
 		
 		for key in colors.PALLET_KEY_COLORS:
 			if hasattr(_obj, key):
-				setattr(self, key, getattr(_obj, key))
+				setattr(self.colors, key, getattr(_obj, key))
 			
 		self.current_pallet = _obj

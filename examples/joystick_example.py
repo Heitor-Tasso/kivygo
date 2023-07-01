@@ -1,10 +1,10 @@
 import __init__
 
 from kivy.config import Config
-Config.set('graphics', 'window_state', 'maximized')
+# Config.set('graphics', 'window_state', 'maximized')
 
 from kivy.lang.builder import Builder
-from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.boxlayout import BoxLayout
 from kivygo.uix.joystick import Joystick
 from kivy.app import App
 
@@ -93,11 +93,10 @@ Builder.load_string("""
 			size: self.size
 
 
-<JoystickDemo>:
+<JoystickExample>:
 
 	GridLayout:
 		size: root.size
-		cols: 1
 		rows: 5
 
 		canvas.before:
@@ -263,143 +262,6 @@ Builder.load_string("""
 					pad_background_color: (0.4,  0.4,  0.4,  1)
 					pad_line_color: (0.35, 0.35, 0.35, 1)
 
-		BoxLayout:
-			padding: (30, 0)
-			size_hint: (1, 0.1)
-			StickGroup_Label:
-				text: "limit @ outer border"
-			StickGroup_Label:
-				text: "limit @ outer border"
-			StickGroup_Label:
-				text: "limit @ outer border"
-			StickGroup_Label:
-				text: "limit @ inner border"
-			StickGroup_Label:
-				text: "limit @ inner border"
-			StickGroup_Label:
-				text: "limit @ inner border"
-			StickGroup_Label:
-				text: "limit on border"
-			StickGroup_Label:
-				text: "limit on border"
-
-		StickGroup_Outer:
-			text: ''
-
-			StickGroup_Inner:
-
-				DemoStick:
-					outer_size: 1
-					inner_size: 0.75
-					pad_size: 0.3
-					outer_line_width: 0.025
-					inner_line_width: 0.015
-					pad_line_width: 0.02
-					outer_background_color: (0.75, 0.75, 0.75, 1)
-					outer_line_color: (0.25, 0.25, 0.25, 1)
-					inner_background_color: (0.75, 0.75, 0.75, 1)
-					inner_line_color: (0.7,  0.7,  0.7,  1)
-					pad_background_color: (0.4,  0.4,  0.4,  1)
-					pad_line_color: (0.35, 0.35, 0.35, 1)
-
-				DemoStick:
-					outer_size: 1
-					inner_size: 0.7
-					pad_size: 0.5
-					outer_line_width: 0.025
-					inner_line_width: 0.015
-					pad_line_width: 0.025
-					outer_background_color: (0.75, 0.75, 0.75, 1)
-					outer_line_color: (0.25, 0.25, 0.25, 1)
-					inner_background_color: (0.75, 0.75, 0.75, 1)
-					inner_line_color: (0.7,  0.7,  0.7,  1)
-					pad_background_color: (0.4,  0.4,  0.4,  1)
-					pad_line_color: (0.35, 0.35, 0.35, 1)
-
-				DemoStick:
-					outer_size: 1
-					inner_size: 0.6
-					pad_size: 0.7
-					outer_line_width: 0.025
-					inner_line_width: 0.015
-					pad_line_width: 0.03
-					outer_background_color: (0.75, 0.75, 0.75, 1)
-					outer_line_color: (0.25, 0.25, 0.25, 1)
-					inner_background_color: (0.75, 0.75, 0.75, 1)
-					inner_line_color: (0.7,  0.7,  0.7,  1)
-					pad_background_color: (0.4,  0.4,  0.4,  1)
-					pad_line_color: (0.35, 0.35, 0.35, 1)
-
-				DemoStick:
-					outer_size: 1.05
-					inner_size: 1.05
-					pad_size: 0.3
-					outer_line_width: 0.025
-					inner_line_width: 0.015
-					pad_line_width: 0.02
-					outer_background_color: (0.75, 0.75, 0.75, 1)
-					outer_line_color: (0.25, 0.25, 0.25, 1)
-					inner_background_color: (0.75, 0.75, 0.75, 1)
-					inner_line_color: (0.7,  0.7,  0.7,  1)
-					pad_background_color: (0.4,  0.4,  0.4,  1)
-					pad_line_color: (0.35, 0.35, 0.35, 1)
-
-				DemoStick:
-					outer_size: 1.05
-					inner_size: 1.05
-					pad_size: 0.5
-					outer_line_width: 0.025
-					inner_line_width: 0.015
-					pad_line_width: 0.025
-					outer_background_color: (0.75, 0.75, 0.75, 1)
-					outer_line_color: (0.25, 0.25, 0.25, 1)
-					inner_background_color: (0.75, 0.75, 0.75, 1)
-					inner_line_color: (0.7,  0.7,  0.7,  1)
-					pad_background_color: (0.4,  0.4,  0.4,  1)
-					pad_line_color: (0.35, 0.35, 0.35, 1)
-
-				DemoStick:
-					outer_size: 1.065
-					inner_size: 1.065
-					pad_size: 0.7
-					outer_line_width: 0.025
-					inner_line_width: 0.015
-					pad_line_width: 0.03
-					outer_background_color: (0.75, 0.75, 0.75, 1)
-					outer_line_color: (0.25, 0.25, 0.25, 1)
-					inner_background_color: (0.75, 0.75, 0.75, 1)
-					inner_line_color: (0.7,  0.7,  0.7,  1)
-					pad_background_color: (0.4,  0.4,  0.4,  1)
-					pad_line_color: (0.35, 0.35, 0.35, 1)
-
-				DemoStick:
-					outer_size: 0.75
-					inner_size: 0.75
-					pad_size: 0.3
-					outer_line_width: 0.025
-					inner_line_width: 0.015
-					pad_line_width: 0.02
-					outer_background_color: (0.75, 0.75, 0.75, 1)
-					outer_line_color: (0.25, 0.25, 0.25, 1)
-					inner_background_color: (0.75, 0.75, 0.75, 1)
-					inner_line_color: (0.7,  0.7,  0.7,  1)
-					pad_background_color: (0.4,  0.4,  0.4,  1)
-					pad_line_color: (0.35, 0.35, 0.35, 1)
-
-				DemoStick:
-					outer_size: 0.7
-					inner_size: 0.7
-					pad_size: 0.5
-					outer_line_width: 0.025
-					inner_line_width: 0.015
-					pad_line_width: 0.025
-					outer_background_color: (0.75, 0.75, 0.75, 1)
-					outer_line_color: (0.25, 0.25, 0.25, 1)
-					inner_background_color: (0.75, 0.75, 0.75, 1)
-					inner_line_color: (0.7,  0.7,  0.7,  1)
-					pad_background_color: (0.4,  0.4,  0.4,  1)
-					pad_line_color: (0.35, 0.35, 0.35, 1)
-
 		StickGroup_Outer:
 			text: '3D STYLES'
 
@@ -490,25 +352,15 @@ Builder.load_string("""
 					pad_line_color: (0.4,  0.4,  0.4,  1)
 
 
-	PadDisplay:
-		id: pad_display_xy
-		size: (root.width/10, root.height/10)
-		pos_hint: {'center_x': 0.45, 'center_y': 0.857}
-
-	PadDisplay:
-		id: pad_display_rma
-		size: (root.width/10, root.height/10)
-		pos_hint: {'center_x': 0.55, 'center_y': 0.857}
-
 """)
 
 
-class JoystickDemo(FloatLayout):
+class JoystickExample(BoxLayout):
     pass
 
-class JoystickDemoApp(App):
+class JoystickExampleApp(App):
     def build(self):
-        self.root = JoystickDemo()
+        self.root = JoystickExample()
         self._bind_joysticks()
 
     def _bind_joysticks(self):
@@ -534,8 +386,9 @@ class JoystickDemoApp(App):
         r = "radians: " + str(instance.radians)[0:5]
         m = "\nmagnitude: " + str(instance.magnitude)[0:5]
         a = "\nangle: " + str(instance.angle)[0:5]
-        self.root.ids.pad_display_xy.text = "".join([x, y])
-        self.root.ids.pad_display_rma.text = "".join([r, m, a])
+        print("".join([x, y]))
+        print("".join([r, m, a]))
 
 
-JoystickDemoApp().run()
+if __name__ == "__main__":
+	JoystickExampleApp().run()

@@ -1,6 +1,6 @@
 import math
 from kivy.lang.builder import Builder
-from kivy.uix.widget import Widget
+from kivygo.uix.widget import GoWidget
 from kivy.properties import (
 	BooleanProperty, NumericProperty,
 	ListProperty, ReferenceListProperty,
@@ -99,7 +99,7 @@ class TouchData:
 		self.in_range = in_range
 
 
-class JoystickPad(Widget):
+class JoystickPad(GoWidget):
 	_diameter = NumericProperty(1)
 	_radius = NumericProperty(1)
 	_background_color = ListProperty([0, 0, 0, 1])
@@ -107,7 +107,7 @@ class JoystickPad(Widget):
 	_line_width = NumericProperty(1)
 
 
-class Joystick(Widget):
+class Joystick(GoWidget):
 	'''The joystick base is comprised of an outer circle & an inner circle.
 	   The joystick pad is another circle,
 		   which the user can move within the base.
@@ -266,12 +266,9 @@ class Joystick(Widget):
 			self._update_pad()
 
 	def _update_outlines(self, size):
-		self._outer_line_width = (self.outer_line_width * size) \
-			if (self.outer_line_width) else (OUTLINE_ZERO)
-		self._inner_line_width = (self.inner_line_width * size) \
-			if (self.inner_line_width) else (OUTLINE_ZERO)
-		self.ids.pad._line_width = (self.pad_line_width * size) \
-			if (self.pad_line_width) else (OUTLINE_ZERO)
+		self._outer_line_width = max(self.outer_line_width * size, OUTLINE_ZERO)
+		self._inner_line_width = max(self.inner_line_width * size, OUTLINE_ZERO)
+		self.ids.pad._line_width = max(self.pad_line_width * size, OUTLINE_ZERO)
 
 	def _update_circles(self, size):
 		self._total_diameter = size

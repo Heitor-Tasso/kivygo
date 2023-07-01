@@ -1,5 +1,5 @@
 
-from kivy.uix.widget import Widget
+from kivygo.uix.widget import GoWidget
 from kivy.uix.image import Image
 from kivy.clock import Clock
 from kivy.vector import Vector
@@ -25,7 +25,7 @@ from kivygo.bounds_math import (
 )
 
 
-class Rotabox(Widget):
+class Rotabox(GoWidget):
 
 	source_crop = StringProperty("")
 

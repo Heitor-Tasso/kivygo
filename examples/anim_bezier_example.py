@@ -8,7 +8,7 @@ from kivy.properties import ListProperty, BooleanProperty
 
 from kivygo.uix.input import IconInput
 from kivygo.uix.slider import NeuSlider
-from kivygo.uix.button import ButtonEffect
+from kivygo.uix.button import RippleButton
 from kivygo.uix.spinner import EffectSpinner
 from kivygo.uix.label import AnimatedBezierLabel
 from kivygo.uix.boxlayout import ColoredBoxLayout
@@ -55,7 +55,7 @@ Builder.load_string("""
                 radius: [10, 10, 10, 10]
                 background_color: hex("#14b9e3")
 
-<BezierTest>:
+<AnimBezierExample>:
     background_color: hex("#333333")
     canvas.after:
         Color:
@@ -147,7 +147,7 @@ Builder.load_string("""
             AnchorLayout:
                 anchor_x: "center"
                 anchor_y: "center"
-                ButtonEffect:
+                RippleButton:
                     text: 'play!'
                     on_press: label.animate()
                     size_hint: None, None
@@ -156,7 +156,7 @@ Builder.load_string("""
             AnchorLayout:
                 anchor_x: "center"
                 anchor_y: "center"
-                ButtonEffect:
+                RippleButton:
                     text: 'export'
                     on_press: app.write_points()
                     size_hint: None, None
@@ -164,7 +164,7 @@ Builder.load_string("""
 
 """)
 
-class BezierTest(ColoredBoxLayout):
+class AnimBezierExample(ColoredBoxLayout):
     points = ListProperty([0, 0])
     loop = BooleanProperty(False)
     started = BooleanProperty(False)
@@ -172,6 +172,9 @@ class BezierTest(ColoredBoxLayout):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.d = 10  # pixel tolerance when clicking on a point
+        Clock.schedule_once(self.config)
+    
+    def config(self, *args):
         self.ids.label.bind(size=self.start)
 
     def start(self, *args):
@@ -257,9 +260,9 @@ class BezierTest(ColoredBoxLayout):
 
 
 
-class Main(App):
+class AnimBezierExampleApp(App):
     def build(self):
-        return BezierTest()
+        return AnimBezierExample()
 
     def write_points(self):
         with open('points.csv', 'w') as f:
@@ -267,4 +270,4 @@ class Main(App):
 
 
 if __name__ == "__main__":
-    Main().run()
+    AnimBezierExampleApp().run()

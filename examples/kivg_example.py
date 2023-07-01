@@ -1,5 +1,6 @@
 import __init__
 from kivygo.app import kivygoApp
+from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
 from kivy.clock import Clock
 import threading
@@ -12,16 +13,16 @@ root = Builder.load_string("""
     size_hint: [None, None]
     size: [dp(48), dp(48)]
     on_release:
-        app.animate(self.svg_icon) \
+        app.root.animate(self.svg_icon) \
         if \
         (not "so" in self.svg_icon) \
         and (not "pie" in self.svg_icon) \
         and (not "text" in self.svg_icon) \
         else \
-        app.shape_animate(self.svg_icon, self.svg_icon.split("/")[-1].split(".")[0]+'_config')
+        app.root.shape_animate(self.svg_icon, self.svg_icon.split("/")[-1].split(".")[0]+'_config')
 
 
-BoxLayout:
+<KivgExample>:
     orientation: "vertical"
     canvas:
         Color:
@@ -83,13 +84,13 @@ BoxLayout:
 
 """)
 
-
-class KivgDemo(kivygoApp):
-
-    def build(self):
-        self.root = root
-        self.s = Kivg(self.root.ids.svg_area)
-        return self.root
+class KivgExample(BoxLayout):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        Clock.schedule_once(self.config)
+    
+    def config(self, *args):
+        self.s = Kivg(self.ids.svg_area)
 
     def show_button_icon(self, *args):
         grid = self.root.ids.button_area
@@ -155,6 +156,11 @@ class KivgDemo(kivygoApp):
         ]
         self.s.shape_animate(svg_file, anim_config_list=eval(config))
 
+class KivgExampleApp(kivygoApp):
+
+    def build(self):
+        return KivgExample()
+
 
 if __name__ == "__main__":
-    KivgDemo().run()
+    KivgExampleApp().run()

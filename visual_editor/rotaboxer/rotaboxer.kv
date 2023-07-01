@@ -773,20 +773,26 @@
 
 <ScrollLabel>
     label: label
+    box_label: box_label
     scroll_y: 0
     canvas.before:
         Color:
-            rgba: .009, .009, .01, 1
+            rgba: [0.009, 0.009, 0.01, 1]
         Rectangle:
             size: self.size
             pos: self.pos
-    Label:
-        id: label
-        text: root.text
-        text_size: root.width, None
+    BoxLayout:
+        id: box_label
         size_hint_y: None
-        height: self.texture_size[1]
-        halign: 'left'
-        color: 0.565, 0.565, 0.565
-        on_size:
-            if root.height > self .texture_size[1]: self.height = root.height
+        height: self.minimum_height
+        padding_x: "0dp"
+        Label:
+            id: label
+            text: root.text
+            text_size: [root.width, None]
+            size_hint_y: None
+            height: self.texture_size[1]
+            halign: 'left'
+            color: 0.565, 0.565, 0.565
+            on_size:
+                if root.height > self.texture_size[1]: self.height = root.height

@@ -9,7 +9,7 @@ from kivy.properties import (
 from kivy.animation import Animation
 from kivy.clock import Clock
 from kivy.properties import BooleanProperty
-from kivy.uix.widget import Widget
+from kivygo.uix.widget import GoWidget
 
 Builder.load_string('''
 
@@ -105,7 +105,7 @@ Builder.load_string('''
 ''')
 
 
-class ProgressSpinnerBase(Widget):
+class ProgressSpinnerBase(GoWidget):
 
     color = ListProperty([1, 1, 1, 1])
     '''Color to render the spinner.

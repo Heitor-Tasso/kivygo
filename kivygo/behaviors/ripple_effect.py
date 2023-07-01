@@ -18,9 +18,17 @@ from kivy.uix.widget import Widget
 from kivy.animation import Animation
 from kivy.metrics import dp
 from kivy.clock import Clock
+from kivy.lang.builder import Builder
+
+Builder.load_string("""
+
+<RippleEffectBehavior>:
+	effect_color: GoAppColor.colors.primary_effect
+
+""")
 
 
-class EffectBehavior(Widget):
+class RippleEffectBehavior(Widget):
 
 	#Size Ellipse
 	radius_ellipse_default = NumericProperty(dp(10))
@@ -38,15 +46,15 @@ class EffectBehavior(Widget):
 	touch_pos = ListProperty([0, 0])
 
 	#Color background_effect
-	effect_color = ListProperty([1, 1, 1, 0.5])
-	effect_fade_color = ListProperty([1, 1, 1, 0])
-	_color_rgba = ListProperty([0, 0, 0, 0])
-
-	#To know if is a `rouded` or `rectangle`...
-	type_button = StringProperty('rounded')
+	effect_color = ListProperty([0]*4)
+	opacity_effect = NumericProperty(1)
+	_color_rgba = ListProperty([0]*4)
 
 	#radius if Rounded
-	radius_effect = ListProperty([dp(10), dp(10), dp(10), dp(10)])
+	radius_effect = ListProperty([dp(10)]*4)
+
+	# If the widget don't has radius, set it to 0
+	radius = ListProperty([0]*4)
 
 	def __init__(self, **kwargs):
 		self.register_event_type('on_touch_anim_end')
@@ -63,6 +71,8 @@ class EffectBehavior(Widget):
 		self.ripple_rectangle = None
 		self.ripple_col_instruction = None
 		self.ripple_pane = None
+		self.anim = None
+
 		Clock.schedule_once(self.set_config)
 
 	def set_config(self,  *args):
@@ -78,59 +88,56 @@ class EffectBehavior(Widget):
 			self.touch_pos = (touch.x, touch.y)
 		
 		self.draw_effect()
-		self._color_rgba = self.effect_color
-		anim = Animation(
+		self._color_rgba = self.effect_color[0:-1] + [0]
+		self.anim = Animation(
 			radius_ellipse=(max(self.size)*2),
 			t=self.transition_in,
-			_color_rgba=self.effect_color,
+			_color_rgba=self.effect_color[0:-1] + [self.opacity_effect],
 			duration=self.duration_in,
 		)
-		anim.start(self)
+		self.anim.start(self)
 
 	def draw_effect(self, *args):
 		if self.ripple_pane == None:
 			return None
 
-		self.reset_CanvasBase()
+		self.reset_canvas()
 
 		with self.ripple_pane:
-			if self.type_button == 'rounded':
-				StencilPush()
-				self.ripple_rectangle = RoundedRectangle(
-					size=self.size, pos=self.pos,
-					radius=self.radius_effect[::-1],
-				)
-				StencilUse()
-				self.ripple_col_instruction = Color(rgba=self._color_rgba)
-				self.ripple_ellipse = Ellipse(
-					size=(self.radius_ellipse for _ in range(2)),
-					pos=(x-self.radius_ellipse/2 for x in self.touch_pos),
-				)
-				StencilUnUse()
-				self.ripple_rectangle = RoundedRectangle(
-					size=self.size, pos=self.pos, 
-					radius=self.radius_effect[::-1],
-				)
-				StencilPop()
+			StencilPush()
+			self.ripple_rectangle = RoundedRectangle(
+				size=self.size, pos=self.pos,
+				radius=self.radius_effect[::-1],
+			)
+			StencilUse()
+			self.ripple_col_instruction = Color(rgba=self._color_rgba)
+			self.ripple_ellipse = Ellipse(
+				size=(self.radius_ellipse for _ in range(2)),
+				pos=(x-self.radius_ellipse/2 for x in self.touch_pos),
+			)
+			StencilUnUse()
+			self.ripple_rectangle = RoundedRectangle(
+				size=self.size, pos=self.pos, 
+				radius=self.radius_effect[::-1],
+			)
+			StencilPop()
 
-			elif self.type_button == 'rectangle':
-				ScissorPush(pos=self.pos, size=self.size)
-				self.ripple_col_instruction = Color(rgba=self._color_rgba)
-				self.ripple_ellipse = Ellipse(
-					size=(self.radius_ellipse for _ in range(2)),
-					pos=(x-self.radius_ellipse/2 for x in self.touch_pos),
-				)
-				ScissorPop()
 
-	def ripple_fade(self):
-		Animation.cancel_all(self, 'radius_ellipse', '_color_rgba')
+	def ripple_fade(self, *args):
+		if self.anim == None:
+			return None
+		
+		if self._color_rgba[-1] < self.opacity_effect:
+			self.anim.bind(on_complete=self.ripple_fade)
+			return None
+		
 		anim = Animation(
 			radius_ellipse=max(self.size)*2,
-			_color_rgba=self.effect_fade_color,
+			_color_rgba=self.effect_color[0:-1] + [0],
 			t=self.transition_out,
 			duration=self.duration_out
 		)
-		anim.bind(on_complete=self.reset_CanvasBase)
+		anim.bind(on_complete=self.reset_canvas)
 		anim.start(self)
 
 	def set_ellipse(self, instance, value):
@@ -141,7 +148,7 @@ class EffectBehavior(Widget):
 		self.ripple_ellipse.pos = (x-self.radius_ellipse/2 for x in self.touch_pos)
 		self.ripple_col_instruction.rgba = self._color_rgba
 
-	def reset_CanvasBase(self, *args):
+	def reset_canvas(self, *args):
 		self.ripple_rectangle = None
 		self.ripple_ellipse = None
 		self.radius_ellipse = self.radius_ellipse_default

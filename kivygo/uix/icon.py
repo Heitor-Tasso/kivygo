@@ -1,6 +1,6 @@
 
 from kivygo.behaviors.button import ButtonBehavior, ToggleButtonBehavior
-from kivygo.behaviors.touch_effecs import EffectBehavior
+from kivygo.behaviors.ripple_effect import RippleEffectBehavior
 from kivygo.behaviors.hover import HoverBehavior
 
 from kivygo.uix.image import ImageWithSVG
@@ -72,7 +72,7 @@ class Icon(AnchorLayoutButton):
 	icon_size = ListProperty([dp(40), dp(40)])
 
 
-class ButtonIcon(ButtonBehavior, ImageWithSVG, EffectBehavior, HoverBehavior):
+class ButtonIcon(ButtonBehavior, ImageWithSVG, RippleEffectBehavior, HoverBehavior):
 
 	# Properties
 	icon_state_color = ListProperty([-1, -1, -1, -1])
@@ -83,7 +83,6 @@ class ButtonIcon(ButtonBehavior, ImageWithSVG, EffectBehavior, HoverBehavior):
 	radius = ListProperty([0, 0, 0, 0])
 	
 	def __init__(self, **kwargs):
-		self.type_button = 'rounded'
 		self.color = [1, 1, 1, 1]
 		super().__init__(**kwargs)
 		Clock.schedule_once(self.set_color)
