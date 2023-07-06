@@ -1,6 +1,6 @@
 import __init__
 from kivy.app import App
-from kivygo.uix.pizza_graph import Pizza
+from kivygo.widgets.pizza_graph import Pizza
 
 
 class ChartApp(App):

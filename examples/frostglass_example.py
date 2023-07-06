@@ -4,7 +4,7 @@ from kivy.lang import Builder
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.screenmanager import Screen
 
-from kivygo.uix.frostedglass import FrostedGlass
+from kivygo.widgets.frostedglass import FrostedGlass
 
 Builder.load_string("""
 
@@ -85,7 +85,7 @@ Builder.load_string("""
 		source: 'kivygo/icons/bg_example.png'
 		size_hint_y: None
 		height: self.texture_size[1]
-		allow_stretch: True
+		fit_mode: "scale-down"
 
 	FrostedGlass:
 		background: background_image
@@ -154,13 +154,13 @@ Builder.load_string("""
 			size_hint: (1, 2)
 			Image:
 				source: 'kivygo/icons/kivy_logo.png'
-				allow_stretch: True
+				fit_mode: "scale-down"
 			Image:
 				source: 'kivygo/icons/kivy_logo.png'
-				allow_stretch: True
+				fit_mode: "scale-down"
 			Image:
 				source: 'kivygo/icons/kivy_logo.png'
-				allow_stretch: True
+				fit_mode: "scale-down"
 
 	FrostedGlass:
 		pos_hint: {'center_x': 0.5,'center_y': 0.5}
@@ -184,7 +184,7 @@ Builder.load_string("""
 		source: 'kivygo/icons/bg_example.png'
 		size_hint_y: None
 		height: self.texture_size[1]
-		allow_stretch: True
+		fit_mode: "scale-down"
 
 	ScrollView:
 		id: scroll_view
@@ -282,13 +282,13 @@ Builder.load_string("""
 			size_hint: (1, 2)
 			Image:
 				source: 'kivygo/icons/kivy_logo.png'
-				allow_stretch: True
+				fit_mode: "scale-down"
 			Image:
 				source: 'kivygo/icons/kivy_logo.png'
-				allow_stretch: True
+				fit_mode: "scale-down"
 			Image:
 				source: 'kivygo/icons/kivy_logo.png'
-				allow_stretch: True
+				fit_mode: "scale-down"
 
 	Button:
 		text: "OPEN POPUP"

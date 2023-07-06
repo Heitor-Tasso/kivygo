@@ -1,6 +1,6 @@
 
 from math import sin, cos, atan2, radians
-from kivygo.uix.widget import GoWidget
+from kivygo.widgets.widget import GoWidget
 from kivy.graphics import Color, SmoothLine, Ellipse
 from kivy.properties import NumericProperty, ColorProperty, AliasProperty
 

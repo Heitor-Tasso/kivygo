@@ -1,6 +1,6 @@
 import math
 from kivy.lang.builder import Builder
-from kivygo.uix.widget import GoWidget
+from kivygo.widgets.widget import GoWidget
 from kivy.properties import (
 	BooleanProperty, NumericProperty,
 	ListProperty, ReferenceListProperty,

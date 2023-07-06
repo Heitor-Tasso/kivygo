@@ -1,15 +1,15 @@
 
 import __init__
-from kivygo.app import kivygoApp
+from kivygo.app import GoApp
 from kivy.uix.screenmanager import ScreenManager
 from kivy.lang import Builder
 
-from kivygo.uix.slider import NeuSlider
+from kivygo.widgets.slider import NeuSlider
 
 
 
-from kivygo.uix.screenmanager import SwapScreen
-from kivygo.uix.boxlayout import ColoredBoxLayout
+from kivygo.widgets.screenmanager import SwapScreen
+from kivygo.layouts.boxlayout import GoColoredBoxLayout
 
 
 Builder.load_string("""
@@ -23,7 +23,7 @@ Builder.load_string("""
 	SwapScreen:
 		name: "screen_5"
 		
-		ColoredBoxLayout:
+		GoColoredBoxLayout:
 			background_color: hex("#333333")
 			orientation: "vertical"
 			padding: "40dp"
@@ -71,7 +71,7 @@ Builder.load_string("""
 class ManagerScreen(ScreenManager):
 	pass
 
-class ExampleUixApp(kivygoApp):
+class ExampleUixApp(GoApp):
 	def build(self):
 		return ManagerScreen()
 	

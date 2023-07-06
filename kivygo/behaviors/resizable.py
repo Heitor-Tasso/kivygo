@@ -2,7 +2,7 @@
 
 from kivy.lang import Builder
 from kivy.uix.widget import Widget
-from kivygo.uix.image import ImageWithSVG
+from kivygo.widgets.image import ImageWithSVG
 
 from kivy.properties import (
 	ColorProperty, ListProperty, 
@@ -21,8 +21,7 @@ Builder.load_string("""
 	size: '8dp', '8dp'
 	radius: [sum(self.size)/2] * 4
 	mipmap: True
-	allow_strech: True
-	keep_ratio: False
+	fit_mode: "fill"
 	
 	canvas:
 		Clear

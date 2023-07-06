@@ -1,6 +1,6 @@
 import __init__
-from kivygo.app import kivygoApp
-from kivygo.uix.radialslider import RadialSlider
+from kivygo.app import GoApp
+from kivygo.widgets.radialslider import RadialSlider
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang.builder import Builder
 
@@ -46,7 +46,7 @@ Builder.load_string("""
 class ManagerRoot(BoxLayout):
     pass
 
-class RadialSliderTestApp(kivygoApp):
+class RadialSliderTestApp(GoApp):
 
     def build(self):
         return ManagerRoot()

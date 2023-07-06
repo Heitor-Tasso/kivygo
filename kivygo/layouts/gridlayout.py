@@ -7,40 +7,31 @@ from kivygo.behaviors.hover import HoverBehavior
 from kivy.properties import ListProperty, NumericProperty
 from kivygo.behaviors.drag_and_drop import DraggableLayoutBehavior
 from kivy.lang.builder import Builder
+from kivygo.colors import ColorBase
 
 
 Builder.load_string("""
 
-<ColoredGridLayout>:
-	canvas.before: 
-		Color:
-			rgba: self.background_color
-		RoundedRectangle:
-			pos: self.pos
-			size: self.size
-			radius: self.radius
-		Color:
-			rgba: [1, 1, 1, 1]
-	canvas.after:
-		Color:
-			rgba: self.stroke_color
-		Line:
-			rounded_rectangle: [*self.pos, *self.size, *self.radius]
-			width: self.stroke_width
-		Color:
-			rgba: [1, 1, 1, 1]
+<GoColoredGridLayout>:
+	background_color: GoColors.background_default
+	background_hover: GoColors.background_hover
+	background_disabled: GoColors.background_disabled
+	border_color: GoColors.background_border
+	border_hover: GoColors.background_border_pressed
+	border_disabled: GoColors.background_border_disabled
 
 """)
 
 
-class ColoredGridLayout(GridLayout, HoverBehavior):
-	background_color = ListProperty([0, 0, 0, 0])
-	radius = ListProperty([0, 0, 0, 0])
-	stroke_color = ListProperty([0, 0 ,0 ,0])
-	stroke_width = NumericProperty(dp(2))
+class GoColoredGridLayout(GridLayout, ColorBase):
+	# background_color = ListProperty([0, 0, 0, 0])
+	# radius = ListProperty([0, 0, 0, 0])
+	# stroke_color = ListProperty([0, 0 ,0 ,0])
+	# stroke_width = NumericProperty(dp(2))
+	pass
 
 
-class AdjustSizeGridLayout(ColoredGridLayout):
+class GoAutoGridLayout(GoColoredGridLayout):
 
 	max_size = ListProperty([dp(235), dp(250)])
 
@@ -96,7 +87,7 @@ class AdjustSizeGridLayout(ColoredGridLayout):
 		self.spacing = dp(10)
 
 
-class DraggableGridLayout(ColoredGridLayout, DraggableLayoutBehavior):
+class GoDraggableGridLayout(GoColoredGridLayout, DraggableLayoutBehavior):
 
 	def compare_pos_to_widget(self, widget, pos):
 		x, y = pos

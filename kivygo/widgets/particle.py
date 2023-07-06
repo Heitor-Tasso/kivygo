@@ -1,5 +1,5 @@
 
-from kivygo.uix.widget import GoWidget
+from kivygo.widgets.widget import GoWidget
 from kivy.clock import Clock
 from kivy.graphics import (
     Color, Callback, Rotate,

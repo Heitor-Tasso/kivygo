@@ -1,8 +1,8 @@
 import __init__
-from kivygo.app import kivygoApp
+from kivygo.app import GoApp
 from kivy.lang.builder import Builder
 from kivy.uix.screenmanager import Screen
-from kivygo.uix.shader import ShaderWidget
+from kivygo.widgets.shader import ShaderWidget
 
 
 Builder.load_string("""
@@ -133,7 +133,7 @@ class MainScreen(Screen):
     pass
 
 
-class ShaderTestApp(kivygoApp):
+class ShaderTestApp(GoApp):
     def build(self):
         return MainScreen()
 

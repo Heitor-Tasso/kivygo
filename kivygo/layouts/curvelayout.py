@@ -1,6 +1,6 @@
 from kivy.clock import Clock
 import numpy as np
-from kivygo.uix.bezier import Bezier
+from kivygo.widgets.bezier import Bezier
 from kivy.lang.builder import Builder
 from kivy.properties import (
 	NumericProperty, ListProperty,

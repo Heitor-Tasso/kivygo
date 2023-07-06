@@ -1,5 +1,5 @@
 
-from kivygo.uix.widget import GoWidget
+from kivygo.widgets.widget import GoWidget
 from kivy.uix.image import Image
 from kivy.clock import Clock
 from kivy.vector import Vector
@@ -374,7 +374,7 @@ class Rotabox(GoWidget):
 			except AttributeError:
 				pass
 
-			self.image.allow_stretch = True
+			self.image.fit_mode = "scale-down"
 
 			# Calculating widget's size from available inputs.
 			if (not (self.width - tempscale > 1 or self.height - tempscale > 1) or self.sized_by_img):

@@ -1,8 +1,7 @@
 import __init__
-from kivygo.app import kivygoApp
+from kivygo.app import GoApp
 from kivy.lang import Builder
-from kivygo.uix.anchorlayout import ColoredAnchorLayout
-from kivygo.uix.button import RippleButton
+from kivygo.layouts.anchorlayout import GoColoredAnchorLayout
 
 
 Builder.load_string("""
@@ -13,20 +12,20 @@ Builder.load_string("""
 <AnchorLayoutExample>:
     anchor_y: "center"
 	anchor_x: "center"
-	background_color: app.colors.primary_default
-	RippleButton:
+	background_color: GoColors.primary_default
+	GoRippleButton:
 		size_hint: None, None
 		size: "250dp", "100dp"
-		text: "RippleButton"
+		text: "GoRippleButton"
 		on_release:
-			app.change_pallet(Light) if app.colors.current_pallet == Dark else app.change_pallet(Dark)
+			GoColors.pallet = (Light if GoColors.pallet == Dark else Dark)
 """)
 
 
-class AnchorLayoutExample(ColoredAnchorLayout):
+class AnchorLayoutExample(GoColoredAnchorLayout):
 	pass
 
-class AnchorLayoutExampleApp(kivygoApp):
+class AnchorLayoutExampleApp(GoApp):
 	def build(self):
 		return AnchorLayoutExample()
 	

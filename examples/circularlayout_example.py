@@ -1,10 +1,10 @@
 import __init__
-from kivygo.uix.circularlayout import CircularLayout
-from kivygo.app import kivygoApp
+from kivygo.layouts.circularlayout import CircularLayout
+from kivygo.app import GoApp
 from kivy.uix.button import Button
 
 
-class CircLayoutExampleApp(kivygoApp):
+class CircLayoutExampleApp(GoApp):
     def build(self):
         cly = CircularLayout(direction="cw", start_angle=-75, inner_radius_hint=.7, padding="20dp")
 

@@ -4,7 +4,7 @@ from kivy.lang.builder import Builder
 from kivy.clock import Clock
 from kivy.metrics import dp
 
-from kivygo.uix.widget import GoWidget
+from kivygo.widgets.widget import GoWidget
 from kivy.uix.image import Image
 
 from kivy.core.image import Image as CoreImage
@@ -77,7 +77,7 @@ class RoudedImage(GoWidget):
 
 	def create_texture(self, *args):
 		image = Image(
-			source=self.source, allow_stretch=True, keep_ratio=False, 
+			source=self.source, fit_mode="fill", 
 			size_hint=(None, None), size=self.size,
 		)
 		self.texture = image.texture

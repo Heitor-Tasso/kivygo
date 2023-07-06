@@ -1,18 +1,18 @@
 import __init__
-from kivygo.app import kivygoApp
+from kivygo.app import GoApp
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.screenmanager import ScreenManager
 from kivy.lang import Builder
-from kivygo.uix.rotabox import Rotabox
+from kivygo.widgets.rotabox import Rotabox
 from functools import partial
 from random import random
 from kivy.lang import Builder
 from kivy.clock import Clock
 import time
 from kivy.properties import ObjectProperty
-from kivygo.uix.rotabox import Rotabox
-from kivygo.uix.screenmanager import SwapScreen
-from kivygo.uix.boxlayout import ColoredBoxLayout
+from kivygo.widgets.rotabox import Rotabox
+from kivygo.widgets.screenmanager import SwapScreen
+from kivygo.layouts.boxlayout import GoColoredBoxLayout
 from kivy.clock import Clock
 from kivy.lang import Builder
 
@@ -20,7 +20,7 @@ from kivy.lang import Builder
 Builder.load_string("""
 
 #:import hex kivy.utils.get_color_from_hex
-#:import Rotabox kivygo.uix.rotabox.Rotabox
+#:import Rotabox kivygo.widgets.rotabox.Rotabox
 #:import Clock kivy.clock.Clock
 
 <LogoBox@Rotabox>:
@@ -233,7 +233,7 @@ class ManagerScreen(ScreenManager):
 				coin.y -= coin.speed
 
 
-class ExampleUixApp(kivygoApp):
+class ExampleUixApp(GoApp):
 	def build(self):
 		return ManagerScreen()
 	

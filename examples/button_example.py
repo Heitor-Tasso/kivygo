@@ -1,56 +1,56 @@
 import __init__
-from kivygo.app import kivygoApp
+from kivygo.app import GoApp
 from kivy.lang import Builder
-from kivygo.uix.gridlayout import ColoredGridLayout
-from kivygo.uix.button import (
-    RippleButton, RippleToggleButton,
-    FadeButton, FadeToggleButton
-)
+from kivygo.layouts.gridlayout import GoColoredGridLayout
+
 
 Builder.load_string("""
 
+#:import Dark kivygo.colors.Dark
+#:import Light kivygo.colors.Light
+
 <ButtonExample>:
-	background_color: [1, 1, 1, 0.8]
+	# background_color: GoColors.warning_default
 	padding: "70dp"
     spacing: '30dp'
     rows: 3
-    
-    RippleButton:
+
+    GoRippleButton:
         text: "Normal Rectangle Button"
-        # background_color: [0.1, 0.4, 0.1, 1]
-	    # background_pressed: [0.1, 0.4, 0.7, 1]
-	    # on_cursor_enter: print("CURSOR ENTER [ Normal Rectangle ]")
-	    # on_cursor_leave: print("CURSOR LEAVE [ Normal Rectangle ]")
+		on_release:
+			GoColors.pallet = (Dark if GoColors.pallet == Light else Light)
+
+        background_color: GoColors.primary_default
+		background_hover: GoColors.primary_hover
+		effect_color: GoColors.primary_effect
+		color: GoColors.title_default
     
-	RippleToggleButton:
+	GoRippleToggleButton:
         text: "Toggle Rectangle Button"
         group: "toggle"
-	    # background_color: [0.3, 0.1, 0.7, 1]
-	    # background_hover: [0.7, 0.3, 0.5, 1]
 	
-    FadeButton:
+    GoFadeButton:
         text: "Normal Rounded Button"
         radius: [dp(50)] * 4
         radius_effect: self.radius
-	    # background_color: [0.1, 0.4, 0.1, 1]
-	    # background_pressed: [0.1, 0.4, 0.7, 1]
-	    # on_press: print("ON_PRESS [ Normal Rectangle ]")
-	    # on_release: print("ON_RELEASE [ Normal Rectangle ]")
+	    background_color: GoColors.secondary_default
+		background_hover: GoColors.secondary_hover
+		effect_color: GoColors.secondary_effect
     
-    
-    FadeToggleButton:
+    GoFadeToggleButton:
         text: "Toggle Rounded Button"
 	    group: "toggle"
-        # background_color: [0.3, 0.1, 0.7, 1]
-	    # background_hover: [0.7, 0.3, 0.5, 1]
+	    background_color: GoColors.warning_default
+		background_hover: GoColors.warning_hover
+		effect_color: GoColors.warning_effect
 
 """)
 
 
-class ButtonExample(ColoredGridLayout):
+class ButtonExample(GoColoredGridLayout):
 	pass
 
-class ButtonExampleApp(kivygoApp):
+class ButtonExampleApp(GoApp):
 	def build(self):
 		return ButtonExample()
 	

@@ -1,5 +1,5 @@
-from kivy.app import App
-from kivygo.uix.widget import GoWidget
+
+from kivygo.widgets.widget import GoWidget
 from kivy.properties import ListProperty, NumericProperty
 from kivy.clock import Clock
 from kivy.lang import Builder
@@ -8,7 +8,6 @@ from kivy.metrics import dp
 from kivygo.behaviors.hover import HoverBehavior
 from kivy.event import EventDispatcher
 from kivy.properties import ColorProperty, ObjectProperty
-
 
 PALLET_KEY_COLORS = [
 	"background_default", "background_disabled", "background_hover",
@@ -68,12 +67,12 @@ Builder.load_string("""
 
 
 <ColorBase>:
-	background_color: GoAppColor.primary_default
-	background_hover: GoAppColor.primary_hover
-	background_disabled: GoAppColor.primary_disabled
-	border_color: GoAppColor.primary_border
-	border_hover: GoAppColor.primary_border_pressed
-	border_disabled: GoAppColor.primary_border_disabled
+	background_color: GoColors.primary_default
+	background_hover: GoColors.primary_hover
+	background_disabled: GoColors.primary_disabled
+	border_color: GoColors.primary_border
+	border_hover: GoColors.primary_border_pressed
+	border_disabled: GoColors.primary_border_disabled
 
 	canvas.before: 
 		Color:
@@ -108,25 +107,13 @@ class ColorBase(HoverBehavior, GoWidget):
 	radius = ListProperty([0]*4)
 
 	def __init__(self, **kwargs):
+
 		super().__init__(**kwargs)
 		Clock.schedule_once(self.set_color)
 		self.bind(
 			background_color=self.set_color,
 			border_color=self.set_color
 		)
-	# 	Clock.schedule_once(self.config, 1)
-
-	# def config(self, *args):
-	# 	if self.background_color == [-1, -1, -1, -1]:
-	# 		app = App.get_running_app()
-	# 		app.colors.bind(
-	# 			primary_default = lambda wid, value: setattr(self, "background_color", value),
-	# 			primary_hover = lambda wid, value: setattr(self, "background_hover", value),
-	# 			primary_disabled = lambda wid, value: setattr(self, "background_disabled", value),
-	# 			primary_border = lambda wid, value: setattr(self, "border_color", value),
-	# 			primary_border_pressed = lambda wid, value: setattr(self, "border_hover", value),
-	# 			primary_border_disabled = lambda wid, value: setattr(self, "border_disabled", value)
-	# 		)
 
 	def set_color(self, *args):
 		self._background_color = self.background_color
@@ -412,13 +399,51 @@ class Dark:
 
 class Colors(EventDispatcher):
 
-	current_pallet = ObjectProperty(Light)
+	pallet = ObjectProperty(Light)
+
+	last_binds = []
 
 	def __init__(self, *args, **kwargs):
 		# Set all colors properties to the App accordian to the `colors.PALLET_KEY_COLORS`
 
-		for _key in PALLET_KEY_COLORS:
-			color = getattr(self.current_pallet, _key)
+		for key in PALLET_KEY_COLORS:
+			color = getattr(self.pallet, key)
 			self.apply_property(
-				**{ _key : ColorProperty(color) }
+				**{ key : ColorProperty(color) }
 			)
+
+		super().__init__(*args, **kwargs)
+
+	def on_pallet(self, *args):
+		self.change_pallet(self.pallet)
+
+	def fbind(self, *args, **kwargs):
+		if len(args) != 3:
+			return super().fbind(*args, **kwargs)
+		
+		prop_name, fn, a = args
+		if isinstance(a, list) and len(a) != 5:
+			return super().fbind(*args, **kwargs)
+		
+		element, key, value, rule, idmap = a
+
+		for i, (last_prop_name, last_element, last_key, last_uid) in enumerate(self.last_binds):
+			if last_element.__ref__() is element.__ref__() and last_key == key:
+				self.unbind_uid(last_prop_name, last_uid)
+				self.last_binds.pop(i)
+				break
+
+		uid = super().fbind(*args, **kwargs)
+		self.last_binds.append([prop_name, element, key, uid])
+		return uid
+
+	def change_pallet(self, _obj):
+		if isinstance(_obj, dict):
+			return None
+
+		self.pallet = _obj
+		
+		for key in PALLET_KEY_COLORS:
+			if hasattr(self.pallet, key):
+				setattr(self, key, getattr(self.pallet, key))
+

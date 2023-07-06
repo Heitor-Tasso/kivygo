@@ -1,11 +1,11 @@
 import __init__
-from kivygo.app import kivygoApp
-from kivygo.uix.segment import Segment
+from kivygo.app import GoApp
+from kivygo.widgets.segment import Segment
 from kivy.clock import Clock
 from kivy.uix.gridlayout import GridLayout
 import random
 
-class SegmentTestApp(kivygoApp):
+class SegmentTestApp(GoApp):
 
     def build(self):
         def refresh_task(self, *args):

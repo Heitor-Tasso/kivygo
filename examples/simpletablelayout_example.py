@@ -1,6 +1,6 @@
 import __init__
-from kivygo.app import kivygoApp
-from kivygo.uix.simpletablelayout import SimpleTableLayout
+from kivygo.app import GoApp
+from kivygo.layouts.simpletablelayout import SimpleTableLayout
 from kivy.lang.builder import Builder
 
 
@@ -35,7 +35,7 @@ Builder.load_string('''
 class MainWidget(SimpleTableLayout):
     pass
 
-class TestSimpleTableApp(kivygoApp):
+class TestSimpleTableApp(GoApp):
 
     def build(self):
         return MainWidget() 

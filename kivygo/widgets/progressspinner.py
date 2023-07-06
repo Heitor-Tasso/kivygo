@@ -9,7 +9,7 @@ from kivy.properties import (
 from kivy.animation import Animation
 from kivy.clock import Clock
 from kivy.properties import BooleanProperty
-from kivygo.uix.widget import GoWidget
+from kivygo.widgets.widget import GoWidget
 
 Builder.load_string('''
 

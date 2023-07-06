@@ -1,8 +1,8 @@
 import __init__
-from kivygo.app import kivygoApp
+from kivygo.app import GoApp
 from kivy.uix.screenmanager import Screen
 from kivy.lang.builder import Builder
-from kivygo.uix.gradient import GradientWidget
+from kivygo.widgets.gradient import GradientWidget
 
 
 Builder.load_string("""
@@ -46,7 +46,7 @@ class GradientExample(Screen):
 	pass
 
 
-class GradientExampleApp(kivygoApp):
+class GradientExampleApp(GoApp):
 	def build(self):
 		return GradientExample()
 

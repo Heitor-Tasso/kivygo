@@ -3,7 +3,7 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.properties import DictProperty, ListProperty
 from kivy.uix.boxlayout import BoxLayout
-from kivygo.uix.label import AnimatedLabel
+from kivygo.widgets.label import AnimatedLabel
 
 
 Builder.load_string('''

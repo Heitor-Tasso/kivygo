@@ -1,9 +1,9 @@
 import __init__
-from kivygo.app import kivygoApp
-from kivygo.uix.widget import GoWidget
-from kivygo.uix.boxlayout import ColoredBoxLayout
+from kivygo.app import GoApp
+from kivygo.widgets.widget import GoWidget
+from kivygo.layouts.boxlayout import GoColoredBoxLayout
 from kivy.lang import Builder
-from kivygo.uix.bezier import BezierLine
+from kivygo.widgets.bezier import BezierLine
 
 
 Builder.load_string("""
@@ -30,7 +30,7 @@ Builder.load_string("""
 
 			canvas.before:
 				Color:
-					rgba: app.colors.secondary_default
+					rgba: GoColors.secondary_default
 				Rectangle:
 					pos: self.pos
 					size: self.size
@@ -53,10 +53,10 @@ class BezierCanvas(GoWidget):
 		self.add_widget(bezierline)
 		return True
 
-class BezierCanvasExample(ColoredBoxLayout):
+class BezierCanvasExample(GoColoredBoxLayout):
 	pass
 
-class BezierCanvasExampleApp(kivygoApp):
+class BezierCanvasExampleApp(GoApp):
 	def build(self):
 		return BezierCanvasExample()
 	

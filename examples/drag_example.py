@@ -1,10 +1,10 @@
 import __init__
-from kivygo.app import kivygoApp
+from kivygo.app import GoApp
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
 from kivygo.behaviors.resizable import ResizeSelectBehavior
 from kivygo.behaviors.drag_and_drop import DraggableObjectBehavior
-from kivygo.uix.boxlayout import DraggableBoxLayout
+from kivygo.layouts.boxlayout import GoDraggableBoxLayout
 
 
 Builder.load_string("""
@@ -23,7 +23,7 @@ Builder.load_string("""
 
 <DragExample>:
     
-    DraggableBoxLayout:
+    GoDraggableBoxLayout:
         drag_classes: ['LABEL_A']
         orientation: 'vertical'
         padding: '5dp'
@@ -36,7 +36,7 @@ Builder.load_string("""
         Label:
             text: 'Label-3 | GROUP_A'
     
-        DraggableBoxLayout:
+        GoDraggableBoxLayout:
             padding: '20dp', 0
             spacing: '5dp'
             drag_classes: ['LABEL_B']
@@ -50,7 +50,7 @@ Builder.load_string("""
             Label:
                 text: 'Label-3 | GROUP_B'
     
-    DraggableBoxLayout:
+    GoDraggableBoxLayout:
         drag_classes: ['LABEL_A', 'LABEL_B']
         orientation: 'vertical'
         padding: '5dp'
@@ -91,7 +91,7 @@ Builder.load_string("""
 class DragExample(BoxLayout):
 	pass
 
-class DragExampleApp(kivygoApp):
+class DragExampleApp(GoApp):
 	def build(self):
 		return DragExample()
 	

@@ -72,8 +72,7 @@ Builder.load_string('''
 		x: (mainpanel.x - self.width + 1) if root._main_above \
 		   else (sidepanel.x + sidepanel.width - 1)
 		y: root.y
-		allow_stretch: True
-		keep_ratio: False
+		fit_mode: "fill"
 ''')
 
 

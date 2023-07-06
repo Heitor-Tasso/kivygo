@@ -1,5 +1,5 @@
 import __init__
-from kivygo.app import kivygoApp
+from kivygo.app import GoApp
 from kivy.uix.floatlayout import FloatLayout
 from kivy.lang import Builder
 from kivygo.behaviors.resizable import ResizeSelectBehavior
@@ -37,7 +37,7 @@ Builder.load_string("""
 class Manager(FloatLayout):
 	pass
 
-class ExampleUixApp(kivygoApp):
+class ExampleUixApp(GoApp):
 	def build(self):
 		return Manager()
 	

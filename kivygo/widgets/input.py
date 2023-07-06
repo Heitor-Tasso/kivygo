@@ -15,8 +15,8 @@ from kivy.uix.textinput import TextInput
 
 Builder.load_string("""
 
-#:import ToggleButtonIcon kivygo.uix.icon.ToggleButtonIcon
-#:import InputEditor kivygo.uix.terminal.InputEditor
+#:import ToggleButtonIcon kivygo.widgets.icon.ToggleButtonIcon
+#:import InputEditor kivygo.widgets.terminal.InputEditor
 
 
 <IconInput>:
@@ -51,9 +51,8 @@ Builder.load_string("""
 			
 			ToggleButtonIcon:
 				id: button_left
-				allow_stretch: True
+				fit_mode: "fill"
 				name: 'icon_left'
-				keep_ratio: False
 				mipmap: True
 				size_hint_y: None
 				size: root.icon_left_size
@@ -102,8 +101,7 @@ Builder.load_string("""
 				id: button_right
 				name: 'icon_right'
 				window_root: root
-				allow_stretch: True
-				keep_ratio: False
+				fit_mode: "fill"
 				mipmap: True
 				size_hint_y: None
 				size: root.icon_right_size

@@ -1,10 +1,10 @@
 import __init__
-from kivygo.app import kivygoApp
+from kivygo.app import GoApp
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
 from kivy.clock import Clock
 import threading
-from kivygo.uix.kivyg_icon import Kivg
+from kivygo.widgets.kivyg_icon import Kivg
 
 
 root = Builder.load_string("""
@@ -156,7 +156,7 @@ class KivgExample(BoxLayout):
         ]
         self.s.shape_animate(svg_file, anim_config_list=eval(config))
 
-class KivgExampleApp(kivygoApp):
+class KivgExampleApp(GoApp):
 
     def build(self):
         return KivgExample()

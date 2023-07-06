@@ -1,11 +1,11 @@
 import __init__
-from kivygo.app import kivygoApp
+from kivygo.app import GoApp
 from kivy.graphics.texture import Texture
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty
 from kivy.lang.builder import Builder
 from kivy.clock import Clock
-from kivygo.uix.progressspinner import (
+from kivygo.widgets.progressspinner import (
     ProgressSpinnerBase, ProgressSpinner,
     TextureProgressSpinner, TextureProgressSpinnerBase,
     RotatingTextureProgressSpinner,
@@ -79,7 +79,7 @@ Builder.load_string('''
 class MainWidget(BoxLayout):
     pass
 
-class TestApp(kivygoApp):
+class TestApp(GoApp):
     texture = ObjectProperty(None)
 
     def blittex(self, *args):

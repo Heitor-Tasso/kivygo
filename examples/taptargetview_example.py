@@ -2,8 +2,8 @@ import __init__
 from kivy.animation import Animation
 from kivy.lang import Builder
 from kivy.metrics import dp
-from kivygo.app import kivygoApp
-from kivygo.uix.taptargetview import TapTargetView
+from kivygo.app import GoApp
+from kivygo.widgets.taptargetview import TapTargetView
 
 
 root = Builder.load_string("""
@@ -64,7 +64,7 @@ Screen:
 """)
 
 
-class TapTargetViewDemo(kivygoApp):
+class TapTargetViewDemo(GoApp):
     def build(self):
         self.screen = root
 

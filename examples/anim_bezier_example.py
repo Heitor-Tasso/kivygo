@@ -6,12 +6,12 @@ from kivy.clock import Clock
 from kivy.vector import Vector
 from kivy.properties import ListProperty, BooleanProperty
 
-from kivygo.uix.input import IconInput
-from kivygo.uix.slider import NeuSlider
-from kivygo.uix.button import RippleButton
-from kivygo.uix.spinner import EffectSpinner
-from kivygo.uix.label import AnimatedBezierLabel
-from kivygo.uix.boxlayout import ColoredBoxLayout
+from kivygo.widgets.input import IconInput
+from kivygo.widgets.slider import NeuSlider
+from kivygo.widgets.button import GoRippleButton
+from kivygo.widgets.spinner import EffectSpinner
+from kivygo.widgets.label import AnimatedBezierLabel
+from kivygo.layouts.boxlayout import GoColoredBoxLayout
 
 
 Builder.load_string("""
@@ -147,7 +147,7 @@ Builder.load_string("""
             AnchorLayout:
                 anchor_x: "center"
                 anchor_y: "center"
-                RippleButton:
+                GoRippleButton:
                     text: 'play!'
                     on_press: label.animate()
                     size_hint: None, None
@@ -156,7 +156,7 @@ Builder.load_string("""
             AnchorLayout:
                 anchor_x: "center"
                 anchor_y: "center"
-                RippleButton:
+                GoRippleButton:
                     text: 'export'
                     on_press: app.write_points()
                     size_hint: None, None
@@ -164,7 +164,7 @@ Builder.load_string("""
 
 """)
 
-class AnimBezierExample(ColoredBoxLayout):
+class AnimBezierExample(GoColoredBoxLayout):
     points = ListProperty([0, 0])
     loop = BooleanProperty(False)
     started = BooleanProperty(False)

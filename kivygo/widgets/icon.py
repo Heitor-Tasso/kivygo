@@ -3,9 +3,12 @@ from kivygo.behaviors.button import ButtonBehavior, ToggleButtonBehavior
 from kivygo.behaviors.ripple_effect import RippleEffectBehavior
 from kivygo.behaviors.hover import HoverBehavior
 
-from kivygo.uix.image import ImageWithSVG
-from kivygo.uix.anchorlayout import AnchorLayoutButton
-from kivy.properties import ListProperty, BooleanProperty, StringProperty
+from kivygo.widgets.image import ImageWithSVG
+from kivygo.layouts.anchorlayout import GoColoredAnchorLayout
+from kivy.properties import (
+    ListProperty, BooleanProperty,
+    StringProperty, OptionProperty
+)
 from kivy.metrics import dp
 from kivy.lang import Builder
 from kivy.clock import Clock
@@ -13,12 +16,12 @@ from kivy.clock import Clock
 
 Builder.load_string("""
 
-#:import ImageWithSVG kivygo.uix.image.ImageWithSVG
+#:import ImageWithSVG kivygo.widgets.image.ImageWithSVG
 
 <Icon>:
 	anchor_y: 'center'
 	anchor_x: 'center'
-
+	fit_mode: "fill"
 	BoxLayout:
 		padding: ['5dp', '5dp', '5dp', '5dp']
 		size_hint: [None, None]
@@ -26,8 +29,7 @@ Builder.load_string("""
 
 		ImageWithSVG:
 			image_source: root.icon_source
-			allow_stretch: root.allow_stretch 
-			keep_ratio: root.keep_ratio
+			fit_mode: root.fit_mode
 			mipmap: root.mipmap
 			color: root.color
 
@@ -36,7 +38,7 @@ Builder.load_string("""
 	size_hint: [None, None]
 	mipmap: True
 	allow_strech: True
-	keep_ratio: False
+	fit_mode: "fill"
 	canvas:
 		Clear
 	canvas.before:
@@ -62,11 +64,13 @@ Builder.load_string("""
 """)
 
 
-class Icon(AnchorLayoutButton):
+class Icon(GoColoredAnchorLayout):
+
+	fit_mode = OptionProperty(
+        "fill", options=["scale-down", "scale-down", "contain", "cover"]
+    )
 
 	color = ListProperty([1, 1, 1, 1])
-	allow_stretch = BooleanProperty(True)
-	keep_ratio = BooleanProperty(False)
 	mipmap = BooleanProperty(True)
 	icon_source = StringProperty("")
 	icon_size = ListProperty([dp(40), dp(40)])

@@ -1,16 +1,16 @@
 import __init__
-from kivygo.app import kivygoApp
+from kivygo.app import GoApp
 from kivy.lang.builder import Builder
-from kivygo.uix.curvelayout import CurveLayout
+from kivygo.layouts.curvelayout import CurveLayout
 from kivy.properties import StringProperty
-from kivygo.uix.button import RippleButton
+from kivygo.widgets.button import GoRippleButton
 
 
 Builder.load_string("""
 
 <CurveLayoutExample>:
     color: [1, 0, 0, 1]
-    RippleButton:
+    GoRippleButton:
         text: root.anim_state
         size_hint: None, None
         size: root.width / 2, root.height / 2
@@ -51,7 +51,7 @@ class CurveLayoutExample(CurveLayout):
         self.anim_state = "on_reset_left"
 
 
-class CurveLayoutExampleApp(kivygoApp):
+class CurveLayoutExampleApp(GoApp):
     def build(self):
         return CurveLayoutExample()
 

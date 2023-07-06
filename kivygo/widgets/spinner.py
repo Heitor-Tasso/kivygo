@@ -3,11 +3,11 @@
 from kivy.compat import string_types
 from kivy.factory import Factory
 from kivy.properties import ListProperty, ObjectProperty, BooleanProperty
-from kivygo.uix.button import RippleButton
+from kivygo.widgets.button import GoRippleButton
 from kivy.uix.dropdown import DropDown
 
 
-class EffectSpinner(RippleButton):
+class EffectSpinner(GoRippleButton):
 
     values = ListProperty([])
     '''Values that can be selected by the user. It must be a list of strings.
@@ -20,7 +20,7 @@ class EffectSpinner(RippleButton):
     property every time attr:`values` are changed.
     '''
 
-    option_cls = ObjectProperty(RippleButton)
+    option_cls = ObjectProperty(GoRippleButton)
     '''Class used to display the options within the dropdown list displayed
     under the Spinner. The `text` property of the class will be used to
     represent the value.

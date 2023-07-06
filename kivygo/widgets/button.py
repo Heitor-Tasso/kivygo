@@ -2,7 +2,6 @@
 from kivy.properties import ListProperty
 from kivy.lang import Builder
 from kivy.uix.label import Label
-
 from kivygo.behaviors.ripple_effect import RippleEffectBehavior
 from kivygo.behaviors.fade_effect import FadeEffectBehavior
 from kivygo.behaviors.button import ButtonBehavior, ToggleButtonBehavior
@@ -12,30 +11,31 @@ from kivygo.colors import ColorBase
 Builder.load_string("""
 
 <GoButton>:
-	background_color: GoAppColor.colors.terciary_default
-	background_hover: GoAppColor.colors.terciary_hover
-	background_disabled: GoAppColor.colors.terciary_disabled
+	color: GoColors.text_default
+	background_color: GoColors.terciary_default
+	background_hover: GoColors.terciary_hover
+	background_disabled: GoColors.terciary_disabled
 	background_pressed: self.background_hover
 
-	border_color: GoAppColor.colors.terciary_border
-	border_hover: GoAppColor.colors.terciary_border_pressed
-	border_disabled: GoAppColor.colors.terciary_border_disabled
+	border_color: GoColors.terciary_border
+	border_hover: GoColors.terciary_border_pressed
+	border_disabled: GoColors.terciary_border_disabled
 
 
-<BaseEffectButton>:
+<GoBaseEffectButton>:
 	radius_effect: self.radius
 
-	effect_color: GoAppColor.colors.terciary_effect
+	effect_color: GoColors.terciary_effect
 
 	
-<RippleButton>:
+<GoRippleButton>:
 			
-<RippleToggleButton>:
+<GoRippleToggleButton>:
 	
 
-<FadeButton>:
+<GoFadeButton>:
 		
-<FadeToggleButton>:
+<GoFadeToggleButton>:
 
 """)
 
@@ -68,7 +68,7 @@ class GoButton(ColorBase, ButtonBehavior, Label):
 
 		return result
 
-class BaseEffectButton(GoButton):
+class GoBaseEffectButton(GoButton):
 
 	def on_touch_down(self, touch):		
 		if not self.collide_point(*touch.pos):
@@ -89,16 +89,16 @@ class BaseEffectButton(GoButton):
 		return super().on_touch_up(touch)
 
 
-class RippleButton(BaseEffectButton, RippleEffectBehavior):
+class GoRippleButton(GoBaseEffectButton, RippleEffectBehavior):
 	pass
 
-class RippleToggleButton(ToggleButtonBehavior, RippleButton):
+class GoRippleToggleButton(ToggleButtonBehavior, GoRippleButton):
 	pass
 
 
-class FadeButton(BaseEffectButton, FadeEffectBehavior):
+class GoFadeButton(GoBaseEffectButton, FadeEffectBehavior):
 	pass
 
-class FadeToggleButton(ToggleButtonBehavior, FadeButton):
+class GoFadeToggleButton(ToggleButtonBehavior, GoFadeButton):
 	pass
 

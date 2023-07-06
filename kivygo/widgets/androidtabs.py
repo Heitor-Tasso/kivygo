@@ -6,7 +6,7 @@ from kivy.uix.behaviors import ToggleButtonBehavior
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.carousel import Carousel
-from kivygo.uix.widget import GoWidget
+from kivygo.widgets.widget import GoWidget
 from kivy.uix.scrollview import ScrollView
 from kivy.graphics import Rectangle
 from kivy.utils import boundary

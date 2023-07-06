@@ -1,8 +1,8 @@
 import __init__
-from kivygo.app import kivygoApp
+from kivygo.app import GoApp
 from kivy.lang import Builder
-from kivygo.uix.boxlayout import ColoredBoxLayout
-from kivygo.uix.button import RippleButton
+from kivygo.layouts.boxlayout import GoColoredBoxLayout
+from kivygo.widgets.button import GoRippleButton
 from kivy.uix.scrollview import ScrollView
 
 from anchorlayout_example import AnchorLayoutExample
@@ -45,7 +45,7 @@ Builder.load_string("""
 
 <AllExamples>:
     base_height: "600dp"
-    ColoredBoxLayout:
+    GoColoredBoxLayout:
         orientation: 'vertical'
         spacing: '20dp'
         padding: '20dp'
@@ -92,8 +92,8 @@ Builder.load_string("""
             start_angle: -75
             inner_radius_hint: 0.7
             padding: "20dp"
-            RippleButton:
-            RippleButton:
+            GoRippleButton:
+            GoRippleButton:
         
         CurveLayoutExample:
             size_hint_y: None
@@ -135,7 +135,7 @@ Builder.load_string("""
 class AllExamples(ScrollView):
 	pass
 
-class AllExamplesApp(kivygoApp):
+class AllExamplesApp(GoApp):
 	def build(self):
 		return AllExamples()
 	

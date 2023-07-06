@@ -1,6 +1,6 @@
 
 from kivy.lang import Builder
-from kivygo.uix.widget import GoWidget
+from kivygo.widgets.widget import GoWidget
 from kivy.properties import ListProperty, NumericProperty
 from kivy.metrics import dp
 import numpy as np

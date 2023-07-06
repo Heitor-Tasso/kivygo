@@ -1,8 +1,8 @@
 import __init__
-from kivygo.app import kivygoApp
+from kivygo.app import GoApp
 from kivy.lang import Builder
-from kivygo.uix.boxlayout import ColoredBoxLayout
-from kivygo.uix.button import RippleButton
+from kivygo.layouts.boxlayout import GoColoredBoxLayout
+from kivygo.widgets.button import GoRippleButton
 
 Builder.load_string("""
 
@@ -13,13 +13,13 @@ Builder.load_string("""
     orientation: 'vertical'
 	background_color: [1, 1, 1, 0.8]
 	padding: "40dp"
-	RippleButton:
+	GoRippleButton:
 		size_hint_y: None
 		height: "300dp"
-		text: "RippleButton"
+		text: "GoRippleButton"
 		on_release:
-			app.change_pallet(Light) if app.colors.current_pallet == Dark else app.change_pallet(Dark)
-	ColoredBoxLayout:
+			GoColors.pallet = (Light if GoColors.pallet == Dark else Dark)
+	GoColoredBoxLayout:
 		background_color: [0, 1, 0, 1]
 		padding: "40dp"
 		background_color: [0, 0, 0, 1]
@@ -28,17 +28,17 @@ Builder.load_string("""
 		border_color: [0, 0, 0, 1]
 		border_hover: [0, 0, 0, 1]
 		border_disabled: [0, 0, 0, 1]
-		RippleButton:
+		GoRippleButton:
 			text: 'Effect 1'
-		RippleButton:
+		GoRippleButton:
 			text: 'Effect 2'
 """)
 
 
-class BoxLayoutExample(ColoredBoxLayout):
+class BoxLayoutExample(GoColoredBoxLayout):
 	pass
 
-class BoxLayoutExampleApp(kivygoApp):
+class BoxLayoutExampleApp(GoApp):
 	def build(self):
 		return BoxLayoutExample()
 	

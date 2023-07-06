@@ -1,7 +1,7 @@
 
 from kivy.animation import Animation
 from kivy.clock import Clock
-from kivygo.uix.circularlayout import CircularLayout
+from kivygo.layouts.circularlayout import CircularLayout
 from kivy.graphics import Line, Color, Ellipse
 from kivy.lang import Builder
 from kivy.properties import (

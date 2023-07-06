@@ -8,7 +8,7 @@ from kivy.clock import Clock
 Builder.load_string("""
 
 #:import EffectWidget kivy.uix.effectwidget.EffectWidget
-#:import MaskEffect kivygo.uix.effect.MaskEffect
+#:import MaskEffect kivygo.widgets.effect.MaskEffect
 
 
 <EffectExample>:

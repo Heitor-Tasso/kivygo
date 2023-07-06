@@ -23,7 +23,7 @@ from kivy.lang.builder import Builder
 Builder.load_string("""
 
 <RippleEffectBehavior>:
-	effect_color: GoAppColor.colors.primary_effect
+	effect_color: GoColors.primary_effect
 
 """)
 

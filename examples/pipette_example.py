@@ -1,6 +1,6 @@
 import __init__
-from kivygo.app import kivygoApp
-from kivygo.uix.button import RippleButton
+from kivygo.app import GoApp
+from kivygo.widgets.button import GoRippleButton
 from kivy.lang.builder import Builder
 from kivy.uix.image import Image
 from kivy.core.image import Image as CoreImage
@@ -43,7 +43,7 @@ Builder.load_string("""
                 root.mouse.set_cursor_icon('kivygo/icons/transparent.png')
                 root.show_cursor(True)
 
-            RippleButton:
+            GoRippleButton:
                 text: 'Open demo with image'
                 on_release: root.change_screen('2')
 
@@ -55,7 +55,7 @@ Builder.load_string("""
             BoxLayout:
                 orientation: "vertical"
                 # Widget:
-                RippleButton:
+                GoRippleButton:
                     size_hint_y: None
                     height: "40dp"
                     text: "LAST_SCREEN"
@@ -263,7 +263,7 @@ class PipetteMouse(RelativeLayout):
         self.cursor.reload()
 
 
-class PipetteExampleApp(kivygoApp):
+class PipetteExampleApp(GoApp):
 
     def build(self):
         return PipetteExample()

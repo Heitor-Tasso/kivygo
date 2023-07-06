@@ -1,16 +1,16 @@
 
 import __init__
-from kivygo.app import kivygoApp
+from kivygo.app import GoApp
 from kivy.uix.screenmanager import ScreenManager
 from kivy.lang import Builder
 
 
-from kivygo.uix.camera import PlantCamera, QRCode
+from kivygo.widgets.camera import PlantCamera, QRCode
 
 
 
-from kivygo.uix.screenmanager import SwapScreen
-from kivygo.uix.boxlayout import ColoredBoxLayout
+from kivygo.widgets.screenmanager import SwapScreen
+from kivygo.layouts.boxlayout import GoColoredBoxLayout
 
 
 Builder.load_string("""
@@ -32,7 +32,7 @@ Builder.load_string("""
 class CameraExample(ScreenManager):
 	pass
 
-class CameraExampleApp(kivygoApp):
+class CameraExampleApp(GoApp):
 	def build(self):
 		return CameraExample()
 	

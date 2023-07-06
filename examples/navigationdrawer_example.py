@@ -6,7 +6,7 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.popup import Popup
 from kivy.uix.widget import Widget
-from kivygo.uix.navigationdrawer import NavigationDrawer
+from kivygo.widgets.navigationdrawer import NavigationDrawer
 from kivy.core.window import Window
 from kivy.metrics import dp
 

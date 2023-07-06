@@ -2,7 +2,7 @@ from kivy.lang import Builder
 from kivy.clock import Clock
 from kivy.properties import ObjectProperty, ListProperty
 from kivy.core.window import Window
-from kivygo.uix.popup import BoxPopup
+from kivygo.widgets.popup import BoxPopup
 from kivy.animation import Animation
 import time, random, os
 from camera4kivy import Preview
@@ -29,10 +29,10 @@ def get_qrcode(path_img, index=0):
 Builder.load_string("""
 
 
-#:import IconInput kivygo.uix.input.IconInput
-#:import RippleButton kivygo.uix.button.RippleButton
-#:import ButtonIcon kivygo.uix.icon.ButtonIcon
-#:import AnchorLayoutButton kivygo.uix.anchorlayout.AnchorLayoutButton
+#:import IconInput kivygo.widgets.input.IconInput
+#:import GoRippleButton kivygo.widgets.button.GoRippleButton
+#:import ButtonIcon kivygo.widgets.icon.ButtonIcon
+#:import GoColoredAnchorLayout kivygo.layouts.anchorlayout.GoColoredAnchorLayout
 #:import hex kivy.utils.get_color_from_hex
 
 
@@ -81,7 +81,7 @@ Builder.load_string("""
 						BoxLayout:
 							size_hint: [None, None]
 							size: ['110dp', '30dp']
-							AnchorLayoutButton:
+							GoColoredAnchorLayout:
 								radius: [self.width / 1.7] * 4
 								size_hint_y: None
 								size: ['60dp', '30dp']
@@ -98,7 +98,7 @@ Builder.load_string("""
 								text_size: self.size
 
 						Widget:
-						AnchorLayoutButton:
+						GoColoredAnchorLayout:
 							radius: [self.width / 1.7] * 4
 							size_hint_y: None
 							size: ['80dp', '30dp']
@@ -107,7 +107,7 @@ Builder.load_string("""
 								# source: icon('settings')
 								on_release: root.start_scann()
 				
-				AnchorLayoutButton:
+				GoColoredAnchorLayout:
 					size_hint_y: None
 					height: '40dp'
 					width: self.parent.width
@@ -155,7 +155,7 @@ Builder.load_string("""
 					BoxLayout:
 						size_hint_y: None
 						height: '25dp'
-						AnchorLayoutButton:
+						GoColoredAnchorLayout:
 							radius: [self.width / 1.7] * 4
 							size_hint_y: None
 							size: ['80dp', '25dp']
@@ -164,7 +164,7 @@ Builder.load_string("""
 								# source: icon('aspect_ratio')
 								on_release: root.start_scann()
 						Widget:
-						AnchorLayoutButton:
+						GoColoredAnchorLayout:
 							radius: [self.width / 1.7] * 4
 							size_hint_y: None
 							size: ['80dp', '25dp']
@@ -186,7 +186,7 @@ Builder.load_string("""
 						size_hint_y: None
 						height: '70dp'
 						Widget:
-						AnchorLayoutButton:
+						GoColoredAnchorLayout:
 							radius: [self.width / 1.7] * 4
 							size_hint_y: None
 							size: ['100dp', '70dp']
@@ -194,7 +194,7 @@ Builder.load_string("""
 								size: ['60dp', '60dp']
 								# source: icon('img')
 								on_release: root.start_scann()
-						AnchorLayoutButton:
+						GoColoredAnchorLayout:
 							radius: [self.width / 1.7] * 4
 							size_hint_y: None
 							size: ['100dp', '70dp']
@@ -202,7 +202,7 @@ Builder.load_string("""
 								size: ['70dp', '70dp']
 								# source: icon('btn_camera')
 								on_release: root.start_scann()
-						AnchorLayoutButton:
+						GoColoredAnchorLayout:
 							radius: [self.width / 1.7] * 4
 							size_hint_y: None
 							size: ['100dp', '70dp']
@@ -307,7 +307,7 @@ Builder.load_string("""
 					height: '70dp'
 					padding: ['0dp', '0dp', '0dp', '15dp']
 					Widget:
-					AnchorLayoutButton:
+					GoColoredAnchorLayout:
 						background_color: hex('#333333')
 						radius: [self.width / 2] * 4
 						size_hint_y: None
@@ -325,7 +325,7 @@ Builder.load_string("""
 									size: self.size
 									radius: [self.width / 6] * 4
 					Widget:
-				AnchorLayoutButton:
+				GoColoredAnchorLayout:
 					size_hint_y: None
 					height: '50dp'
 					width: self.parent.width

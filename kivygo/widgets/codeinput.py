@@ -14,7 +14,7 @@
 from kivy.app import runTouchApp
 from kivy.core.text.markup import MarkupLabel as CoreLabel
 from kivy.core.text import DEFAULT_FONT
-from kivygo.uix.widget import GoWidget
+from kivygo.widgets.widget import GoWidget
 from kivy.core.window import Window
 from kivy.properties import (
 	ListProperty, NumericProperty,

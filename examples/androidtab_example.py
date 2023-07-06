@@ -1,31 +1,31 @@
 import __init__
-from kivygo.app import kivygoApp
+from kivygo.app import GoApp
 from kivy.lang.builder import Builder
-from kivygo.uix.boxlayout import ColoredBoxLayout
-from kivygo.uix.androidtabs import AndroidTabsBase, AndroidTabs
-from kivygo.uix.button import RippleButton
+from kivygo.layouts.boxlayout import GoColoredBoxLayout
+from kivygo.widgets.androidtabs import AndroidTabsBase, AndroidTabs
+from kivygo.widgets.button import GoRippleButton
 
 Builder.load_string('''
 
 #:import hex kivy.utils.get_color_from_hex
 
 <AndroidTabsBar>:
-    background_color: app.colors.primary_default
+    background_color: GoColors.primary_default
 
 <ExampleTab>:
     padding: "30dp"
-    background_color: app.colors.secondary_default
-    RippleButton:
+    background_color: GoColors.secondary_default
+    GoRippleButton:
         text: root.text
         
 ''')
 
 
-class ExampleTab(ColoredBoxLayout, AndroidTabsBase):
+class ExampleTab(GoColoredBoxLayout, AndroidTabsBase):
     pass
 
 
-class AndroidTabExampleApp(kivygoApp):
+class AndroidTabExampleApp(GoApp):
     def build(self):
         android_tabs = AndroidTabs()
 

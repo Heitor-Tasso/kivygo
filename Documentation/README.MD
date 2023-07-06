@@ -21,14 +21,14 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
-ColoredAnchorLayout:
+GoColoredAnchorLayout:
   anchor_y: "center"
   anchor_x: "center"
   background_color: [1, 1, 1, 0.8]
-  RippleButton:
+  GoRippleButton:
     size_hint: None, None
     size: "250dp", "100dp"
-    text: "RippleButton"
+    text: "GoRippleButton"
 
 
 
@@ -70,7 +70,7 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
   background_color: hex('#03A9F4')
 
 <ExampleTab>:
-  RippleButton:
+  GoRippleButton:
     text: root.text
 
 
@@ -158,22 +158,22 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
-ColoredBoxLayout:
+GoColoredBoxLayout:
   orientation: 'vertical'
   background_color: [1, 1, 1, 0.8]
   padding: "40dp"
 
-  RippleButton:
+  GoRippleButton:
 	size_hint_y: None
 	height: "300dp"
-	text: "RippleButton"
+	text: "GoRippleButton"
 
-  ColoredBoxLayout:
+  GoColoredBoxLayout:
 	background_color: [0, 1, 0, 1]
 	padding: "40dp"
-	RippleButton:
+	GoRippleButton:
 	  text: 'Effect 1'
-	RippleButton:
+	GoRippleButton:
 	  text: 'Effect 2'
 
 
@@ -204,24 +204,24 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
-ColoredGridLayout:
+GoColoredGridLayout:
   background_color: [1, 1, 1, 0.8]
   padding: "70dp"
   spacing: '30dp'
   rows: 3
-  RippleButton:
+  GoRippleButton:
 	text: "Normal Rectangle Button"
 	background_color: [[0.1, 0.4, 0.1, 1], [0.1, 0.4, 0.7, 1]]
-  RippleButton:
+  GoRippleButton:
 	text: "Normal Rounded Button"
 	radius: [dp(50)] * 4
 	radius_effect: self.radius
 	background_color: [[0.1, 0.4, 0.1, 1], [0.1, 0.4, 0.7, 1]]
-  RippleToggleButton:
+  GoRippleToggleButton:
 	text: "Toggle Rectangle Button"
 	group: "toggle"
 	down_background_color: [[0.3, 0.1, 0.7, 1], [0.7, 0.3, 0.5, 1]]
-  RippleToggleButton:
+  GoRippleToggleButton:
 	text: "Toggle Rounded Button"
 	group: "toggle"
 	down_background_color: [[0.3, 0.1, 0.7, 1], [0.7, 0.3, 0.5, 1]]
@@ -297,7 +297,7 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
-ColoredBoxLayout
+GoColoredBoxLayout
   orientation: 'vertical'
   padding: "80dp"
   spacing: "40dp"

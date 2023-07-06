@@ -5,7 +5,7 @@ from kivy.config import Config
 
 from kivy.lang.builder import Builder
 from kivy.uix.boxlayout import BoxLayout
-from kivygo.uix.joystick import Joystick
+from kivygo.widgets.joystick import Joystick
 from kivy.app import App
 
 
