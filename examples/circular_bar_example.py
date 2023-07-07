@@ -1,7 +1,7 @@
 import __init__
 from kivygo.app import GoApp
-from kivygo.layouts.anchorlayout import GoColoredAnchorLayout
-from kivygo.layouts.boxlayout import GoColoredBoxLayout
+from kivygo.layouts.anchorlayout import GoAnchorLayoutColor
+from kivygo.layouts.boxlayout import GoBoxLayoutColor
 from kivy.animation import Animation
 from kivy.lang.builder import Builder
 from kivy.clock import Clock
@@ -19,7 +19,7 @@ Builder.load_string('''
     padding: "80dp"
     spacing: "40dp"
     background_color: hex('#03A9F4')
-    GoColoredBoxLayout:
+    GoBoxLayoutColor:
         CircularProgressBar:
             id: last
             max_progress: 200
@@ -39,7 +39,7 @@ Builder.load_string('''
 ''')
 
 
-class CircularBarExample(GoColoredAnchorLayout):
+class CircularBarExample(GoAnchorLayoutColor):
     pass
 
 

@@ -182,7 +182,7 @@ Abaixo estão as informações das licenças de cada biblioteca utilizada no pro
     - [drag_n_drop](https://github.com/kivy-garden/drag_n_drop.git)
     - [garden.pizza](https://github.com/kivy-garden/garden.pizza.git)
     - [garden.rotabox](https://github.com/kivy-garden/garden.rotabox.git)
-    - [garden.simpletablelayout](https://github.com/kivy-garden/garden.simpletablelayout.git)
+    - [garden.DynamicGridLayout](https://github.com/kivy-garden/garden.DynamicGridLayout.git)
     - [garden.segment](https://github.com/kivy-garden/garden.segment.git)
     - [garden.circularlayout](https://github.com/kivy-garden/garden.circularlayout.git)
     - [garden.navigationdrawer](https://github.com/kivy-garden/garden.navigationdrawer.git)
@@ -190,7 +190,7 @@ Abaixo estão as informações das licenças de cada biblioteca utilizada no pro
     - [garden.circulardatetimepicker](https://github.com/kivy-garden/garden.circulardatetimepicker.git)
     - [garden.progressspinner](https://github.com/kivy-garden/garden.progressspinner.git)
     - [garden.joystick](https://github.com/kivy-garden/garden.joystick.git)
-    - [garden.androidtabs](https://github.com/kivy-garden/garden.androidtabs.git)
+    - [garden.GoTab](https://github.com/kivy-garden/garden.GoTab.git)
     - [kivy-particle](https://github.com/skitoo/kivy-particle.git)
     - [gl-transitions](https://github.com/gl-transitions/gl-transitions.git)
 

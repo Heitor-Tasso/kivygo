@@ -21,7 +21,7 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
-GoColoredAnchorLayout:
+GoAnchorLayoutColor:
   anchor_y: "center"
   anchor_x: "center"
   background_color: [1, 1, 1, 0.8]
@@ -53,10 +53,10 @@ GoColoredAnchorLayout:
 ---
 
 <details>
-<summary>AndroidTabs</summary>
+<summary>GoTab</summary>
 <ul>
 
-## `kivygo/uix/androidtabs.py`
+## `kivygo/uix/GoTab.py`
 ### `examples/androidtab_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.
@@ -66,7 +66,7 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
-<AndroidTabsBar>:
+<GoTabBar>:
   background_color: hex('#03A9F4')
 
 <ExampleTab>:
@@ -74,10 +74,10 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
     text: root.text
 
 
-class ExampleTab(BoxLayout, AndroidTabsBase): pass
+class ExampleTab(BoxLayout, GoTabBase): pass
 
 def build(self):
-  android_tabs = AndroidTabs()
+  android_tabs = GoTab()
   for n in range(1, 6):
     tab = ExampleTab(text=f'TAB {n}')
 	android_tabs.add_widget(tab)
@@ -90,7 +90,7 @@ def build(self):
 ```
 </div>
 
-|[Click to the Source Code](https://github.com/Heitor-Tasso/kivygo/blob/main/kivygo/uix/androidtabs.py)|
+|[Click to the Source Code](https://github.com/Heitor-Tasso/kivygo/blob/main/kivygo/uix/GoTab.py)|
 |---|
 
 </ul>
@@ -158,7 +158,7 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
-GoColoredBoxLayout:
+GoBoxLayoutColor:
   orientation: 'vertical'
   background_color: [1, 1, 1, 0.8]
   padding: "40dp"
@@ -168,7 +168,7 @@ GoColoredBoxLayout:
 	height: "300dp"
 	text: "GoRippleButton"
 
-  GoColoredBoxLayout:
+  GoBoxLayoutColor:
 	background_color: [0, 1, 0, 1]
 	padding: "40dp"
 	GoRippleButton:
@@ -204,7 +204,7 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
-GoColoredGridLayout:
+GoGridLayoutColor:
   background_color: [1, 1, 1, 0.8]
   padding: "70dp"
   spacing: '30dp'
@@ -297,7 +297,7 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
-GoColoredBoxLayout
+GoBoxLayoutColor
   orientation: 'vertical'
   padding: "80dp"
   spacing: "40dp"
@@ -377,7 +377,7 @@ GridLayout:
 ---
 
 <details>
-<summary>CircularLayout</summary>
+<summary>GoCircularLayout</summary>
 <ul>
 
 ## `kivygo\uix\circularlayout.py`
@@ -1669,10 +1669,10 @@ GridLayout:
 ---
 
 <details>
-<summary>SimpleTableLayout</summary>
+<summary>DynamicGridLayout</summary>
 <ul>
 
-## `kivygo\uix\simpletablelayout.py`
+## `kivygo\uix\DynamicGridLayout.py`
 ### `examples\anchorlayout_example.py`
 
 Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no centro. Os widgets filhos são esticados para preencher todo o espaço restante.

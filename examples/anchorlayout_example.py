@@ -1,7 +1,7 @@
 import __init__
 from kivygo.app import GoApp
 from kivy.lang import Builder
-from kivygo.layouts.anchorlayout import GoColoredAnchorLayout
+from kivygo.layouts.anchorlayout import GoAnchorLayoutColor
 
 
 Builder.load_string("""
@@ -22,7 +22,7 @@ Builder.load_string("""
 """)
 
 
-class AnchorLayoutExample(GoColoredAnchorLayout):
+class AnchorLayoutExample(GoAnchorLayoutColor):
 	pass
 
 class AnchorLayoutExampleApp(GoApp):

@@ -12,7 +12,7 @@ import time
 from kivy.properties import ObjectProperty
 from kivygo.widgets.rotabox import Rotabox
 from kivygo.widgets.screenmanager import SwapScreen
-from kivygo.layouts.boxlayout import GoColoredBoxLayout
+from kivygo.layouts.boxlayout import GoBoxLayoutColor
 from kivy.clock import Clock
 from kivy.lang import Builder
 

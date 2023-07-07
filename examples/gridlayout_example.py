@@ -1,6 +1,6 @@
 import __init__
 from kivygo.app import GoApp
-from kivygo.layouts.simpletablelayout import SimpleTableLayout
+from kivygo.layouts.gridlayout import DynamicGridLayout
 from kivy.lang.builder import Builder
 
 
@@ -12,34 +12,34 @@ Builder.load_string('''
     cols: 5
     rows: 2
 
-    Button:
+    GoButton:
         text: "(row: 1, col: 1)"
 
-    Button:
+    GoButton:
         text: "(row: 1, col: 2) \\n colspan: 2  \\n rowspan: 2"
         colspan: 2
         rowspan: 2
 
-    Button:
+    GoButton:
         text: "(row: 1, col: 4) \\n colspan: 2"
         colspan: 2
-    Button:
+    GoButton:
         text: "(row: 2, col: 1)"
-    Button:
+    GoButton:
         text: "(row: 2, col: 4)"
-    Button:
+    GoButton:
         text: "(row: 2, col: 5)"
 
 ''')
 
-class MainWidget(SimpleTableLayout):
+class MainWidget(DynamicGridLayout):
     pass
 
-class TestSimpleTableApp(GoApp):
+class TestGridLayoutApp(GoApp):
 
     def build(self):
         return MainWidget() 
     
 
 if __name__ == "__main__":
-    TestSimpleTableApp().run()
+    TestGridLayoutApp().run()

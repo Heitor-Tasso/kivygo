@@ -4,7 +4,7 @@ from kivygo.behaviors.ripple_effect import RippleEffectBehavior
 from kivygo.behaviors.hover import HoverBehavior
 
 from kivygo.widgets.image import ImageWithSVG
-from kivygo.layouts.anchorlayout import GoColoredAnchorLayout
+from kivygo.layouts.anchorlayout import GoAnchorLayoutColor
 from kivy.properties import (
     ListProperty, BooleanProperty,
     StringProperty, OptionProperty
@@ -64,7 +64,7 @@ Builder.load_string("""
 """)
 
 
-class Icon(GoColoredAnchorLayout):
+class Icon(GoAnchorLayoutColor):
 
 	fit_mode = OptionProperty(
         "fill", options=["scale-down", "scale-down", "contain", "cover"]

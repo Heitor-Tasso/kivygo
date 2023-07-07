@@ -9,7 +9,7 @@ from kivygo.widgets.slider import NeuSlider
 
 
 from kivygo.widgets.screenmanager import SwapScreen
-from kivygo.layouts.boxlayout import GoColoredBoxLayout
+from kivygo.layouts.boxlayout import GoBoxLayoutColor
 
 
 Builder.load_string("""
@@ -23,7 +23,7 @@ Builder.load_string("""
 	SwapScreen:
 		name: "screen_5"
 		
-		GoColoredBoxLayout:
+		GoBoxLayoutColor:
 			background_color: hex("#333333")
 			orientation: "vertical"
 			padding: "40dp"

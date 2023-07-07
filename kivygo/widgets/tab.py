@@ -3,9 +3,8 @@ from kivy.lang import Builder
 from kivy.clock import Clock
 from kivy.uix.label import Label
 from kivy.uix.behaviors import ToggleButtonBehavior
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.anchorlayout import AnchorLayout
-from kivy.uix.carousel import Carousel
+from kivygo.layouts.boxlayout import GoBoxLayout
+from kivygo.layouts.anchorlayout import GoAnchorLayout
 from kivygo.widgets.widget import GoWidget
 from kivy.uix.scrollview import ScrollView
 from kivy.graphics import Rectangle
@@ -14,62 +13,44 @@ from kivy.properties import (
 	ObjectProperty, NumericProperty,
 	VariableListProperty, StringProperty,
 	AliasProperty, BooleanProperty,
-	BoundedNumericProperty, ListProperty
+	BoundedNumericProperty
 )
-
-from kivygo.behaviors.ripple_effect import RippleEffectBehavior
-from kivygo.behaviors.hover import HoverBehavior
-
 
 Builder.load_string('''
 
 #:import DampedScrollEffect kivy.effects.dampedscroll.DampedScrollEffect
 
-<AndroidTabsBar>:
-	canvas.before: 
-		Color:
-			rgba: self._background_color
-		RoundedRectangle:
-			pos: self.pos
-			size: self.size
-			radius: self.radius
-	canvas.after:
-		Color:
-			rgba: self.stroke_color
-		Line:
-			rounded_rectangle: [*self.pos, *self.size, *self.radius]
-			width: self.stroke_width
+<GoTabBar>:
 
-<AndroidTabsLabel>:
+<GoTabLabel>:
 	size_hint: None, 1
 	halign: 'center'
-	padding: '12dp', 0
+	padding: ['12dp', 0]
 	group: 'tabs'
 	allow_no_selection: False
-	text_color_normal: 1, 1, 1, .6
-	text_color_active: 1, 1, 1, 1
-	color: self.text_color_active if self.state is 'down' \
-								else self.text_color_normal
+	text_color_normal: GoColors.text_default
+	text_color_active: GoColors.text_pressed
+	color: self.text_color_active if self.state == 'down' else self.text_color_normal
 	on_x: self._trigger_update_tab_indicator()
 	on_width: self._trigger_update_tab_indicator()
 
-<AndroidTabsScrollView>:
-	size_hint: 1, 1
+<GoTabScrollView>:
+	size_hint: [1, 1]
 	do_scroll_y: False
-	bar_color: 0, 0, 0, 0
-	bar_inactive_color: 0, 0, 0, 0
+	bar_color: GoColors.no_color
+	bar_inactive_color: GoColors.no_color
 	bar_width: 0
 	effect_cls: DampedScrollEffect
 
-<AndroidTabs>:
+<GoTab>:
 	carousel: carousel
 	tab_bar: tab_bar
 	anchor_y: 'top'
 
-	AndroidTabsMain:
-		padding: 0, tab_bar.height, 0, 0
+	GoBoxLayout:
+		padding: [0, tab_bar.height, 0, 0]
 
-		AndroidTabsCarousel:
+		Carousel:
 			id: carousel
 			anim_move_duration: root.anim_duration
 			on_index: root.on_carousel_index(*args)
@@ -77,7 +58,7 @@ Builder.load_string('''
 			on_slides: self.index = root.default_tab
 			on_slides: root.on_carousel_index(self, 0)
 
-	AndroidTabsBar:
+	GoTabBar:
 		id: tab_bar
 		carousel: carousel
 		scrollview: scrollview
@@ -85,7 +66,7 @@ Builder.load_string('''
 		size_hint: 1, None
 		height: root.tab_bar_height
 
-		AndroidTabsScrollView:
+		GoTabScrollView:
 			id: scrollview
 			on_width: tab_bar._trigger_update_tab_bar()
 
@@ -105,17 +86,17 @@ Builder.load_string('''
 ''')
 
 
-class AndroidTabsException(Exception):
+class GoTabException(Exception):
 	pass
 
 
-class AndroidTabsLabel(ToggleButtonBehavior, Label):
+class GoTabLabel(ToggleButtonBehavior, Label):
 
-	text_color_normal = VariableListProperty([1, 1, 1, .6])
+	text_color_normal = VariableListProperty([0]*4)
 	'''Text color of the label when it is not selected.
 	'''
 
-	text_color_active = VariableListProperty([1])
+	text_color_active = VariableListProperty([0]*4)
 	'''Text color of the label when it is selected.
 	'''
 
@@ -146,12 +127,12 @@ class AndroidTabsLabel(ToggleButtonBehavior, Label):
 			self.tab_bar.update_indicator(self.x, self.width)
 
 
-class AndroidTabsBase(GoWidget):
+class GoTabBase(GoWidget):
 
 	'''
-	AndroidTabsBase allow you to create a tab.
+	GoTabBase allow you to create a tab.
 	You must create a new class that inherits
-	from AndroidTabsBase.
+	from GoTabBase.
 	In this way you have total control over the
 	views of your tabbed panel.
 	'''
@@ -166,7 +147,7 @@ class AndroidTabsBase(GoWidget):
 
 	def __init__(self, **kwargs):
 
-		self.tab_label = AndroidTabsLabel(tab=self)
+		self.tab_label = GoTabLabel(tab=self)
 		super().__init__(**kwargs)
 
 	def on_text(self, widget, text):
@@ -174,22 +155,10 @@ class AndroidTabsBase(GoWidget):
 		self.tab_label.text = self.text
 
 
-class AndroidTabsMain(BoxLayout):
+class GoTabScrollView(ScrollView):
+	'''GoTabScrollView hacked version to fix scroll_x manual setting.
 	'''
-	AndroidTabsMain is just a boxlayout that contain
-	the carousel. It allows you to have control over the carousel.
-	'''
-	pass
-
-
-class AndroidTabsCarousel(Carousel):
-	pass
-
-
-class AndroidTabsScrollView(ScrollView):
-	'''
-	AndroidTabsScrollView hacked version to fix scroll_x manual setting.
-	'''
+	
 	def goto(self, scroll_x, scroll_y):
 		''' Update event value along with scroll_*
 		'''
@@ -206,23 +175,12 @@ class AndroidTabsScrollView(ScrollView):
 			_update(self.effect_y, scroll_y)
 
 
-class AndroidTabsBar(BoxLayout, HoverBehavior, RippleEffectBehavior):
+class GoTabBar(GoBoxLayout):
 	'''
-	AndroidTabsBar is just a boxlayout that contain
+	GoTabBar is just a boxlayout that contain
 	the scrollview for the tabs.
 	It is also responsible to resize the tab label when it needed.
 	'''
-
-	stroke_color = ListProperty([0, 0 ,0 ,0])
-	stroke_width = NumericProperty(2)
-
-	background_color = ListProperty([0, 0, 0, 0])
-	background_color_pos = ListProperty([0, 0, 0, 0])
-	
-	_background_color = ListProperty([0, 0, 0, 0])
-
-	radius = ListProperty([0, 0, 0, 0])
-	effect_color = ListProperty([0, 0, 0, 0])
 
 	target = ObjectProperty(None, allownone=True)
 	'''
@@ -254,57 +212,7 @@ class AndroidTabsBar(BoxLayout, HoverBehavior, RippleEffectBehavior):
 	def __init__(self, **kwargs):
 		self._trigger_update_tab_bar = Clock.schedule_once(self._update_tab_bar, 0)
 		super().__init__(**kwargs)
-		Clock.schedule_once(self.set_color)
-	
-	def set_color(self, *args):
-		if isinstance(self.background_color[0], (int, float)):
-
-			if self.background_color != [0, 0, 0, 0]:
-				self._background_color = self.background_color
-
-		elif self.background_color[0] != [0, 0, 0, 0]:
-			self._background_color = self.background_color[0]
 		
-		if isinstance(self.background_color_pos[0], (int, float)):
-
-			if self.background_color_pos != [0, 0, 0, 0]:
-				self._background_color = self.background_color_pos
-				
-		elif self.background_color_pos[0] != [0, 0, 0, 0]:
-			self._background_color = self.background_color_pos[0]
-
-	def on_cursor_enter(self, *args):
-		if not isinstance(self.background_color_pos[0], (int, float)):
-			self._background_color = self.background_color_pos[1]
-
-		return super().on_cursor_enter(*args)
-
-	def on_cursor_leave(self, *args):
-		if not isinstance(self.background_color_pos[0], (int, float)):
-			self._background_color = self.background_color_pos[0]
-			
-		return super().on_cursor_leave(*args)
-
-	def on_touch_down(self, touch):
-		if not self.collide_point(*touch.pos):
-			return False
-		
-		if len(self.background_color) == 2 and isinstance(self.background_color, (list, tuple)):
-			self._background_color = self.background_color[1]
-		
-		self.ripple_show(touch)        
-		return super().on_touch_down(touch)
-
-	def on_touch_up(self, touch):
-		if not self.collide_point(*touch.pos):
-			return False
-		
-		if len(self.background_color) == 2 and isinstance(self.background_color, (list, tuple)):
-			self._background_color = self.background_color[0]
-
-		self.ripple_fade()
-		return super().on_touch_up(touch)
-
 	def _update_tab_bar(self, *args):
 		# update width of the labels when it is needed
 		width, tabs = self.scrollview.width, self.layout.children
@@ -419,9 +327,9 @@ class AndroidTabsBar(BoxLayout, HoverBehavior, RippleEffectBehavior):
 			self.update_indicator(x_step, w_step)
 
 
-class AndroidTabs(AnchorLayout):
+class GoTab(GoAnchorLayout):
 	'''
-	The AndroidTabs class.
+	The GoTab class.
 	You can use it to create your own custom tabbed panel.
 	'''
 
@@ -471,11 +379,11 @@ class AndroidTabs(AnchorLayout):
 			current_tab_label.width)
 
 	def add_widget(self, widget):
-		# You can add only subclass of AndroidTabsBase.
+		# You can add only subclass of GoTabBase.
 		if len(self.children) >= 2:
 
-			if not issubclass(widget.__class__, AndroidTabsBase):
-				raise AndroidTabsException('AndroidTabs accept only subclass of AndroidTabsBase')
+			if not issubclass(widget.__class__, GoTabBase):
+				raise GoTabException('GoTab accept only subclass of GoTabBase')
 
 			widget.tab_label.tab_bar = self.tab_bar
 			self.tab_bar.layout.add_widget(widget.tab_label)
@@ -485,11 +393,12 @@ class AndroidTabs(AnchorLayout):
 		return super().add_widget(widget)
 
 	def remove_widget(self, widget):
-		# You can remove only subclass of AndroidTabsBase.
-		if not issubclass(widget.__class__, AndroidTabsBase):
+		# You can remove only subclass of GoTabBase.
+		if not issubclass(widget.__class__, GoTabBase):
 
-			raise AndroidTabsException('AndroidTabs can remove only subclass of AndroidTabBase')
+			raise GoTabException('GoTab can remove only subclass of AndroidTabBase')
 
 		if widget.parent.parent == self.carousel:
 			self.tab_bar.layout.remove_widget(widget.tab_label)
 			self.carousel.remove_widget(widget)
+

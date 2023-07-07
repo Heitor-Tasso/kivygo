@@ -11,7 +11,7 @@ from kivygo.widgets.slider import NeuSlider
 from kivygo.widgets.button import GoRippleButton
 from kivygo.widgets.spinner import EffectSpinner
 from kivygo.widgets.label import AnimatedBezierLabel
-from kivygo.layouts.boxlayout import GoColoredBoxLayout
+from kivygo.layouts.boxlayout import GoBoxLayoutColor
 
 
 Builder.load_string("""
@@ -164,7 +164,7 @@ Builder.load_string("""
 
 """)
 
-class AnimBezierExample(GoColoredBoxLayout):
+class AnimBezierExample(GoBoxLayoutColor):
     points = ListProperty([0, 0])
     loop = BooleanProperty(False)
     started = BooleanProperty(False)

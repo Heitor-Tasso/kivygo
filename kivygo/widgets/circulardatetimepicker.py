@@ -1,7 +1,7 @@
 
 from kivy.animation import Animation
 from kivy.clock import Clock
-from kivygo.layouts.circularlayout import CircularLayout
+from kivygo.layouts.circularlayout import GoCircularLayout
 from kivy.graphics import Line, Color, Ellipse
 from kivy.lang import Builder
 from kivy.properties import (
@@ -97,8 +97,8 @@ class Number(Label):
     """
 
 
-class CircularNumberPicker(CircularLayout):
-    """A circular number picker based on CircularLayout. A selector will
+class CircularNumberPicker(GoCircularLayout):
+    """A circular number picker based on GoCircularLayout. A selector will
     help you pick a number. You can also set :attr:`multiples_of` to make
     it show only some numbers and use the space in between for the other
     numbers.

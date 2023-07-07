@@ -9,7 +9,7 @@ from kivy.properties import (
 from math import sin, cos, pi, radians
 
 
-class CircularLayout(Layout):
+class GoCircularLayout(Layout):
 
     padding = VariableListProperty([0, 0, 0, 0])
     '''Padding between the layout box and it's children: [padding_left,
@@ -102,7 +102,7 @@ class CircularLayout(Layout):
         for w in self.children:
             sha = w.size_hint_x
             if sha == None:
-                raise ValueError("size_hint_x cannot be None in a CircularLayout")
+                raise ValueError("size_hint_x cannot be None in a GoCircularLayout")
             else:
                 stretch_weight_angle += sha
 

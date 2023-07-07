@@ -10,6 +10,8 @@ from kivy.event import EventDispatcher
 from kivy.properties import ColorProperty, ObjectProperty
 
 PALLET_KEY_COLORS = [
+	"no_color",
+
 	"background_default", "background_disabled", "background_hover",
 	"background_border", "background_border_hover", "background_border_pressed",
 	"background_border_disabled", "background_pressed", "background_effect",
@@ -60,20 +62,15 @@ PALLET_KEY_COLORS = [
 	
 	"link_default", "link_disabled", "link_hover", "link_border",
 	"link_border_hover", "link_border_pressed", "link_border_disabled",
-	"link_pressed", "link_effect",
+	"link_pressed", "link_effect"
 ]
 
 Builder.load_string("""
 
-
-<ColorBase>:
+<GoBackgroundColor>:
 	background_color: GoColors.primary_default
-	background_hover: GoColors.primary_hover
 	background_disabled: GoColors.primary_disabled
-	border_color: GoColors.primary_border
-	border_hover: GoColors.primary_border_pressed
-	border_disabled: GoColors.primary_border_disabled
-
+	
 	canvas.before: 
 		Color:
 			rgba: self._background_color
@@ -81,6 +78,11 @@ Builder.load_string("""
 			pos: self.pos
 			size: self.size
 			radius: self.radius
+		    
+<GoBorderColor>:
+	border_color: GoColors.primary_border
+	border_hover: GoColors.primary_border_pressed
+	border_disabled: GoColors.primary_border_disabled
 	canvas.after:
 		Color:
 			rgba: self._border_color
@@ -88,16 +90,41 @@ Builder.load_string("""
 			rounded_rectangle: [*self.pos, *self.size, *self.radius]
 			width: self.border_width
 
+<GoHoverColor>:
+	background_hover: GoColors.primary_hover
+
+<GoColorBase>:
+	background_color: GoColors.primary_default
+	background_disabled: GoColors.primary_disabled
+	
+
 """)
 
+class GoBackgroundColor(GoWidget):
+	radius = ListProperty([0]*4)
 
-class ColorBase(HoverBehavior, GoWidget):
-	
 	background_color = ListProperty([0]*4)
-	background_hover = ListProperty([0]*4)
 	background_disabled = ListProperty([0]*4)
 	_background_color = ListProperty([0]*4)
+
+	def __init__(self, **kwargs):
+
+		super().__init__(**kwargs)
+		Clock.schedule_once(self.set_color)
+		self.bind(background_color=self.set_color)
+
+	def set_color(self, *args):
+		self._background_color = self.background_color
+		if hasattr(super(), "set_color"):
+			return super().set_color(*args)
+
+	def on_disabled(self, *args):
+		self._background_color = self.background_disabled
+		if hasattr(super(), "on_disabled"):
+			return super().on_disabled(*args)
 	
+
+class GoBorderColor(GoWidget):
 	_border_color = ListProperty([0]*4)
 	border_color = ListProperty([0]*4)
 	border_hover = ListProperty([0]*4)
@@ -107,17 +134,21 @@ class ColorBase(HoverBehavior, GoWidget):
 	radius = ListProperty([0]*4)
 
 	def __init__(self, **kwargs):
-
 		super().__init__(**kwargs)
-		Clock.schedule_once(self.set_color)
-		self.bind(
-			background_color=self.set_color,
-			border_color=self.set_color
-		)
+		self.bind(border_color=self.set_color)
 
 	def set_color(self, *args):
-		self._background_color = self.background_color
 		self._border_color = self.border_color
+		if hasattr(super(), "set_color"):
+			return super().set_color(*args)
+
+	def on_disabled(self, *args):
+		self._border_color = self.border_disabled
+		if hasattr(super(), "on_disabled"):
+			return super().on_disabled(*args)
+
+class GoHoverColor(HoverBehavior, GoBackgroundColor):
+	background_hover = ListProperty([0]*4)
 
 	def on_cursor_enter(self, *args):
 		self._background_color = self.background_hover
@@ -128,12 +159,14 @@ class ColorBase(HoverBehavior, GoWidget):
 		self._background_color = self.background_color
 		return super().on_cursor_leave(*args)
 
-	def on_disabled(self, *args):
-		self._background_color = self.background_disabled
-		self._border_color = self.border_disabled
+
+class GoColorBase(GoHoverColor, GoBorderColor, GoBackgroundColor):	
+	pass
 
 
 class Light:
+	no_color = [0, 0, 0, 0]
+
 	background_default = get_color_from_hex("F4F4F4")
 	background_disabled = get_color_from_hex("E0E0E0")
 	background_hover = get_color_from_hex("D8D8D8")
@@ -266,6 +299,8 @@ class Light:
 
 
 class Dark:
+	no_color = [0, 0, 0, 0]
+
 	background_default = get_color_from_hex("1F1F1F")
 	background_disabled = get_color_from_hex("333333")
 	background_hover = get_color_from_hex("2F2F2F")

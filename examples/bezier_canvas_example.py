@@ -1,7 +1,7 @@
 import __init__
 from kivygo.app import GoApp
 from kivygo.widgets.widget import GoWidget
-from kivygo.layouts.boxlayout import GoColoredBoxLayout
+from kivygo.layouts.boxlayout import GoBoxLayoutColor
 from kivy.lang import Builder
 from kivygo.widgets.bezier import BezierLine
 
@@ -53,7 +53,7 @@ class BezierCanvas(GoWidget):
 		self.add_widget(bezierline)
 		return True
 
-class BezierCanvasExample(GoColoredBoxLayout):
+class BezierCanvasExample(GoBoxLayoutColor):
 	pass
 
 class BezierCanvasExampleApp(GoApp):

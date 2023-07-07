@@ -1,33 +1,29 @@
 
 from kivy.uix.floatlayout import FloatLayout
-from kivygo.behaviors.hover import HoverBehavior
 from kivy.lang.builder import Builder
-from kivy.properties import ListProperty, NumericProperty
+from kivygo.colors import GoColorBase, GoBackgroundColor
 
 
 Builder.load_string("""
 
-<ColoredFloatLayout>:
-	canvas.before: 
-		Color:
-			rgba: self.background_color
-		RoundedRectangle:
-			pos: self.pos
-			size: self.size
-			radius: self.radius
-	canvas.after:
-		Color:
-			rgba: self.stroke_color
-		Line:
-			rounded_rectangle: [*self.pos, *self.size, *self.radius]
-			width: self.stroke_width
+<GoFloatLayout>:
+	background_color: GoColors.no_color
+	background_disabled: GoColors.no_color
+
+<GoFloatLayoutColor>:
+	background_color: GoColors.background_default
+	background_hover: GoColors.background_default
+	background_disabled: GoColors.background_disabled
+	border_color: GoColors.no_color
+	border_hover: GoColors.no_color
+	border_disabled: GoColors.no_color
 
 """)
 
 
-class ColoredFloatLayout(FloatLayout, HoverBehavior):
-	background_color = ListProperty([0, 0, 0, 0])
-	radius = ListProperty([0, 0, 0, 0])
-	stroke_color = ListProperty([0, 0 ,0 ,0])
-	stroke_width = NumericProperty(2)
+class GoFloatLayout(GoBackgroundColor, FloatLayout):
+	pass
+
+class GoFloatLayoutColor(GoColorBase, GoFloatLayout):
+	pass
 

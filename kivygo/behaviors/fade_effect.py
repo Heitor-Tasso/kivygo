@@ -6,7 +6,7 @@ from kivy.graphics import (
 
 from kivy.properties import (
 	ListProperty, NumericProperty,
-	StringProperty
+	StringProperty, BooleanProperty
 )
 
 from kivy.animation import Animation
@@ -45,6 +45,8 @@ class FadeEffectBehavior(HoverBehavior):
 	
 	# If the widget don't has radius, set it to 0
 	radius = ListProperty([0]*4)
+
+	auto_effect = BooleanProperty(True)
 
 	def __init__(self, **kwargs):
 		self.register_event_type('on_touch_anim_end')
@@ -120,3 +122,25 @@ class FadeEffectBehavior(HoverBehavior):
 	
 	def on_touch_anim_end(self, *args):
 		pass
+
+	def on_touch_down(self, touch):
+		result = super().on_touch_down(touch)
+		if not self.auto_effect:
+			return result
+		
+		if not self.collide_point(*touch.pos):
+			return False
+		
+		self.ripple_show(touch)
+		return result
+
+	def on_touch_up(self, touch):
+		result = super().on_touch_up(touch)
+		if not self.auto_effect:
+			return result
+		
+		if not self.collide_point(*touch.pos):
+			return False
+
+		self.ripple_fade()
+		return result

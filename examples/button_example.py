@@ -1,7 +1,7 @@
 import __init__
 from kivygo.app import GoApp
 from kivy.lang import Builder
-from kivygo.layouts.gridlayout import GoColoredGridLayout
+from kivygo.layouts.gridlayout import GoGridLayoutColor
 
 
 Builder.load_string("""
@@ -47,7 +47,7 @@ Builder.load_string("""
 """)
 
 
-class ButtonExample(GoColoredGridLayout):
+class ButtonExample(GoGridLayoutColor):
 	pass
 
 class ButtonExampleApp(GoApp):

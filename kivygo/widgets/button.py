@@ -5,7 +5,7 @@ from kivy.uix.label import Label
 from kivygo.behaviors.ripple_effect import RippleEffectBehavior
 from kivygo.behaviors.fade_effect import FadeEffectBehavior
 from kivygo.behaviors.button import ButtonBehavior, ToggleButtonBehavior
-from kivygo.colors import ColorBase
+from kivygo.colors import GoColorBase
 
 
 Builder.load_string("""
@@ -39,7 +39,7 @@ Builder.load_string("""
 
 """)
 
-class GoButton(ColorBase, ButtonBehavior, Label):
+class GoButton(GoColorBase, ButtonBehavior, Label):
 
 	background_pressed = ListProperty([0]*4)
 

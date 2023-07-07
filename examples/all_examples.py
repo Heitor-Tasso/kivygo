@@ -1,12 +1,12 @@
 import __init__
 from kivygo.app import GoApp
 from kivy.lang import Builder
-from kivygo.layouts.boxlayout import GoColoredBoxLayout
+from kivygo.layouts.boxlayout import GoBoxLayoutColor
 from kivygo.widgets.button import GoRippleButton
 from kivy.uix.scrollview import ScrollView
 
 from anchorlayout_example import AnchorLayoutExample
-from androidtab_example import AndroidTabs, ExampleTab
+from tab_example import GoTab, ExampleTab
 from anim_bezier_example import AnimBezierExample
 from animlabel_example import AnimLabelExample
 from bezier_canvas_example import BezierCanvasExample
@@ -14,8 +14,7 @@ from boxlayout_example import BoxLayoutExample
 from button_example import ButtonExample
 from camera_example import CameraExample
 from circular_bar_example import CircularBarExample
-from circularlayout_example import CircularLayout
-from curvelayout_example import CurveLayoutExample
+from circularlayout_example import GoCircularLayout
 from datetimepicker_example import CircularTimePicker
 from drag_example import DragExample
 from effect_example import EffectExample
@@ -31,7 +30,7 @@ from particle_example import ParticleExample
 # from kivyshadertransitions_example import 
 # from progressspinner_example import 
 # from radialslider_example import 
-# from simpletablelayout_example import 
+# from DynamicGridLayout_example import 
 # from segment_example import 
 # from navigationdrawer_example import 
 # from label_gradient_example import 
@@ -45,7 +44,7 @@ Builder.load_string("""
 
 <AllExamples>:
     base_height: "600dp"
-    GoColoredBoxLayout:
+    GoBoxLayoutColor:
         orientation: 'vertical'
         spacing: '20dp'
         padding: '20dp'
@@ -65,7 +64,7 @@ Builder.load_string("""
             size_hint_y: None
             height: root.base_height
         
-        AndroidTabs:
+        GoTab:
             size_hint_y: None
             height: root.base_height
             ExampleTab:
@@ -85,7 +84,7 @@ Builder.load_string("""
             size_hint_y: None
             height: root.base_height
 
-        CircularLayout:
+        GoCircularLayout:
             size_hint_y: None
             height: root.base_height
             direction: "cw"
@@ -94,10 +93,6 @@ Builder.load_string("""
             padding: "20dp"
             GoRippleButton:
             GoRippleButton:
-        
-        CurveLayoutExample:
-            size_hint_y: None
-            height: root.base_height
 	
         CircularTimePicker:
             size_hint_y: None

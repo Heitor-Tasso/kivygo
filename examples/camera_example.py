@@ -10,7 +10,7 @@ from kivygo.widgets.camera import PlantCamera, QRCode
 
 
 from kivygo.widgets.screenmanager import SwapScreen
-from kivygo.layouts.boxlayout import GoColoredBoxLayout
+from kivygo.layouts.boxlayout import GoBoxLayoutColor
 
 
 Builder.load_string("""

@@ -23,10 +23,9 @@ from kivy.lang.builder import Builder
 
 __clock = Builder.load_string("""
 
-GoColoredBoxLayout:
+GoBoxLayoutColor:
     size_hint: None, None
     height: "30dp"
-    background_color: [1, 0, 0, 0.5]
     padding: ["30dp", "0dp", "0dp", "0dp"]
     Label:
         id: clock_label

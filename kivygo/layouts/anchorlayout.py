@@ -1,38 +1,29 @@
 
 from kivy.uix.anchorlayout import AnchorLayout
 from kivy.lang import Builder
-from kivygo.behaviors.ripple_effect import RippleEffectBehavior
-from kivygo.colors import ColorBase
+from kivygo.colors import GoColorBase
 
 
 Builder.load_string("""
 
+<GoAnchorLayout>:
+	background_color: GoColors.no_color
+	background_disabled: GoColors.no_color
 
-<GoColoredAnchorLayout>:
+<GoAnchorLayoutColor>:
 	background_color: GoColors.background_default
-	background_hover: GoColors.background_hover
+	background_hover: GoColors.background_default
 	background_disabled: GoColors.background_disabled
-	border_color: GoColors.background_border
-	border_hover: GoColors.background_border_pressed
-	border_disabled: GoColors.background_border_disabled
+	border_color: GoColors.no_color
+	border_hover: GoColors.no_color
+	border_disabled: GoColors.no_color
 
 
 """)
 
+class GoAnchorLayout(AnchorLayout):
+	pass
 
-class GoColoredAnchorLayout(ColorBase, AnchorLayout, RippleEffectBehavior):
 
-	def on_touch_down(self, touch):
-		if not self.collide_point(*touch.pos):
-			return False
-		
-		self.ripple_show(touch)        
-		return super().on_touch_down(touch)
-
-	def on_touch_up(self, touch):
-		if not self.collide_point(*touch.pos):
-			return False
-
-		self.ripple_fade()
-		return super().on_touch_up(touch)
-
+class GoAnchorLayoutColor(GoColorBase, GoAnchorLayout):
+	pass

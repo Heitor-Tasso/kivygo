@@ -11,8 +11,8 @@ def load_factory():
             { "slider": ["NeuSlider", "NeuThumb"] }
         ],
         "layouts" : [
-            { "boxlayout": ["GoColoredBoxLayout", "GoColoredButtonBoxLayout", "GoDraggableBoxLayout"] },
-            { "anchorlayout": ["GoColoredAnchorLayout"] }
+            { "boxlayout": ["GoBoxLayoutColor", "GoDraggableBoxLayout"] },
+            { "anchorlayout": ["GoAnchorLayoutColor"] }
         ],
         "behaviors" : [
             { "button": ["ButtonBehavior", "ToggleButtonBehavior"] },

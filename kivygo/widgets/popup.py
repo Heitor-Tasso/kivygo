@@ -1,12 +1,12 @@
 
 from kivy.uix.modalview import ModalView
-from kivygo.layouts.boxlayout import GoColoredBoxLayout
+from kivygo.layouts.boxlayout import GoBoxLayoutColor
 from kivy.lang.builder import Builder
 from kivy.properties import StringProperty
 from kivygo.widgets.label import LabelToScroll
 from kivygo.widgets.icon import ButtonIcon
 from kivygo.widgets.button import GoRippleButton
-from kivygo.layouts.anchorlayout import GoColoredAnchorLayout
+from kivygo.layouts.anchorlayout import GoAnchorLayoutColor
 
 
 Builder.load_string("""
@@ -22,7 +22,7 @@ Builder.load_string("""
 	overlay_color: [0, 0, 0, 0]
 	background_color: [0, 0, 0, 0]
 
-	GoColoredBoxLayout:
+	GoBoxLayoutColor:
 		orientation: 'vertical'
 		padding: root.box_padding
 		background_color: root.box_background_color
@@ -45,7 +45,7 @@ Builder.load_string("""
 		size_hint_y: None
 		height: self.minimum_height
 
-		GoColoredBoxLayout:
+		GoBoxLayoutColor:
 			size_hint_y: None
 			height: self.minimum_height
 			background_color: hex('#ebeef2')
@@ -66,7 +66,7 @@ Builder.load_string("""
 					color: hex('#e06031')
 					id: lb_t
 
-			GoColoredAnchorLayout:
+			GoAnchorLayoutColor:
 				size_hint_y: None
 				height: lb_t.parent.height
 
@@ -104,7 +104,7 @@ Builder.load_string("""
 class BoxPopup(ModalView):
 
 	def add_widget(self, widget, *args, **kwargs):
-		if isinstance(widget, GoColoredBoxLayout):
+		if isinstance(widget, GoBoxLayoutColor):
 			return super().add_widget(widget, *args, **kwargs)
 		return self.ids._colored_box.add_widget(widget, *args, **kwargs)
 
