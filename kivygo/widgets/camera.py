@@ -29,9 +29,9 @@ def get_qrcode(path_img, index=0):
 Builder.load_string("""
 
 
-#:import IconInput kivygo.widgets.input.IconInput
-#:import GoRippleButton kivygo.widgets.button.GoRippleButton
-#:import ButtonIcon kivygo.widgets.icon.ButtonIcon
+#:import GoInputIcon kivygo.widgets.input.GoInputIcon
+#:import GoButtonRipple kivygo.widgets.button.GoButtonRipple
+#:import GoIconButton kivygo.widgets.icon.GoIconButton
 #:import GoAnchorLayoutColor kivygo.layouts.anchorlayout.GoAnchorLayoutColor
 #:import hex kivy.utils.get_color_from_hex
 
@@ -85,7 +85,7 @@ Builder.load_string("""
 								radius: [self.width / 1.7] * 4
 								size_hint_y: None
 								size: ['60dp', '30dp']
-								ButtonIcon:
+								GoIconButton:
 									size: ['25dp', '25dp']
 									# source: icon('flash')
 									on_release: root.start_scann()
@@ -102,7 +102,7 @@ Builder.load_string("""
 							radius: [self.width / 1.7] * 4
 							size_hint_y: None
 							size: ['80dp', '30dp']
-							ButtonIcon:
+							GoIconButton:
 								size: ['25dp', '25dp']
 								# source: icon('settings')
 								on_release: root.start_scann()
@@ -111,7 +111,7 @@ Builder.load_string("""
 					size_hint_y: None
 					height: '40dp'
 					width: self.parent.width
-					ButtonIcon:
+					GoIconButton:
 						size: ['25dp', '25dp']
 						# source: icon('return')
 						on_release: root.dismiss()
@@ -159,7 +159,7 @@ Builder.load_string("""
 							radius: [self.width / 1.7] * 4
 							size_hint_y: None
 							size: ['80dp', '25dp']
-							ButtonIcon:
+							GoIconButton:
 								size: ['25dp', '25dp']
 								# source: icon('aspect_ratio')
 								on_release: root.start_scann()
@@ -168,7 +168,7 @@ Builder.load_string("""
 							radius: [self.width / 1.7] * 4
 							size_hint_y: None
 							size: ['80dp', '25dp']
-							ButtonIcon:
+							GoIconButton:
 								size: ['25dp', '25dp']
 								# source: icon('dark_theme')
 								on_release: root.start_scann()
@@ -190,7 +190,7 @@ Builder.load_string("""
 							radius: [self.width / 1.7] * 4
 							size_hint_y: None
 							size: ['100dp', '70dp']
-							ButtonIcon:
+							GoIconButton:
 								size: ['60dp', '60dp']
 								# source: icon('img')
 								on_release: root.start_scann()
@@ -198,7 +198,7 @@ Builder.load_string("""
 							radius: [self.width / 1.7] * 4
 							size_hint_y: None
 							size: ['100dp', '70dp']
-							ButtonIcon:
+							GoIconButton:
 								size: ['70dp', '70dp']
 								# source: icon('btn_camera')
 								on_release: root.start_scann()
@@ -206,7 +206,7 @@ Builder.load_string("""
 							radius: [self.width / 1.7] * 4
 							size_hint_y: None
 							size: ['100dp', '70dp']
-							ButtonIcon:
+							GoIconButton:
 								size: ['60dp', '60dp']
 								# source: icon('btn_photos')
 								on_release: root.start_scann()
@@ -280,7 +280,7 @@ Builder.load_string("""
 								points: [(self.x + self.width), (self.y + dp(60)), (self.x + self.width), self.y, (self.x + self.width - dp(60)), self.y]
 								width: dp(3)
 
-						Icon:
+						GoIcon:
 							pos: [(self.parent.x + self.parent.width - self.width - dp(7)), (self.parent.y + dp(7))]
 							background_color: [1, 1, 1, 1]
 							radius: [self.width / 2] * 4
@@ -312,7 +312,7 @@ Builder.load_string("""
 						radius: [self.width / 2] * 4
 						size_hint_y: None
 						size: ['70dp', '70dp']
-						ButtonIcon:
+						GoIconButton:
 							size: ['45dp', '45dp']
 							# source: icon('qrcode')
 							on_release: root.start_scann()
@@ -329,7 +329,7 @@ Builder.load_string("""
 					size_hint_y: None
 					height: '50dp'
 					width: self.parent.width
-					ButtonIcon:
+					GoIconButton:
 						size: ['25dp', '25dp']
 						# source: icon('return')
 						on_release: root.dismiss()

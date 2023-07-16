@@ -1,7 +1,7 @@
 import __init__
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
-from kivygo.widgets.button import GoRippleButton
+from kivygo.widgets.button import GoButtonRipple
 from kivygo.widgets.widget import GoWidget
 from kivy.lang.builder import Builder
 from kivy.clock import Clock
@@ -20,19 +20,19 @@ Builder.load_string("""
         size_hint_x: None
         width: "70dp"
 
-        GoRippleButton:
+        GoButtonRipple:
             text: 'Sun'
             on_press: paint.show_sun()
         
-        GoRippleButton:
+        GoButtonRipple:
             text: 'Drugs'
             on_press: paint.show_drugs()
         
-        GoRippleButton:
+        GoButtonRipple:
             text: 'JellyFish'
             on_press: paint.show_jellyfish()
         
-        GoRippleButton:
+        GoButtonRipple:
             text: 'Fire'
             on_press: paint.show_fire()
 

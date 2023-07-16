@@ -6,12 +6,13 @@ from kivy.clock import Clock
 from kivy.vector import Vector
 from kivy.properties import ListProperty, BooleanProperty
 
-from kivygo.widgets.input import IconInput
+from kivygo.widgets.input import GoInputIcon
 from kivygo.widgets.slider import NeuSlider
-from kivygo.widgets.button import GoRippleButton
+from kivygo.widgets.button import GoButtonRipple
 from kivygo.widgets.spinner import EffectSpinner
-from kivygo.widgets.label import AnimatedBezierLabel
+from kivygo.widgets.label import GoLabelBezierAnimated
 from kivygo.layouts.boxlayout import GoBoxLayoutColor
+from kivygo.app import GoApp
 
 
 Builder.load_string("""
@@ -79,7 +80,7 @@ Builder.load_string("""
             size_hint: None, None
             size: self.texture_size[0] + dp(20), self.texture_size[1] + dp(30)
 
-        AnimatedBezierLabel:
+        GoLabelBezierAnimated:
             id: label
             points: root.points
             letter_duration: round(duration_slider.value, 2)
@@ -124,7 +125,7 @@ Builder.load_string("""
             height: '50dp'
             values: ['linear', 'out_bounce', 'out_elastic', 'out_quad', 'out_sine']
 
-        IconInput:
+        GoInputIcon:
             id: ti
             multiline: False
             radius: [dp(5)] * 4
@@ -147,7 +148,7 @@ Builder.load_string("""
             AnchorLayout:
                 anchor_x: "center"
                 anchor_y: "center"
-                GoRippleButton:
+                GoButtonRipple:
                     text: 'play!'
                     on_press: label.animate()
                     size_hint: None, None
@@ -156,7 +157,7 @@ Builder.load_string("""
             AnchorLayout:
                 anchor_x: "center"
                 anchor_y: "center"
-                GoRippleButton:
+                GoButtonRipple:
                     text: 'export'
                     on_press: app.write_points()
                     size_hint: None, None
@@ -178,7 +179,7 @@ class AnimBezierExample(GoBoxLayoutColor):
         self.ids.label.bind(size=self.start)
 
     def start(self, *args):
-        if self.get_root_window() != None:
+        if GoApp.get_root_window() != None:
             self.ids.label.unbind(size=self.start)
             if not self.started:
                 Clock.schedule_once(self.start)
@@ -260,7 +261,7 @@ class AnimBezierExample(GoBoxLayoutColor):
 
 
 
-class AnimBezierExampleApp(App):
+class AnimBezierExampleApp(GoApp):
     def build(self):
         return AnimBezierExample()
 

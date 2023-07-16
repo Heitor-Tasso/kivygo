@@ -8,7 +8,7 @@ from kivygo.widgets.slider import NeuSlider
 
 
 
-from kivygo.widgets.screenmanager import SwapScreen
+from kivygo.widgets.screenmanager import GoSwapScreen
 from kivygo.layouts.boxlayout import GoBoxLayoutColor
 
 
@@ -20,7 +20,7 @@ Builder.load_string("""
 
 <ManagerScreen>:
 
-	SwapScreen:
+	GoSwapScreen:
 		name: "screen_5"
 		
 		GoBoxLayoutColor:

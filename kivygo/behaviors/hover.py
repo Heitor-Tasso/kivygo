@@ -14,6 +14,7 @@ and when the mouse cursor goes beyond the widget.
 	on the Widget to `False`.
 
 """
+from kivygo.app import GoApp
 from kivy.uix.widget import Widget
 from kivy.core.window import Window
 from kivy.metrics import dp
@@ -51,7 +52,6 @@ class HoverBehavior(Widget):
 	cursor_pos = ListProperty([0, 0])
 	repeat_callback = BooleanProperty(False)
 
-	_last_parent = ObjectProperty(None)
 	__resizes = []
 
 
@@ -68,11 +68,11 @@ class HoverBehavior(Widget):
 
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
-
+		
 		self.register_event_type("on_cursor_enter")
 		self.register_event_type("on_cursor_leave")
 		self.register_event_type("on_window_cursor_leave")
-
+		
 		if not HoverBehavior.__resizes:
 			Window.bind(mouse_pos=self.on_mouse_update)
 			Window.bind(on_cursor_leave=self.window_cursor_leave)
@@ -80,8 +80,6 @@ class HoverBehavior(Widget):
 		HoverBehavior.__resizes.append(self)
 
 	def on_parent(self, *args):
-		if self.parent != None:
-			self._last_parent = self.parent
 		
 		if self.parent == None and HoverBehavior.__resizes:
 			if HoverBehavior.__resizes[0] is self:
@@ -90,13 +88,10 @@ class HoverBehavior(Widget):
 				del HoverBehavior.__resizes[0]
 				
 				if HoverBehavior.__resizes:
-					Window.bind(mouse_pos=HoverBehavior.__resizes[0].on_mouse_pos)
+					Window.bind(mouse_pos=HoverBehavior.__resizes[0].on_mouse_update)
 					Window.bind(on_cursor_leave=HoverBehavior.__resizes[0].window_cursor_leave)
 			else:
 				HoverBehavior.__resizes.remove(self)
-
-	def on_mouse_pos(self, *args):
-		pass
 
 	def window_cursor_leave(self, *args):
 		for wid in HoverBehavior.__resizes:
@@ -123,9 +118,9 @@ class HoverBehavior(Widget):
 			self.dispatch("on_cursor_enter")
 
 	def on_mouse_update(self, *args):
-		if not self.get_root_window():
+		if GoApp.get_root_window() == None:
 			return None
-		
+
 		for wid in HoverBehavior.__resizes:
 			
 			pos = list(map(dp, args[1]))

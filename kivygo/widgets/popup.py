@@ -3,9 +3,9 @@ from kivy.uix.modalview import ModalView
 from kivygo.layouts.boxlayout import GoBoxLayoutColor
 from kivy.lang.builder import Builder
 from kivy.properties import StringProperty
-from kivygo.widgets.label import LabelToScroll
-from kivygo.widgets.icon import ButtonIcon
-from kivygo.widgets.button import GoRippleButton
+from kivygo.widgets.label import GoLabelScroll
+from kivygo.widgets.icon import GoIconButton
+from kivygo.widgets.button import GoButtonRipple
 from kivygo.layouts.anchorlayout import GoAnchorLayoutColor
 
 
@@ -57,7 +57,7 @@ Builder.load_string("""
 				height: lb_t.height + dp(10)
 				padding: [dp(10), 0, 0, 0]
 				padding_x: "15dp"
-				LabelToScroll:
+				GoLabelScroll:
 					text: root.title
 					font_size: "30sp"
 					bold: True
@@ -70,7 +70,7 @@ Builder.load_string("""
 				size_hint_y: None
 				height: lb_t.parent.height
 
-				ButtonIcon:
+				GoIconButton:
 					size: ['35dp', '35dp']
 					source: app.get_icon('close')
 					on_release: root.dismiss()
@@ -78,7 +78,7 @@ Builder.load_string("""
 	AnchorLayout:
 		anchor_y: 'center'
 		padding_x: "15dp"
-		LabelToScroll:
+		GoLabelScroll:
 			text: root.msg
 			font_size: "20sp"
 
@@ -88,7 +88,7 @@ Builder.load_string("""
 		size_hint_y: None
 		height: 0 if not self.children else self.children[0].height + dp(30)
 
-		GoRippleButton:
+		GoButtonRipple:
 			text: "Continuar"
 			size_hint: None, None
 			size: '120dp', '55dp'

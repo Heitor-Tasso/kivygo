@@ -2,7 +2,7 @@ import __init__
 from kivygo.app import GoApp
 from kivy.lang import Builder
 from kivygo.layouts.boxlayout import GoBoxLayoutColor
-from kivygo.widgets.button import GoRippleButton
+from kivygo.widgets.button import GoButtonRipple
 
 Builder.load_string("""
 
@@ -13,12 +13,12 @@ Builder.load_string("""
     orientation: 'vertical'
 	background_color: [1, 1, 1, 0.8]
 	padding: "40dp"
-	GoRippleButton:
+	GoButtonRipple:
 		size_hint_y: None
 		height: "300dp"
-		text: "GoRippleButton"
+		text: "GoButtonRipple"
 		on_release:
-			GoColors.pallet = (Light if GoColors.pallet == Dark else Dark)
+			GoColors.palette = (Light if GoColors.palette == Dark else Dark)
 	GoBoxLayoutColor:
 		background_color: [0, 1, 0, 1]
 		padding: "40dp"
@@ -28,9 +28,9 @@ Builder.load_string("""
 		border_color: [0, 0, 0, 1]
 		border_hover: [0, 0, 0, 1]
 		border_disabled: [0, 0, 0, 1]
-		GoRippleButton:
+		GoButtonRipple:
 			text: 'Effect 1'
-		GoRippleButton:
+		GoButtonRipple:
 			text: 'Effect 2'
 """)
 

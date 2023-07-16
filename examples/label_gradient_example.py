@@ -2,7 +2,7 @@ import __init__
 from kivygo.app import GoApp
 from kivy.uix.floatlayout import FloatLayout
 from kivy.lang import Builder
-from kivygo.widgets.label import LabelGradient
+from kivygo.widgets.label import GoLabelGradient
 
 
 Builder.load_string("""
@@ -12,7 +12,7 @@ Builder.load_string("""
 
 
 <Manager>:
-    LabelGradient:
+    GoLabelGradient:
         text: 'Abba Dabba Doo'
         font_size: 30
         gradient: Texture.create(size=(64, 64))

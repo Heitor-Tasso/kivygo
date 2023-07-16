@@ -24,6 +24,7 @@ Builder.load_string("""
 
 <RippleEffectBehavior>:
 	effect_color: GoColors.primary_effect
+	radius_effect: [dp(10), dp(10), dp(10), dp(10)] if not hasattr(self, "radius") else self.radius
 
 """)
 
@@ -51,10 +52,7 @@ class RippleEffectBehavior(Widget):
 	_color_rgba = ListProperty([0]*4)
 
 	#radius if Rounded
-	radius_effect = ListProperty([dp(10)]*4)
-
-	# If the widget don't has radius, set it to 0
-	radius = ListProperty([0]*4)
+	radius_effect = ListProperty([0]*4)
 
 	auto_effect = BooleanProperty(True)
 
@@ -168,6 +166,7 @@ class RippleEffectBehavior(Widget):
 		if not self.collide_point(*touch.pos):
 			return False
 		
+		touch.grab(self)
 		self.ripple_show(touch)
 		return result
 
@@ -179,5 +178,7 @@ class RippleEffectBehavior(Widget):
 		if not self.collide_point(*touch.pos):
 			return False
 
-		self.ripple_fade()
+		if touch.grab_current is self:
+			touch.ungrab(self)
+			self.ripple_fade()
 		return result

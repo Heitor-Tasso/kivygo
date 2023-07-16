@@ -13,12 +13,12 @@ Builder.load_string("""
     anchor_y: "center"
 	anchor_x: "center"
 	background_color: GoColors.primary_default
-	GoRippleButton:
+	GoButtonRipple:
 		size_hint: None, None
 		size: "250dp", "100dp"
-		text: "GoRippleButton"
+		text: "GoButtonRipple"
 		on_release:
-			GoColors.pallet = (Light if GoColors.pallet == Dark else Dark)
+			GoColors.palette = (Light if GoColors.palette == Dark else Dark)
 """)
 
 

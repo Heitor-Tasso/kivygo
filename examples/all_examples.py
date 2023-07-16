@@ -2,7 +2,7 @@ import __init__
 from kivygo.app import GoApp
 from kivy.lang import Builder
 from kivygo.layouts.boxlayout import GoBoxLayoutColor
-from kivygo.widgets.button import GoRippleButton
+from kivygo.widgets.button import GoButtonRipple
 from kivy.uix.scrollview import ScrollView
 
 from anchorlayout_example import AnchorLayoutExample
@@ -91,8 +91,8 @@ Builder.load_string("""
             start_angle: -75
             inner_radius_hint: 0.7
             padding: "20dp"
-            GoRippleButton:
-            GoRippleButton:
+            GoButtonRipple:
+            GoButtonRipple:
 	
         CircularTimePicker:
             size_hint_y: None

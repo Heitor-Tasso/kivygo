@@ -10,7 +10,7 @@ from kivy.properties import (
 )
 
 from kivy.animation import Animation
-from kivygo.behaviors.hover import HoverBehavior
+from kivy.uix.widget import Widget
 from kivy.metrics import dp
 from kivy.clock import Clock
 from kivy.lang.builder import Builder
@@ -18,13 +18,14 @@ from kivy.lang.builder import Builder
 
 Builder.load_string("""
 
-<RippleEffectBehavior>:
+<FadeEffectBehavior>:
 	effect_color: GoColors.primary_effect
+	radius_effect: [dp(10), dp(10), dp(10), dp(10)] if not hasattr(self, "radius") else self.radius
 
 """)
 
 
-class FadeEffectBehavior(HoverBehavior):
+class FadeEffectBehavior(Widget):
 
 	#Type transition
 	transition_in = StringProperty('in_cubic')
@@ -42,9 +43,6 @@ class FadeEffectBehavior(HoverBehavior):
 
 	#radius if Rounded
 	radius_effect = ListProperty([dp(10)]*4)
-	
-	# If the widget don't has radius, set it to 0
-	radius = ListProperty([0]*4)
 
 	auto_effect = BooleanProperty(True)
 
@@ -131,6 +129,7 @@ class FadeEffectBehavior(HoverBehavior):
 		if not self.collide_point(*touch.pos):
 			return False
 		
+		touch.grab(self)
 		self.ripple_show(touch)
 		return result
 
@@ -142,5 +141,7 @@ class FadeEffectBehavior(HoverBehavior):
 		if not self.collide_point(*touch.pos):
 			return False
 
-		self.ripple_fade()
+		if touch.grab_current is self:
+			touch.ungrab(self)
+			self.ripple_fade()
 		return result

@@ -9,16 +9,22 @@ from kivygo.behaviors.hover import HoverBehavior
 from kivy.event import EventDispatcher
 from kivy.properties import ColorProperty, ObjectProperty
 
-PALLET_KEY_COLORS = [
-	"no_color",
+PALETTE_KEY_COLORS = [
+	"no_color", "dif_color",
 
 	"background_default", "background_disabled", "background_hover",
 	"background_border", "background_border_hover", "background_border_pressed",
 	"background_border_disabled", "background_pressed", "background_effect",
+
+	"background_variant_default",
+	"on_background_variant",
+	"on_background_variant_hover",
 	
 	"primary_default", "primary_disabled", "primary_hover", "primary_border",
 	"primary_border_hover", "primary_border_pressed", "primary_border_disabled",
 	"primary_pressed", "primary_effect",
+
+	"on_primary",
 	
 	"secondary_default", "secondary_disabled", "secondary_hover", "secondary_border",
 	"secondary_border_hover", "secondary_border_pressed", "secondary_border_disabled",
@@ -26,7 +32,7 @@ PALLET_KEY_COLORS = [
 	
 	"terciary_default", "terciary_disabled", "terciary_hover", "terciary_border",
 	"terciary_border_hover", "terciary_border_pressed", "terciary_border_disabled",
-	"terciary_pressed", "terciary_effect",
+	"terciary_pressed", "terciary_effect", "on_terciary",
 	
 	"title_default", "title_disabled", "title_hover", "title_border",
 	"title_border_hover", "title_border_pressed", "title_border_disabled",
@@ -129,7 +135,7 @@ class GoBorderColor(GoWidget):
 	border_color = ListProperty([0]*4)
 	border_hover = ListProperty([0]*4)
 	border_disabled = ListProperty([0]*4)
-	border_width = NumericProperty(dp(2))
+	border_width = NumericProperty(dp(1.01))
 	
 	radius = ListProperty([0]*4)
 
@@ -166,6 +172,7 @@ class GoColorBase(GoHoverColor, GoBorderColor, GoBackgroundColor):
 
 class Light:
 	no_color = [0, 0, 0, 0]
+	dif_color = get_color_from_hex("d242bf")
 
 	background_default = get_color_from_hex("F4F4F4")
 	background_disabled = get_color_from_hex("E0E0E0")
@@ -177,6 +184,10 @@ class Light:
 	background_pressed = get_color_from_hex("C2C2C2")
 	background_effect = get_color_from_hex("F4F4F4")
 
+	background_variant_default = get_color_from_hex("1c7947")
+	on_background_variant = get_color_from_hex("FFFFFF")
+	on_background_variant_hover = get_color_from_hex("ECECEC")
+
 	primary_default = get_color_from_hex("0099CC")
 	primary_disabled = get_color_from_hex("99CCFF")
 	primary_hover = get_color_from_hex("0077B3")
@@ -186,6 +197,8 @@ class Light:
 	primary_border_disabled = get_color_from_hex("99CCFF")
 	primary_pressed = get_color_from_hex("005580")
 	primary_effect = get_color_from_hex("0099CC")
+
+	on_primary = get_color_from_hex("ECECEC")
 	
 	secondary_default = get_color_from_hex("FF8800")
 	secondary_disabled = get_color_from_hex("FFCC80")
@@ -197,7 +210,7 @@ class Light:
 	secondary_pressed = get_color_from_hex("994C00")
 	secondary_effect = get_color_from_hex("FF8800")
 
-	terciary_default = get_color_from_hex("66BB6A")
+	terciary_default = get_color_from_hex("8ec63f")
 	terciary_disabled = get_color_from_hex("B2DFDB")
 	terciary_hover = get_color_from_hex("4CAF50")
 	terciary_border = get_color_from_hex("4CAF50")
@@ -206,6 +219,7 @@ class Light:
 	terciary_border_disabled = get_color_from_hex("B2DFDB")
 	terciary_pressed = get_color_from_hex("388E3C")
 	terciary_effect = get_color_from_hex("66BB6A")
+	on_terciary = get_color_from_hex("FFFFFF")
 
 	title_default = get_color_from_hex("333333")
 	title_disabled = get_color_from_hex("808080")
@@ -300,6 +314,7 @@ class Light:
 
 class Dark:
 	no_color = [0, 0, 0, 0]
+	dif_color = get_color_from_hex("d242bf")
 
 	background_default = get_color_from_hex("1F1F1F")
 	background_disabled = get_color_from_hex("333333")
@@ -311,6 +326,10 @@ class Dark:
 	background_pressed = get_color_from_hex("4C4C4C")
 	background_effect = get_color_from_hex("1F1F1F")
 
+	background_variant_default = get_color_from_hex("1c7947")
+	on_background_variant = get_color_from_hex("FFFFFF")
+	on_background_variant_hover = get_color_from_hex("ECECEC")
+
 	primary_default = get_color_from_hex("00A6EB")
 	primary_disabled = get_color_from_hex("63B8FF")
 	primary_hover = get_color_from_hex("0093D6")
@@ -320,6 +339,8 @@ class Dark:
 	primary_border_disabled = get_color_from_hex("63B8FF")
 	primary_pressed = get_color_from_hex("0070A3")
 	primary_effect = get_color_from_hex("00A6EB")
+
+	on_primary = get_color_from_hex("ECECEC")
 
 	secondary_default = get_color_from_hex("FF8A00")
 	secondary_disabled = get_color_from_hex("FFBD6A")
@@ -340,6 +361,7 @@ class Dark:
 	terciary_border_disabled = get_color_from_hex("80E27E")
 	terciary_pressed = get_color_from_hex("2E7D32")
 	terciary_effect = get_color_from_hex("4CAF50")
+	on_terciary = get_color_from_hex("FFFFFF")
 
 	title_default = get_color_from_hex("FFFFFF")
 	title_disabled = get_color_from_hex("B2B2B2")
@@ -434,23 +456,23 @@ class Dark:
 
 class Colors(EventDispatcher):
 
-	pallet = ObjectProperty(Light)
+	palette = ObjectProperty(Light)
 
 	last_binds = []
 
 	def __init__(self, *args, **kwargs):
-		# Set all colors properties to the App accordian to the `colors.PALLET_KEY_COLORS`
+		# Set all colors properties to the App accordian to the `colors.PALETTE_KEY_COLORS`
 
-		for key in PALLET_KEY_COLORS:
-			color = getattr(self.pallet, key)
+		for key in PALETTE_KEY_COLORS:
+			color = getattr(self.palette, key)
 			self.apply_property(
 				**{ key : ColorProperty(color) }
 			)
 
 		super().__init__(*args, **kwargs)
 
-	def on_pallet(self, *args):
-		self.change_pallet(self.pallet)
+	def on_palette(self, *args):
+		self.change_palette(self.palette)
 
 	def fbind(self, *args, **kwargs):
 		if len(args) != 3:
@@ -472,13 +494,13 @@ class Colors(EventDispatcher):
 		self.last_binds.append([prop_name, element, key, uid])
 		return uid
 
-	def change_pallet(self, _obj):
+	def change_palette(self, _obj):
 		if isinstance(_obj, dict):
 			return None
 
-		self.pallet = _obj
+		self.palette = _obj
 		
-		for key in PALLET_KEY_COLORS:
-			if hasattr(self.pallet, key):
-				setattr(self, key, getattr(self.pallet, key))
+		for key in PALETTE_KEY_COLORS:
+			if hasattr(self.palette, key):
+				setattr(self, key, getattr(self.palette, key))
 

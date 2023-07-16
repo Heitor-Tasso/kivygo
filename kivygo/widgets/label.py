@@ -23,7 +23,10 @@ from kivygo.transformations import Transformations
 
 Builder.load_string("""
 
-<LabelGradient>:
+<GoLabel>:
+	color: GoColors.text_default
+		    
+<GoLabelGradient>:
 	canvas.before:
 		# draw the gradient below the normal Label Texture
 		Color:
@@ -35,10 +38,12 @@ Builder.load_string("""
 			int(self.center_x - self.texture_size[0] / 2.0), \
 			int(self.center_y - self.texture_size[1] / 2.0)]
 			
-<LabelButton>:
-	color: [1, 1, 1, 1]
+<GoLabelButton>:
+	color: GoColors.text_default 
+	on_press: self.color = GoColors.text_pressed
+	on_release: self.color = GoColors.text_default
 
-<LabelToScroll>:
+<GoLabelScroll>:
 	text: 'Section Option'
 	size_hint_y: None
 	on_size: self.update_content()
@@ -49,8 +54,10 @@ Builder.load_string("""
 
 """)
 
+class GoLabel(Label):
+	pass
 
-class LabelGradient(Label):
+class GoLabelGradient(GoLabel):
 
 	gradient = ObjectProperty(None)
 	bg_color = ListProperty([0, 0, 0, 255])
@@ -70,7 +77,7 @@ class LabelGradient(Label):
 
 		# The normal Label texture is transparent except for the text itself
 		# This code changes the texture to make the text transparent, and everything else
-		# gets set to self.bg_color (a property of LabelGradient)
+		# gets set to self.bg_color (a property of GoLabelGradient)
 		pixels = list(self.texture.pixels)
 		
 		for index in range(3, len(pixels)-4, 4):
@@ -89,11 +96,11 @@ class LabelGradient(Label):
 		self.texture = new_texture
 
 	
-class LabelButton(ButtonBehavior, Label):
+class GoLabelButton(ButtonBehavior, GoLabel):
 	pass
 
 
-class LabelToScroll(Label):
+class GoLabelScroll(GoLabel):
 
 	n_lines = NumericProperty(0)
 	d_height = NumericProperty(0)
@@ -111,7 +118,7 @@ class LabelToScroll(Label):
 		self.height = lb.texture.size[1]
 
 
-class AnimatedLabel(Label):
+class GoLabelAnimated(GoLabel):
 	'''duration of the animation of each letter'''
 	letter_duration = NumericProperty()
 
@@ -240,7 +247,7 @@ class AnimatedLabel(Label):
 		Clock.schedule_interval(self.tick, 0)
 
 
-class AnimatedBezierLabel(AnimatedLabel):
+class GoLabelBezierAnimated(GoLabelAnimated):
 
 	def compute_bezier(self, points, n):
 		'''compute nth segment point among segments of the bezier line

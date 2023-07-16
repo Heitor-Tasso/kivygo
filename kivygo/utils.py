@@ -35,7 +35,7 @@ w, h: widget size
 sw, sh: svg size
 sf: svg_file, only needed for kivy icon support
 """
-# Special support for Kivy svg Icon :)
+# Special support for Kivy svg GoIcon :)
 
 def x(x_pos, wx, w, sw, sf):
 

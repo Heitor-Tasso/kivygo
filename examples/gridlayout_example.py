@@ -11,7 +11,8 @@ Builder.load_string('''
     size: root.size
     cols: 5
     rows: 2
-
+    spacing: "20dp"
+    padding: "10dp"
     GoButton:
         text: "(row: 1, col: 1)"
 

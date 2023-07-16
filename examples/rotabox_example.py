@@ -11,7 +11,7 @@ from kivy.clock import Clock
 import time
 from kivy.properties import ObjectProperty
 from kivygo.widgets.rotabox import Rotabox
-from kivygo.widgets.screenmanager import SwapScreen
+from kivygo.widgets.screenmanager import GoSwapScreen
 from kivygo.layouts.boxlayout import GoBoxLayoutColor
 from kivy.clock import Clock
 from kivy.lang import Builder
@@ -53,7 +53,7 @@ Builder.load_string("""
 			pos: self.pos
 			size: self.size
 
-	SwapScreen:
+	GoSwapScreen:
 		name: "screen_1"
 		
 		Widget:
@@ -74,7 +74,7 @@ Builder.load_string("""
 					[(0.033, 0.315), (0.212, 0.598), (0.218, 0.028)]]
 				draw_bounds: True
 
-	SwapScreen:
+	GoSwapScreen:
 		name: "screen_2"
 		
 		FloatLayout:
@@ -99,7 +99,7 @@ Builder.load_string("""
 					size_hint: 1, 1
 					text: 'A Rotabox Button'
 
-	SwapScreen:
+	GoSwapScreen:
 		name: "screen_3"
 		on_enter:
 			Clock.schedule_interval(root.update_coins, 0.016)
@@ -117,7 +117,7 @@ Builder.load_string("""
 				pos: 430, 120
 	
 				
-	SwapScreen:
+	GoSwapScreen:
 		name: "screen_4"
 		on_enter:
 			Clock.schedule_interval(root.update_origin_change, 1/60.0)

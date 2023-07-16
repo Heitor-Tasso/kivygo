@@ -2,7 +2,7 @@
 
 from kivy.lang import Builder
 from kivy.uix.widget import Widget
-from kivygo.widgets.image import ImageWithSVG
+from kivygo.widgets.image import GoImage
 
 from kivy.properties import (
 	ColorProperty, ListProperty, 
@@ -26,13 +26,13 @@ Builder.load_string("""
 	canvas:
 		Clear
 		Color:
-			rgba: [0]*4 if self.image_source else root.line_color
+			rgba: [0]*4 if self.source else root.line_color
 		RoundedRectangle:
 			pos: [ ( self.x - self.outline_width ), ( self.y - self.outline_width ) ]
 			size: [ ( self.width + (self.outline_width*2) ), ( self.height + (self.outline_width*2) ) ]
 			radius: root.radius
 		Color:
-			rgba: [0]*4 if self.image_source else root.background_color
+			rgba: [0]*4 if self.source else root.background_color
 		RoundedRectangle:
 			pos: self.pos
 			size: self.size
@@ -40,7 +40,7 @@ Builder.load_string("""
 
 	canvas.after:
 		Color:
-			rgba: self.color if self.image_source else [0]*4
+			rgba: self.color if self.source else [0]*4
 		Rectangle:
 			texture: self.texture
 			pos: self.pos
@@ -84,7 +84,7 @@ Builder.load_string("""
 		y: self.parent.top - (self.height/2)
 		background_color: root._bord_background_color
 		line_color: root._bord_line_color
-		image_source: root.bord_icon_source
+		source: root.bord_icon_source
 		size: root.bord_size
 		
 	ResizableRectangleBord: # BOTTOM LEFT RECTANGLE
@@ -93,7 +93,7 @@ Builder.load_string("""
 		y: self.parent.y-(self.height/2)
 		background_color: root._bord_background_color
 		line_color: root._bord_line_color
-		image_source: root.bord_icon_source
+		source: root.bord_icon_source
 		size: root.bord_size
 	
 	ResizableRectangleBord: # BOTTOM RIGHT RECTANGLE
@@ -102,7 +102,7 @@ Builder.load_string("""
 		y: self.parent.y-(self.height/2)
 		background_color: root._bord_background_color
 		line_color: root._bord_line_color
-		image_source: root.bord_icon_source
+		source: root.bord_icon_source
 		size: root.bord_size
 	
 	ResizableRectangleBord:  # TOP RIGHT RECTANGLE
@@ -111,7 +111,7 @@ Builder.load_string("""
 		y: self.parent.top - (self.height/2)
 		background_color: root._bord_background_color
 		line_color: root._bord_line_color
-		image_source: root.bord_icon_source
+		source: root.bord_icon_source
 		size: root.bord_size
 
 	ResizableRectangleBord:  # TOP CENTER RECTANGLE
@@ -120,7 +120,7 @@ Builder.load_string("""
 		y: self.parent.top - (self.height/2)
 		background_color: root._bord_background_color
 		line_color: root._bord_line_color
-		image_source: root.bord_icon_source
+		source: root.bord_icon_source
 		size: root.bord_size
 	
 	ResizableRectangleBord:  # LEFT CENTER RECTANGLE
@@ -129,7 +129,7 @@ Builder.load_string("""
 		y: self.parent.y + (self.parent.height/2) - (self.height/2)
 		background_color: root._bord_background_color
 		line_color: root._bord_line_color
-		image_source: root.bord_icon_source
+		source: root.bord_icon_source
 		size: root.bord_size
 
 	ResizableRectangleBord:  # RIGHT CENTER RECTANGLE
@@ -138,7 +138,7 @@ Builder.load_string("""
 		y: self.parent.y + (self.parent.height/2) - (self.height/2)
 		background_color: root._bord_background_color
 		line_color: root._bord_line_color
-		image_source: root.bord_icon_source
+		source: root.bord_icon_source
 		size: root.bord_size
 
 	ResizableRectangleBord:  # BOTTOM CENTER RECTANGLE
@@ -147,13 +147,13 @@ Builder.load_string("""
 		y: self.parent.y - (self.height/2)
 		background_color: root._bord_background_color
 		line_color: root._bord_line_color
-		image_source: root.bord_icon_source
+		source: root.bord_icon_source
 		size: root.bord_size
 
 """)
 
 
-class ResizableRectangleBord(ImageWithSVG):
+class ResizableRectangleBord(GoImage):
 	outline_width = NumericProperty(dp(2))
 	radius = ListProperty([0, 0, 0, 0])
 	background_color = ColorProperty("#FFFFFF")
@@ -190,7 +190,6 @@ class ResizeSelectBehavior(Widget):
 	last_touch_pos = (0, 0)
 
 	__resizes = []
-	_last_parent = ObjectProperty(None)
 	change_pos_varible = StringProperty("pos")
 	moved = 0
 	touched = 0
@@ -217,9 +216,6 @@ class ResizeSelectBehavior(Widget):
 		self._set_default_colors()
 	
 	def on_parent(self, *args):
-		if self.parent != None:
-			self._last_parent = self.parent
-		
 		if self.parent == None and ResizeSelectBehavior.__resizes:
 			if ResizeSelectBehavior.__resizes[0] is self:
 				Window.unbind(mouse_pos=self.on_mouse_pos)

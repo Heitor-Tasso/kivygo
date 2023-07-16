@@ -11,15 +11,15 @@ from kivygo.colors import GoColorBase
 Builder.load_string("""
 
 <GoButton>:
-	color: GoColors.text_default
+	color: GoColors.on_terciary
 	background_color: GoColors.terciary_default
 	background_hover: GoColors.terciary_hover
 	background_disabled: GoColors.terciary_disabled
 	background_pressed: self.background_hover
 
-	border_color: GoColors.terciary_border
-	border_hover: GoColors.terciary_border_pressed
-	border_disabled: GoColors.terciary_border_disabled
+	border_color: GoColors.no_color
+	border_hover: GoColors.no_color
+	border_disabled: GoColors.no_color
 
 
 <GoBaseEffectButton>:
@@ -28,14 +28,14 @@ Builder.load_string("""
 	effect_color: GoColors.terciary_effect
 
 	
-<GoRippleButton>:
+<GoButtonRipple>:
 			
-<GoRippleToggleButton>:
+<GoToggleButtonRipple>:
 	
 
-<GoFadeButton>:
+<GoButtonFade>:
 		
-<GoFadeToggleButton>:
+<GoToggleButtonFade>:
 
 """)
 
@@ -68,37 +68,17 @@ class GoButton(GoColorBase, ButtonBehavior, Label):
 
 		return result
 
-class GoBaseEffectButton(GoButton):
 
-	def on_touch_down(self, touch):		
-		if not self.collide_point(*touch.pos):
-			return False
-		
-		touch.grab(self)
-		self.ripple_show(touch)
-
-		return super().on_touch_down(touch)
-
-
-	def on_touch_up(self, touch):
-		
-		if touch.grab_current is self:
-			touch.ungrab(self)
-			self.ripple_fade()
-		
-		return super().on_touch_up(touch)
-
-
-class GoRippleButton(GoBaseEffectButton, RippleEffectBehavior):
+class GoButtonRipple(RippleEffectBehavior, GoButton):
 	pass
 
-class GoRippleToggleButton(ToggleButtonBehavior, GoRippleButton):
+class GoToggleButtonRipple(ToggleButtonBehavior, GoButtonRipple):
 	pass
 
 
-class GoFadeButton(GoBaseEffectButton, FadeEffectBehavior):
+class GoButtonFade(FadeEffectBehavior, GoButton):
 	pass
 
-class GoFadeToggleButton(ToggleButtonBehavior, GoFadeButton):
+class GoToggleButtonFade(ToggleButtonBehavior, GoButtonFade):
 	pass
 

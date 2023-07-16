@@ -15,16 +15,23 @@ from kivy.uix.textinput import TextInput
 
 Builder.load_string("""
 
-#:import ToggleButtonIcon kivygo.widgets.icon.ToggleButtonIcon
+#:import GoIconToggleButton kivygo.widgets.icon.GoIconToggleButton
 #:import InputEditor kivygo.widgets.terminal.InputEditor
 
 
-<IconInput>:
+<GoInputIcon>:
 	hide: False
 	padding: [dp(10), dp(10), dp(10), dp(10)]
 	size_hint_y: None
 	height: '60dp'
 	input: input
+		    
+	line_color: GoColors.primary_border
+	line_color_pos: GoColors.primary_border_hover
+	background_color: GoColors.primary_default
+	label_defaut_color: GoColors.title_default
+	label_pos_color: GoColors.title_hover
+	text_input_color: GoColors.text_default
 
 	BoxLayout:
 		id: box
@@ -49,7 +56,7 @@ Builder.load_string("""
 			width: ( root.icon_left_size[0] + dp(15) )
 			anchor_y: 'center'
 			
-			ToggleButtonIcon:
+			GoIconToggleButton:
 				id: button_left
 				fit_mode: "fill"
 				name: 'icon_left'
@@ -57,7 +64,7 @@ Builder.load_string("""
 				size_hint_y: None
 				size: root.icon_left_size
 				pos_source: root.icon_left_pos_source
-				icon_source: root.icon_left_source
+				source: root.icon_left_source
 				icon_color: root.icon_left_color
 				pos_color: root.icon_left_color_pos
 				icon_state_source: root.icon_left_state_sources
@@ -97,7 +104,7 @@ Builder.load_string("""
 			anchor_y: 'center'
 			id: anchor_right
 
-			ToggleButtonIcon:
+			GoIconToggleButton:
 				id: button_right
 				name: 'icon_right'
 				window_root: root
@@ -106,7 +113,7 @@ Builder.load_string("""
 				size_hint_y: None
 				size: root.icon_right_size
 				pos_source: root.icon_right_pos_source
-				image_source: root.icon_right_source
+				source: root.icon_right_source
 				icon_state_source: root.icon_right_state_sources
 				icon_color: root.icon_right_color
 				pos_color: root.icon_right_color_pos
@@ -138,14 +145,14 @@ class MyTextInput(TextInput):
 		return r
 
 
-class IconInput(AnchorLayout):
+class GoInputIcon(AnchorLayout):
 
-	line_color = ListProperty([1,1,1,1])
-	line_color_pos = ListProperty([0, 0, 0, 0])
-	color_line = ListProperty([0, 0, 0, 0])
+	line_color = ListProperty([0]*4)
+	line_color_pos = ListProperty([0]*4)
+	color_line = ListProperty([0]*4)
 	outline_width = NumericProperty(1.01)
 
-	background_color = ListProperty([0,0,0,0])
+	background_color = ListProperty([0]*4)
 	multiline = BooleanProperty(False)
 	radius = ListProperty([dp(15), dp(15), dp(15), dp(15)])
 
@@ -171,13 +178,13 @@ class IconInput(AnchorLayout):
 
 	label_text = StringProperty('')
 	label_font_size = NumericProperty(dp(16))
-	label_defaut_color = ListProperty([1, 1, 1, 1])
-	label_pos_color = ListProperty([1, 1, 1, 1])
+	label_defaut_color = ListProperty([0]*4)
+	label_pos_color = ListProperty([0]*4)
 	state_label = StringProperty('')
 
 	input = ObjectProperty(None)
 	hide = ObjectProperty(False)
-	text_input_color = ListProperty([1, 1, 1, 1])
+	text_input_color = ListProperty([0]*4)
 	input_text = StringProperty("")
 
 	__events__ = ('on_icon_right_press', 'on_icon_right_release', 'on_icon_left_press',
@@ -219,7 +226,7 @@ class IconInput(AnchorLayout):
 			if button.pos_source and button.num == 1:
 				button.source = button.pos_source
 			elif button.num == 2:
-				button.source = button.icon_source
+				button.source = button.source
 				button.num = 0
 		elif button.state_button == 'button':
 			if button.pos_source:
@@ -227,7 +234,7 @@ class IconInput(AnchorLayout):
 	
 	def icon_up(self, button, *args):
 		if button.state_button == 'button':
-			button.source = button.icon_source
+			button.source = button.source
 
 	def config(self, *args):
 		self.pads()

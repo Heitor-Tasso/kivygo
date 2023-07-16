@@ -1,5 +1,5 @@
 
-from kivy.properties import ObjectProperty, ListProperty, StringProperty
+from kivy.properties import ObjectProperty, ListProperty, ColorProperty
 from kivy.lang.builder import Builder
 from kivy.clock import Clock
 from kivy.metrics import dp
@@ -18,43 +18,16 @@ from PIL import Image as PILImage
 import io
 
 
-def get_kivy_image_from_bytes(image_bytes, file_extension, image_widget=None):
-	# Return a Kivy image set from a bytes variable
-	buf = io.BytesIO(image_bytes)
-	kw = dict()
-
-	if image_widget != None:
-		kw = {
-			"mipmap": image_widget.mipmap,
-			"anim_delay": image_widget.anim_delay,
-			"keep_data": image_widget.keep_data,
-			"nocache": image_widget.nocache
-		}
-	cim = CoreImage(buf, ext=file_extension, **kw)
-	return cim
-
-
-def drawing2png(path, fp):
-	draw = svglib.svg2rlg(path)
-	if draw == None:
-		return None
-	
-	red_img = renderPM.drawToPIL(draw, bg=green, configPIL={'transparent': green})
-	green_img = renderPM.drawToPIL(draw, bg=red, configPIL={'transparent': red})
-	bg_mask = ImageChops.difference(red_img, green_img).convert('1', dither=PILImage.NONE)
-	bg_mask = ImageChops.invert(bg_mask)
-	red_img.putalpha(bg_mask)
-	red_img.save(fp, fmt='png')
-
-
 Builder.load_string("""
 
-<RoudedImage>:
-	size_hint_x: None
-	width: '70dp'
+<GoImage>
+	fit_mode: "fill"
+
+<GoImage>:
 	canvas:
+		Clear:
 		Color:
-			rgba:[1, 1, 1, 1]
+			rgba: self._color
 		RoundedRectangle:
 			pos: self.pos
 			size: self.size
@@ -65,46 +38,63 @@ Builder.load_string("""
 """)
 
 
-class RoudedImage(GoWidget):
+class GoImage(Image):
 
-	texture = ObjectProperty(None)
-	source = StringProperty('')
-	radius = ListProperty([dp(5), 0, 0, dp(5)])
-	
+	radius = ListProperty([0]*4)
+	_color = ColorProperty([0]*4)
+
 	def __init__(self, **kwargs):
 		super().__init__(**kwargs)
-		Clock.schedule_once(self.create_texture, 1)
+		self._color = self.color
+		Clock.schedule_once(self.texture_update)
 
-	def create_texture(self, *args):
-		image = Image(
-			source=self.source, fit_mode="fill", 
-			size_hint=(None, None), size=self.size,
-		)
-		self.texture = image.texture
+	def on_color(self, *args):
+		self._color = self.color
 
-
-class ImageWithSVG(Image):
-	
-	image_source = ObjectProperty('')
-	
-	def on_image_source(self, *args):
-
-		if isinstance(self.image_source, str):
-			self.set_source(self.image_source)
-
-	def set_source(self, source:str):
-
-		if not source.endswith(".svg"):
-			self.source = source
+	def set_texture_from_resource(self, resource):
+		if not resource:
+			self._clear_core_image()
 			return None
 		
+		if not resource.endswith(".svg"):
+			return super().set_texture_from_resource(resource)
+	
+		if self._coreimage:
+			self._coreimage.unbind(on_texture=self._on_tex_change)
+
 		file = tempfile.NamedTemporaryFile(mode='+wb', suffix=".png")
 		try:
-			drawing2png(source, file)
+			self.svg_to_png(self.source, file)
 		except ValueError:
 			pass
 
 		file.seek(0)
-		img = get_kivy_image_from_bytes(file.read(), 'png', self)
-		self.texture = img.texture
+		self._coreimage = image = self.get_kivy_image_from_bytes(file.read(), 'png')
+		image.bind(on_texture=self._on_tex_change)
+		self.texture = image.texture
 
+	
+	def get_kivy_image_from_bytes(self, image_bytes, file_extension):
+		# Return a Kivy image set from a bytes variable
+		buf = io.BytesIO(image_bytes)
+	
+		image = CoreImage(
+			buf, ext=file_extension,
+			mipmap=self.mipmap,
+			anim_delay=self.anim_delay,
+			keep_data=self.keep_data,
+			nocache=self.nocache
+		)
+		return image
+
+	def svg_to_png(self, path, fp):
+		draw = svglib.svg2rlg(path)
+		if draw == None:
+			return None
+		
+		red_img = renderPM.drawToPIL(draw, bg=green, configPIL={'transparent': green})
+		green_img = renderPM.drawToPIL(draw, bg=red, configPIL={'transparent': red})
+		bg_mask = ImageChops.difference(red_img, green_img).convert('1', dither=PILImage.NONE)
+		bg_mask = ImageChops.invert(bg_mask)
+		red_img.putalpha(bg_mask)
+		red_img.save(fp, fmt='png')

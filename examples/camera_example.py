@@ -9,7 +9,7 @@ from kivygo.widgets.camera import PlantCamera, QRCode
 
 
 
-from kivygo.widgets.screenmanager import SwapScreen
+from kivygo.widgets.screenmanager import GoSwapScreen
 from kivygo.layouts.boxlayout import GoBoxLayoutColor
 
 
@@ -18,11 +18,11 @@ Builder.load_string("""
 
 <CameraExample>:
 
-	SwapScreen:
+	GoSwapScreen:
 		name: "screen_2"
 		PlantCamera:
 		
-	SwapScreen:
+	GoSwapScreen:
 		name: "screen_5"
 		QRCode:
 

@@ -15,7 +15,7 @@ Builder.load_string('''
 <ExampleTab>:
     padding: "30dp"
     background_color: GoColors.primary_default
-    GoRippleButton:
+    GoButtonRipple:
         text: root.text
         
 ''')

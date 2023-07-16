@@ -14,6 +14,7 @@ from kivy.properties import (
 from kivy.metrics import dp
 from kivy.lang.builder import Builder
 from math import ceil
+from kivygo.app import GoApp
 
 
 Builder.load_string("""
@@ -162,7 +163,7 @@ class CircularProgressBar(AnchorLayout):
 		self.ids.circular_widget.bind(size=self.start)
 	
 	def start(self, *args):
-		if self.get_root_window() != None:
+		if GoApp.get_root_window() != None:
 			self.ids.circular_widget.unbind(size=self.start)
 			if not self.started:
 				Clock.schedule_once(self.start)

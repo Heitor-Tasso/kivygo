@@ -15,21 +15,21 @@ Builder.load_string("""
     spacing: '30dp'
     rows: 3
 
-    GoRippleButton:
+    GoButtonRipple:
         text: "Normal Rectangle Button"
 		on_release:
-			GoColors.pallet = (Dark if GoColors.pallet == Light else Light)
+			GoColors.palette = (Dark if GoColors.palette == Light else Light)
 
         background_color: GoColors.primary_default
 		background_hover: GoColors.primary_hover
 		effect_color: GoColors.primary_effect
 		color: GoColors.title_default
     
-	GoRippleToggleButton:
+	GoToggleButtonRipple:
         text: "Toggle Rectangle Button"
         group: "toggle"
 	
-    GoFadeButton:
+    GoButtonFade:
         text: "Normal Rounded Button"
         radius: [dp(50)] * 4
         radius_effect: self.radius
@@ -37,7 +37,7 @@ Builder.load_string("""
 		background_hover: GoColors.secondary_hover
 		effect_color: GoColors.secondary_effect
     
-    GoFadeToggleButton:
+    GoToggleButtonFade:
         text: "Toggle Rounded Button"
 	    group: "toggle"
 	    background_color: GoColors.warning_default

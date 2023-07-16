@@ -1,8 +1,29 @@
+
 from kivy.uix.screenmanager import Screen
 from kivy.properties import NumericProperty
+from kivy.lang.builder import Builder
+from kivygo.colors import GoColorBase, GoBackgroundColor
 
 
-class SwapScreen(Screen):
+Builder.load_string("""
+
+<GoSwapScreen>:
+	background_color: GoColors.no_color
+	background_disabled: GoColors.no_color
+
+
+<GoSwapScreenColor>:
+	background_color: GoColors.background_default
+	background_hover: GoColors.background_default
+	background_disabled: GoColors.background_disabled
+	border_color: GoColors.no_color
+	border_hover: GoColors.no_color
+	border_disabled: GoColors.no_color
+
+""")
+
+
+class GoSwapScreen(GoBackgroundColor, Screen):
 
 	touch_x = NumericProperty(0)
 		
@@ -53,3 +74,6 @@ class SwapScreen(Screen):
 		self.touch_x = 0
 		return False
 
+
+class GoSwapScreenColor(GoColorBase, GoSwapScreen):
+	pass

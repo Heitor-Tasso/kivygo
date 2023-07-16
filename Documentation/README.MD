@@ -25,10 +25,10 @@ GoAnchorLayoutColor:
   anchor_y: "center"
   anchor_x: "center"
   background_color: [1, 1, 1, 0.8]
-  GoRippleButton:
+  GoButtonRipple:
     size_hint: None, None
     size: "250dp", "100dp"
-    text: "GoRippleButton"
+    text: "GoButtonRipple"
 
 
 
@@ -70,7 +70,7 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
   background_color: hex('#03A9F4')
 
 <ExampleTab>:
-  GoRippleButton:
+  GoButtonRipple:
     text: root.text
 
 
@@ -163,17 +163,17 @@ GoBoxLayoutColor:
   background_color: [1, 1, 1, 0.8]
   padding: "40dp"
 
-  GoRippleButton:
+  GoButtonRipple:
 	size_hint_y: None
 	height: "300dp"
-	text: "GoRippleButton"
+	text: "GoButtonRipple"
 
   GoBoxLayoutColor:
 	background_color: [0, 1, 0, 1]
 	padding: "40dp"
-	GoRippleButton:
+	GoButtonRipple:
 	  text: 'Effect 1'
-	GoRippleButton:
+	GoButtonRipple:
 	  text: 'Effect 2'
 
 
@@ -209,19 +209,19 @@ GoGridLayoutColor:
   padding: "70dp"
   spacing: '30dp'
   rows: 3
-  GoRippleButton:
+  GoButtonRipple:
 	text: "Normal Rectangle Button"
 	background_color: [[0.1, 0.4, 0.1, 1], [0.1, 0.4, 0.7, 1]]
-  GoRippleButton:
+  GoButtonRipple:
 	text: "Normal Rounded Button"
 	radius: [dp(50)] * 4
 	radius_effect: self.radius
 	background_color: [[0.1, 0.4, 0.1, 1], [0.1, 0.4, 0.7, 1]]
-  GoRippleToggleButton:
+  GoToggleButtonRipple:
 	text: "Toggle Rectangle Button"
 	group: "toggle"
 	down_background_color: [[0.3, 0.1, 0.7, 1], [0.7, 0.3, 0.5, 1]]
-  GoRippleToggleButton:
+  GoToggleButtonRipple:
 	text: "Toggle Rounded Button"
 	group: "toggle"
 	down_background_color: [[0.3, 0.1, 0.7, 1], [0.7, 0.3, 0.5, 1]]
@@ -746,7 +746,7 @@ GridLayout:
 ---
 
 <details>
-<summary>Icon</summary>
+<summary>GoIcon</summary>
 <ul>
 
 ## `kivygo\uix\icon.py`

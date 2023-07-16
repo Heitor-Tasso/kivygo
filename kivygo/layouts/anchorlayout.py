@@ -1,7 +1,7 @@
 
 from kivy.uix.anchorlayout import AnchorLayout
 from kivy.lang import Builder
-from kivygo.colors import GoColorBase
+from kivygo.colors import GoBackgroundColor, GoColorBase
 
 
 Builder.load_string("""
@@ -9,6 +9,8 @@ Builder.load_string("""
 <GoAnchorLayout>:
 	background_color: GoColors.no_color
 	background_disabled: GoColors.no_color
+	anchor_x: "center"
+	anchor_y: "center"
 
 <GoAnchorLayoutColor>:
 	background_color: GoColors.background_default
@@ -21,7 +23,7 @@ Builder.load_string("""
 
 """)
 
-class GoAnchorLayout(AnchorLayout):
+class GoAnchorLayout(GoBackgroundColor, AnchorLayout):
 	pass
 
 
