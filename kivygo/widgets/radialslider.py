@@ -5,7 +5,7 @@ from kivy.graphics import Color, SmoothLine, Ellipse
 from kivy.properties import NumericProperty, ColorProperty, AliasProperty
 
 
-class RadialSlider(GoWidget):
+class GoRadialSlider(GoWidget):
     '''A :class:`~kivy.uix.widget.Widget` that provides a radial slider.
     '''
 

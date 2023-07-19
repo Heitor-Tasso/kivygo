@@ -14,7 +14,7 @@ Builder.load_string("""
 #:import hex kivy.utils.get_color_from_hex
 
 
-<BarScroll>:
+<GoBarScroll>:
 	size_hint_x: None
 	width: '40dp'
 	canvas.after:
@@ -31,7 +31,7 @@ Builder.load_string("""
 			pos: [ ( self.x + ( self.width / 2 ) - (self.bar_width / 2 ) ), self.bar_y ]
 			radius: self.bar_radius
 
-<ScrollViewBar>:
+<GoScrollViewBar>:
 	bar_color: [0, 0, 0, 0]
 	bar_inactive_color: [0, 0, 0, 0]
 	effect_cls: 'ScrollEffect'
@@ -40,11 +40,11 @@ Builder.load_string("""
 """)
 
 
-class ScrollViewBar(ScrollView):
+class GoScrollViewBar(ScrollView):
 	pass
 
 
-class BarScroll(AnchorLayout):
+class GoBarScroll(AnchorLayout):
 
 	scroll_view = ObjectProperty(None)
 	_last_scroll_view = None

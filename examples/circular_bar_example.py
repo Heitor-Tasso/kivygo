@@ -5,7 +5,7 @@ from kivygo.layouts.boxlayout import GoBoxLayoutColor
 from kivy.animation import Animation
 from kivy.lang.builder import Builder
 from kivy.clock import Clock
-from kivygo.widgets.circular_bar import CircularProgressBar
+from kivygo.widgets.circular_bar import GoCircularProgressBar
 
 
 Builder.load_string('''
@@ -20,13 +20,13 @@ Builder.load_string('''
     spacing: "40dp"
     background_color: hex('#03A9F4')
     GoBoxLayoutColor:
-        CircularProgressBar:
+        GoCircularProgressBar:
             id: last
             max_progress: 200
             min_progress: 10
             cap_precision: 100
             label_text: "Ola mundo"
-        CircularProgressBar:
+        GoCircularProgressBar:
             id: bar
             cap_style: "square"
             border_width: 5

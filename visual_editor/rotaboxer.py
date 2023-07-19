@@ -68,7 +68,7 @@ The border length of the largest shape that would be considered as noice,
 in make_border and link_points methods.'''
 MIN_SHAPE = 5
 '''
-Number of iterations in the filter_border method.
+GoNumber of iterations in the filter_border method.
 '''
 FILTER_PASSES = 10
 
@@ -100,7 +100,7 @@ class Point(ToggleButton):
                 self.piv_y = value
     pivot_y = AliasProperty(get_pivot_y, set_pivot_y,
                             bind=('y', 'height', 'pivot_bond'))
-    '''Rotabox's pivot.'''
+    '''GoRotabox's pivot.'''
     pivot = ReferenceListProperty(pivot_x, pivot_y)
 
     def get_origin(self):
@@ -113,7 +113,7 @@ class Point(ToggleButton):
         self.pos = (self.x - (pivot[0] - point[0]),
                     self.y - (pivot[1] - point[1]))
 
-    '''Rotabox's origin.'''
+    '''GoRotabox's origin.'''
     origin = AliasProperty(get_origin, set_origin)
 
     # Initial widget size. Used for calculating the widget's scale.
@@ -134,7 +134,7 @@ class Point(ToggleButton):
                      amount * self.original_size[1])
         self.pivot = pivot
 
-    '''Rotabox's scale.'''
+    '''GoRotabox's scale.'''
     scale = AliasProperty(get_scale, set_scale, bind=('width', 'height',
                                                       'original_size'))
     '''Minimum scale allowed.'''
@@ -1057,7 +1057,7 @@ class Editor(FloatLayout):
         Clipboard.copy(code)
         self.warn('Bounds exported!',
                   'Code is now on the clipboard,\n'
-                  'ready to Paste in a Rotabox widget\n'
+                  'ready to Paste in a GoRotabox widget\n'
                   'that uses the same image.',
                   action=self.dismiss_popup, cancel=0,
                   tcolor=(.1, .65, .1, 1))
@@ -1871,7 +1871,7 @@ class Editor(FloatLayout):
             return True
         if self.copy_btn.collide_point(*pos):
             self.board2.text = 'Export the resulting code to clipboard, ' \
-                               'to use in a Rotabox widget. [E]'
+                               'to use in a GoRotabox widget. [E]'
             self.copy_btn.background_color = .23, .23, .3, 1
             return True
         if self.num_area.collide_point(*pos):
@@ -2060,7 +2060,7 @@ class Editor(FloatLayout):
                       else 'There are unsaved changes.\n'
                       "There are also changes, not exported to clipboard.\n "
                       "Exporting to clipboard is the only way to generate the\n"
-                      "code needed to define this editor's bounds in Rotabox.\n"
+                      "code needed to define this editor's bounds in GoRotabox.\n"
                       'Exit anyway?', self.quit)
             return True
         else:
@@ -2153,8 +2153,8 @@ Transfer picked points {1}{0}[Enter]{2}{3}
         scrl_label.text = '''
 {0}{5}[b]Rotaboxer  {8}[/b]{7}{4}
 
-Rotaboxer is an editing tool for the Rotabox collision bounds.
-With an image as input, specific bounds can be visually shaped for it, to export as code to clipboard and use as {0}custom bounds{4} of a Rotabox widget, in a kivy project.
+Rotaboxer is an editing tool for the GoRotabox collision bounds.
+With an image as input, specific bounds can be visually shaped for it, to export as code to clipboard and use as {0}custom bounds{4} of a GoRotabox widget, in a kivy project.
 Animated bounds are also supported, with the use of .atlas files.
 
 {0}{5}Usage{7}{4}
@@ -2186,7 +2186,7 @@ A point can be moved by {0}Clicking & dragging{4} it, or by using the {0}keyboar
 {0}{6}Reordering polygons{7}{4}:
 If {0}Order polygons{4} is pressed, the polygons can be selected, consecutively, in the (intended) exporting order.
 {0}Note{4} that their displayed number doesn't change but their order does (watch the label bottom-right corner of the workarea).
-{0}Important{4}: The order that the polygons will be written in the resulting {0}custom_bounds{4} list will be the order in which polygons are going to be considered during collision checks in Rotabox.
+{0}Important{4}: The order that the polygons will be written in the resulting {0}custom_bounds{4} list will be the order in which polygons are going to be considered during collision checks in GoRotabox.
 
 {0}{6}Transfering points to another polygon{7}{4}:
 Not to be confused with a positional transfer, this is only a linkage change; an exchange between polygons' vertices.
@@ -2195,7 +2195,7 @@ When the desired points are picked, they can be attached to another polygon by {
 Alternatively, they can form a {0}new polygon{4} by {0}clicking anywhere{4} in the workspace.
 
 {0}{6}Exporting the bounds{7}{4}.
-The Rotaboxer output, is the resulting code of {0}Export bounds{4} which is copied to the {0}clipboard{4}, to be used in a Rotabox widget.
+The Rotaboxer output, is the resulting code of {0}Export bounds{4} which is copied to the {0}clipboard{4}, to be used in a GoRotabox widget.
 There's an option for {0}python{4} syntax or {0}kvlang{4} syntax (due to the indentation differences).
 If an {0}.atlas{4} file is being used, there is an option to determine whether it is an animation sequence. If it is an animation, the exported bounds of {0}all frames{4} will be a dictionary. Else, the exported bounds will be a list, concerning only the {0}current frame{4}.
 

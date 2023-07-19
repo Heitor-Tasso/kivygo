@@ -1,6 +1,6 @@
 import __init__
 from kivygo.app import GoApp
-from kivygo.widgets.segment import Segment
+from kivygo.widgets.segment import GoSegment
 from kivy.clock import Clock
 from kivy.uix.gridlayout import GridLayout
 import random
@@ -13,8 +13,8 @@ class SegmentTestApp(GoApp):
             seg1.value = random.choice('123')
 
         box = GridLayout(cols=8, padding=20)
-        seg = Segment(scale=0.3, value="9.")
-        seg1 = Segment(scale=0.8, value="A.")
+        seg = GoSegment(scale=0.3, value="9.")
+        seg1 = GoSegment(scale=0.8, value="A.")
         
         box.add_widget(seg)
         box.add_widget(seg1)

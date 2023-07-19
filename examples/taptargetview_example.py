@@ -3,7 +3,7 @@ from kivy.animation import Animation
 from kivy.lang import Builder
 from kivy.metrics import dp
 from kivygo.app import GoApp
-from kivygo.widgets.taptargetview import TapTargetView
+from kivygo.widgets.taptargetview import GoTapTargetView
 
 
 root = Builder.load_string("""
@@ -30,7 +30,7 @@ Screen:
             width: "25dp"
 
         Label:
-            text: "TapTargetView"
+            text: "GoTapTargetView"
             shorten: True
             font_style: 'H6'
 
@@ -68,7 +68,7 @@ class TapTargetViewDemo(GoApp):
     def build(self):
         self.screen = root
 
-        ttv4 = TapTargetView(
+        ttv4 = GoTapTargetView(
             widget=self.screen.ids.add_btn,
             outer_radius=dp(320),
             cancelable=True,
@@ -80,7 +80,7 @@ class TapTargetViewDemo(GoApp):
             end=self.complete,
         )
 
-        ttv3 = TapTargetView(
+        ttv3 = GoTapTargetView(
             widget=self.screen.ids.info_btn,
             outer_radius=dp(440),
             outer_circle_color=[1, 1, 1, 1],
@@ -93,7 +93,7 @@ class TapTargetViewDemo(GoApp):
             end=ttv4.start,
         )
 
-        ttv2 = TapTargetView(
+        ttv2 = GoTapTargetView(
             widget=self.screen.ids.search_btn,
             outer_circle_color=[155 / 255, 89 / 255, 182 / 255],
             target_circle_color=[0.2, 0.2, 0.2],
@@ -104,7 +104,7 @@ class TapTargetViewDemo(GoApp):
             end=ttv3.start,
         )
 
-        ttv1 = TapTargetView(
+        ttv1 = GoTapTargetView(
             widget=self.screen.ids.menu_btn,
             outer_circle_color=[1, 1, 1, 1],
             outer_circle_alpha=0.85,

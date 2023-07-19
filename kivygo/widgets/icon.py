@@ -1,8 +1,8 @@
 
-from kivygo.behaviors.button import ButtonBehavior, ToggleButtonBehavior
-from kivygo.behaviors.ripple_effect import RippleEffectBehavior
-from kivygo.behaviors.fade_effect import FadeEffectBehavior
-from kivygo.behaviors.hover import HoverBehavior
+from kivygo.behaviors.button import GoButtonBehavior, GoToggleButtonBehavior
+from kivygo.behaviors.effect import GoRippleEffectBehavior
+from kivygo.behaviors.effect import GoFadeEffectBehavior
+from kivygo.behaviors.hover import GoHoverBehavior
 
 from kivygo.widgets.image import GoImage
 from kivy.properties import ColorProperty
@@ -38,7 +38,7 @@ class GoIcon(GoImage):
 	pass
 
 
-class GoIconButton(HoverBehavior, ButtonBehavior, GoIcon):
+class GoIconButton(GoHoverBehavior, GoButtonBehavior, GoIcon):
 	
 	color_hover = ColorProperty([0]*4)
 	color_pressed = ColorProperty([0]*4)
@@ -58,18 +58,18 @@ class GoIconButton(HoverBehavior, ButtonBehavior, GoIcon):
 		elif state == 'down':
 			self._color = self.color_pressed
 
-class GoIconButtonRipple(RippleEffectBehavior, GoIconButton):
+class GoIconButtonRipple(GoRippleEffectBehavior, GoIconButton):
 	pass
 
-class GoIconButtonFade(FadeEffectBehavior, GoIconButton):
+class GoIconButtonFade(GoFadeEffectBehavior, GoIconButton):
 	pass
 
-class GoIconToggleButton(ToggleButtonBehavior, GoIconButton):
+class GoIconToggleButton(GoToggleButtonBehavior, GoIconButton):
 	pass
 
-class GoIconToggleButtonRipple(RippleEffectBehavior, GoIconToggleButton):
+class GoIconToggleButtonRipple(GoRippleEffectBehavior, GoIconToggleButton):
 	pass
 
-class GoIconToggleButtonFade(FadeEffectBehavior, GoIconToggleButton):
+class GoIconToggleButtonFade(GoFadeEffectBehavior, GoIconToggleButton):
 	pass
 

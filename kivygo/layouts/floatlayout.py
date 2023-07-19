@@ -18,6 +18,11 @@ Builder.load_string("""
 	border_hover: GoColors.no_color
 	border_disabled: GoColors.no_color
 
+<GoFloatChild>:
+	size_hint: None, None
+	size: 0, 0
+	pos: 0, 0
+
 """)
 
 
@@ -27,3 +32,5 @@ class GoFloatLayout(GoBackgroundColor, FloatLayout):
 class GoFloatLayoutColor(GoColorBase, GoFloatLayout):
 	pass
 
+class GoFloatChild(FloatLayout):
+	pass

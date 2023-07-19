@@ -7,9 +7,9 @@ from kivy.vector import Vector
 from kivy.properties import ListProperty, BooleanProperty
 
 from kivygo.widgets.input import GoInputIcon
-from kivygo.widgets.slider import NeuSlider
+from kivygo.widgets.slider import GoSlider
 from kivygo.widgets.button import GoButtonRipple
-from kivygo.widgets.spinner import EffectSpinner
+from kivygo.widgets.spinner import GoEffectSpinner
 from kivygo.widgets.label import GoLabelBezierAnimated
 from kivygo.layouts.boxlayout import GoBoxLayoutColor
 from kivygo.app import GoApp
@@ -47,7 +47,7 @@ Builder.load_string("""
         AnchorLayout:
             anchor_x: 'center'
             anchor_y: 'center'
-            NeuSlider:
+            GoSlider:
                 id: slider
                 size_hint_y: None
                 height: "30dp"
@@ -117,7 +117,7 @@ Builder.load_string("""
             min: 10
             max: 100
 
-        EffectSpinner:
+        GoEffectSpinner:
             label_text: "transition"
             text_autoupdate: True
             id: transitions

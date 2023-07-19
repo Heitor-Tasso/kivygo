@@ -1,6 +1,6 @@
 import __init__
 from kivygo.app import GoApp
-from kivygo.widgets.radialslider import RadialSlider
+from kivygo.widgets.radialslider import GoRadialSlider
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang.builder import Builder
 
@@ -11,12 +11,12 @@ Builder.load_string("""
     AnchorLayout:
         anchor_x: "center"
         anchor_y: "center"
-        RadialSlider:
+        GoRadialSlider:
     
     AnchorLayout:
         anchor_x: "center"
         anchor_y: "center"
-        RadialSlider:
+        GoRadialSlider:
             size_hint: (None, None)
             size: 200, 200
             track_color: "#DEDEDE"

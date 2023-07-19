@@ -143,7 +143,7 @@ def intersection_w(pts, ptids, plens, opens, t_box):
 				v40 = t_pts[j2]
 				v41 = t_pts[j3]
 
-				# Segment intersection detection method:
+				# GoSegment intersection detection method:
 				# If the vertices v1 and v2 are not on opposite sides of the
 				# segment v3, v4, or the vertices v3 and v4 are not on
 				# opposite sides of the segment v1, v2, there's no
@@ -200,7 +200,7 @@ def intersection_f(pts, ptids, plens, opens, t_pts, t_polis, t_ptis, t_plens):
 					v40 = t_pts[j2]
 					v41 = t_pts[j3]
 
-					# Segment intersection detection method:
+					# GoSegment intersection detection method:
 					# If the vertices v1 and v2 are not on opposite sides of
 					# the segment v3, v4, or the vertices v3 and v4 are not
 					# on opposite sides of the segment v1, v2, there's no
@@ -289,7 +289,7 @@ def intersection(pts, ptids, le, plens, opens, lefts, botts, rghts, tops,
 					v40 = t_pts[j2]
 					v41 = t_pts[j3]
 
-					# Segment intersection detection method:
+					# GoSegment intersection detection method:
 					# If the vertices v1 and v2 are not on opposite sides of
 					# the segment v3, v4, or the vertices v3 and v4 are not
 					# on opposite sides of the segment v1, v2, there's no

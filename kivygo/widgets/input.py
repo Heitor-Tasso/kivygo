@@ -15,9 +15,6 @@ from kivy.uix.textinput import TextInput
 
 Builder.load_string("""
 
-#:import GoIconToggleButton kivygo.widgets.icon.GoIconToggleButton
-#:import InputEditor kivygo.widgets.terminal.InputEditor
-
 
 <GoInputIcon>:
 	hide: False
@@ -79,7 +76,7 @@ Builder.load_string("""
 				anchor_x: 'center'
 				padding: root.padding
 				MyTextInput:
-				# InputEditor:
+				# GoInputEditor:
 					id: input
 					size_hint_y: None
 					height: self.minimum_height			

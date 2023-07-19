@@ -20,8 +20,8 @@ def load_factory():
 	classes = {
 		"widgets" : [
 			{ "button": ["GoButton", "GoButtonRipple", "GoToggleButtonRipple", "GoButtonFade", "GoToggleButtonFade"] },
-			{ "widget": ["GoWidget", "ShaderWidget"] },
-			{ "slider": ["NeuSlider", "NeuThumb"] },
+			{ "widget": ["GoWidget", "GoShaderWidget"] },
+			{ "slider": ["GoSlider", "GoThumb"] },
 			{ "input": ["GoInputIcon", ] },
 			{ "screenmanager": ["GoSwapScreen", ] },
 			{ "label": ["GoLabel", "GoLabelButton", "GoLabelGradient", "GoLabelScroll", "GoLabelAnimated", "GoLabelBezierAnimated"] },
@@ -31,11 +31,12 @@ def load_factory():
 		"layouts" : [
 			{ "boxlayout": ["GoBoxLayout", "GoBoxLayoutColor", "GoDraggableBoxLayout"] },
 			{ "anchorlayout": ["GoAnchorLayout", "GoAnchorLayoutColor"] },
-			{ "gridlayout": ["GoGridLayout", "GoGridLayoutColor", "DynamicGridLayout"] }
+			{ "gridlayout": ["GoGridLayout", "GoGridLayoutColor", "GoDynamicGridLayout"] },
+			{ "floatlayout": ["GoFloatLayout", "GoFloatLayoutColor", "GoFloatChild"] },
 		],
 		"behaviors" : [
-			{ "button": ["ButtonBehavior", "ToggleButtonBehavior"] },
-			{ "hover": ["HoverBehavior"] }
+			{ "button": ["GoButtonBehavior", "GoToggleButtonBehavior"] },
+			{ "hover": ["GoHoverBehavior"] }
 		],
 	}
 	for key, item in classes.items():

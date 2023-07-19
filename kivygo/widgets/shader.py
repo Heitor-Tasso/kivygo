@@ -6,7 +6,7 @@ from kivy.graphics import (
     ClearColor, ClearBuffers,
     Rectangle
 )
-from kivy.uix.floatlayout import FloatLayout
+from kivygo.layouts.floatlayout import GoFloatLayout
 from kivy.properties import (
     StringProperty, ListProperty,
     ObjectProperty
@@ -53,7 +53,7 @@ void main(void)
 
 
 
-class ShaderWidget(FloatLayout):
+class GoShaderWidget(GoFloatLayout):
 
     mouse_pos = ListProperty([100, 100])
 

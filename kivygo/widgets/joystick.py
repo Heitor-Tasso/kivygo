@@ -12,7 +12,7 @@ OUTLINE_ZERO = 0.00000000001
 
 Builder.load_string("""
 
-<JoystickPad>:
+<GoJoystickPad>:
 	id: pad
 	canvas:
 		Color:
@@ -28,7 +28,7 @@ Builder.load_string("""
 			width: self._line_width
 
 			
-<JoyStick>:
+<GoJoyStick>:
 	canvas:
 		Color:
 			rgba: self.outer_background_color
@@ -54,14 +54,14 @@ Builder.load_string("""
 			circle: (self.center_x, self.center_y, self._inner_radius)
 			width: self._inner_line_width
 
-	JoystickPad:
+	GoJoystickPad:
 		id: pad
 
 
 """)
 
 
-class TouchData:
+class GoTouchData(GoWidget):
 	x_distance = None
 	y_distance = None
 	x_offset = None
@@ -99,7 +99,7 @@ class TouchData:
 		self.in_range = in_range
 
 
-class JoystickPad(GoWidget):
+class GoJoystickPad(GoWidget):
 	_diameter = NumericProperty(1)
 	_radius = NumericProperty(1)
 	_background_color = ListProperty([0, 0, 0, 1])
@@ -107,7 +107,7 @@ class JoystickPad(GoWidget):
 	_line_width = NumericProperty(1)
 
 
-class Joystick(GoWidget):
+class GoJoystick(GoWidget):
 	'''The joystick base is comprised of an outer circle & an inner circle.
 	   The joystick pad is another circle,
 		   which the user can move within the base.
@@ -219,7 +219,7 @@ class Joystick(GoWidget):
 		)
 
 	def move_pad(self, touch, from_touch_down):
-		td = TouchData(self, touch)
+		td = GoTouchData(self, touch)
 		if td.is_external and from_touch_down:
 			touch.ud['joystick'] = None
 			return False

@@ -2,9 +2,9 @@
 from kivy.properties import ListProperty
 from kivy.lang import Builder
 from kivy.uix.label import Label
-from kivygo.behaviors.ripple_effect import RippleEffectBehavior
-from kivygo.behaviors.fade_effect import FadeEffectBehavior
-from kivygo.behaviors.button import ButtonBehavior, ToggleButtonBehavior
+from kivygo.behaviors.effect import GoRippleEffectBehavior
+from kivygo.behaviors.effect import GoFadeEffectBehavior
+from kivygo.behaviors.button import GoButtonBehavior, GoToggleButtonBehavior
 from kivygo.colors import GoColorBase
 
 
@@ -22,12 +22,6 @@ Builder.load_string("""
 	border_disabled: GoColors.no_color
 
 
-<GoBaseEffectButton>:
-	radius_effect: self.radius
-
-	effect_color: GoColors.terciary_effect
-
-	
 <GoButtonRipple>:
 			
 <GoToggleButtonRipple>:
@@ -39,7 +33,7 @@ Builder.load_string("""
 
 """)
 
-class GoButton(GoColorBase, ButtonBehavior, Label):
+class GoButton(GoColorBase, GoButtonBehavior, Label):
 
 	background_pressed = ListProperty([0]*4)
 
@@ -69,16 +63,16 @@ class GoButton(GoColorBase, ButtonBehavior, Label):
 		return result
 
 
-class GoButtonRipple(RippleEffectBehavior, GoButton):
+class GoButtonRipple(GoRippleEffectBehavior, GoButton):
 	pass
 
-class GoToggleButtonRipple(ToggleButtonBehavior, GoButtonRipple):
+class GoToggleButtonRipple(GoToggleButtonBehavior, GoButtonRipple):
 	pass
 
 
-class GoButtonFade(FadeEffectBehavior, GoButton):
+class GoButtonFade(GoFadeEffectBehavior, GoButton):
 	pass
 
-class GoToggleButtonFade(ToggleButtonBehavior, GoButtonFade):
+class GoToggleButtonFade(GoToggleButtonBehavior, GoButtonFade):
 	pass
 

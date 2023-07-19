@@ -5,8 +5,8 @@ from kivy.properties import (
 	NumericProperty, ObjectProperty
 )
 from kivy.uix.slider import Slider
-from kivygo.behaviors.neumorph import NeuGlowCircular
-from kivygo.behaviors.thumb import Thumb
+from kivygo.behaviors.neumorph import GoGlowCircular
+from kivygo.behaviors.thumb import GoThumb
 from kivy.metrics import dp
 from kivy.graphics.texture import Texture
 from kivygo.utils import dec_2_rgb
@@ -15,7 +15,7 @@ from PIL import Image, ImageDraw, ImageFilter
 
 Builder.load_string("""
 
-<NeuSlider>
+<GoSlider>
 	canvas:
 		Clear
 		Color:
@@ -29,7 +29,7 @@ Builder.load_string("""
 	cursor_size: [0, 0]
 	padding: (self.height / 2)
 
-	NeuThumb:
+	GoSliderThumb:
 		canvas.before:
 			Color:
 			Rectangle:
@@ -53,7 +53,7 @@ Builder.load_string("""
 """)
 
 
-class NeuSlider(Slider):
+class GoSlider(Slider):
 
 	comp_color = ColorProperty("#333333")
 
@@ -118,7 +118,7 @@ class NeuSlider(Slider):
 		self.radius = [(self.height / 2)] * 4
 
 
-class NeuThumb(Thumb, NeuGlowCircular):
+class GoSliderThumb(GoThumb, GoGlowCircular):
 
 	glow_color = ColorProperty([0.8, 0.7, 0.5, 1])
 

@@ -1,16 +1,16 @@
 import __init__
 from kivygo.app import GoApp
-from kivy.uix.behaviors import ButtonBehavior
+from kivygo.behaviors.button import GoButtonBehavior
 from kivy.uix.screenmanager import ScreenManager
 from kivy.lang import Builder
-from kivygo.widgets.rotabox import Rotabox
+from kivygo.widgets.rotabox import GoRotabox
 from functools import partial
 from random import random
 from kivy.lang import Builder
 from kivy.clock import Clock
 import time
 from kivy.properties import ObjectProperty
-from kivygo.widgets.rotabox import Rotabox
+from kivygo.widgets.rotabox import GoRotabox
 from kivygo.widgets.screenmanager import GoSwapScreen
 from kivygo.layouts.boxlayout import GoBoxLayoutColor
 from kivy.clock import Clock
@@ -20,10 +20,10 @@ from kivy.lang import Builder
 Builder.load_string("""
 
 #:import hex kivy.utils.get_color_from_hex
-#:import Rotabox kivygo.widgets.rotabox.Rotabox
+#:import GoRotabox kivygo.widgets.rotabox.GoRotabox
 #:import Clock kivy.clock.Clock
 
-<LogoBox@Rotabox>:
+<LogoBox@GoRotabox>:
 	image: icon
 	custom_bounds:
 		[[(0.02, 0.977), (0.018, 0.335), (0.212, 0.042), (0.217, 0.408), 
@@ -57,13 +57,13 @@ Builder.load_string("""
 		name: "screen_1"
 		
 		Widget:
-			Rotabox:
+			GoRotabox:
 				id: trap
 				size: 320, 320
 				center: 400, 300
 				open_bounds: [0]
 				draw_bounds: True
-			Rotabox:
+			GoRotabox:
 				id: logo
 				size: 200, 132
 				center: 800, 300
@@ -97,7 +97,7 @@ Builder.load_string("""
 						size: self.size
 				Label:
 					size_hint: 1, 1
-					text: 'A Rotabox Button'
+					text: 'A GoRotabox Button'
 
 	GoSwapScreen:
 		name: "screen_3"
@@ -144,10 +144,10 @@ Builder.load_string("""
 """)
 
 
-class RotaButton(ButtonBehavior, Rotabox):
+class RotaButton(GoButtonBehavior, GoRotabox):
 	pass
 
-class Coin(Rotabox):
+class Coin(GoRotabox):
 
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)

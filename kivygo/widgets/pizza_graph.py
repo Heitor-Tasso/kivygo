@@ -11,7 +11,7 @@ from kivy.uix.label import Label
 from kivy.utils import get_color_from_hex
 
 
-class Pizza(RelativeLayout):
+class GoPizza(RelativeLayout):
     serie = ListProperty([])
     chart_size = NumericProperty(256)
     legend_color = StringProperty('ffffcc')

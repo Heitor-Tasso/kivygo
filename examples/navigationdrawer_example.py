@@ -6,12 +6,12 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.popup import Popup
 from kivy.uix.widget import Widget
-from kivygo.widgets.navigationdrawer import NavigationDrawer
+from kivygo.widgets.navigationdrawer import GoNavigationDrawer
 from kivy.core.window import Window
 from kivy.metrics import dp
 
 
-navigationdrawer = NavigationDrawer()
+navigationdrawer = GoNavigationDrawer()
 
 side_panel = BoxLayout(orientation='vertical')
 side_panel.add_widget(Label(text='Panel label'))
@@ -90,10 +90,10 @@ transitions_layout.add_widget(linear)
 transitions_layout.add_widget(out_sine)
 main_panel.add_widget(transitions_layout)
 
-button = Button(text='toggle NavigationDrawer state (animate)',
+button = Button(text='toggle GoNavigationDrawer state (animate)',
 				size_hint_y=0.2)
 button.bind(on_press=lambda j: navigationdrawer.toggle_state())
-button2 = Button(text='toggle NavigationDrawer state (jump)',
+button2 = Button(text='toggle GoNavigationDrawer state (jump)',
 				 size_hint_y=0.2)
 button2.bind(on_press=lambda j: navigationdrawer.toggle_state(False))
 button3 = Button(text='toggle _main_above', size_hint_y=0.2)

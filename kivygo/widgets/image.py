@@ -1,10 +1,7 @@
 
-from kivy.properties import ObjectProperty, ListProperty, ColorProperty
+from kivy.properties import ListProperty, ColorProperty
 from kivy.lang.builder import Builder
 from kivy.clock import Clock
-from kivy.metrics import dp
-
-from kivygo.widgets.widget import GoWidget
 from kivy.uix.image import Image
 
 from kivy.core.image import Image as CoreImage
@@ -20,9 +17,6 @@ import io
 
 Builder.load_string("""
 
-<GoImage>
-	fit_mode: "fill"
-
 <GoImage>:
 	canvas:
 		Clear:
@@ -34,6 +28,7 @@ Builder.load_string("""
 			radius: root.radius
 			texture: root.texture
 
+	fit_mode: "fill"
 
 """)
 

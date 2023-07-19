@@ -2,7 +2,7 @@ import __init__
 from kivygo.app import GoApp
 from kivy.uix.screenmanager import Screen
 from kivy.lang.builder import Builder
-from kivygo.widgets.gradient import GradientWidget
+from kivygo.widgets.gradient import GoGradientWidget
 
 
 Builder.load_string("""
@@ -10,7 +10,7 @@ Builder.load_string("""
 <GradientExample>:
 	FloatLayout:
 
-		GradientWidget:
+		GoGradientWidget:
 			pos_hint: {"center_x":.5, "center_y":.5}
 
 		BoxLayout:

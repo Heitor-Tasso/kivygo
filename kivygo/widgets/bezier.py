@@ -11,7 +11,7 @@ Builder.load_string('''
 #:import chain itertools.chain
 
 
-<BezierLine>:
+<GoBezierLine>:
 	_points: list(chain(*self.points))
 
 	canvas:
@@ -39,7 +39,7 @@ def dist(a, b):
 	return ( ((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2) ** 0.5 )
 
 
-class BezierLine(GoWidget):
+class GoBezierLine(GoWidget):
 
 	_points = ListProperty([])
 	points = ListProperty([])

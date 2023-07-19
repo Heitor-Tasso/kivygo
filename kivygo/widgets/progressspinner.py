@@ -13,13 +13,13 @@ from kivygo.widgets.widget import GoWidget
 
 Builder.load_string('''
 
-<ProgressSpinnerBase>:
+<GoProgressSpinnerBase>:
 	_size: min(self.height, self.width)
 	_rsize: self._size / 2.0
 	_stroke: max(0.1, self._rsize / 20.0 if self.stroke_width == None else self.stroke_width)
 	_radius: self._rsize - self._stroke * 2.0
 
-<ProgressSpinner>:
+<GoProgressSpinner>:
 	canvas:
 		Color:
 			rgba: self.color
@@ -31,7 +31,7 @@ Builder.load_string('''
 			width: self._stroke
 			cap: 'none'
 
-<TextureProgressSpinner>:
+<GoTextureProgressSpinner>:
 	canvas:
 		StencilPush
 		Color:
@@ -64,7 +64,7 @@ Builder.load_string('''
 			cap: 'none'
 		StencilPop
 
-<RotatingTextureProgressSpinner>:
+<GoRotatingTextureProgressSpinner>:
 	canvas:
 		PushMatrix
 		Rotate:
@@ -105,7 +105,7 @@ Builder.load_string('''
 ''')
 
 
-class ProgressSpinnerBase(GoWidget):
+class GoProgressSpinnerBase(GoWidget):
 
     color = ListProperty([1, 1, 1, 1])
     '''Color to render the spinner.
@@ -219,11 +219,11 @@ class ProgressSpinnerBase(GoWidget):
                 self._angle_end -= 360.
 
 
-class ProgressSpinner(ProgressSpinnerBase):
+class GoProgressSpinner(GoProgressSpinnerBase):
     pass
 
 
-class TextureProgressSpinnerBase(ProgressSpinnerBase):
+class GoTextureProgressSpinnerBase(GoProgressSpinnerBase):
     texture = ObjectProperty(None)
     '''Texture to render for the spinner.
     '''
@@ -237,14 +237,14 @@ class TextureProgressSpinnerBase(ProgressSpinnerBase):
             self.texture = CoreImage(value).texture
 
 
-class TextureProgressSpinner(TextureProgressSpinnerBase):
-    '''Same as ProgressSpinner, but with a texture/image instead of a solid color.
+class GoTextureProgressSpinner(GoTextureProgressSpinnerBase):
+    '''Same as GoProgressSpinner, but with a texture/image instead of a solid color.
     '''
     pass
 
 
-class RotatingTextureProgressSpinner(TextureProgressSpinnerBase):
-    '''Same as TextureProgressSpinner, but the texture/image rotates along with the spinner.
+class GoRotatingTextureProgressSpinner(GoTextureProgressSpinnerBase):
+    '''Same as GoTextureProgressSpinner, but the texture/image rotates along with the spinner.
     '''
     pass
 

@@ -1,12 +1,12 @@
 """
 To use this class, you must define two methods for it:
-:attr:`HoverBehavior.on_cursor_enter` and :attr:`HoverBehavior.on_cursor_leave`,
+:attr:`GoHoverBehavior.on_cursor_enter` and :attr:`GoHoverBehavior.on_cursor_leave`,
 which will be automatically called when the mouse cursor is over the widget
 and when the mouse cursor goes beyond the widget.
 
 .. note::
 
-	:class:`~HoverBehavior` will by default check to see if the current Widget is visible
+	:class:`~GoHoverBehavior` will by default check to see if the current Widget is visible
 	(i.e. not covered by a modal or popup and not a part of a Relative Layout, MDTab or Carousel
 	that is not currently visible etc) and will only issue events if the widget is visible.
 
@@ -24,7 +24,7 @@ from kivy.properties import (
 )
 
 
-class HoverBehavior(Widget):
+class GoHoverBehavior(Widget):
 
 	hovering = BooleanProperty(False)
 	"""
@@ -73,28 +73,28 @@ class HoverBehavior(Widget):
 		self.register_event_type("on_cursor_leave")
 		self.register_event_type("on_window_cursor_leave")
 		
-		if not HoverBehavior.__resizes:
+		if not GoHoverBehavior.__resizes:
 			Window.bind(mouse_pos=self.on_mouse_update)
 			Window.bind(on_cursor_leave=self.window_cursor_leave)
 		
-		HoverBehavior.__resizes.append(self)
+		GoHoverBehavior.__resizes.append(self)
 
 	def on_parent(self, *args):
 		
-		if self.parent == None and HoverBehavior.__resizes:
-			if HoverBehavior.__resizes[0] is self:
+		if self.parent == None and GoHoverBehavior.__resizes:
+			if GoHoverBehavior.__resizes[0] is self:
 				Window.unbind(mouse_pos=self.on_mouse_update)
 				Window.unbind(on_cursor_leave=self.window_cursor_leave)
-				del HoverBehavior.__resizes[0]
+				del GoHoverBehavior.__resizes[0]
 				
-				if HoverBehavior.__resizes:
-					Window.bind(mouse_pos=HoverBehavior.__resizes[0].on_mouse_update)
-					Window.bind(on_cursor_leave=HoverBehavior.__resizes[0].window_cursor_leave)
+				if GoHoverBehavior.__resizes:
+					Window.bind(mouse_pos=GoHoverBehavior.__resizes[0].on_mouse_update)
+					Window.bind(on_cursor_leave=GoHoverBehavior.__resizes[0].window_cursor_leave)
 			else:
-				HoverBehavior.__resizes.remove(self)
+				GoHoverBehavior.__resizes.remove(self)
 
 	def window_cursor_leave(self, *args):
-		for wid in HoverBehavior.__resizes:
+		for wid in GoHoverBehavior.__resizes:
 			if wid.hover_visible or wid.repeat_callback:
 				wid.do_cursor_leave()
 
@@ -121,7 +121,7 @@ class HoverBehavior(Widget):
 		if GoApp.get_root_window() == None:
 			return None
 
-		for wid in HoverBehavior.__resizes:
+		for wid in GoHoverBehavior.__resizes:
 			
 			pos = list(map(dp, args[1]))
 			wid.cursor_pos = pos

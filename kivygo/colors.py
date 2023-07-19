@@ -5,7 +5,7 @@ from kivy.clock import Clock
 from kivy.lang import Builder
 from kivy.utils import get_color_from_hex
 from kivy.metrics import dp
-from kivygo.behaviors.hover import HoverBehavior
+from kivygo.behaviors.hover import GoHoverBehavior
 from kivy.event import EventDispatcher
 from kivy.properties import ColorProperty, ObjectProperty
 
@@ -153,7 +153,7 @@ class GoBorderColor(GoWidget):
 		if hasattr(super(), "on_disabled"):
 			return super().on_disabled(*args)
 
-class GoHoverColor(HoverBehavior, GoBackgroundColor):
+class GoHoverColor(GoHoverBehavior, GoBackgroundColor):
 	background_hover = ListProperty([0]*4)
 
 	def on_cursor_enter(self, *args):

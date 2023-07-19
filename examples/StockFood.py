@@ -15,9 +15,7 @@ Builder.load_string("""
             GoBoxLayout:
                 size_hint_y: None
                 height: "250dp"
-                FloatLayout:
-                    size_hint: 0, 0
-                    size: 0, 0
+                GoFloatChild:
                     Image:
                         source: app.get_path("images/Path.png", app._app_file)
                         size_hint: None, None
@@ -89,7 +87,6 @@ Builder.load_string("""
                             font_size: "16sp"
                             radius: [dp(7)] * 4
                             on_release: root.current = "screens_app"
-                            on_kv_post: root.current = "screens_app"
             
             GoAnchorLayout:
                 size_hint_y: None
@@ -127,7 +124,7 @@ Builder.load_string("""
             ScreenManager:
                 GoSwapScreen:
                     name: "account"
-            DynamicGridLayout:
+            GoGridLayout:
                 size_hint_y: None
                 height: "70dp"
                 background_color: GoColors.terciary_hover
@@ -136,19 +133,15 @@ Builder.load_string("""
                 spacing: "10dp"
                 padding: "10dp"
                 GoAnchorLayout:
-                    background_color: GoColors.background_default
                     GoIconButton:
                         source: app.get_path("icons/python2.svg", app._app_file)
                 GoAnchorLayout:
-                    background_color: GoColors.background_default
                     GoIconButton:
                         source: app.get_path("icons/discord.svg", app._app_file)
                 GoAnchorLayout:
-                    background_color: GoColors.background_default
                     GoIconButton:
                         source: app.get_path("icons/kivy_logo.png", app._app_file)
                 GoAnchorLayout:
-                    background_color: GoColors.background_default
                     GoIconButton:
                         source: app.get_path("icons/facebook2.svg", app._app_file)
 """)

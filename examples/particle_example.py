@@ -5,7 +5,7 @@ from kivygo.widgets.button import GoButtonRipple
 from kivygo.widgets.widget import GoWidget
 from kivy.lang.builder import Builder
 from kivy.clock import Clock
-from kivygo.widgets.particle import ParticleSystem
+from kivygo.widgets.particle import GoParticleSystem
 
 Builder.load_string("""
 
@@ -42,10 +42,10 @@ class DemoParticle(GoWidget):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.can_draw = False
-        self.sun = ParticleSystem('kivygo/config/sun.pex')
-        self.drugs = ParticleSystem('kivygo/config/drugs.pex')
-        self.jellyfish = ParticleSystem('kivygo/config/jellyfish.pex')
-        self.fire = ParticleSystem('kivygo/config/fire.pex')
+        self.sun = GoParticleSystem('kivygo/config/sun.pex')
+        self.drugs = GoParticleSystem('kivygo/config/drugs.pex')
+        self.jellyfish = GoParticleSystem('kivygo/config/jellyfish.pex')
+        self.fire = GoParticleSystem('kivygo/config/fire.pex')
 
         self.current = None
         Clock.schedule_once(self.config)

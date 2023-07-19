@@ -2,7 +2,7 @@ import __init__
 from kivygo.app import GoApp
 from kivy.uix.floatlayout import FloatLayout
 from kivy.lang import Builder
-from kivygo.behaviors.resizable import ResizeSelectBehavior
+from kivygo.behaviors.resizable import GoSelectResizableBehavior
 from kivy.uix.button import Button
 
 
@@ -10,11 +10,11 @@ Builder.load_string("""
 
 #:import hex kivy.utils.get_color_from_hex
 
-<ButtonResizable@ResizeSelectBehavior+Button>:
+<ButtonResizable@GoSelectResizableBehavior+Button>:
 
 <Manager>:
 
-    ResizeSelectBehavior:
+    GoSelectResizableBehavior:
         canvas.before:
             Color:
                 rgba: [1, 1, 0, 1]

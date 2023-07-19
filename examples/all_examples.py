@@ -15,7 +15,7 @@ from button_example import ButtonExample
 from camera_example import CameraExample
 from circular_bar_example import CircularBarExample
 from circularlayout_example import GoCircularLayout
-from datetimepicker_example import CircularTimePicker
+from datetimepicker_example import GoCircularTimePicker
 from drag_example import DragExample
 from effect_example import EffectExample
 from frostglass_example import FrostGlassExample
@@ -30,7 +30,7 @@ from particle_example import ParticleExample
 # from kivyshadertransitions_example import 
 # from progressspinner_example import 
 # from radialslider_example import 
-# from DynamicGridLayout_example import 
+# from GoDynamicGridLayout_example import 
 # from segment_example import 
 # from navigationdrawer_example import 
 # from label_gradient_example import 
@@ -94,7 +94,7 @@ Builder.load_string("""
             GoButtonRipple:
             GoButtonRipple:
 	
-        CircularTimePicker:
+        GoCircularTimePicker:
             size_hint_y: None
             height: root.base_height
 	

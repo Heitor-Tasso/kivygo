@@ -13,13 +13,13 @@ from kivy.lang import Builder
 
 Builder.load_string('''
 
-<NavigationDrawer>:
+<GoNavigationDrawer>:
 	size_hint: [1, 1]
 	_side_panel: sidepanel
 	_main_panel: mainpanel
 	_join_image: joinimage
 	side_panel_width: min(dp(250), 0.5*self.width)
-	BoxLayout:
+	GoBoxLayout:
 		id: sidepanel
 		y: root.y
 		x: root.x - \
@@ -41,7 +41,7 @@ Builder.load_string('''
 			Rectangle:
 				size: self.size
 				pos: self.pos
-	BoxLayout:
+	GoBoxLayout:
 		id: mainpanel
 		x: root.x + \
 		   root._anim_progress * \
@@ -61,7 +61,7 @@ Builder.load_string('''
 			Rectangle:
 				size: self.size
 				pos: self.pos
-	Image:
+	GoImage:
 		id: joinimage
 		opacity: min(sidepanel.opacity, 0 if root._anim_progress < 0.00001 \
 				 else min(root._anim_progress*40, 1))
@@ -78,12 +78,12 @@ Builder.load_string('''
 
 class NavigationDrawerException(Exception):
 	'''Raised when add_widget or remove_widget called incorrectly on a
-	NavigationDrawer.
+	GoNavigationDrawer.
 
 	'''
 
 
-class NavigationDrawer(StencilView):
+class GoNavigationDrawer(StencilView):
 	'''Widget taking two children, a side panel and a main panel,
 	displaying them in a way that replicates the popular Android
 	functionality. See module documentation for more info.
@@ -103,7 +103,7 @@ class NavigationDrawer(StencilView):
 	# Appearance properties
 	side_panel_width = NumericProperty()
 	'''The width of the hidden side panel. Defaults to the minimum of
-	250dp or half the NavigationDrawer width.'''
+	250dp or half the GoNavigationDrawer width.'''
 	separator_image = StringProperty('')
 	'''The path to an image that will be placed between the side and main
 	panels. If set to `''`, defaults to a gradient from black to
@@ -114,7 +114,7 @@ class NavigationDrawer(StencilView):
 
 	# Touch properties
 	touch_accept_width = NumericProperty('14dp')
-	'''Distance from the left of the NavigationDrawer in which to grab the
+	'''Distance from the left of the GoNavigationDrawer in which to grab the
 	touch and allow revealing of the hidden panel.'''
 	_touch = ObjectProperty(None, allownone=True)  # The currently active touch
 
@@ -129,7 +129,7 @@ class NavigationDrawer(StencilView):
 	released or manually animated with anim_to_state.'''
 	min_dist_to_open = NumericProperty(0.7)
 	'''Must be between 0 and 1. Specifies the fraction of the hidden panel
-	width beyond which the NavigationDrawer will relax to open state when
+	width beyond which the GoNavigationDrawer will relax to open state when
 	released. Defaults to 0.7.'''
 	_anim_progress = NumericProperty(0)  # Internal state controlling
 										 # widget positions
@@ -277,7 +277,7 @@ class NavigationDrawer(StencilView):
 		else:
 			raise NavigationDrawerException(
 				'Can\'t add more than two widgets'
-				'directly to NavigationDrawer')
+				'directly to GoNavigationDrawer')
 
 	def remove_widget(self, widget):
 		if widget is self.side_panel:

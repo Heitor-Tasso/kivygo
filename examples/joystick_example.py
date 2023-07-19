@@ -5,7 +5,7 @@ from kivy.config import Config
 
 from kivy.lang.builder import Builder
 from kivy.uix.boxlayout import BoxLayout
-from kivygo.widgets.joystick import Joystick
+from kivygo.widgets.joystick import GoJoystick
 from kivy.app import App
 
 
@@ -54,7 +54,7 @@ Builder.load_string("""
 	pad_background_color: (0.4,  0.4,  0.4,  1)
 	pad_line_color: (0.35, 0.35, 0.35, 1)
 
-	Joystick:
+	GoJoystick:
 		size_hint: (1, 0.7)
 		sticky: root.sticky
 		outer_size: root.outer_size
@@ -370,7 +370,7 @@ class JoystickExampleApp(App):
 
     def _get_joysticks(self, parent):
         joysticks = []
-        if isinstance(parent, Joystick):
+        if isinstance(parent, GoJoystick):
             joysticks.append(parent)
 
         elif hasattr(parent, 'children'):

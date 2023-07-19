@@ -5,7 +5,7 @@ from kivy.graphics import Color, Ellipse, Mesh, Scale
 from kivy.utils import get_color_from_hex
 
 
-class Segment(RelativeLayout):
+class GoSegment(RelativeLayout):
   
     scale = BoundedNumericProperty(0.1, min=0.1, max=1, errorvalue=0.2)
     color = StringProperty('2fc827')
@@ -18,7 +18,7 @@ class Segment(RelativeLayout):
         self.indice = range(0, 6)
         self.xmode = 'triangle_fan'
         
-        # Segment matrix configuration
+        # GoSegment matrix configuration
         seg_1 = [
             20, 215, 0, 0,
             35, 230, 0, 0,

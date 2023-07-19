@@ -2,7 +2,7 @@
 from kivy.lang import Builder
 from kivy.clock import Clock
 from kivy.uix.label import Label
-from kivy.uix.behaviors import ToggleButtonBehavior
+from kivy.uix.behaviors import GoToggleButtonBehavior
 from kivygo.layouts.boxlayout import GoBoxLayout
 from kivygo.layouts.anchorlayout import GoAnchorLayout
 from kivygo.widgets.widget import GoWidget
@@ -90,7 +90,7 @@ class GoTabException(Exception):
 	pass
 
 
-class GoTabLabel(ToggleButtonBehavior, Label):
+class GoTabLabel(GoToggleButtonBehavior, Label):
 
 	text_color_normal = VariableListProperty([0]*4)
 	'''Text color of the label when it is not selected.

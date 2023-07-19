@@ -4,7 +4,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
 from kivy.clock import Clock
 import threading
-from kivygo.widgets.kivyg_icon import Kivg
+from kivygo.widgets.kivyg_icon import GoKivg
 
 
 root = Builder.load_string("""
@@ -90,12 +90,12 @@ class KivgExample(BoxLayout):
         Clock.schedule_once(self.config)
     
     def config(self, *args):
-        self.s = Kivg(self.ids.svg_area)
+        self.s = GoKivg(self.ids.svg_area)
 
     def show_button_icon(self, *args):
         grid = self.root.ids.button_area
         for b in grid.children:
-            s = Kivg(b)
+            s = GoKivg(b)
             setattr(b, "s", s)
             Clock.schedule_once(lambda *a: self.draw_filled(s, b.svg_icon))
 

@@ -11,12 +11,12 @@ from kivy.properties import (
 from kivy.uix.label import Label
 
 
-class TapTargetView(EventDispatcher):
-	"""Rough try to mimic the working of Android's TapTargetView."""
+class GoTapTargetView(EventDispatcher):
+	"""Rough try to mimic the working of Android's GoTapTargetView."""
 
 	widget = ObjectProperty(None)
 	"""
-	Widget to add ``TapTargetView`` upon.
+	Widget to add ``GoTapTargetView`` upon.
 	"""
 
 	outer_radius = NumericProperty(dp(300))

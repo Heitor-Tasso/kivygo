@@ -19,7 +19,7 @@ from kivy.clock import Clock
 
 Builder.load_string("""
 
-<SpacerWidget>:
+<GoSpacerWidget>:
 	size_hint: [None, None]
 	size: [0, 0]
 	canvas:
@@ -29,7 +29,7 @@ Builder.load_string("""
 			rectangle: [*self.pos, *self.size]
 			width: root.outline_width
 
-<PreviewWidget>:
+<GoPreviewWidget>:
 	size_hint: [None, None]
 	size: [0, 0]
 	canvas:
@@ -53,19 +53,19 @@ Builder.load_string("""
 """)
 
 
-class SpacerWidget(Widget):
+class GoSpacerWidget(Widget):
 	outline_width = NumericProperty(dp(2))
 	outline_color = ColorProperty([1, 0, 0, 1])
 
 
-class PreviewWidget(Widget):
+class GoPreviewWidget(Widget):
 	texture = ObjectProperty(None)
 	outline_width = NumericProperty(dp(1.01))
 	outline_color = ColorProperty([1, 0, 0, 1])
 	background_color = ColorProperty([1, 1, 1, 1])
 
 
-class DraggableObjectBehavior(Widget):
+class GoDraggableObjectBehavior(Widget):
 
 	drag_cls = StringProperty('')
 
@@ -89,7 +89,7 @@ class DraggableObjectBehavior(Widget):
 	
 	def start(self, *args):
 		if self.preview_widget == None:
-			self.preview_widget = PreviewWidget()
+			self.preview_widget = GoPreviewWidget()
 
 	def _touch_uid(self):
 		return '{}.{}'.format(self.__class__.__name__, self.uid)
@@ -214,7 +214,7 @@ class DraggableObjectBehavior(Widget):
 			self.preview_widget.parent.remove_widget(self.preview_widget)
 
 
-class DraggableLayoutBehavior(Widget):
+class GoDraggableLayoutBehavior(Widget):
 
 	spacer_widget = ObjectProperty(None)
 
@@ -223,7 +223,7 @@ class DraggableLayoutBehavior(Widget):
 	drag_append_end = BooleanProperty(False)
 
 	def __init__(self, *args, **kwargs):
-		self.spacer_widget = SpacerWidget()
+		self.spacer_widget = GoSpacerWidget()
 		super().__init__(*args, **kwargs)
 
 	def _touch_uid(self):

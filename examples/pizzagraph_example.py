@@ -1,6 +1,6 @@
 import __init__
 from kivy.app import App
-from kivygo.widgets.pizza_graph import Pizza
+from kivygo.widgets.pizza_graph import GoPizza
 
 
 class ChartApp(App):
@@ -27,7 +27,7 @@ class ChartApp(App):
                 lang_pizza.serie = zip(lang, value, color)
 
             layout = GridLayout(cols=2, padding=50)
-            lang_pizza = Pizza(serie=[
+            lang_pizza = GoPizza(serie=[
                 ["Français", 5, 'a9a9a9'],
                 ["Belge", 25, '808080'],
                 ["Anglais", 20, '696969'],
@@ -39,7 +39,7 @@ class ChartApp(App):
                 legend_title_rayon=170,
                 chart_border=2)
 
-            fruit_pizza = Pizza(serie=[
+            fruit_pizza = GoPizza(serie=[
                 ["Pomme", 20, '6495ed'],
                 ["Poire", 20, '7b68ee'],
                 ["Abricot", 20, '4169e1'],

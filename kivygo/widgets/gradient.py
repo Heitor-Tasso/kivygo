@@ -5,7 +5,7 @@ from kivy.graphics import (
 	ClearColor, ClearBuffers,
 	Rectangle,
 )
-from kivy.uix.boxlayout import BoxLayout
+from kivygo.layouts.boxlayout import GoBoxLayout
 from kivy.properties import StringProperty, ObjectProperty
 
 
@@ -37,7 +37,7 @@ void main(void)
 
 
 
-class GradientWidget(BoxLayout):
+class GoGradientWidget(GoBoxLayout):
 
 	fs = StringProperty(None)
 

@@ -11,7 +11,7 @@ from kivy.properties import (
     OptionProperty, BooleanProperty,
     DictProperty
 )
-from kivy.uix.boxlayout import BoxLayout
+from kivygo.layouts.boxlayout import GoBoxLayout
 from kivy.uix.label import Label
 
 from math import atan, pi, radians, sin, cos
@@ -30,13 +30,13 @@ def rgb_to_hex(*color):
 
 Builder.load_string("""
 
-<Number>:
+<GoNumber>:
     text_size: self.size
     valign: "middle"
     halign: "center"
     font_size: self.height * self.size_factor
 
-<CircularNumberPicker>:
+<GoCircularNumberPicker>:
     canvas.before:
         PushMatrix
         Scale:
@@ -47,16 +47,14 @@ Builder.load_string("""
     canvas.after:
         PopMatrix            
 
-<CircularTimePicker>:
+<GoCircularTimePicker>:
     orientation: "vertical"
     spacing: "20dp"
 
-    AnchorLayout:
-        anchor_x: "center"
-        anchor_y: "center"
+    GoAnchorLayout:
         size_hint_y: 1.0 / 3
 
-        GridLayout:
+        GoGridLayout:
             cols: 2
             spacing: "10dp"
             size_hint_x: None
@@ -82,13 +80,13 @@ Builder.load_string("""
                 width: self.texture_size[0]
                 font_size: self.height * 0.3
 
-    FloatLayout:
+    GoFloatLayout:
         id: picker_container
         _bound: {}
 """)
 
 
-class Number(Label):
+class GoNumber(Label):
     """The class used to show the numbers in the selector.
     """
 
@@ -97,7 +95,7 @@ class Number(Label):
     """
 
 
-class CircularNumberPicker(GoCircularLayout):
+class GoCircularNumberPicker(GoCircularLayout):
     """A circular number picker based on GoCircularLayout. A selector will
     help you pick a number. You can also set :attr:`multiples_of` to make
     it show only some numbers and use the space in between for the other
@@ -140,7 +138,7 @@ class CircularNumberPicker(GoCircularLayout):
     """
 
     number_size_factor = NumericProperty(0.5)
-    """Font size scale factor fot the :class:`Number`s.
+    """Font size scale factor fot the :class:`GoNumber`s.
     """
 
     number_format_string = StringProperty("{}")
@@ -149,7 +147,7 @@ class CircularNumberPicker(GoCircularLayout):
     """
 
     scale = NumericProperty(1)
-    """Canvas scale factor. Used in :class:`CircularTimePicker` transitions.
+    """Canvas scale factor. Used in :class:`GoCircularTimePicker` transitions.
     """
 
     _selection_circle = ObjectProperty(None)
@@ -224,7 +222,7 @@ class CircularNumberPicker(GoCircularLayout):
         for i in range(*self.range):
             if i % self.multiples_of != 0:
                 continue
-            n = Number(text=self.number_format_string.format(i), size_factor=self.number_size_factor, color=self.color)
+            n = GoNumber(text=self.number_format_string.format(i), size_factor=self.number_size_factor, color=self.color)
             self.bind(color=n.setter("color"))
             self.add_widget(n)
 
@@ -345,7 +343,7 @@ class CircularNumberPicker(GoCircularLayout):
         return min(int(angle / quota) + self.min, self.max-1)
 
 
-class CircularMinutePicker(CircularNumberPicker):
+class GoCircularMinutePicker(GoCircularNumberPicker):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -362,7 +360,7 @@ class CircularMinutePicker(CircularNumberPicker):
         self.start_angle = -(360. / self.shown_items / 2) - 90
 
 
-class CircularHourPicker(CircularNumberPicker):
+class GoCircularHourPicker(GoCircularNumberPicker):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.min = 1
@@ -378,9 +376,9 @@ class CircularHourPicker(CircularNumberPicker):
         self.start_angle = (360.0 / self.shown_items / 2) - 90
 
 
-class CircularTimePicker(BoxLayout):
-    """Widget that makes use of :class:`CircularHourPicker` and
-    :class:`CircularMinutePicker` to create a user-friendly, animated
+class GoCircularTimePicker(GoBoxLayout):
+    """Widget that makes use of :class:`GoCircularHourPicker` and
+    :class:`GoCircularMinutePicker` to create a user-friendly, animated
     time picker like the one seen on Android.
 
     See module documentation for more details.
@@ -484,8 +482,8 @@ class CircularTimePicker(BoxLayout):
             self._am = False
         
         self.bind(time_list=self.on_time_list, picker=self._switch_picker, _am=self.on_ampm)
-        self._h_picker = CircularHourPicker()
-        self._m_picker = CircularMinutePicker()
+        self._h_picker = GoCircularHourPicker()
+        self._m_picker = GoCircularMinutePicker()
         Clock.schedule_once(self.on_selected)
         Clock.schedule_once(self.on_time_list)
         Clock.schedule_once(self._init_later)

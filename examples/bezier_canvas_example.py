@@ -3,7 +3,7 @@ from kivygo.app import GoApp
 from kivygo.widgets.widget import GoWidget
 from kivygo.layouts.boxlayout import GoBoxLayoutColor
 from kivy.lang import Builder
-from kivygo.widgets.bezier import BezierLine
+from kivygo.widgets.bezier import GoBezierLine
 
 
 Builder.load_string("""
@@ -46,7 +46,7 @@ class BezierCanvas(GoWidget):
 		if not self.collide_point(*touch.pos):
 			return resp
 
-		bezierline = BezierLine()
+		bezierline = GoBezierLine()
 		bezierline.points = [touch.pos, touch.pos]
 		touch.ud['selected'] = 1
 		touch.grab(bezierline)

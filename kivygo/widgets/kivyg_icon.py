@@ -21,11 +21,12 @@ from kivygo.utils import (
 )
 
 from kivygo.animation import Animation
+from kivygo.widgets.widget import GoWidget
 from svg.path import parse_path
 from collections import OrderedDict
 
 
-class Kivg():
+class GoKivg(GoWidget):
     def __init__(self, widget, *args):
         """
         widget: widget to draw svg upon

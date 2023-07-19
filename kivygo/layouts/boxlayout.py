@@ -1,5 +1,5 @@
 from kivy.uix.boxlayout import BoxLayout
-from kivygo.behaviors.drag_and_drop import DraggableLayoutBehavior
+from kivygo.behaviors.drag_and_drop import GoDraggableLayoutBehavior
 from kivy.lang.builder import Builder
 from kivygo.colors import GoColorBase, GoBackgroundColor
 
@@ -27,7 +27,7 @@ class GoBoxLayout(GoBackgroundColor, BoxLayout):
 class GoBoxLayoutColor(GoColorBase, GoBoxLayout):
 	pass
 
-class GoDraggableBoxLayout(GoBoxLayout, DraggableLayoutBehavior):
+class GoDraggableBoxLayout(GoBoxLayout, GoDraggableLayoutBehavior):
 	def compare_pos_to_widget(self, widget, pos):
 		if self.orientation == 'vertical':
 			return 'before' if pos[1] >= widget.center_y else 'after'

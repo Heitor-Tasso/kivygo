@@ -20,10 +20,10 @@ from kivy.graphics import (
 )
 
 from kivygo.utils import root_path, do_correction_path
-from kivygo.behaviors.button import ToggleButtonBehavior
+from kivygo.behaviors.button import GoToggleButtonBehavior
 
 
-class CommonRipple():
+class GoCommonRipple(Widget):
 
     ripple_rad_default = NumericProperty(1)
     """The starting value of the radius of the ripple effect.
@@ -69,7 +69,7 @@ class CommonRipple():
     _doing_ripple = BooleanProperty(False)
     _finishing_ripple = BooleanProperty(False)
     _fading_out = BooleanProperty(False)
-    _no_ripple_effect = BooleanProperty(False)
+    _no_effect = BooleanProperty(False)
     _round_rad = ListProperty([0, 0, 0, 0])
 
     def lay_canvas_instructions(self):
@@ -135,7 +135,7 @@ class CommonRipple():
         
         if not self.disabled:
             self.call_ripple_animation_methods(touch)
-            if isinstance(self, ToggleButtonBehavior):
+            if isinstance(self, GoToggleButtonBehavior):
                 return super().on_touch_down(touch)
             else:
                 return True
@@ -186,14 +186,14 @@ class CommonRipple():
         self.col_instruction.a = value[3]
 
 
-class CircularRippleBehavior(CommonRipple):
+class CircularRippleBehavior(GoCommonRipple):
 
     ripple_scale = NumericProperty(1)
-    """See :class:`~CommonRipple.ripple_scale`.
+    """See :class:`~GoCommonRipple.ripple_scale`.
     """
 
     def lay_canvas_instructions(self) -> None:
-        if self._no_ripple_effect:
+        if self._no_effect:
             return None
 
         with self.canvas.after if self.ripple_canvas_after else self.canvas.before:
@@ -238,7 +238,7 @@ class CircularRippleBehavior(CommonRipple):
         )
 
 
-class CommonElevationBehavior(Widget):
+class GoCommonElevationBehavior(Widget):
 
     elevation = BoundedNumericProperty(0, min=0, errorvalue=0)
     """Elevation of the widget.
@@ -430,7 +430,7 @@ class CommonElevationBehavior(Widget):
         self.on_pos()
 
 
-class Thumb(CommonElevationBehavior, CircularRippleBehavior, FloatLayout):
+class GoThumb(GoCommonElevationBehavior, CircularRippleBehavior, FloatLayout):
     def _set_ellipse(self, instance, value):
         self.ellipse.size = (self._ripple_rad, self._ripple_rad)
         if self.ellipse.size[0] > self.width * 1.5 and not self._fading_out:

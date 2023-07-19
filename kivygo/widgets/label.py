@@ -1,5 +1,5 @@
 
-from kivygo.behaviors.button import ButtonBehavior
+from kivygo.behaviors.button import GoButtonBehavior
 
 from kivy.core.text.markup import MarkupLabel as CoreLabel
 from kivy.lang import Builder
@@ -96,7 +96,7 @@ class GoLabelGradient(GoLabel):
 		self.texture = new_texture
 
 	
-class GoLabelButton(ButtonBehavior, GoLabel):
+class GoLabelButton(GoButtonBehavior, GoLabel):
 	pass
 
 

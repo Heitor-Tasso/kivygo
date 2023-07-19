@@ -1,6 +1,6 @@
 import __init__
 from kivygo.app import GoApp
-from kivygo.layouts.gridlayout import DynamicGridLayout
+from kivygo.layouts.gridlayout import GoDynamicGridLayout
 from kivy.lang.builder import Builder
 
 
@@ -33,7 +33,7 @@ Builder.load_string('''
 
 ''')
 
-class MainWidget(DynamicGridLayout):
+class MainWidget(GoDynamicGridLayout):
     pass
 
 class TestGridLayoutApp(GoApp):

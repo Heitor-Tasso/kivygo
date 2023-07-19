@@ -5,8 +5,9 @@ from kivy.properties import (
     OptionProperty,
     StringProperty,
 )
-from kivy.uix.effectwidget import AdvancedEffectBase, EffectWidget
+from kivy.uix.effectwidget import AdvancedEffectBase
 from kivy.graphics import BindTexture
+
 
 GLSL = """
 
@@ -38,7 +39,7 @@ vec4 effect(vec4 color, sampler2D texture, vec2 tex_coords, vec2 coords){
 """
 
 
-class MaskEffect(AdvancedEffectBase):
+class GoMaskEffect(AdvancedEffectBase):
     mask = ObjectProperty(None)
     glsl = StringProperty(GLSL)
     mode = OptionProperty("multiply", options=["multiply", "substract"])
@@ -69,4 +70,4 @@ class MaskEffect(AdvancedEffectBase):
         )
 
 
-global_idmap["MaskEffect"] = MaskEffect
+global_idmap["GoMaskEffect"] = GoMaskEffect

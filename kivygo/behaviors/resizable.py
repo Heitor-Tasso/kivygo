@@ -16,7 +16,7 @@ from kivy.core.window import Window
 Builder.load_string("""
 
 
-<ResizableRectangleBord>:
+<GoRectangleResizableBord>:
 	size_hint: None, None
 	size: '8dp', '8dp'
 	radius: [sum(self.size)/2] * 4
@@ -47,7 +47,7 @@ Builder.load_string("""
 			size: self.size
 
 
-<ResizableLineBord>:
+<GoLineResizableBord>:
 	canvas:
 		Color:
 			rgba: self.color
@@ -56,29 +56,29 @@ Builder.load_string("""
 			points: self.points
 
 
-<ResizeSelectBehavior>:
-	ResizableLineBord: # TOP LINE
+<GoSelectResizableBehavior>:
+	GoLineResizableBord: # TOP LINE
 		id: top_line
 		color: root._top_line_color
 		points: [top_left_rect.right, root.top, top_right_rect.x, root.top]
 
-	ResizableLineBord: # BOTTOM LINE
+	GoLineResizableBord: # BOTTOM LINE
 		id: bottom_line
 		color: root._bottom_line_color
 		points: [bottom_left_rect.right, root.y, bottom_right_rect.x, root.y]
 
-	ResizableLineBord: # LEFT LINE
+	GoLineResizableBord: # LEFT LINE
 		id: left_line
 		color: root._left_line_color
 		points: [root.x, top_left_rect.y, root.x, bottom_left_rect.top]
 	
-	ResizableLineBord: # RIGHT LINE
+	GoLineResizableBord: # RIGHT LINE
 		id: right_line
 		color: root._right_line_color
 		points: [root.right, top_right_rect.y, root.right, bottom_right_rect.y]
 
 	
-	ResizableRectangleBord: # TOP LEFT RECTANGLE
+	GoRectangleResizableBord: # TOP LEFT RECTANGLE
 		id: top_left_rect
 		x: self.parent.x - (self.width/2)
 		y: self.parent.top - (self.height/2)
@@ -87,7 +87,7 @@ Builder.load_string("""
 		source: root.bord_icon_source
 		size: root.bord_size
 		
-	ResizableRectangleBord: # BOTTOM LEFT RECTANGLE
+	GoRectangleResizableBord: # BOTTOM LEFT RECTANGLE
 		id: bottom_left_rect
 		x: self.parent.x-(self.width/2)
 		y: self.parent.y-(self.height/2)
@@ -96,7 +96,7 @@ Builder.load_string("""
 		source: root.bord_icon_source
 		size: root.bord_size
 	
-	ResizableRectangleBord: # BOTTOM RIGHT RECTANGLE
+	GoRectangleResizableBord: # BOTTOM RIGHT RECTANGLE
 		id: bottom_right_rect
 		x: self.parent.right-(self.width/2)
 		y: self.parent.y-(self.height/2)
@@ -105,7 +105,7 @@ Builder.load_string("""
 		source: root.bord_icon_source
 		size: root.bord_size
 	
-	ResizableRectangleBord:  # TOP RIGHT RECTANGLE
+	GoRectangleResizableBord:  # TOP RIGHT RECTANGLE
 		id: top_right_rect
 		x: self.parent.right - (self.width/2)
 		y: self.parent.top - (self.height/2)
@@ -114,7 +114,7 @@ Builder.load_string("""
 		source: root.bord_icon_source
 		size: root.bord_size
 
-	ResizableRectangleBord:  # TOP CENTER RECTANGLE
+	GoRectangleResizableBord:  # TOP CENTER RECTANGLE
 		id: top_center_rect
 		x: self.parent.x + (self.parent.width/2) - (self.width/2)
 		y: self.parent.top - (self.height/2)
@@ -123,7 +123,7 @@ Builder.load_string("""
 		source: root.bord_icon_source
 		size: root.bord_size
 	
-	ResizableRectangleBord:  # LEFT CENTER RECTANGLE
+	GoRectangleResizableBord:  # LEFT CENTER RECTANGLE
 		id: left_center_rect
 		x: self.parent.x - (self.width/2)
 		y: self.parent.y + (self.parent.height/2) - (self.height/2)
@@ -132,7 +132,7 @@ Builder.load_string("""
 		source: root.bord_icon_source
 		size: root.bord_size
 
-	ResizableRectangleBord:  # RIGHT CENTER RECTANGLE
+	GoRectangleResizableBord:  # RIGHT CENTER RECTANGLE
 		id: right_center_rect
 		x: self.parent.right - (self.width/2)
 		y: self.parent.y + (self.parent.height/2) - (self.height/2)
@@ -141,7 +141,7 @@ Builder.load_string("""
 		source: root.bord_icon_source
 		size: root.bord_size
 
-	ResizableRectangleBord:  # BOTTOM CENTER RECTANGLE
+	GoRectangleResizableBord:  # BOTTOM CENTER RECTANGLE
 		id: bottom_center_rect
 		x: self.parent.x + (self.parent.width/2) - (self.width/2)
 		y: self.parent.y - (self.height/2)
@@ -153,19 +153,19 @@ Builder.load_string("""
 """)
 
 
-class ResizableRectangleBord(GoImage):
+class GoRectangleResizableBord(GoImage):
 	outline_width = NumericProperty(dp(2))
 	radius = ListProperty([0, 0, 0, 0])
 	background_color = ColorProperty("#FFFFFF")
 	line_color = ColorProperty("#25d2a2")
 
 
-class ResizableLineBord(Widget):
+class GoLineResizableBord(Widget):
 	color = ColorProperty("red")
 	points = ListProperty([0, 0])
 
 
-class ResizeSelectBehavior(Widget):
+class GoSelectResizableBehavior(Widget):
 
 	top_line_color = ColorProperty("#25d2a2")
 	bottom_line_color = ColorProperty("#25d2a2")
@@ -200,9 +200,9 @@ class ResizeSelectBehavior(Widget):
 		super().__init__(**kwargs)
 		self.selected_side = None
 
-		if not ResizeSelectBehavior.__resizes:
+		if not GoSelectResizableBehavior.__resizes:
 			Window.bind(mouse_pos=self.on_mouse_pos)
-		ResizeSelectBehavior.__resizes.append(self)
+		GoSelectResizableBehavior.__resizes.append(self)
 
 		self.bind(
 			on_top_line_color=self._set_default_colors,
@@ -216,15 +216,15 @@ class ResizeSelectBehavior(Widget):
 		self._set_default_colors()
 	
 	def on_parent(self, *args):
-		if self.parent == None and ResizeSelectBehavior.__resizes:
-			if ResizeSelectBehavior.__resizes[0] is self:
+		if self.parent == None and GoSelectResizableBehavior.__resizes:
+			if GoSelectResizableBehavior.__resizes[0] is self:
 				Window.unbind(mouse_pos=self.on_mouse_pos)
-				del ResizeSelectBehavior.__resizes[0]
+				del GoSelectResizableBehavior.__resizes[0]
 				
-				if ResizeSelectBehavior.__resizes:
-					Window.bind(mouse_pos=ResizeSelectBehavior.__resizes[0].on_mouse_pos)
+				if GoSelectResizableBehavior.__resizes:
+					Window.bind(mouse_pos=GoSelectResizableBehavior.__resizes[0].on_mouse_pos)
 			else:
-				ResizeSelectBehavior.__resizes.remove(self)
+				GoSelectResizableBehavior.__resizes.remove(self)
 
 
 	def _set_default_colors(self, *args):
@@ -256,7 +256,7 @@ class ResizeSelectBehavior(Widget):
 		When the mouse moves, we check the position of the mouse
 		and update the cursor accordingly.
 		"""
-		for wid in ResizeSelectBehavior.__resizes:
+		for wid in GoSelectResizableBehavior.__resizes:
 			if wid.collide_point(*wid.to_widget(*touch)):
 				collision = wid.collides_with_control_points(wid.to_widget(*touch))
 				if collision in ["top left", "bottom right"]:

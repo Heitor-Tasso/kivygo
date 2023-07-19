@@ -15,13 +15,13 @@ from pygments.styles import get_style_by_name
 
 Builder.load_string("""
 
-<CodeEditor>:
+<GoCodeEditor>:
 	id: scroller
 	code: text_code
 	effect_cls: 'ScrollEffect'
 	bar_width: '15dp'
 	input_minimum_height: text_code.minimum_height
-	TextCode:
+	GoTextCode:
 		id: text_code
 		size_hint: [None, None]
 		on_text: scroller.update_width_code()
@@ -32,13 +32,13 @@ Builder.load_string("""
 		text: root.text
 
 
-<InputEditor>:
+<GoInputEditor>:
 	id: scroller
 	code: text_code
 	effect_cls: 'ScrollEffect'
 	bar_width: '15dp'
 	input_minimum_height: text_code.minimum_height
-	InputTerminal:
+	GoInputTerminal:
 		id: text_code
 		size_hint: None, None
 		on_text: scroller.update_width_code()
@@ -53,7 +53,7 @@ Builder.load_string("""
 """)
 
 
-class InputTerminal(TextInput):
+class GoInputTerminal(TextInput):
 
 	can_scroll = True
 
@@ -70,11 +70,11 @@ class InputTerminal(TextInput):
 		return super().on_touch_move(touch)
 
 
-class TextCode(CodeInput, InputTerminal):
+class GoTextCode(CodeInput, GoInputTerminal):
 	pass
 
 
-class CodeEditorBase(ScrollView):
+class GoCodeEditorBase(ScrollView):
 	
 	code = ObjectProperty(None)
 	bar_move = ''
@@ -252,10 +252,10 @@ class CodeEditorBase(ScrollView):
 		return super().on_touch_move(touch)
 
 
-class InputEditor(CodeEditorBase):
+class GoInputEditor(GoCodeEditorBase):
 	pass
 
 
-class CodeEditor(CodeEditorBase):
+class GoCodeEditor(GoCodeEditorBase):
 	pass
 

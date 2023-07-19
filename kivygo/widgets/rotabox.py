@@ -25,7 +25,7 @@ from kivygo.bounds_math import (
 )
 
 
-class Rotabox(GoWidget):
+class GoRotabox(GoWidget):
 
 	source_crop = StringProperty("")
 
@@ -100,7 +100,7 @@ class Rotabox(GoWidget):
 
 	allow_rotabox = BooleanProperty(True)
 	'''Enables widget's advanced collision detection. If False, widget will
-	collide as a normal (non-Rotabox) widget.
+	collide as a normal (non-GoRotabox) widget.
 	'''
 
 	custom_bounds = ObjectProperty([[(0., 0.), (1., 0.), (1., 1.), (0., 1.)]])
@@ -318,12 +318,12 @@ class Rotabox(GoWidget):
 	
 	def add_widget(self, widget, **kwargs):
 		if self.children:
-			raise Exception('Rotabox can only have one child.')
+			raise Exception('GoRotabox can only have one child.')
 		super().add_widget(widget)
 
 	def on_open_bounds(self, *args):
 		if self.open_bounds and not self.segment_mode:
-			raise Exception('Open bounds are only applicable in Segment mode.')
+			raise Exception('Open bounds are only applicable in GoSegment mode.')
 
 	def on_source_bounds(self, *args):
 		self.custom_bounds = self.read_bounds(self.source_bounds)
@@ -802,7 +802,7 @@ class Rotabox(GoWidget):
 		return None
 
 	def set_size_hint_x(self, value):
-		raise Exception("Rotabox can't use size_hint.")
+		raise Exception("GoRotabox can't use size_hint.")
 	
 	size_hint_x = AliasProperty(get_size_hint_x, set_size_hint_x)
 
@@ -811,7 +811,7 @@ class Rotabox(GoWidget):
 		return None
 
 	def set_size_hint_y(self, value):
-		raise Exception("Rotabox can't use size_hint.")
+		raise Exception("GoRotabox can't use size_hint.")
 
 	size_hint_y = AliasProperty(get_size_hint_y, set_size_hint_y)
 	size_hint = ReferenceListProperty(size_hint_x, size_hint_y)

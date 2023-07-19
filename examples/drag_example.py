@@ -2,8 +2,8 @@ import __init__
 from kivygo.app import GoApp
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
-from kivygo.behaviors.resizable import ResizeSelectBehavior
-from kivygo.behaviors.drag_and_drop import DraggableObjectBehavior
+from kivygo.behaviors.resizable import GoSelectResizableBehavior
+from kivygo.behaviors.drag_and_drop import GoDraggableObjectBehavior
 from kivygo.layouts.boxlayout import GoDraggableBoxLayout
 
 
@@ -12,13 +12,13 @@ Builder.load_string("""
 #:import hex kivy.utils.get_color_from_hex
 
 
-#:import SpacerWidget kivygo.behaviors.drag_and_drop.SpacerWidget
-#:import PreviewWidget kivygo.behaviors.drag_and_drop.PreviewWidget
+#:import GoSpacerWidget kivygo.behaviors.drag_and_drop.GoSpacerWidget
+#:import GoPreviewWidget kivygo.behaviors.drag_and_drop.GoPreviewWidget
 
 
-<ButtonResizable@ResizeSelectBehavior+Button>:
+<ButtonResizable@GoSelectResizableBehavior+Button>:
 
-<DragLabel@DraggableObjectBehavior+Label>:
+<DragLabel@GoDraggableObjectBehavior+Label>:
 
 
 <DragExample>:
@@ -64,14 +64,14 @@ Builder.load_string("""
         DragLabel:
             text: 'DRAGABLE_A1'
             drag_cls: 'LABEL_A'
-	        preview_widget: PreviewWidget(outline_color=[0, 0, 1, 1])
+	        preview_widget: GoPreviewWidget(outline_color=[0, 0, 1, 1])
         DragLabel:
             text: 'DRAGABLE_B1'
             drag_cls: 'LABEL_B'
         DragLabel:
             text: 'DRAGABLE_A2'
             drag_cls: 'LABEL_A'
-	        preview_widget: PreviewWidget(outline_color=[0.4, 0, 1, 1], background_color=[0.2, 0.4, 1, 1])
+	        preview_widget: GoPreviewWidget(outline_color=[0.4, 0, 1, 1], background_color=[0.2, 0.4, 1, 1])
         DragLabel:
             text: 'DRAGABLE_B2'
             drag_cls: 'LABEL_B'

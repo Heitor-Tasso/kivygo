@@ -15,7 +15,7 @@ from kivy.properties import (
     ColorProperty, ListProperty,
     NumericProperty, ObjectProperty,
 )
-from kivy.uix.floatlayout import FloatLayout
+from kivygo.layouts.floatlayout import GoFloatLayout
 from kivy.uix.image import Image
 from kivy.uix.modalview import ModalView
 from kivy.uix.screenmanager import Screen
@@ -209,14 +209,14 @@ void main(void)
 """
 
 
-class VerticalBlur(Fbo):
+class GoVerticalBlur(Fbo):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, fs=vertical_blur_shader, **kwargs)
         self["mean_res"] = MEAN_RES
         self["blur_size"] = dp(25)
 
 
-class HorizontalBlur(Fbo):
+class GoHorizontalBlur(Fbo):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, fs=horizontal_blur_shader, **kwargs)
         self.rect = Rectangle()
@@ -224,17 +224,17 @@ class HorizontalBlur(Fbo):
         self["blur_size"] = dp(25)
 
 
-class Noise(Fbo):
+class GoNoise(Fbo):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, fs=noise_shader, **kwargs)
         self.rect = Rectangle()
 
 
-class FrostedGlass(FloatLayout):
+class GoFrostedGlass(GoFloatLayout):
 
     background = ObjectProperty(None, allownone=True)
     """
-    Target widget/layout that will be used as a background to FrostedGlass.
+    Target widget/layout that will be used as a background to GoFrostedGlass.
     The recomended way to pass the widget is through the id.
     """
 
@@ -242,7 +242,7 @@ class FrostedGlass(FloatLayout):
     """
     Size of the gaussian blur aplied to the background.
 
-    Note: Do not pass relative values such as dp or sp. FrostedGlass already
+    Note: Do not pass relative values such as dp or sp. GoFrostedGlass already
     manages this automatically, according to the device's screen density.
     """
 
@@ -268,11 +268,11 @@ class FrostedGlass(FloatLayout):
     """
 
     outline_color = ColorProperty([1.0, 1.0, 1.0, 1.0])
-    """FrostedGlass outline color.
+    """GoFrostedGlass outline color.
     """
 
     outline_width = NumericProperty(1)
-    """FrostedGlass outline width.
+    """GoFrostedGlass outline width.
     """
 
     def __init__(self, **kwargs):
@@ -317,9 +317,9 @@ class FrostedGlass(FloatLayout):
                 ),
             )
 
-        self.noise = Noise(size=(100, 100))
-        self.h_blur = HorizontalBlur(size=(100, 100))
-        self.v_blur = VerticalBlur(size=(100, 100))
+        self.noise = GoNoise(size=(100, 100))
+        self.h_blur = GoHorizontalBlur(size=(100, 100))
+        self.v_blur = GoVerticalBlur(size=(100, 100))
 
         with self.h_blur:
             ClearColor(0, 0, 0, 0)

@@ -7,7 +7,7 @@ from kivygo.widgets.button import GoButtonRipple
 from kivy.uix.dropdown import DropDown
 
 
-class EffectSpinner(GoButtonRipple):
+class GoEffectSpinner(GoButtonRipple):
 
     values = ListProperty([])
     '''Values that can be selected by the user. It must be a list of strings.

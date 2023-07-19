@@ -8,7 +8,7 @@ from kivy.clock import Clock
 Builder.load_string("""
 
 #:import EffectWidget kivy.uix.effectwidget.EffectWidget
-#:import MaskEffect kivygo.widgets.effect.MaskEffect
+#:import GoMaskEffect kivygo.widgets.effect.GoMaskEffect
 
 
 <EffectExample>:
@@ -27,7 +27,7 @@ Builder.load_string("""
         source: 'data/logo/kivy-icon-512.png'
     
     EffectWidget:
-        effects: [MaskEffect(mask=mask, mode='substract')]
+        effects: [GoMaskEffect(mask=mask, mode='substract')]
         Widget:
             canvas:
                 PushMatrix

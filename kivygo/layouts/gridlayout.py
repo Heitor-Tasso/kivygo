@@ -2,7 +2,7 @@ from kivy.metrics import dp
 from kivy.clock import Clock
 from kivy.uix.gridlayout import GridLayout
 from kivy.core.window import Window
-from kivygo.behaviors.drag_and_drop import DraggableLayoutBehavior
+from kivygo.behaviors.drag_and_drop import GoDraggableLayoutBehavior
 from kivy.lang.builder import Builder
 from kivygo.colors import GoColorBase, GoBackgroundColor
 from kivy.uix.layout import Layout
@@ -99,7 +99,7 @@ class GoAutoGridLayoutColor(GoGridLayoutColor, GoAutoGridLayout):
 	pass
 
 
-class GoDraggableGridLayout(GoGridLayout, DraggableLayoutBehavior):
+class GoDraggableGridLayout(GoGridLayout, GoDraggableLayoutBehavior):
 
 	def compare_pos_to_widget(self, widget, pos):
 		x, y = pos
@@ -131,7 +131,7 @@ class GoDraggableGridLayoutColor(GoGridLayoutColor, GoDraggableGridLayout):
 	pass
 
 
-class DynamicGridLayout(GoBackgroundColor, Layout):
+class GoDynamicGridLayout(GoBackgroundColor, Layout):
 
 	cols = BoundedNumericProperty(None, min=0, allownone=True)
 	rows = BoundedNumericProperty(None, min=0, allownone=True)
@@ -213,6 +213,6 @@ class DynamicGridLayout(GoBackgroundColor, Layout):
 		return [None, None]
 
 
-class DynamicGridLayoutColor(GoColorBase, DynamicGridLayout):
+class GoDynamicGridLayoutColor(GoColorBase, GoDynamicGridLayout):
 	pass
 

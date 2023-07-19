@@ -19,7 +19,7 @@ from kivygo.app import GoApp
 
 Builder.load_string("""
 
-<CircularProgressBar>:
+<GoCircularProgressBar>:
 	anchor_x: "center"
 	anchor_y: "center"
 	Widget:
@@ -30,7 +30,7 @@ Builder.load_string("""
 """)
 
 
-class CircularProgressBar(AnchorLayout):
+class GoCircularProgressBar(AnchorLayout):
 
 	started  = BooleanProperty(False)
 

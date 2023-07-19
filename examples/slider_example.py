@@ -4,7 +4,7 @@ from kivygo.app import GoApp
 from kivy.uix.screenmanager import ScreenManager
 from kivy.lang import Builder
 
-from kivygo.widgets.slider import NeuSlider
+from kivygo.widgets.slider import GoSlider
 
 
 
@@ -30,7 +30,7 @@ Builder.load_string("""
 			spacing: "30dp"
 
 			Label:
-				text: 'NeuSlider'
+				text: 'GoSlider'
 				size_hint_y: None
 				height: "90dp"
 				valign: "center"
@@ -39,25 +39,25 @@ Builder.load_string("""
 				font_size: '30sp'
 				font_name: 'Arial'
 
-			NeuSlider:
+			GoSlider:
 				elevation: 2
 				border_width: 10
 				thumb_color: [0.9, .3, .3, 1]
 				shadow_color: [0.8, 0.8, 0.85, 0.01]
 				outline_color: [0.8, 0.8, 0.85, 0.01]
 				
-			NeuSlider:
+			GoSlider:
 				elevation: -2
 				border_width: 10
 				thumb_color: [0.8, .4, .1, 1]
 
-			NeuSlider:
+			GoSlider:
 				elevation: -2
 				border_width: 10
 				thumb_color: [0.2, 0.9, .2, 1]
 				thumb_padding: 20
 
-			NeuSlider:
+			GoSlider:
 				elevation: -2
 				border_width: 5
 				thumb_color: [0.4, .4, .9, 1]

@@ -4,7 +4,7 @@ from kivy.lang import Builder
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.screenmanager import Screen
 
-from kivygo.widgets.frostedglass import FrostedGlass
+from kivygo.widgets.frostedglass import GoFrostedGlass
 
 Builder.load_string("""
 
@@ -14,7 +14,7 @@ Builder.load_string("""
 	size_hint: 0.85, 0.4
 	frosted_glass_bg: None
 	background_color: 0, 0, 0, 0
-	FrostedGlass:
+	GoFrostedGlass:
 		pos_hint: {'center_x': 0.5,'center_y': 0.5}
 		background: root.frosted_glass_bg
 		blur_size: 30
@@ -87,7 +87,7 @@ Builder.load_string("""
 		height: self.texture_size[1]
 		fit_mode: "scale-down"
 
-	FrostedGlass:
+	GoFrostedGlass:
 		background: background_image
 		size_hint: (0.48, 0.48)
 		pos_hint: {'top': 1}
@@ -100,7 +100,7 @@ Builder.load_string("""
 		outline_color: "#000000"
 		outline_width: 1
 
-	FrostedGlass:
+	GoFrostedGlass:
 		background: background_image
 		size_hint: (0.48, 0.48)
 		pos_hint: {'right': 1,'top': 1}
@@ -113,7 +113,7 @@ Builder.load_string("""
 		outline_color: "#388E3C00"
 		outline_width: 1
 
-	FrostedGlass:
+	GoFrostedGlass:
 		background: background_image
 		size_hint: (0.48, 0.48)
 		pos_hint: {'right': 1}
@@ -126,7 +126,7 @@ Builder.load_string("""
 		outline_color: "#D32F2F88"
 		outline_width: 1
 
-	FrostedGlass:
+	GoFrostedGlass:
 		background: background_image
 		size_hint: (0.48, 0.48)
 		blur_size: 50
@@ -162,7 +162,7 @@ Builder.load_string("""
 				source: 'kivygo/icons/kivy_logo.png'
 				fit_mode: "scale-down"
 
-	FrostedGlass:
+	GoFrostedGlass:
 		pos_hint: {'center_x': 0.5,'center_y': 0.5}
 		background: scroll_view
 		size_hint: (0.7, 0.35)
@@ -196,7 +196,7 @@ Builder.load_string("""
 			size_hint: (6, 1)
 			spacing: dp(30)
 			padding: dp(10)
-			FrostedGlass:
+			GoFrostedGlass:
 				background: background_image
 				size_hint_x: None
 				width: self.height
@@ -208,7 +208,7 @@ Builder.load_string("""
 				border_radius:  self.height/2, self.height/2, self.height/2, self.height/2
 				outline_color: "#76FF034D"
 				outline_width: 1
-			FrostedGlass:
+			GoFrostedGlass:
 				background: background_image
 				size_hint: (0.4, 1)
 				blur_size: 35
@@ -219,7 +219,7 @@ Builder.load_string("""
 				border_radius:  dp(10), dp(10), dp(10), dp(10)
 				outline_color: "#FDD83500"
 				outline_width: 1
-			FrostedGlass:
+			GoFrostedGlass:
 				background: background_image
 				size_hint: (0.4, 1)
 				blur_size: 15
@@ -231,7 +231,7 @@ Builder.load_string("""
 				outline_color: "#000000"
 				outline_width: 1
 
-			FrostedGlass:
+			GoFrostedGlass:
 				background: background_image
 				size_hint: (0.4, 1)
 				blur_size: 20
@@ -242,7 +242,7 @@ Builder.load_string("""
 				border_radius:  dp(10), dp(10), dp(10), dp(10)
 				outline_color: "#76FF03"
 				outline_width: 1
-			FrostedGlass:
+			GoFrostedGlass:
 				background: background_image
 				size_hint: (0.4, 1)
 				blur_size: 35
@@ -253,7 +253,7 @@ Builder.load_string("""
 				border_radius:  dp(10), dp(10), dp(10), dp(10)
 				outline_color: "#FDD835"
 				outline_width: 1
-			FrostedGlass:
+			GoFrostedGlass:
 				background: background_image
 				size_hint: (0.4, 1)
 				blur_size: 50

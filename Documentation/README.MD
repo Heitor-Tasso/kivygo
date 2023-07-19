@@ -123,7 +123,7 @@ class BezierCanvas(Widget):
 	if super().on_touch_down(touch):
 	  return True
 
-	bezierline = BezierLine()
+	bezierline = GoBezierLine()
 	bezierline.points = [touch.pos, touch.pos]
 	touch.ud['selected'] = 1
 	touch.grab(bezierline)
@@ -304,12 +304,12 @@ GoBoxLayoutColor
   background_color: hex('#03A9F4')
   on_kv_post: Animation(progress=bar.max_progress, d=4).start(bar)
   BoxLayout:
-	CircularProgressBar:
+	GoCircularProgressBar:
 	  max_progress: 200
 	  min_progress: 10
 	  cap_precision: 100
 	  label_text: "Ola mundo"
-	CircularProgressBar:
+	GoCircularProgressBar:
 	  id: bar
 	  cap_style: "square"
 	  border_width: 5
@@ -423,7 +423,7 @@ GridLayout:
 ---
 
 <details>
-<summary>CodeInput</summary>
+<summary>GoCodeInput</summary>
 <ul>
 
 ## `kivygo\uix\codeinput.py`
@@ -607,7 +607,7 @@ GridLayout:
 ---
 
 <details>
-<summary>FrostedGlass</summary>
+<summary>GoFrostedGlass</summary>
 <ul>
 
 ## `kivygo\uix\frostedglass.py`
@@ -626,7 +626,7 @@ Image:
 	pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 	source: 'FrostedgGlass_overview.png'
 
-FrostedGlass:
+GoFrostedGlass:
 	pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 	size_hint: (None, None)
 	size: (180, 130)
@@ -884,7 +884,7 @@ GridLayout:
 ---
 
 <details>
-<summary>Joystick</summary>
+<summary>GoJoystick</summary>
 <ul>
 
 ## `kivygo\uix\joystick.py`
@@ -1022,7 +1022,7 @@ GridLayout:
 ---
 
 <details>
-<summary>NavigationDrawer</summary>
+<summary>GoNavigationDrawer</summary>
 <ul>
 
 ## `kivygo\uix\navigationdrawer.py`
@@ -1068,7 +1068,7 @@ GridLayout:
 ---
 
 <details>
-<summary>Particle</summary>
+<summary>GoParticle</summary>
 <ul>
 
 ## `kivygo\uix\particle.py`
@@ -1251,18 +1251,18 @@ GridLayout:
 
 ---
 <!-- ###############################################################################################
-#                                         (S) RadialSlider                                         #
+#                                         (S) GoRadialSlider                                         #
 #################################################################################################-->
 <details>
-<summary>RadialSlider</summary>
+<summary>GoRadialSlider</summary>
 <ul>
 
 ## [`kivygo\uix\radialslider.py`](https://github.com/Heitor-Tasso/kivygo/blob/main/kivygo/uix/radialslider.py)
 ### [`examples\radialslider_example.py`](https://github.com/Heitor-Tasso/kivygo/blob/main/examples/radialslider_example.py)
 
-The `RadialSlider` is an angular slider widget, which acts similarly to
+The `GoRadialSlider` is an angular slider widget, which acts similarly to
 the kivy's native linear slider.
-The RadialSlider has two components: a **track** and a **thumb**. The thumb → ●, can be dragged along the circular path of the track → ◯, with an angle
+The GoRadialSlider has two components: a **track** and a **thumb**. The thumb → ●, can be dragged along the circular path of the track → ◯, with an angle
 ranging from 0 to 360 degrees.
 
 You can define the position of the **thumb** via the `angle`, the `value`, or the `normalized_value`. 
@@ -1277,7 +1277,7 @@ Note that these values are also automatically updated as the thumb is dragged.
 <img align="right" width="320" height="449" src="../images_example/radial.gif"/>
 
 ```python
-RadialSlider:
+GoRadialSlider:
   size_hint: (None, None)
   size: 200, 200
   track_color: "#DEDEDE" # gray track
@@ -1351,7 +1351,7 @@ size: your_width, your_height # one value must be the same as the other
 
 <br>
 
-🟡 If the parent of the RadialSlider widget has equal width and height dimensions, eg: `size: (200, 200)`. You can use size `size_hint_x` and `size_hint_y` freely, **as long as you set the same value for both**, like: `size_hint:(0.5, 0.5 )`, `size_hint:(0.2, 0.2)`, etc.
+🟡 If the parent of the GoRadialSlider widget has equal width and height dimensions, eg: `size: (200, 200)`. You can use size `size_hint_x` and `size_hint_y` freely, **as long as you set the same value for both**, like: `size_hint:(0.5, 0.5 )`, `size_hint:(0.2, 0.2)`, etc.
 
 ---
 ## API
@@ -1434,12 +1434,12 @@ size: your_width, your_height # one value must be the same as the other
 </details>
 
 <!-- ###############################################################################################
-#                                            (S) Rotabox                                           #
+#                                            (S) GoRotabox                                           #
 #################################################################################################-->
 ---
 
 <details>
-<summary>Rotabox</summary>
+<summary>GoRotabox</summary>
 <ul>
 
 ## `kivygo\uix\rotabox.py`
@@ -1577,7 +1577,7 @@ GridLayout:
 ---
 
 <details>
-<summary>Segment</summary>
+<summary>GoSegment</summary>
 <ul>
 
 ## `kivygo\uix\segment.py`
@@ -1807,7 +1807,7 @@ GridLayout:
 ---
 
 <details>
-<summary>TapTargetView</summary>
+<summary>GoTapTargetView</summary>
 <ul>
 
 ## `kivygo\uix\taptargetview.py`

@@ -38,20 +38,21 @@ def random_color_variance(base, variance):
 EMITTER_TYPE_GRAVITY = 0
 EMITTER_TYPE_RADIAL = 1
 
-BLEND_FUNC = {0: GL_ZERO,
-            1: GL_ONE,
-            0x300: GL_SRC_COLOR,
-            0x301: GL_ONE_MINUS_SRC_COLOR,
-            0x302: GL_SRC_ALPHA,
-            0x303: GL_ONE_MINUS_SRC_ALPHA,
-            0x304: GL_DST_ALPHA,
-            0x305: GL_ONE_MINUS_DST_ALPHA,
-            0x306: GL_DST_COLOR,
-            0x307: GL_ONE_MINUS_DST_COLOR
+BLEND_FUNC = {
+    0: GL_ZERO,
+    1: GL_ONE,
+    0x300: GL_SRC_COLOR,
+    0x301: GL_ONE_MINUS_SRC_COLOR,
+    0x302: GL_SRC_ALPHA,
+    0x303: GL_ONE_MINUS_SRC_ALPHA,
+    0x304: GL_DST_ALPHA,
+    0x305: GL_ONE_MINUS_DST_ALPHA,
+    0x306: GL_DST_COLOR,
+    0x307: GL_ONE_MINUS_DST_COLOR
 }
 
 
-class Particle(object):
+class GoParticle(object):
     x, y, rotation, current_time = -256, -256, 0, 0
     scale, total_time = 1.0, 0.
     color = [1.0, 1.0, 1.0, 1.0]
@@ -63,7 +64,7 @@ class Particle(object):
     rotation_delta, scale_delta = 0, 0
 
 
-class ParticleSystem(GoWidget):
+class GoParticleSystem(GoWidget):
     max_num_particles = NumericProperty(200)
     life_span = NumericProperty(2)
     texture = ObjectProperty(None)
@@ -238,7 +239,7 @@ class ParticleSystem(GoWidget):
             Clock.schedule_once(self._update, self.update_interval)
 
     def _create_particle(self):
-        return Particle()
+        return GoParticle()
 
     def _init_particle(self, particle):
         life_span = random_variance(self.life_span, self.life_span_variance)
@@ -371,7 +372,7 @@ class ParticleSystem(GoWidget):
                     self.particles[particle_index] = next_particle
                 self.num_particles -= 1
                 if self.num_particles == 0:
-                    Logger.debug('Particle: COMPLETE')
+                    Logger.debug('GoParticle: COMPLETE')
 
         # create and advance new particles
         if self.emission_time > 0:

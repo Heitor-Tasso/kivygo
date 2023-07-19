@@ -172,7 +172,7 @@ Abaixo estão as informações das licenças de cada biblioteca utilizada no pro
 ## Bibliotecas com Licenças Permitidas
 
 - **MIT License:** Utilizada em:
-    - [TapTargetView](https://github.com/shashi278/TapTargetView.git)
+    - [GoTapTargetView](https://github.com/shashi278/GoTapTargetView.git)
     - [KivyShaderTransitions](https://github.com/shashi278/KivyShaderTransitions.git)
     - [NeuKivy](https://github.com/Guhan-SenSam/NeuKivy.git)
     - [kivy-gradient](https://github.com/shashi278/kivy-gradient.git)

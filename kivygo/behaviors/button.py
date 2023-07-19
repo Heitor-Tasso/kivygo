@@ -11,7 +11,7 @@ from weakref import ref
 from time import time
 
 
-class ButtonBehavior(Widget):
+class GoButtonBehavior(Widget):
 
 	state = OptionProperty('normal', options=('normal', 'down'))
 	'''
@@ -202,7 +202,7 @@ class ButtonBehavior(Widget):
 			Clock.schedule_once(trigger_release, duration)
 
 
-class ToggleButtonBehavior(ButtonBehavior):
+class GoToggleButtonBehavior(GoButtonBehavior):
 	
 	__groups = {}
 
@@ -224,7 +224,7 @@ class ToggleButtonBehavior(ButtonBehavior):
 		super().__init__(**kwargs)
 
 	def on_group(self, *largs):
-		groups = ToggleButtonBehavior.__groups
+		groups = GoToggleButtonBehavior.__groups
 		if self._previous_group:
 			group = groups[self._previous_group]
 			for item in group[:]:
@@ -235,7 +235,7 @@ class ToggleButtonBehavior(ButtonBehavior):
 		group = self._previous_group = self.group
 		if group not in groups:
 			groups[group] = []
-		r = ref(self, ToggleButtonBehavior._clear_groups)
+		r = ref(self, GoToggleButtonBehavior._clear_groups)
 		groups[group].append(r)
 
 	def _release_group(self, current):
@@ -269,7 +269,7 @@ class ToggleButtonBehavior(ButtonBehavior):
 	@staticmethod
 	def _clear_groups(wk):
 		# auto flush the element when the weak reference have been deleted
-		groups = ToggleButtonBehavior.__groups
+		groups = GoToggleButtonBehavior.__groups
 		for group in list(groups.values()):
 			if wk in group:
 				group.remove(wk)
@@ -285,7 +285,7 @@ class ToggleButtonBehavior(ButtonBehavior):
 			Always release the result of this method! Holding a reference to
 			any of these widgets can prevent them from being garbage collected.
 			If in doubt, do::
-				l = ToggleButtonBehavior.get_widgets('mygroup')
+				l = GoToggleButtonBehavior.get_widgets('mygroup')
 				# do your job
 				del l
 		
@@ -294,7 +294,7 @@ class ToggleButtonBehavior(ButtonBehavior):
 			deleted are still in the list. The garbage collector might need
 			to release other objects before flushing them.
 		'''
-		groups = ToggleButtonBehavior.__groups
+		groups = GoToggleButtonBehavior.__groups
 		if groupname not in groups:
 			return []
 		return [x() for x in groups[groupname] if x()][:]

@@ -6,34 +6,34 @@ from kivy.properties import ObjectProperty
 from kivy.lang.builder import Builder
 from kivy.clock import Clock
 from kivygo.widgets.progressspinner import (
-    ProgressSpinnerBase, ProgressSpinner,
-    TextureProgressSpinner, TextureProgressSpinnerBase,
-    RotatingTextureProgressSpinner,
+    GoProgressSpinnerBase, GoProgressSpinner,
+    GoTextureProgressSpinner, GoTextureProgressSpinnerBase,
+    GoRotatingTextureProgressSpinner,
 )
 
 
 Builder.load_string('''
 
-<ProgressSpinnerBase>:
+<GoProgressSpinnerBase>:
     on_touch_down: self.stop_spinning() if self._spinning else self.start_spinning()
 
-<TTextureProgressSpinner@TextureProgressSpinner>:
+<TTextureProgressSpinner@GoTextureProgressSpinner>:
     texture: app.texture
 
-<TRotatingTextureProgressSpinner@RotatingTextureProgressSpinner>:
+<TRotatingTextureProgressSpinner@GoRotatingTextureProgressSpinner>:
     texture: app.texture
 
-<ITextureProgressSpinner@TextureProgressSpinner>:
+<ITextureProgressSpinner@GoTextureProgressSpinner>:
     source: 'kivygo/images/demoimage.jpg'
 
-<IRotatingTextureProgressSpinner@RotatingTextureProgressSpinner>:
+<IRotatingTextureProgressSpinner@GoRotatingTextureProgressSpinner>:
     source: 'kivygo/images/demoimage.jpg'
 
 <MainWidget>:
     BoxLayout:
         orientation: 'vertical'
         
-        ProgressSpinner:
+        GoProgressSpinner:
         
         TTextureProgressSpinner:
         
@@ -43,15 +43,15 @@ Builder.load_string('''
         orientation: 'vertical'
         
         BoxLayout:
-            ProgressSpinner:
+            GoProgressSpinner:
                 color: 0.3, 0.3, 1, 1
                 stroke_width: 1
             
-            ProgressSpinner:
+            GoProgressSpinner:
                 speed: 0.5
                 color: 1, 0, 0, 1
             
-            ProgressSpinner:
+            GoProgressSpinner:
                 speed: 2
                 color: 0, 1, 0, 1
         

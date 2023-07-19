@@ -59,7 +59,7 @@ meta_carac = {
 Builder.load_string("""
 
 
-<CodeInput>:
+<GoCodeInput>:
 	canvas.before:
 		Color:
 			rgba: self.background
@@ -82,7 +82,7 @@ Builder.load_string("""
 """)
 
 
-class CodeInput(GoWidget):
+class GoCodeInput(GoWidget):
 	
 	cursor_color = ListProperty([[1, 0, 0, 1], [0, 1, 0, 1]])
 	_cursor_color = ColorProperty([0, 0, 0, 0])
@@ -111,10 +111,10 @@ class CodeInput(GoWidget):
 	label_init = 0
 	label_end = 0
 
-	# Number of lines in all text -> len(lines)
+	# GoNumber of lines in all text -> len(lines)
 	_n_labels = 0
 
-	# Number of lines in the viewport -> viewport_height / line_height
+	# GoNumber of lines in the viewport -> viewport_height / line_height
 	max_lines = 0
 	
 	# True if the key is pressed and False if not
@@ -983,6 +983,6 @@ if __name__ == '__main__':
 		text = ""
 		text = file.read()
 		# inp = TextInput()
-		inp = CodeInput()
+		inp = GoCodeInput()
 		inp.text = text
 		runTouchApp(inp)

@@ -2,7 +2,7 @@ import __init__
 from kivygo.app import GoApp
 from kivy.lang.builder import Builder
 from kivy.uix.screenmanager import Screen
-from kivygo.widgets.shader import ShaderWidget
+from kivygo.widgets.shader import GoShaderWidget
 
 
 Builder.load_string("""
@@ -26,7 +26,7 @@ Builder.load_string("""
 	name: 'scr 1'
 	id: scr1
 
-	ShaderWidget:
+	GoShaderWidget:
 		id: shader_widget
 		size_hint: [1, 1]
 
