@@ -12,6 +12,8 @@ OUTLINE_ZERO = 0.00000000001
 
 Builder.load_string("""
 
+<GoTouchData>:
+
 <GoJoystickPad>:
 	id: pad
 	canvas:

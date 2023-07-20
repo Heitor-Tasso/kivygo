@@ -24,7 +24,6 @@ Builder.load_string("""
 	input: input
 		    
 	line_color: GoColors.primary_border
-	line_color_pos: GoColors.primary_border_hover
 	background_color: GoColors.primary_default
 	label_defaut_color: GoColors.title_default
 	label_pos_color: GoColors.title_hover

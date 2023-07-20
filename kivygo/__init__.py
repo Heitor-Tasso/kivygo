@@ -5,7 +5,8 @@ from kivygo.app import GoApp
 from kivy.factory import Factory
 from kivy.lang.builder import Builder
 from kivy.clock import Clock
-
+from kivy.metrics import dp
+from kivygo import colors
 
 Builder.load_string("""
 
@@ -19,24 +20,54 @@ Builder.load_string("""
 def load_factory():
 	classes = {
 		"widgets" : [
+			{ "bezier": ["GoBezierLine"] },
 			{ "button": ["GoButton", "GoButtonRipple", "GoToggleButtonRipple", "GoButtonFade", "GoToggleButtonFade"] },
-			{ "widget": ["GoWidget", "GoShaderWidget"] },
-			{ "slider": ["GoSlider", "GoThumb"] },
-			{ "input": ["GoInputIcon", ] },
-			{ "screenmanager": ["GoSwapScreen", ] },
-			{ "label": ["GoLabel", "GoLabelButton", "GoLabelGradient", "GoLabelScroll", "GoLabelAnimated", "GoLabelBezierAnimated"] },
+			{ "camera": [] },
+			{ "circular_bar": ["GoCircularProgressBar"] },
+			{ "circulardatetimepicker": ["GoNumber", "GoCircularNumberPicker", "GoCircularTimePicker", "GoCircularMinutePicker", "GoCircularHourPicker"] },
+			{ "codeinput": ["GoCodeInput"] },
+			{ "effect": ["GoMaskEffect"] },
+			{ "frostedglass": ["GoFrostedGlass"] },
+			{ "gradient": ["GoGradientWidget"] },
+			{ "icon": ["GoIcon", "GoIconButton", "GoIconButtonRipple", "GoIconButtonFade", "GoIconToggleButton", "GoIconToggleButtonRipple", "GoIconToggleButtonFade"] },
 			{ "image": ["GoImage", ] },
-			{ "icon": ["GoIcon", "GoIconButton", "GoIconButtonRipple", "GoIconButtonFade", "GoIconToggleButton", "GoIconToggleButtonRipple", "GoIconToggleButtonFade"] }
+			{ "input": ["GoInputIcon"] },
+			{ "joystick": ["GoTouchData", "GoJoystickPad", "GoJoyStick"] },
+			{ "kivyg_icon": ["GoKivg"] },
+			{ "label": ["GoLabel", "GoLabelButton", "GoLabelGradient", "GoLabelScroll", "GoLabelAnimated", "GoLabelBezierAnimated"] },
+			{ "navigationdrawer": ["GoNavigationDrawer"] },
+			{ "particle": ["GoParticleSystem"] },
+			{ "pizza_graph": ["GoPizza"] },
+			{ "popup": [] },
+			{ "progressspinner": ["GoProgressSpinnerBase", "GoProgressSpinner", "GoTextureProgressSpinner", "GoRotatingTextureProgressSpinner"] },
+			{ "radialslider": ["GoRadialSlider"] },
+			{ "rotabox": ["GoRotabox"] },
+			{ "screenmanager": ["GoSwapScreen", ] },
+			{ "scrollview": ["GoBarScroll", "GoScrollViewBar"] },
+			{ "segment": ["GoSegment"] },
+			{ "shader": ["GoShaderWidget"] },
+			{ "slider": ["GoSlider", "GoThumb"] },
+			{ "spinner": ["GoEffectSpinner"] },
+			{ "tab": ["GoTabBar", "GoTabLabel", "GoTabScrollView", "GoTab"] },
+			{ "taptargetview": ["GoTapTargetView"] },
+			{ "terminal": ["GoCodeEditor", "GoInputEditor", "GoInputTerminal", "GoTextCode", "GoCodeEditorBase"] },
+			{ "widget": ["GoWidget", "GoShaderWidget"] }
 		],
 		"layouts" : [
-			{ "boxlayout": ["GoBoxLayout", "GoBoxLayoutColor", "GoDraggableBoxLayout"] },
 			{ "anchorlayout": ["GoAnchorLayout", "GoAnchorLayoutColor"] },
-			{ "gridlayout": ["GoGridLayout", "GoGridLayoutColor", "GoDynamicGridLayout"] },
+			{ "boxlayout": ["GoBoxLayout", "GoBoxLayoutColor", "GoDraggableBoxLayout"] },
+			{ "circularlayout": ["GoCircularLayout"] },
 			{ "floatlayout": ["GoFloatLayout", "GoFloatLayoutColor", "GoFloatChild"] },
+			{ "gridlayout": ["GoGridLayout", "GoGridLayoutColor", "GoAutoGridLayout", "GoAutoGridLayoutColor", "GoDraggableGridLayout", "GoDraggableGridLayoutColor", "GoDynamicGridLayout", "GoDynamicGridLayoutColor"] }
 		],
 		"behaviors" : [
 			{ "button": ["GoButtonBehavior", "GoToggleButtonBehavior"] },
-			{ "hover": ["GoHoverBehavior"] }
+			{ "drag_and_drop": ["GoSpacerWidget", "GoPreviewWidget", "GoDraggableObjectBehavior", "GoDraggableLayoutBehavior"] },
+			{ "effect": ["GoBaseEffectBehavior", "GoFadeEffectBehavior", "GoRippleEffectBehavior"] },
+			{ "hover": ["GoHoverBehavior"] },
+			{ "neumorph": ["GoGlowCircular"] },
+			{ "resizable": ["GoRectangleResizableBord", "GoLineResizableBord", "GoSelectResizableBehavior"] },
+			{ "thumb": ["GoCommonRipple", "CircularRippleBehavior", "GoCommonElevationBehavior", "GoThumb"] }
 		],
 	}
 	for key, item in classes.items():
@@ -64,7 +95,7 @@ GoBoxLayout:
 		default_text: "Current: {:.2f}  |  Min: {:.2f}  |  Max: {:.2f}"
 		text_size: self.width, None
 		halign: "left"
-		color: GoColors.on_primary
+		color: GoColors.on_primary_default
 		font_size: '12sp'
 		bold: True
 """)
@@ -97,12 +128,11 @@ def check_app(*args):
 	if app == None:
 		return None
 	
-	if not app.show_fps:
-		return Clock.unschedule(check_app)
-	
-	app.root.padding = 70
 	Clock.unschedule(check_app)
-
+	if not app.show_fps:
+		return None
+	
+	app.root.padding = dp(70)
 	win = app.root.get_root_window()
 	win.add_widget(__clock)
 	Clock.schedule_interval(update_clock, 0.01)

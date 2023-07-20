@@ -1,10 +1,7 @@
 import __init__
 from kivygo.app import GoApp
 from kivy.lang import Builder
-from kivygo.widgets.screenmanager import GoSwapScreen
-from kivygo.layouts.gridlayout import GoAutoGridLayout
 from kivygo.layouts.boxlayout import GoBoxLayout
-from kivygo.colors import GoBackgroundColor
 from kivy.uix.screenmanager import ScreenManager
 from kivy.clock import Clock
 from kivygo import colors

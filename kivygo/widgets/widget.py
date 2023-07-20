@@ -7,7 +7,7 @@ from kivy.graphics import (
     ClearColor, ClearBuffers,
     Rectangle
 )
-from kivygo.layouts.floatlayout import GoFloatLayout
+from kivy.uix.floatlayout import FloatLayout
 from kivy.properties import (
     StringProperty, ListProperty,
     ObjectProperty
@@ -58,7 +58,7 @@ class GoWidget(Widget):
         return None
 
 
-class GoShaderWidget(GoFloatLayout):
+class GoShaderWidget(FloatLayout):
 
     mouse_pos = ListProperty([100, 100])
 
@@ -129,4 +129,3 @@ class GoShaderWidget(GoFloatLayout):
 
     def on_texture(self, instance, value):
         self.fbo_rect.texture = value
-

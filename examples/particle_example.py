@@ -1,7 +1,6 @@
 import __init__
 from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
-from kivygo.widgets.button import GoButtonRipple
 from kivygo.widgets.widget import GoWidget
 from kivy.lang.builder import Builder
 from kivy.clock import Clock

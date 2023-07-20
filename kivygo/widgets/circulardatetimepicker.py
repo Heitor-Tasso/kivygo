@@ -83,6 +83,11 @@ Builder.load_string("""
     GoFloatLayout:
         id: picker_container
         _bound: {}
+                
+<GoCircularTimePicker>:
+
+<GoCircularHourPicker>:    
+
 """)
 
 

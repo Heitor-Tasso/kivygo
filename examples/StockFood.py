@@ -28,7 +28,7 @@ Builder.load_string("""
                     text: 'Login'
                     font_size: "50sp"
                     bold: True
-                    color: GoColors.on_terciary
+                    color: GoColors.on_terciary_default
                     pos_hint: {"center_y": 0.75}
                 GoAnchorLayout:
                     padding: ["0dp", "0dp", "0dp", "60dp"]
@@ -51,7 +51,6 @@ Builder.load_string("""
                         text_input_color: GoColors.on_background_variant
                         background_color: GoColors.no_color
                         line_color: GoColors.terciary_border
-                        line_color_pos: GoColors.terciary_border_hover
                         label_defaut_color: GoColors.on_background_variant
                         label_pos_color: GoColors.on_background_variant_hover
 
@@ -66,7 +65,6 @@ Builder.load_string("""
                                 text_input_color: GoColors.on_background_variant
                                 background_color: GoColors.no_color
                                 line_color: GoColors.terciary_border
-                                line_color_pos: GoColors.terciary_border_hover
                                 label_defaut_color: GoColors.on_background_variant
                                 label_pos_color: GoColors.on_background_variant_hover
                             GoLabel:
