@@ -1,5 +1,4 @@
-import __init__
-from kivy.app import App
+from __init__ import ExampleAppDefault
 from kivy.lang import Builder
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.screenmanager import Screen
@@ -323,7 +322,7 @@ class Screen4(Screen):
 	pass
 
 
-class FrostGlassExampleApp(App):
+class FrostGlassExampleApp(ExampleAppDefault):
 	def build(self):
 		return FrostGlassExample()
 

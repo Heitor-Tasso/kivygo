@@ -1,4 +1,4 @@
-import __init__
+from __init__ import ExampleAppDefault
 
 from kivy.base import runTouchApp
 from kivy.uix.boxlayout import BoxLayout

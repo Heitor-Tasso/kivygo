@@ -1,9 +1,8 @@
-import __init__
-from kivy.app import App
+from __init__ import ExampleAppDefault
 from kivygo.widgets.pizza_graph import GoPizza
 
 
-class ChartApp(App):
+class ChartApp(ExampleAppDefault):
         """
         Example application
 

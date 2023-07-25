@@ -1,5 +1,4 @@
-import __init__
-from kivy.app import App
+from __init__ import ExampleAppDefault
 from kivy.lang import Builder
 from math import cos, sin, radians
 from kivy.clock import Clock
@@ -11,8 +10,7 @@ from kivygo.widgets.slider import GoSlider
 from kivygo.widgets.button import GoButtonRipple
 from kivygo.widgets.spinner import GoEffectSpinner
 from kivygo.widgets.label import GoLabelBezierAnimated
-from kivygo.layouts.boxlayout import GoBoxLayoutColor
-from kivygo.app import GoApp
+from kivygo.layouts.boxlayout import GoBoxLayout
 
 
 Builder.load_string("""
@@ -165,7 +163,7 @@ Builder.load_string("""
 
 """)
 
-class AnimBezierExample(GoBoxLayoutColor):
+class AnimBezierExample(GoBoxLayout):
     points = ListProperty([0, 0])
     loop = BooleanProperty(False)
     started = BooleanProperty(False)
@@ -179,7 +177,7 @@ class AnimBezierExample(GoBoxLayoutColor):
         self.ids.label.bind(size=self.start)
 
     def start(self, *args):
-        if GoApp.get_root_window() != None:
+        if ExampleAppDefault.get_root_window() != None:
             self.ids.label.unbind(size=self.start)
             if not self.started:
                 Clock.schedule_once(self.start)
@@ -261,7 +259,7 @@ class AnimBezierExample(GoBoxLayoutColor):
 
 
 
-class AnimBezierExampleApp(GoApp):
+class AnimBezierExampleApp(ExampleAppDefault):
     def build(self):
         return AnimBezierExample()
 

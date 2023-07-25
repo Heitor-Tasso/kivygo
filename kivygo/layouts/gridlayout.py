@@ -22,8 +22,8 @@ Builder.load_string("""
 
 <GoGridLayoutColor>:
 	background_color: GoColors.background_default
-	background_hover: GoColors.background_default
-	border_color: GoColors.no_color
+	background_hover: GoColors.background_hover
+	border_color: GoColors.background_border
 	border_hover: GoColors.no_color
 	border_disabled: GoColors.no_color
 

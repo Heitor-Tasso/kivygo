@@ -482,7 +482,7 @@ class GoFrostedGlass(GoFloatLayout):
             self.update_effect()
             self.last_blur_size_value = blur_size
 
-    def on_background(self, *args):
+    def on_background_default(self, *args):
         if not self.background:
             return None
         

@@ -1,5 +1,4 @@
-import __init__
-from kivy.app import App
+from __init__ import ExampleAppDefault
 from kivy.lang import Builder
 from kivy.properties import NumericProperty
 from kivy.uix.floatlayout import FloatLayout
@@ -49,7 +48,7 @@ class EffectExample(FloatLayout):
         self.time += dt
 
 
-class EffectExampleApp(App):
+class EffectExampleApp(ExampleAppDefault):
     
     def build(self):
         root = EffectExample()

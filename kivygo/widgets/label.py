@@ -10,6 +10,7 @@ from kivy.properties import (
 	NumericProperty, DictProperty,
 	StringProperty, ObjectProperty,
 	ListProperty, AliasProperty,
+	ColorProperty
 )
 
 from kivy.clock import Clock
@@ -39,9 +40,9 @@ Builder.load_string("""
 			int(self.center_y - self.texture_size[1] / 2.0)]
 			
 <GoLabelButton>:
-	color: GoColors.text_default 
-	on_press: self.color = GoColors.text_pressed
-	on_release: self.color = GoColors.text_default
+	normal_color: GoColors.text_default
+	down_color: GoColors.text_pressed
+	color: self.normal_color if self.state == "normal" and GoColors.palette else self.down_color
 
 <GoLabelScroll>:
 	text: 'Section Option'
@@ -97,7 +98,8 @@ class GoLabelGradient(GoLabel):
 
 	
 class GoLabelButton(GoButtonBehavior, GoLabel):
-	pass
+	normal_color = ColorProperty([0, 0, 0, 0])
+	down_color = ColorProperty([0, 0, 0, 0])
 
 
 class GoLabelScroll(GoLabel):

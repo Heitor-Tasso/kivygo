@@ -11,9 +11,10 @@ from kivygo.colors import GoColorBase
 Builder.load_string("""
 
 <GoButton>:
-	color: GoColors.on_terciary_default
+	color: GoColors.at_terciary_default
 	background_color: GoColors.terciary_default
 	background_hover: GoColors.terciary_hover
+	effect_color: GoColors.terciary_effect
 	background_pressed: self.background_hover
 
 	border_color: GoColors.no_color

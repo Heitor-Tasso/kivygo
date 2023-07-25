@@ -1,5 +1,4 @@
-import __init__
-from kivygo.app import GoApp
+from __init__ import ExampleAppDefault
 from kivy.uix.floatlayout import FloatLayout
 from kivy.lang import Builder
 from kivygo.widgets.label import GoLabelGradient
@@ -29,7 +28,7 @@ Builder.load_string("""
 class Manager(FloatLayout):
 	pass
 
-class ExampleUixApp(GoApp):
+class ExampleUixApp(ExampleAppDefault):
 	def build(self):
 		return Manager()
 	

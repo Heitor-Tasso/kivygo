@@ -1,16 +1,17 @@
-import __init__
-
-from kivygo.app import GoApp
+from __init__ import ExampleAppDefault
 from kivy.lang.builder import Builder
 from kivy.uix.screenmanager import ScreenManager
 
 Builder.load_string("""
 
+#:import Light kivygo.colors.Light
+#:import Dark kivygo.colors.Dark
+
 <RootManager>:
     Screen:
         name: "login"
         GoBoxLayout:
-            background_color: GoColors.background_variant_default
+            background_color: GoColors.background_default
             orientation: "vertical"
             GoBoxLayout:
                 size_hint_y: None
@@ -28,7 +29,7 @@ Builder.load_string("""
                     text: 'Login'
                     font_size: "50sp"
                     bold: True
-                    color: GoColors.on_terciary_default
+                    color: GoColors.at_terciary_default
                     pos_hint: {"center_y": 0.75}
                 GoAnchorLayout:
                     padding: ["0dp", "0dp", "0dp", "60dp"]
@@ -48,11 +49,11 @@ Builder.load_string("""
                     GoInputIcon:
                         label_text: "Name"
                         radius: [dp(5)] * 4
-                        text_input_color: GoColors.on_background_variant
+                        text_input_color: GoColors.at_background_default
                         background_color: GoColors.no_color
                         line_color: GoColors.terciary_border
-                        label_defaut_color: GoColors.on_background_variant
-                        label_pos_color: GoColors.on_background_variant_hover
+                        label_defaut_color: GoColors.at_background_default
+                        label_pos_color: GoColors.at_background_hover
 
                     GoAnchorLayout:
                         GoBoxLayout:
@@ -62,17 +63,18 @@ Builder.load_string("""
                             GoInputIcon:
                                 label_text: "Password"
                                 radius: [dp(5)] * 4
-                                text_input_color: GoColors.on_background_variant
+                                text_input_color: GoColors.at_background_default
                                 background_color: GoColors.no_color
                                 line_color: GoColors.terciary_border
-                                label_defaut_color: GoColors.on_background_variant
-                                label_pos_color: GoColors.on_background_variant_hover
-                            GoLabel:
+                                label_defaut_color: GoColors.at_background_default
+                                label_pos_color: GoColors.at_background_hover
+                            GoLabelButton:
                                 text:'Forget Password?'
                                 size_hint_y: None
                                 height: self.texture_size[1]
                                 text_size: self.width - dp(20), None
-                                color: GoColors.on_background_variant
+                                normal_color: GoColors.at_background_default
+                                down_color: GoColors.at_background_pressed
                                 halign: "right"
                                 font_size: "11sp"
                     
@@ -95,12 +97,13 @@ Builder.load_string("""
                     spacing: "10dp"
                     GoLabel:
                         text: "I don't have an account?"
-                        color: GoColors.on_background_variant
+                        color: GoColors.at_background_default
                         size_hint_x: None
                         width: self.texture_size[0]
                     GoLabelButton:
                         text: "Register"
-                        color: GoColors.on_background_variant
+                        normal_color: GoColors.at_background_default
+                        down_color: GoColors.at_background_pressed
                         size_hint_x: None
                         width: self.texture_size[0]
     Screen:
@@ -111,13 +114,13 @@ Builder.load_string("""
             GoBoxLayout:
                 size_hint_y: None
                 height: "50dp"
-                background_color: GoColors.background_variant_default
+                background_color: GoColors.background_default
                 GoLabel:
                     text: 'Account'
                     font_size: "22sp"
                     text_size: self.width - dp(20), None
                     bold: True
-                    color: GoColors.on_background_variant
+                    color: GoColors.at_background_default
 
             ScreenManager:
                 GoSwapScreen:
@@ -133,6 +136,7 @@ Builder.load_string("""
                 GoAnchorLayout:
                     GoIconButton:
                         source: app.get_path("icons/python2.svg", app._app_file)
+                        on_release: GoColors.palette = (Light if GoColors.palette == Dark else Dark)
                 GoAnchorLayout:
                     GoIconButton:
                         source: app.get_path("icons/discord.svg", app._app_file)
@@ -142,14 +146,14 @@ Builder.load_string("""
                 GoAnchorLayout:
                     GoIconButton:
                         source: app.get_path("icons/facebook2.svg", app._app_file)
+                        on_release: root.current = "login"
 """)
 
 class RootManager(ScreenManager):
     pass
 
-class Program(GoApp):
+class Program(ExampleAppDefault):
     def build(self):
-        self.show_fps = True
         return RootManager()
     
 

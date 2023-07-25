@@ -1,5 +1,4 @@
-import __init__
-from kivygo.app import GoApp
+from __init__ import ExampleAppDefault
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
 from kivygo.behaviors.resizable import GoSelectResizableBehavior
@@ -91,7 +90,7 @@ Builder.load_string("""
 class DragExample(BoxLayout):
 	pass
 
-class DragExampleApp(GoApp):
+class DragExampleApp(ExampleAppDefault):
 	def build(self):
 		return DragExample()
 	

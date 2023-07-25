@@ -1,7 +1,6 @@
-import __init__
-from kivygo.app import GoApp
+from __init__ import ExampleAppDefault
 from kivy.lang import Builder
-from kivygo.layouts.gridlayout import GoGridLayoutColor
+from kivygo.layouts.gridlayout import GoGridLayout
 
 
 Builder.load_string("""
@@ -10,7 +9,7 @@ Builder.load_string("""
 #:import Light kivygo.colors.Light
 
 <ButtonExample>:
-	# background_color: GoColors.warning_default
+	background_color: GoColors.background_default
 	padding: "70dp"
     spacing: '30dp'
     rows: 3
@@ -47,10 +46,10 @@ Builder.load_string("""
 """)
 
 
-class ButtonExample(GoGridLayoutColor):
+class ButtonExample(GoGridLayout):
 	pass
 
-class ButtonExampleApp(GoApp):
+class ButtonExampleApp(ExampleAppDefault):
 	def build(self):
 		return ButtonExample()
 	

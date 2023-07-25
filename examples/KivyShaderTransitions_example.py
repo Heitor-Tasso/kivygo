@@ -1,6 +1,5 @@
-import __init__
+from __init__ import ExampleAppDefault
 from kivy.lang import Builder
-from kivygo.app import GoApp
 from kivy.uix.screenmanager import ScreenManager
 from kivygo.transitions import Angular, Squeeze, LinearBlur, Swap, Swirl, Cube
 
@@ -65,7 +64,7 @@ Builder.load_string('''
 class MainWidget(ScreenManager):
 	pass
 
-class DemoApp(GoApp):
+class DemoApp(ExampleAppDefault):
 
 	current_screen = 0
 	current_shader = 0

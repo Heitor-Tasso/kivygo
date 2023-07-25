@@ -1,5 +1,4 @@
-import __init__
-from kivy.app import App
+from __init__ import ExampleAppDefault
 from kivy.uix.gridlayout import GridLayout
 from kivygo.widgets.widget import GoWidget
 from kivy.lang.builder import Builder
@@ -109,7 +108,7 @@ class DemoParticle(GoWidget):
 class ParticleExample(GridLayout):
     pass
 
-class ParticleExampleApp(App):
+class ParticleExampleApp(ExampleAppDefault):
     def build(self):
         return ParticleExample()
 

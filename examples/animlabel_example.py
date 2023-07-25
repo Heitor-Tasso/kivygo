@@ -1,5 +1,4 @@
-import __init__
-from kivy.app import App
+from __init__ import ExampleAppDefault
 from kivy.lang import Builder
 from kivy.properties import DictProperty, ListProperty
 from kivy.uix.boxlayout import BoxLayout
@@ -109,7 +108,7 @@ class AnimLabelExample(BoxLayout):
 	font_paths = DictProperty({})
 
 
-class AnimLabelExampleApp(App):
+class AnimLabelExampleApp(ExampleAppDefault):
 
 	def build(self):
 		return AnimLabelExample()

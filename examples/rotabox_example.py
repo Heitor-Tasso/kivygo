@@ -1,5 +1,4 @@
-import __init__
-from kivygo.app import GoApp
+from __init__ import ExampleAppDefault
 from kivygo.behaviors.button import GoButtonBehavior
 from kivy.uix.screenmanager import ScreenManager
 from kivy.lang import Builder
@@ -12,7 +11,7 @@ import time
 from kivy.properties import ObjectProperty
 from kivygo.widgets.rotabox import GoRotabox
 from kivygo.widgets.screenmanager import GoSwapScreen
-from kivygo.layouts.boxlayout import GoBoxLayoutColor
+from kivygo.layouts.boxlayout import GoBoxLayout
 from kivy.clock import Clock
 from kivy.lang import Builder
 
@@ -233,7 +232,7 @@ class ManagerScreen(ScreenManager):
 				coin.y -= coin.speed
 
 
-class ExampleUixApp(GoApp):
+class ExampleUixApp(ExampleAppDefault):
 	def build(self):
 		return ManagerScreen()
 	

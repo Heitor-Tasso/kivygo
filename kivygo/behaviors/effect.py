@@ -92,10 +92,24 @@ class GoBaseEffectBehavior(Widget):
 		if not self.collide_point(*touch.pos):
 			return False
 
+		touch.ungrab(self)
 		if touch.grab_current is self:
-			touch.ungrab(self)
 			self.ripple_fade()
+		elif self.anim:
+			self.anim.bind(on_complete=self.reset_canvas)
+		else:
+			self.reset_canvas()
+		
 		return result
+
+	def ripple_show(self, touch):
+		pass
+
+	def ripple_fade(self):
+		pass
+
+	def reset_canvas(self, *args):
+		pass
 
 
 class GoFadeEffectBehavior(GoBaseEffectBehavior):

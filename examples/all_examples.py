@@ -1,7 +1,6 @@
-import __init__
-from kivygo.app import GoApp
+from __init__ import ExampleAppDefault
 from kivy.lang import Builder
-from kivygo.layouts.boxlayout import GoBoxLayoutColor
+from kivygo.layouts.boxlayout import GoBoxLayout
 from kivygo.widgets.button import GoButtonRipple
 from kivy.uix.scrollview import ScrollView
 
@@ -44,7 +43,7 @@ Builder.load_string("""
 
 <AllExamples>:
     base_height: "600dp"
-    GoBoxLayoutColor:
+    GoBoxLayout:
         orientation: 'vertical'
         spacing: '20dp'
         padding: '20dp'
@@ -130,7 +129,7 @@ Builder.load_string("""
 class AllExamples(ScrollView):
 	pass
 
-class AllExamplesApp(GoApp):
+class AllExamplesApp(ExampleAppDefault):
 	def build(self):
 		return AllExamples()
 	

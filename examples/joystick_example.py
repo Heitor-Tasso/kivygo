@@ -1,4 +1,4 @@
-import __init__
+from __init__ import ExampleAppDefault
 
 from kivy.config import Config
 # Config.set('graphics', 'window_state', 'maximized')
@@ -6,7 +6,6 @@ from kivy.config import Config
 from kivy.lang.builder import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivygo.widgets.joystick import GoJoystick
-from kivy.app import App
 
 
 Builder.load_string("""
@@ -358,7 +357,7 @@ Builder.load_string("""
 class JoystickExample(BoxLayout):
     pass
 
-class JoystickExampleApp(App):
+class JoystickExampleApp(ExampleAppDefault):
     def build(self):
         self.root = JoystickExample()
         self._bind_joysticks()

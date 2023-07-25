@@ -1,5 +1,4 @@
-import __init__
-from kivygo.app import GoApp
+from __init__ import ExampleAppDefault
 from kivy.lang import Builder
 from kivygo.layouts.boxlayout import GoBoxLayout
 from kivy.uix.screenmanager import ScreenManager
@@ -24,7 +23,7 @@ Builder.load_string("""
 		anchor_x: 'center'
 		anchor_y: 'center'
 		size_hint_x: 0.15
-		GoBackgroundColor:
+		GoBackground:
 			size_hint: None, None
 			size: dp(25), dp(25)
 		    radius: [dp(4)]
@@ -117,7 +116,7 @@ class PaletteExample(ScreenManager):
 			dark_grid.add_widget(SectionColor(values = [[name, getattr(colors.Dark, name)] for name in names]))
 
 
-class PaletteExampleApp(GoApp):
+class PaletteExampleApp(ExampleAppDefault):
 	def build(self):
 		return PaletteExample()
 	

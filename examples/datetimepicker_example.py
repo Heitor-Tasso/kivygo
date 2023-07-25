@@ -1,4 +1,4 @@
-import __init__
+from __init__ import ExampleAppDefault
 from kivygo.widgets.circulardatetimepicker import GoCircularTimePicker
 from kivy.base import runTouchApp
 

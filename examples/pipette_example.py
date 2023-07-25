@@ -1,5 +1,4 @@
-import __init__
-from kivygo.app import GoApp
+from __init__ import ExampleAppDefault
 from kivygo.widgets.button import GoButtonRipple
 from kivy.lang.builder import Builder
 from kivy.uix.image import Image
@@ -263,7 +262,7 @@ class PipetteMouse(RelativeLayout):
         self.cursor.reload()
 
 
-class PipetteExampleApp(GoApp):
+class PipetteExampleApp(ExampleAppDefault):
 
     def build(self):
         return PipetteExample()

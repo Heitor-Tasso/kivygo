@@ -1,5 +1,4 @@
-import __init__
-from kivygo.app import GoApp
+from __init__ import ExampleAppDefault
 from kivy.uix.screenmanager import Screen
 from kivy.lang.builder import Builder
 from kivygo.widgets.gradient import GoGradientWidget
@@ -19,22 +18,21 @@ Builder.load_string("""
 			pos_hint: {"center_x":.5, "center_y":.5}
 
 			BoxLayout:
-				Label:
+				GoLabel:
 					text: "Hello World"
 					font_style: "H3"
 					halign: "center"
-					text_color: [1, 1, 1, 1]
 
 			BoxLayout:
 				orientation: "vertical"
 
 				AnchorLayout:
-					Button:
+					GoButton:
 						text: "Button1"
 						on_release:
 							print("Button1")
 				AnchorLayout:
-					Button:
+					GoButton:
 						text: "Button2"
 						on_release:
 							print("Button2")
@@ -46,7 +44,7 @@ class GradientExample(Screen):
 	pass
 
 
-class GradientExampleApp(GoApp):
+class GradientExampleApp(ExampleAppDefault):
 	def build(self):
 		return GradientExample()
 

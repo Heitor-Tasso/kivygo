@@ -1,5 +1,4 @@
-import __init__
-from kivygo.app import GoApp
+from __init__ import ExampleAppDefault
 from kivy.lang.builder import Builder
 from kivygo.layouts.boxlayout import GoBoxLayout
 from kivygo.widgets.tab import GoTabBase, GoTab
@@ -25,7 +24,7 @@ class ExampleTab(GoBoxLayout, GoTabBase):
     pass
 
 
-class AndroidTabExampleApp(GoApp):
+class AndroidTabExampleApp(ExampleAppDefault):
     def build(self):
         android_tabs = GoTab()
 

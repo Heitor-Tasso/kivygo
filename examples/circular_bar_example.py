@@ -1,7 +1,6 @@
-import __init__
-from kivygo.app import GoApp
-from kivygo.layouts.anchorlayout import GoAnchorLayoutColor
-from kivygo.layouts.boxlayout import GoBoxLayoutColor
+from __init__ import ExampleAppDefault
+from kivygo.layouts.anchorlayout import GoAnchorLayout
+from kivygo.layouts.boxlayout import GoBoxLayout
 from kivy.animation import Animation
 from kivy.lang.builder import Builder
 from kivy.clock import Clock
@@ -19,7 +18,7 @@ Builder.load_string('''
     padding: "80dp"
     spacing: "40dp"
     background_color: hex('#03A9F4')
-    GoBoxLayoutColor:
+    GoBoxLayout:
         GoCircularProgressBar:
             id: last
             max_progress: 200
@@ -39,11 +38,11 @@ Builder.load_string('''
 ''')
 
 
-class CircularBarExample(GoAnchorLayoutColor):
+class CircularBarExample(GoAnchorLayout):
     pass
 
 
-class CircularBarExampleApp(GoApp):
+class CircularBarExampleApp(ExampleAppDefault):
 
     # Simple animation to show the circular progress bar in action
     def animate(self, dt):

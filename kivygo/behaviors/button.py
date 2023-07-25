@@ -148,7 +148,7 @@ class GoButtonBehavior(Widget):
 		if touch.grab_current is not self:
 			return super().on_touch_up(touch)
 		
-		assert(self in touch.ud)
+		assert self in touch.ud
 		touch.ungrab(self)
 		self.last_touch = touch
 

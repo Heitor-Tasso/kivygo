@@ -1,5 +1,4 @@
-import __init__
-from kivygo.app import GoApp
+from __init__ import ExampleAppDefault
 from kivy.graphics.texture import Texture
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty
@@ -79,7 +78,7 @@ Builder.load_string('''
 class MainWidget(BoxLayout):
     pass
 
-class TestApp(GoApp):
+class TestApp(ExampleAppDefault):
     texture = ObjectProperty(None)
 
     def blittex(self, *args):

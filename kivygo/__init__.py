@@ -95,7 +95,7 @@ GoBoxLayout:
 		default_text: "Current: {:.2f}  |  Min: {:.2f}  |  Max: {:.2f}"
 		text_size: self.width, None
 		halign: "left"
-		color: GoColors.on_primary_default
+		color: GoColors.at_primary_default
 		font_size: '12sp'
 		bold: True
 """)

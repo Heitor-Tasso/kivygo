@@ -1,7 +1,6 @@
-import __init__
-from kivygo.app import GoApp
+from __init__ import ExampleAppDefault
 from kivy.lang import Builder
-from kivygo.layouts.boxlayout import GoBoxLayoutColor
+from kivygo.layouts.boxlayout import GoBoxLayout
 from kivygo.widgets.button import GoButtonRipple
 
 Builder.load_string("""
@@ -11,17 +10,17 @@ Builder.load_string("""
 
 <BoxLayoutExample>:
     orientation: 'vertical'
-	background_color: [1, 1, 1, 0.8]
+	background_color: GoColors.background_default
 	padding: "40dp"
 	GoButtonRipple:
 		size_hint_y: None
 		height: "300dp"
 		text: "GoButtonRipple"
-		on_release:
-			GoColors.palette = (Light if GoColors.palette == Dark else Dark)
-	GoBoxLayoutColor:
+		on_release: GoColors.palette = (Light if GoColors.palette == Dark else Dark)
+	GoBoxLayout:
 		background_color: [0, 1, 0, 1]
-		padding: "40dp"
+		padding: "20dp"
+		spacing: "10dp"
 		background_color: [0, 0, 0, 1]
 		background_hover: [0, 0, 0, 1]
 		background_disabled: [0, 0, 0, 1]
@@ -35,10 +34,10 @@ Builder.load_string("""
 """)
 
 
-class BoxLayoutExample(GoBoxLayoutColor):
+class BoxLayoutExample(GoBoxLayout):
 	pass
 
-class BoxLayoutExampleApp(GoApp):
+class BoxLayoutExampleApp(ExampleAppDefault):
 	def build(self):
 		return BoxLayoutExample()
 	

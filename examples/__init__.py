@@ -17,4 +17,10 @@ import sys, os
 last_path = os.path.abspath(os.path.dirname(os.path.split(__file__)[0]))
 sys.path.append(last_path)
 
+from kivygo.app import GoApp
+from kivy.properties import BooleanProperty
+
+class ExampleAppDefault(GoApp):
+
+	show_fps = BooleanProperty(True)
 
