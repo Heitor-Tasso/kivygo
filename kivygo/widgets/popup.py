@@ -11,8 +11,6 @@ from kivygo.layouts.anchorlayout import GoAnchorLayoutColor
 
 Builder.load_string("""
 
-#:import hex kivy.utils.get_color_from_hex
-
 <BoxPopup>:
 	box_background_color: [0, 0, 0, 0]
 	box_radius:  [dp(20), dp(20), dp(20), dp(20)]
@@ -33,7 +31,7 @@ Builder.load_string("""
 <ConfirmPopup>:
 	msg: "É necessário aceitar os termos de uso!"
 	title: "Alerta"
-	box_background_color: hex("#038c73")
+	box_background_color: GoHexToRgba("#038c73")
 	padding:
 		[dp(330), dp(210), dp(330), dp(210)] \
 		if app.root.width > dp(1300) and app.root.height > dp(600) \
@@ -48,7 +46,7 @@ Builder.load_string("""
 		GoBoxLayoutColor:
 			size_hint_y: None
 			height: self.minimum_height
-			background_color: hex('#ebeef2')
+			background_color: GoHexToRgba('#ebeef2')
 			radius: [dp(20), dp(20), 0, 0]
 
 			AnchorLayout:
@@ -63,7 +61,7 @@ Builder.load_string("""
 					bold: True
 					halign: 'left'
 					valign: 'center'
-					color: hex('#e06031')
+					color: GoHexToRgba('#e06031')
 					id: lb_t
 
 			GoAnchorLayoutColor:
@@ -93,7 +91,7 @@ Builder.load_string("""
 			size_hint: None, None
 			size: '120dp', '55dp'
 			radius: [dp(15)]
-			background_color: hex('#2c2c2c')
+			background_color: GoHexToRgba('#2c2c2c')
 			bold: True
 			font_size: '17sp'
 			on_release: root.dismiss()

@@ -74,36 +74,12 @@ class GoAutoGridLayout(GoGridLayout):
 			w = round(self.width/i)
 
 			if (w > w1 and w < w2) or w < w1:
-
 				self.cols =  i - (1 if w < w1 and i > 1 else 0)
 				break
 
 			elif i == (tc - 1):
-				
 				self.cols = i
 				break
-		
-		self.padding = 0
-		self.spacing = 0
-		Clock.schedule_once(self.check_max_width)
-	
-	def check_max_width(self, *args):
-		if not self.children:
-			return None
-
-		w1, w2 = self.max_size
-
-		if self.cols >= len(self.children):
-
-			if self.children[0].width > (w2+dp(20)):
-
-				t = int( (self.children[0].width - w2) / 2 )
-				self.padding = [t, 0, t, 0]
-				self.spacing = t
-				return None
-		
-		self.padding = dp(10)
-		self.spacing = dp(10)
 
 
 class GoAutoGridLayoutColor(GoGridLayoutColor, GoAutoGridLayout):

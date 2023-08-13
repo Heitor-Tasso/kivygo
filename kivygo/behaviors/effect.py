@@ -53,6 +53,7 @@ class GoBaseEffectBehavior(Widget):
 	radius_effect = ListProperty([dp(10)]*4)
 
 	auto_effect = BooleanProperty(True)
+	touched = BooleanProperty(False)
 
 
 	def __init__(self, **kwargs):
@@ -80,6 +81,7 @@ class GoBaseEffectBehavior(Widget):
 		if not self.collide_point(*touch.pos):
 			return False
 		
+		self.touched = True
 		touch.grab(self)
 		self.ripple_show(touch)
 		return result
@@ -89,9 +91,7 @@ class GoBaseEffectBehavior(Widget):
 		if not self.auto_effect:
 			return result
 		
-		if not self.collide_point(*touch.pos):
-			return False
-
+		self.touched = False
 		touch.ungrab(self)
 		if touch.grab_current is self:
 			self.ripple_fade()
@@ -99,7 +99,6 @@ class GoBaseEffectBehavior(Widget):
 			self.anim.bind(on_complete=self.reset_canvas)
 		else:
 			self.reset_canvas()
-		
 		return result
 
 	def ripple_show(self, touch):

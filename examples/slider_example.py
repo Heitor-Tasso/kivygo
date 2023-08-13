@@ -13,7 +13,6 @@ from kivygo.layouts.boxlayout import GoBoxLayout
 
 Builder.load_string("""
 
-#:import hex kivy.utils.get_color_from_hex
 #:import BoxLayout kivy.uix.boxlayout.BoxLayout
 
 
@@ -23,7 +22,7 @@ Builder.load_string("""
 		name: "screen_5"
 		
 		GoBoxLayout:
-			background_color: hex("#333333")
+			background_color: GoHexToRgba("#333333")
 			orientation: "vertical"
 			padding: "40dp"
 			spacing: "30dp"

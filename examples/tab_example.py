@@ -6,8 +6,6 @@ from kivygo.widgets.tab import GoTabBase, GoTab
 
 Builder.load_string('''
 
-#:import hex kivy.utils.get_color_from_hex
-
 <GoTabBar>:
     background_color: GoColors.secondary_default
 

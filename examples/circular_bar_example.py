@@ -10,14 +10,13 @@ from kivygo.widgets.circular_bar import GoCircularProgressBar
 Builder.load_string('''
 
 #:import Label kivy.uix.label.Label
-#:import hex kivy.utils.get_color_from_hex
 #:import Animation kivy.animation.Animation
 
 <CircularBarExample>:
     orientation: 'vertical'
     padding: "80dp"
     spacing: "40dp"
-    background_color: hex('#03A9F4')
+    background_color: GoHexToRgba('#03A9F4')
     GoBoxLayout:
         GoCircularProgressBar:
             id: last

@@ -7,8 +7,6 @@ from kivy.uix.button import Button
 
 Builder.load_string("""
 
-#:import hex kivy.utils.get_color_from_hex
-
 <ButtonResizable@GoSelectResizableBehavior+Button>:
 
 <Manager>:

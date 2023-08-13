@@ -67,7 +67,7 @@ Layout que permite ancorar um widget em qualquer um dos quatro cantos ou no cent
 <!-- Need to have 21 lines for a image with 407 of height-->
 ```python
 <GoTabBar>:
-  background_color: hex('#03A9F4')
+  background_color: GoHexToRgba('#03A9F4')
 
 <ExampleTab>:
   GoButtonRipple:
@@ -301,7 +301,7 @@ GoBoxLayoutColor
   orientation: 'vertical'
   padding: "80dp"
   spacing: "40dp"
-  background_color: hex('#03A9F4')
+  background_color: GoHexToRgba('#03A9F4')
   on_kv_post: Animation(progress=bar.max_progress, d=4).start(bar)
   BoxLayout:
 	GoCircularProgressBar:

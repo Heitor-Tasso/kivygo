@@ -7,8 +7,6 @@ from kivygo.widgets.bezier import GoBezierLine
 
 Builder.load_string("""
 
-#:import hex kivy.utils.get_color_from_hex
-
 <BezierCanvasExample>:
 	FloatLayout:
 		Label:

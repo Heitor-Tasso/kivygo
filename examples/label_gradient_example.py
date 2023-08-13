@@ -6,7 +6,6 @@ from kivygo.widgets.label import GoLabelGradient
 
 Builder.load_string("""
 
-#:import hex kivy.utils.get_color_from_hex
 #:import Texture kivy.graphics.texture.Texture
 
 

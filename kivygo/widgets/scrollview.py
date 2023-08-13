@@ -11,9 +11,6 @@ from kivy.uix.anchorlayout import AnchorLayout
 
 Builder.load_string("""
 
-#:import hex kivy.utils.get_color_from_hex
-
-
 <GoBarScroll>:
 	size_hint_x: None
 	width: '40dp'

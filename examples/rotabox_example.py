@@ -18,7 +18,6 @@ from kivy.lang import Builder
 
 Builder.load_string("""
 
-#:import hex kivy.utils.get_color_from_hex
 #:import GoRotabox kivygo.widgets.rotabox.GoRotabox
 #:import Clock kivy.clock.Clock
 
@@ -47,7 +46,7 @@ Builder.load_string("""
 	logo: logo
 	canvas:
 		Color:
-			rgba: hex("#ccccd9")
+			rgba: GoHexToRgba("#ccccd9")
 		Rectangle:
 			pos: self.pos
 			size: self.size

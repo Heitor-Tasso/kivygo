@@ -100,9 +100,11 @@ class GoButtonBehavior(Widget):
 
 	def _do_press(self):
 		self.state = 'down'
+		self.dispatch("on_press")
 
 	def _do_release(self, *args):
 		self.state = 'normal'
+		self.dispatch("on_release")
 
 	def cancel_event(self, *args):
 		if self.__state_event:
@@ -122,7 +124,8 @@ class GoButtonBehavior(Widget):
 		if self.collide_point(*touch.pos) and not self.disabled:
 			self.pressed = True
 			self.elevation_setter()
-			self.dispatch('on_press')
+			# self.dispatch('on_press')
+			self._do_press()
 
 			if "label" in self.ids and self.do_text_shrink:
 				self.ids.label.font_size -= self.text_shrink_amount
@@ -160,7 +163,8 @@ class GoButtonBehavior(Widget):
 		if self.pressed and not self.disabled:
 			self.elev = self.up_elevation
 			self.pressed = False
-			self.dispatch("on_release")
+			# self.dispatch("on_release")
+			self._do_release()
 
 			if "label" in self.ids and self.do_text_shrink:
 				self.ids.label.font_size += self.text_shrink_amount
@@ -190,11 +194,11 @@ class GoButtonBehavior(Widget):
 		'''
 
 		self._do_press()
-		self.dispatch('on_press')
+		# self.dispatch('on_press')
 
 		def trigger_release(dt):
 			self._do_release()
-			self.dispatch('on_release')
+			# self.dispatch('on_release')
 		
 		if not duration:
 			trigger_release(0)

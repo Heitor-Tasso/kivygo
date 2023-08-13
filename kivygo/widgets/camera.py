@@ -33,7 +33,6 @@ Builder.load_string("""
 #:import GoButtonRipple kivygo.widgets.button.GoButtonRipple
 #:import GoIconButton kivygo.widgets.icon.GoIconButton
 #:import GoAnchorLayoutColor kivygo.layouts.anchorlayout.GoAnchorLayoutColor
-#:import hex kivy.utils.get_color_from_hex
 
 
 <PreviewVCamera>:
@@ -53,7 +52,7 @@ Builder.load_string("""
 		on_size: root._update_camera_options()
 		on_pos: root._update_camera_options()
 		on_kv_post: root._update_camera_options()
-		letterbox_color: hex('#96cfea')
+		letterbox_color: GoHexToRgba('#96cfea')
 	FloatLayout:
 		size_hint: [None, None]
 		size: [0, 0]
@@ -71,7 +70,7 @@ Builder.load_string("""
 					anchor_y: 'center'
 					canvas.before:
 						Color:
-							rgba: hex('#fefefe')
+							rgba: GoHexToRgba('#fefefe')
 						Rectangle:
 							pos: self.pos
 							size: self.size
@@ -128,7 +127,7 @@ Builder.load_string("""
 
 						canvas:
 							Color:
-								rgba: hex('#207afe')
+								rgba: GoHexToRgba('#207afe')
 							Line:
 								points: [self.x, (self.y + dp(40)), self.x, self.y, (self.x + dp(40)), self.y]
 								width: dp(1.5)
@@ -148,7 +147,7 @@ Builder.load_string("""
 					anchor_y: 'center'
 					canvas.before:
 						Color:
-							rgba: hex('#fefefe')[0:-1] + [0.8]
+							rgba: GoHexToRgba('#fefefe')[0:-1] + [0.8]
 						Rectangle:
 							pos: self.pos
 							size: self.size
@@ -178,7 +177,7 @@ Builder.load_string("""
 					anchor_y: 'center'
 					canvas.before:
 						Color:
-							rgba: hex('#e4f2ff')
+							rgba: GoHexToRgba('#e4f2ff')
 						Rectangle:
 							pos: self.pos
 							size: self.size
@@ -266,7 +265,7 @@ Builder.load_string("""
 
 						canvas:
 							Color:
-								rgba: hex('#207afe')
+								rgba: GoHexToRgba('#207afe')
 							Line:
 								points: [self.x, (self.y + dp(60)), self.x, self.y, (self.x + dp(60)), self.y]
 								width: dp(3)
@@ -289,7 +288,7 @@ Builder.load_string("""
 							icon_size: ['30dp', '30dp']
 							
 							# source: icon('resize')
-							color: hex('#207afe')
+							color: GoHexToRgba('#207afe')
 							mipmap: False
 
 							last_touch: 0
@@ -308,7 +307,7 @@ Builder.load_string("""
 					padding: ['0dp', '0dp', '0dp', '15dp']
 					Widget:
 					GoAnchorLayoutColor:
-						background_color: hex('#333333')
+						background_color: GoHexToRgba('#333333')
 						radius: [self.width / 2] * 4
 						size_hint_y: None
 						size: ['70dp', '70dp']
@@ -316,7 +315,7 @@ Builder.load_string("""
 							size: ['45dp', '45dp']
 							# source: icon('qrcode')
 							on_release: root.start_scann()
-							color: hex('#313131')
+							color: GoHexToRgba('#313131')
 							canvas:
 								Color:
 									rgba: [1, 1, 1, 1]

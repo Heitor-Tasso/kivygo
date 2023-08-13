@@ -1,9 +1,8 @@
 
 import os
-from kivy.properties import StringProperty, BooleanProperty
+from kivy.properties import StringProperty, BooleanProperty, ObjectProperty
 from kivy.app import App
 from kivygo.utils import do_correction_path
-
 
 class GoApp(App):
 
@@ -18,6 +17,8 @@ class GoApp(App):
 	_app_file = StringProperty(os.path.split(__file__)[0])
 
 	show_fps = BooleanProperty(False)
+
+	colors = ObjectProperty()
 
 
 	def on_root_path(self, *args):

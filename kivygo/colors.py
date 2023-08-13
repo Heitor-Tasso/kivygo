@@ -5,7 +5,7 @@ from kivy.properties import (
     ColorProperty, ObjectProperty, 
     ListProperty, NumericProperty
 )
-
+from kivygo.app import GoApp
 from kivy.lang import Builder
 from kivy.metrics import dp
 from kivygo.behaviors.hover import GoHoverBehavior
@@ -114,243 +114,94 @@ class Light:
 	dif_color = get_color_from_hex("d242bf")
 
 	background_default = get_color_from_hex("F2F2F2")
-	background_hover = get_color_from_hex("F7F7F7")
-	background_border = get_color_from_hex("F0F0F0")
-	background_pressed = get_color_from_hex("DEDEDE")
-	background_effect = get_color_from_hex("FCFEFF")
+	
 	at_background_default = get_color_from_hex("151920")
-	at_background_hover = get_color_from_hex("657899")
-	at_background_border = get_color_from_hex("121E33")
-	at_background_pressed = get_color_from_hex("14294D")
-	at_background_effect = get_color_from_hex("AFBCCC")
 
 	primary_default = get_color_from_hex("1D9BF0")
-	primary_hover = get_color_from_hex("187FC4")
-	primary_border = get_color_from_hex("115E91")
-	primary_pressed = get_color_from_hex("243845")
-	primary_effect = get_color_from_hex("73BAF0")
+
 	at_primary_default = get_color_from_hex("F8F8F8")
-	at_primary_hover = get_color_from_hex("F2F7F9")
-	at_primary_border = get_color_from_hex("EFEFEF")
-	at_primary_pressed = get_color_from_hex("D6DDE3")
-	at_primary_effect = get_color_from_hex("E4F1F7")
 
 	secondary_default = get_color_from_hex("1db954")
-	secondary_hover = get_color_from_hex("44C268")
-	secondary_border = get_color_from_hex("2ACC58")
-	secondary_pressed = get_color_from_hex("2E8547")
-	secondary_effect = get_color_from_hex("72F9A1")
+
 	at_secondary_default = get_color_from_hex("F8F8F8")
-	at_secondary_hover = get_color_from_hex("F2F7F9")
-	at_secondary_border = get_color_from_hex("EFEFEF")
-	at_secondary_pressed = get_color_from_hex("D6DDE3")
-	at_secondary_effect = get_color_from_hex("E4F1F7")
 
 	terciary_default = get_color_from_hex("820ad1")
-	terciary_hover = get_color_from_hex("602C84")
-	terciary_border = get_color_from_hex("672F8F")
-	terciary_pressed = get_color_from_hex("5D1E8A")
-	terciary_effect = get_color_from_hex("dcc1f1")
+	
 	at_terciary_default = get_color_from_hex("F8F8F8")
-	at_terciary_hover = get_color_from_hex("F2F7F9")
-	at_terciary_border = get_color_from_hex("EFEFEF")
-	at_terciary_pressed = get_color_from_hex("D6DDE3")
-	at_terciary_effect = get_color_from_hex("E4F1F7")
 
 	title_default = get_color_from_hex("F0F4F7")
-	title_hover = get_color_from_hex("E6EAED")
-	title_border = get_color_from_hex("BCBFC2")
-	title_pressed = get_color_from_hex("C8CBCF")
-	title_effect = get_color_from_hex("F2F6FA")
 
 	text_default = get_color_from_hex("cdd6e1")
-	text_hover = get_color_from_hex("B8CAE0")
-	text_border = get_color_from_hex("B0B8C2")
-	text_pressed = get_color_from_hex("6B7F98")
-	text_effect = get_color_from_hex("A2C2E8")
 
 	success_default = get_color_from_hex("00CE61")
-	success_hover = get_color_from_hex("00C15B")
-	success_border = get_color_from_hex("00813D")
-	success_pressed = get_color_from_hex("26965C")
-	success_effect = get_color_from_hex("74D2A1")
+
 	at_success_default = get_color_from_hex("00C853")
-	at_success_hover = get_color_from_hex("00A64F")
-	at_success_border = get_color_from_hex("00A64F")
-	at_success_pressed = get_color_from_hex("26965C")
-	at_success_effect = get_color_from_hex("74D2A1")
 
 	error_default = get_color_from_hex("E32B2B")
-	error_hover = get_color_from_hex("D92929")
-	error_border = get_color_from_hex("B52A2A")
-	error_pressed = get_color_from_hex("731A1A")
-	error_effect = get_color_from_hex("E87171")
+	
 	at_error_default = get_color_from_hex("F8F8F8")
-	at_error_hover = get_color_from_hex("F2F7F9")
-	at_error_border = get_color_from_hex("EFEFEF")
-	at_error_pressed = get_color_from_hex("D6DDE3")
-	at_error_effect = get_color_from_hex("E4F1F7")
 
 	warning_default = get_color_from_hex("FFBB0F")
-	warning_hover = get_color_from_hex("FFD735")
-	warning_border = get_color_from_hex("D98E04")
-	warning_pressed = get_color_from_hex("FFA70F")
-	warning_effect = get_color_from_hex("FFDB80")
+	
 	at_warning_default = get_color_from_hex("F8F8F8")
-	at_warning_hover = get_color_from_hex("F2F7F9")
-	at_warning_border = get_color_from_hex("EFEFEF")
-	at_warning_pressed = get_color_from_hex("D6DDE3")
-	at_warning_effect = get_color_from_hex("E4F1F7")
 
 	support_default = get_color_from_hex("4BC3F2")
-	support_hover = get_color_from_hex("50A7F2")
-	support_border = get_color_from_hex("3B8CF5")
-	support_pressed = get_color_from_hex("536EF5")
-	support_effect = get_color_from_hex("C4E4FF")
+
 	at_support_default = get_color_from_hex("F8F8F8")
-	at_support_hover = get_color_from_hex("F2F7F9")
-	at_support_border = get_color_from_hex("EFEFEF")
-	at_support_pressed = get_color_from_hex("D6DDE3")
-	at_support_effect = get_color_from_hex("E4F1F7")
 
 	info_default = get_color_from_hex("007AFF")
-	info_hover = get_color_from_hex("005CE6")
-	info_border = get_color_from_hex("005CE6")
-	info_pressed = get_color_from_hex("003999")
-	info_effect = get_color_from_hex("007AFF")
-	at_info_default = get_color_from_hex("007AFF")
-	at_info_hover = get_color_from_hex("005CE6")
-	at_info_border = get_color_from_hex("005CE6")
-	at_info_pressed = get_color_from_hex("003999")
-	at_info_effect = get_color_from_hex("007AFF")
-
-	link_default = get_color_from_hex("26FBD4")
-	link_hover = get_color_from_hex("04DEB6")
-	link_border = get_color_from_hex("1F6158")
-	link_pressed = get_color_from_hex("03AB8C")
-	link_effect = get_color_from_hex("8DE3D8")
 	
-
+	at_info_default = get_color_from_hex("007AFF")
+	
+	link_default = get_color_from_hex("26FBD4")
+	
+	
 class Dark:
 	no_color = [0, 0, 0, 0]
 	dif_color = get_color_from_hex("d242bf")
 
 	background_default = get_color_from_hex("151920")
-	background_hover = get_color_from_hex("657899")
-	background_border = get_color_from_hex("121E33")
-	background_pressed = get_color_from_hex("14294D")
-	background_effect = get_color_from_hex("AFBCCC")
+	
 	at_background_default = get_color_from_hex("F2F2F2")
-	at_background_hover = get_color_from_hex("F7F7F7")
-	at_background_border = get_color_from_hex("F0F0F0")
-	at_background_pressed = get_color_from_hex("DEDEDE")
-	at_background_effect = get_color_from_hex("FCFEFF")
 
 	primary_default = get_color_from_hex("168fdc")
-	primary_hover = get_color_from_hex("187fb0")
-	primary_border = get_color_from_hex("11537d")
-	primary_pressed = get_color_from_hex("1b2631")
-	primary_effect = get_color_from_hex("6eb0dc")
+	
 	at_primary_default = get_color_from_hex("F8F8F8")
-	at_primary_hover = get_color_from_hex("F2F7F9")
-	at_primary_border = get_color_from_hex("EFEFEF")
-	at_primary_pressed = get_color_from_hex("D6DDE3")
-	at_primary_effect = get_color_from_hex("E4F1F7")
 
 	secondary_default = get_color_from_hex("16a54d")
-	secondary_hover = get_color_from_hex("3eae63")
-	secondary_border = get_color_from_hex("26b84f")
-	secondary_pressed = get_color_from_hex("23713d")
-	secondary_effect = get_color_from_hex("67e596")
+
 	at_secondary_default = get_color_from_hex("F8F8F8")
-	at_secondary_hover = get_color_from_hex("F2F7F9")
-	at_secondary_border = get_color_from_hex("EFEFEF")
-	at_secondary_pressed = get_color_from_hex("D6DDE3")
-	at_secondary_effect = get_color_from_hex("E4F1F7")
 
 	terciary_default = get_color_from_hex("7609bd")
-	terciary_hover = get_color_from_hex("542570")
-	terciary_border = get_color_from_hex("55267b")
-	terciary_pressed = get_color_from_hex("4f1a76")
-	terciary_effect = get_color_from_hex("c8b3dd")
+	
 	at_terciary_default = get_color_from_hex("F8F8F8")
-	at_terciary_hover = get_color_from_hex("F2F7F9")
-	at_terciary_border = get_color_from_hex("EFEFEF")
-	at_terciary_pressed = get_color_from_hex("D6DDE3")
-	at_terciary_effect = get_color_from_hex("E4F1F7")
-
+	
 	title_default = get_color_from_hex("F0F4F7")
-	title_hover = get_color_from_hex("E6EAED")
-	title_border = get_color_from_hex("BCBFC2")
-	title_pressed = get_color_from_hex("C8CBCF")
-	title_effect = get_color_from_hex("F2F6FA")
-
+	
 	text_default = get_color_from_hex("e1ebf5")
-	text_hover = get_color_from_hex("cbe0f4")
-	text_border = get_color_from_hex("d6d6d6")
-	text_pressed = get_color_from_hex("738fac")
-	text_effect = get_color_from_hex("acceff")
-
+	
 	success_default = get_color_from_hex("00CE61")
-	success_hover = get_color_from_hex("00C15B")
-	success_border = get_color_from_hex("00813D")
-	success_pressed = get_color_from_hex("26965C")
-	success_effect = get_color_from_hex("74D2A1")
+	
 	at_success_default = get_color_from_hex("00C853")
-	at_success_hover = get_color_from_hex("00A64F")
-	at_success_border = get_color_from_hex("00A64F")
-	at_success_pressed = get_color_from_hex("26965C")
-	at_success_effect = get_color_from_hex("74D2A1")
-
+	
 	error_default = get_color_from_hex("E32B2B")
-	error_hover = get_color_from_hex("D92929")
-	error_border = get_color_from_hex("B52A2A")
-	error_pressed = get_color_from_hex("731A1A")
-	error_effect = get_color_from_hex("E87171")
+	
 	at_error_default = get_color_from_hex("F8F8F8")
-	at_error_hover = get_color_from_hex("F2F7F9")
-	at_error_border = get_color_from_hex("EFEFEF")
-	at_error_pressed = get_color_from_hex("D6DDE3")
-	at_error_effect = get_color_from_hex("E4F1F7")
-
+	
 	warning_default = get_color_from_hex("FFBB0F")
-	warning_hover = get_color_from_hex("FFD735")
-	warning_border = get_color_from_hex("D98E04")
-	warning_pressed = get_color_from_hex("FFA70F")
-	warning_effect = get_color_from_hex("FFDB80")
+	
 	at_warning_default = get_color_from_hex("F8F8F8")
-	at_warning_hover = get_color_from_hex("F2F7F9")
-	at_warning_border = get_color_from_hex("EFEFEF")
-	at_warning_pressed = get_color_from_hex("D6DDE3")
-	at_warning_effect = get_color_from_hex("E4F1F7")
-
+	
 	support_default = get_color_from_hex("4BC3F2")
-	support_hover = get_color_from_hex("50A7F2")
-	support_border = get_color_from_hex("3B8CF5")
-	support_pressed = get_color_from_hex("536EF5")
-	support_effect = get_color_from_hex("C4E4FF")
+	
 	at_support_default = get_color_from_hex("F8F8F8")
-	at_support_hover = get_color_from_hex("F2F7F9")
-	at_support_border = get_color_from_hex("EFEFEF")
-	at_support_pressed = get_color_from_hex("D6DDE3")
-	at_support_effect = get_color_from_hex("E4F1F7")
-
+	
 	info_default = get_color_from_hex("007AFF")
-	info_hover = get_color_from_hex("005CE6")
-	info_border = get_color_from_hex("005CE6")
-	info_pressed = get_color_from_hex("003999")
-	info_effect = get_color_from_hex("007AFF")
+	
 	at_info_default = get_color_from_hex("007AFF")
-	at_info_hover = get_color_from_hex("005CE6")
-	at_info_border = get_color_from_hex("005CE6")
-	at_info_pressed = get_color_from_hex("003999")
-	at_info_effect = get_color_from_hex("007AFF")
-
+	
 	link_default = get_color_from_hex("26FBD4")
-	link_hover = get_color_from_hex("04DEB6")
-	link_border = get_color_from_hex("1F6158")
-	link_pressed = get_color_from_hex("03AB8C")
-	link_effect = get_color_from_hex("8DE3D8")
+	
 
 
 class Colors(EventDispatcher):
@@ -360,6 +211,10 @@ class Colors(EventDispatcher):
 	last_binds = []
 
 	def __init__(self, *args, **kwargs):
+
+		self.add_bg_colors_to_palette(Light)
+		self.add_bg_colors_to_palette(Dark)
+
 		for color_name in dir(self.palette):
 			color_value = getattr(self.palette, color_name)
 
@@ -369,6 +224,13 @@ class Colors(EventDispatcher):
 			self.add_new_color(color_name, color_value)
 
 		super().__init__(*args, **kwargs)
+		Clock.schedule_once(self.set_app)
+
+	def set_app(self, *args):
+		app = GoApp.get_running_app()
+		if app == None:
+			return Clock.schedule_once(self.set_app)
+		app.colors = self
 
 	def add_new_color(self, color_name, color_value):
 		self.apply_property(
@@ -417,3 +279,91 @@ class Colors(EventDispatcher):
 			if hasattr(self, attribute):
 				setattr(self, attribute, value)
 
+	def add_bg_colors_to_palette(self, palette):
+		for color_name in dir(palette):
+			color_value = getattr(palette, color_name)
+
+			if callable(color_value) or color_name.startswith("__"):
+				continue
+
+			new_name = color_name
+			if color_name.endswith("_default"):
+				new_name = color_name[0 : len(color_name)-8]
+
+			for bg, name in zip((200, 400, 700, 800), ("hover", "border", "pressed", "effect")):
+				color = self.adjust_color(color_value, bg)
+				setattr(palette, f"{new_name}_{name}", color)
+
+	def proportional_value(self, input_value):
+		# Defina os pontos de entrada e os valores proporcionais correspondentes
+		input_points = [100, 450, 1000]
+		proportional_values = [-100, 0, 100]
+		
+		# Tratamento especial para valores fora do intervalo
+		if input_value <= input_points[0]:
+			return proportional_values[0]
+		elif input_value >= input_points[-1]:
+			return proportional_values[-1]
+		
+		# Encontre os índices inferiores e superiores mais próximos
+		index_lower = 0
+		index_upper = len(input_points) - 1
+		for i, value in enumerate(input_points):
+			if input_value >= value:
+				index_lower = i
+			if input_value <= value:
+				index_upper = i
+				break
+		
+		# Certifique-se de que os índices não são iguais
+		if index_lower == index_upper:
+			if index_lower == 0:
+				index_upper = 1
+			else:
+				index_lower = index_upper - 1
+		
+		# Calcule a proporção usando uma função linear
+		proportion = (input_value - input_points[index_lower]) / (input_points[index_upper] - input_points[index_lower])
+		
+		# Interpole entre os valores proporcionais correspondentes
+		return proportional_values[index_lower] + proportion * (proportional_values[index_upper] - proportional_values[index_lower])
+
+	def get_rgba(self, color):
+		if isinstance(color, str):
+			return get_color_from_hex(color)
+		
+		elif len(color) == 3:
+			return list(color) + [1]
+		
+		return color
+		
+	def adjust_color(self, color, factor):
+		factor = round(self.proportional_value(factor))
+		
+		# Converte o código hexadecimal para valores de vermelho, verde e azul
+		r, g, b = list(map(lambda n: n*255, self.get_rgba(color)[0:-1]))
+		
+		# Aplica o fator para ajustar as cores
+		r = max(0, min(255, r + factor))
+		g = max(0, min(255, g + factor))
+		b = max(0, min(255, b + factor))
+
+		return list(map(lambda n: n/255, [r, g, b])) + [1]
+
+	def is_color_light(self, color):
+		# Extrair os valores de R, G e B da cor
+		r, g, b = list(map(lambda n: n*255, self.get_rgba(color)[0:-1]))
+		
+		# Calcular a média das cores
+		color_avg = (r + g + b) / 3
+		
+		# Definir um limiar intermediário (128) para determinar se a cor é clara o suficiente
+		threshold = 128
+		
+		# Retornar True se a média das cores for maior ou igual ao limiar, False caso contrário
+		return color_avg >= threshold
+
+	def get_color_text(self, color):
+		if self.is_color_light(color):
+			return [0, 0, 0, 1]
+		return [1, 1, 1, 1]

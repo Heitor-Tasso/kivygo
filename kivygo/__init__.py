@@ -1,5 +1,5 @@
 
-__version__ = "0.0.4"
+__version__ = "0.0.6"
 
 from kivygo.app import GoApp
 from kivy.factory import Factory
@@ -11,8 +11,10 @@ from kivygo import colors
 Builder.load_string("""
 
 #:import Colors kivygo.colors.Colors
-
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+		    
 #:set GoColors Colors()
+#:set GoHexToRgba get_color_from_hex
 
 """)
 

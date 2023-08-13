@@ -76,13 +76,6 @@ Builder.load_string('''
 ''')
 
 
-class NavigationDrawerException(Exception):
-	'''Raised when add_widget or remove_widget called incorrectly on a
-	GoNavigationDrawer.
-
-	'''
-
-
 class GoNavigationDrawer(StencilView):
 	'''Widget taking two children, a side panel and a main panel,
 	displaying them in a way that replicates the popular Android
@@ -275,7 +268,7 @@ class GoNavigationDrawer(StencilView):
 			self._main_panel.add_widget(widget)
 			self.main_panel = widget
 		else:
-			raise NavigationDrawerException(
+			raise Exception(
 				'Can\'t add more than two widgets'
 				'directly to GoNavigationDrawer')
 
@@ -287,7 +280,7 @@ class GoNavigationDrawer(StencilView):
 			self._main_panel.remove_widget(widget)
 			self.main_panel = None
 		else:
-			raise NavigationDrawerException(
+			raise Exception(
 				'Widget is neither the side or main panel, can\'t remove it.')
 
 	def set_side_panel(self, widget):
@@ -348,7 +341,7 @@ class GoNavigationDrawer(StencilView):
 			anim.start(self)
 		
 		else:
-			raise NavigationDrawerException(
+			raise Exception(
 				'Invalid state received, should be one of `open` or `closed`')
 
 	def toggle_state(self, animate=True):

@@ -8,9 +8,6 @@ from kivygo.layouts.boxlayout import GoDraggableBoxLayout
 
 Builder.load_string("""
 
-#:import hex kivy.utils.get_color_from_hex
-
-
 #:import GoSpacerWidget kivygo.behaviors.drag_and_drop.GoSpacerWidget
 #:import GoPreviewWidget kivygo.behaviors.drag_and_drop.GoPreviewWidget
 

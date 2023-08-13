@@ -16,8 +16,7 @@ from kivygo.layouts.boxlayout import GoBoxLayout
 Builder.load_string("""
 
 #:import chain itertools.chain
-#:import hex kivy.utils.get_color_from_hex
-
+                    
 <ValueSlider@BoxLayout>:
     value: slider.value
     on_value: slider.value = self.value
@@ -52,10 +51,10 @@ Builder.load_string("""
                 thumb_color: [0.2, 0.9, 0.2, 1]
                 thumb_padding: 10
                 radius: [10, 10, 10, 10]
-                background_color: hex("#14b9e3")
+                background_color: GoHexToRgba("#14b9e3")
 
 <AnimBezierExample>:
-    background_color: hex("#333333")
+    background_color: GoHexToRgba("#333333")
     canvas.after:
         Color:
             rgba: [1, 1, 1, 1]
