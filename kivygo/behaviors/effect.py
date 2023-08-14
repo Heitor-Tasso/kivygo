@@ -103,7 +103,7 @@ class GoBaseEffectBehavior(Widget):
 
 	def _do_release(self, *args):
 		if self.anim:
-			self.anim.bind(on_complete=self._do_release)
+			return self.anim.bind(on_complete=self._do_release)
 		
 		return super()._do_release(*args)
 
