@@ -98,7 +98,7 @@ class GoButtonBehavior(Widget):
 	def elevation_setter(self, *args):
 		self.elev = self.up_elevation
 
-	def _do_press(self):
+	def _do_press(self, *args):
 		self.state = 'down'
 		self.dispatch("on_press")
 
@@ -257,7 +257,7 @@ class GoToggleButtonBehavior(GoButtonBehavior):
 			
 			widget.state = 'normal'
 
-	def _do_press(self):
+	def _do_press(self, *args):
 		if not self.allow_no_selection:
 			return None
 	

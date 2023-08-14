@@ -66,13 +66,13 @@ class GoButton(GoColorBase, GoButtonBehavior, Label):
 class GoButtonRipple(GoRippleEffectBehavior, GoButton):
 	pass
 
-class GoToggleButtonRipple(GoToggleButtonBehavior, GoButtonRipple):
+class GoToggleButtonRipple(GoRippleEffectBehavior, GoToggleButtonBehavior, GoButton):
 	pass
 
 
 class GoButtonFade(GoFadeEffectBehavior, GoButton):
 	pass
 
-class GoToggleButtonFade(GoToggleButtonBehavior, GoButtonFade):
+class GoToggleButtonFade(GoFadeEffectBehavior, GoToggleButtonBehavior, GoButton):
 	pass
 
