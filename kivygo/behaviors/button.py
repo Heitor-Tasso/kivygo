@@ -169,13 +169,14 @@ class GoButtonBehavior(Widget):
 			if "label" in self.ids and self.do_text_shrink:
 				self.ids.label.font_size += self.text_shrink_amount
 
+			return True
+		
 		touchtime = time() - self.__touch_time
 		if touchtime < self.min_state_time:
 			self.__state_event = Clock.schedule_once(
 				self._do_release, self.min_state_time - touchtime)
 		else:
 			self._do_release()
-		
 		
 		return True
 

@@ -102,8 +102,12 @@ class GoBaseEffectBehavior(Widget):
 		return result
 
 	def _do_release(self, *args):
-		if self.anim:
-			return self.anim.bind(on_complete=self._do_release)
+		def new_release(*args):
+			self.anim = None
+			self._do_release()
+
+		if self.anim and self.anim._update_ev:
+			return self.anim.bind(on_complete=new_release)
 		
 		return super()._do_release(*args)
 
@@ -114,7 +118,9 @@ class GoBaseEffectBehavior(Widget):
 		pass
 
 	def reset_canvas(self, *args):
-		pass
+		self.anim = None
+		if hasattr(super(), "reset_canvas"):
+			return super().reset_canvas(*args)
 
 
 class GoFadeEffectBehavior(GoBaseEffectBehavior):
@@ -188,6 +194,7 @@ class GoFadeEffectBehavior(GoBaseEffectBehavior):
 		self.ripple_rectangle = None
 		self.fade_pane.clear()
 		self.dispatch('on_touch_anim_end')
+		return super().reset_canvas(*args)
 	
 
 class GoRippleEffectBehavior(GoBaseEffectBehavior):
@@ -294,5 +301,6 @@ class GoRippleEffectBehavior(GoBaseEffectBehavior):
 		self.radius_ellipse = self.radius_ellipse_default
 		self.ripple_pane.clear()
 		self.dispatch('on_touch_anim_end')
+		return super().reset_canvas(*args)
 
 	
