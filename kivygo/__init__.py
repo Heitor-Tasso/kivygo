@@ -6,14 +6,14 @@ from kivy.factory import Factory
 from kivy.lang.builder import Builder
 from kivy.clock import Clock
 from kivy.metrics import dp
-from kivygo import colors
+
 
 Builder.load_string("""
 
-#:import Colors kivygo.colors.Colors
 #:import get_color_from_hex kivy.utils.get_color_from_hex
-		    
-#:set GoColors Colors()
+#:import GoPalette kivygo.palette.GoColors
+
+#:set GoColors GoPalette()
 #:set GoHexToRgba get_color_from_hex
 
 """)

@@ -5,8 +5,8 @@ from kivygo.layouts.boxlayout import GoBoxLayout
 
 Builder.load_string("""
 
-#:import Dark kivygo.colors.Dark
-#:import Light kivygo.colors.Light
+#:import Dark kivygo.palette.Dark
+#:import Light kivygo.palette.Light
 
 <AnchorLayoutExample>:
 	padding: "20dp"

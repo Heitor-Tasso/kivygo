@@ -1,8 +1,12 @@
 
 import os
-from kivy.properties import StringProperty, BooleanProperty, ObjectProperty
+from kivy.properties import (
+    StringProperty, BooleanProperty, 
+    ObjectProperty
+)
 from kivy.app import App
 from kivygo.utils import do_correction_path
+from kivy.lang import parser
 
 class GoApp(App):
 
@@ -20,6 +24,9 @@ class GoApp(App):
 
 	colors = ObjectProperty()
 
+	def __init__(self, **kwargs):
+		self.colors = parser.global_idmap["GoColors"]
+		super().__init__(**kwargs)
 
 	def on_root_path(self, *args):
 		self.root_path = do_correction_path(self.root_path)

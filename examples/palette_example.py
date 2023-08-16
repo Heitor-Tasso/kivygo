@@ -9,8 +9,8 @@ from kivy.properties import ListProperty
 
 Builder.load_string("""
 
-#:import Dark kivygo.colors.Dark
-#:import Light kivygo.colors.Light
+#:import Dark kivygo.palette.Dark
+#:import Light kivygo.palette.Light
 
 <ItemColor>:
 	padding: ('10dp', '0dp', '10dp', '0dp')
