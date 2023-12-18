@@ -45,7 +45,7 @@ class GoApp(App):
 
 	def get_path(self, local, root_path=None):
 		if root_path == None:
-			self.root_path
+			root_path = self.root_path
 			
 		return f'{root_path}/{do_correction_path(local)}'
 	

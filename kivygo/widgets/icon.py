@@ -11,12 +11,7 @@ from kivy.lang import Builder
 
 Builder.load_string("""
 
-<GoIcon>:
-	size_hint: [None, None]
-	size: "35dp", "35dp"
-
 <GoIconButton>:
-	size: "45dp", "45dp"
 	color_hover: list(map(lambda x: max(0, x - 0.2), self.color[0:-1])) + [1]
 	color_pressed: list(map(lambda x: max(0, x - 0.1), self.color))
 
@@ -25,7 +20,6 @@ Builder.load_string("""
 <GoIconButtonFade>:
 		    
 <GoIconToggleButton>:
-	size: "45dp", "45dp"
 
 <GoIconToggleButtonRipple>:
 
@@ -34,11 +28,7 @@ Builder.load_string("""
 """)
 
 
-class GoIcon(GoImage):
-	pass
-
-
-class GoIconButton(GoHoverBehavior, GoButtonBehavior, GoIcon):
+class GoIconButton(GoHoverBehavior, GoButtonBehavior, GoImage):
 	
 	color_hover = ColorProperty([0]*4)
 	color_pressed = ColorProperty([0]*4)

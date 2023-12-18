@@ -5,7 +5,7 @@ from kivy.clock import Clock
 from kivy.vector import Vector
 from kivy.properties import ListProperty, BooleanProperty
 
-from kivygo.widgets.input import GoInputIcon
+from kivygo.widgets.input import GoInputBox, GoInputForBox
 from kivygo.widgets.slider import GoSlider
 from kivygo.widgets.button import GoButtonRipple
 from kivygo.widgets.spinner import GoEffectSpinner
@@ -83,7 +83,7 @@ Builder.load_string("""
             letter_duration: round(duration_slider.value, 2)
             letter_offset: offset_slider.value
             transform: self.bezier
-            target_text: ti.input_text
+            target_text: ti.text
             font_size: dp(font_size_slider.value)
             transition_function: transitions.text or 'linear'
 
@@ -122,10 +122,15 @@ Builder.load_string("""
             height: '50dp'
             values: ['linear', 'out_bounce', 'out_elastic', 'out_quad', 'out_sine']
 
-        GoInputIcon:
-            id: ti
-            multiline: False
-            radius: [dp(5)] * 4
+        GoInputBox:
+            size_hint_y: None
+			height: "50dp"
+            label_text: "Target Text:"
+            GoInputForBox:
+                id: ti
+                multiline: False
+                radius: [dp(5)] * 4
+                type_widget: "Input"
 
         ValueSlider:
             label_text: "progress"

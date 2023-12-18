@@ -9,7 +9,7 @@
     color: 1, 1, 1, 0
     group: 'points'
     area_color: .5, 0, 0, 0
-    line_color: .3, .3, .3, .5
+    outline_color: .3, .3, .3, .5
     canvas:
         Color:
             rgba: self.area_color
@@ -17,7 +17,7 @@
             size: self.size
             pos: self.pos
         Color:
-            rgba: self.line_color
+            rgba: self.outline_color
         Line:
             rectangle: self.x, self.y, self.width, self.height
     Label:

@@ -201,6 +201,7 @@ Abaixo estão as informações das licenças de cada biblioteca utilizada no pro
     - [kivy-pipette](https://github.com/Neizvestnyj/kivy-pipette.git)
     - [CurvyKivy](https://github.com/quitegreensky/CurvyKivy.git)
     - [kivy_shader](https://github.com/adywizard/kivy_shader.git)
+    - [Kivy-Glowing-Line](https://github.com/kengoon/Kivy-Glowing-Line.git)
 
 ---
 

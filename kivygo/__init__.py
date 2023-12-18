@@ -1,5 +1,5 @@
 
-__version__ = "0.0.7"
+__version__ = "0.0.8"
 
 from kivygo.app import GoApp
 from kivy.factory import Factory
@@ -31,9 +31,9 @@ def load_factory():
 			{ "effect": ["GoMaskEffect"] },
 			{ "frostedglass": ["GoFrostedGlass"] },
 			{ "gradient": ["GoGradientWidget"] },
-			{ "icon": ["GoIcon", "GoIconButton", "GoIconButtonRipple", "GoIconButtonFade", "GoIconToggleButton", "GoIconToggleButtonRipple", "GoIconToggleButtonFade"] },
+			{ "icon": ["GoIconButton", "GoIconButtonRipple", "GoIconButtonFade", "GoIconToggleButton", "GoIconToggleButtonRipple", "GoIconToggleButtonFade"] },
 			{ "image": ["GoImage", ] },
-			{ "input": ["GoInputIcon"] },
+			{ "input": ["GoInputBox", "GoInputForBox", "GoIconForBox", "GoInputIcon", "GoInputLeftIcon"] },
 			{ "joystick": ["GoTouchData", "GoJoystickPad", "GoJoyStick"] },
 			{ "kivyg_icon": ["GoKivg"] },
 			{ "label": ["GoLabel", "GoLabelButton", "GoLabelGradient", "GoLabelScroll", "GoLabelAnimated", "GoLabelBezierAnimated"] },

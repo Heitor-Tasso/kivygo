@@ -279,11 +279,11 @@ Builder.load_string("""
 								points: [(self.x + self.width), (self.y + dp(60)), (self.x + self.width), self.y, (self.x + self.width - dp(60)), self.y]
 								width: dp(3)
 
-						GoIcon:
+						GoImage:
 							pos: [(self.parent.x + self.parent.width - self.width - dp(7)), (self.parent.y + dp(7))]
 							background_color: [1, 1, 1, 1]
 							radius: [self.width / 2] * 4
-							size_hint_y: None
+							size_hint: None, None
 							size: ['35dp', '35dp']
 							icon_size: ['30dp', '30dp']
 							

@@ -2,7 +2,8 @@ from __init__ import ExampleAppDefault
 from kivygo.widgets.widget import GoWidget
 from kivygo.layouts.boxlayout import GoBoxLayout
 from kivy.lang import Builder
-from kivygo.widgets.bezier import GoBezierLine
+from kivygo.widgets.bezier import GoBezierLine, GlowingLine
+from kivy.clock import Clock
 
 
 Builder.load_string("""
@@ -33,6 +34,10 @@ Builder.load_string("""
 					size: self.size
 
 		BezierCanvas:
+
+	GoWidget:
+		id: glow
+
 """)
 
 
@@ -51,7 +56,9 @@ class BezierCanvas(GoWidget):
 		return True
 
 class BezierCanvasExample(GoBoxLayout):
-	pass
+	def __init__(self, **kwargs):
+		super().__init__(**kwargs)
+		Clock.schedule_once(lambda *a: self.ids.glow.canvas.add(GlowingLine(glowBrightness=75,points=[600,360, 200, 400],rgb=[1., 1, 0],width=10)))
 
 class BezierCanvasExampleApp(ExampleAppDefault):
 	def build(self):

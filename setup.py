@@ -58,8 +58,8 @@ if __name__ == "__main__":
         install_requires=[
             "kivy>=2.0.0", "pillow",
             "opencv-python", "camera4kivy",
-            "matplotlib", "pyzbar",
-            "requests", "svglib"
+            "matplotlib", "pyzbar", "future",
+            "requests", "svglib", "svg.path"
         ],
         setup_requires=[],
         python_requires=">=3.7",

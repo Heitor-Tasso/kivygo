@@ -26,7 +26,7 @@ Builder.load_string("""
 	canvas:
 		Clear
 		Color:
-			rgba: [0]*4 if self.source else root.line_color
+			rgba: [0]*4 if self.source else root.outline_color
 		RoundedRectangle:
 			pos: [ ( self.x - self.outline_width ), ( self.y - self.outline_width ) ]
 			size: [ ( self.width + (self.outline_width*2) ), ( self.height + (self.outline_width*2) ) ]
@@ -83,7 +83,7 @@ Builder.load_string("""
 		x: self.parent.x - (self.width/2)
 		y: self.parent.top - (self.height/2)
 		background_color: root._bord_background_color
-		line_color: root._bord_line_color
+		outline_color: root._bord_line_color
 		source: root.bord_icon_source
 		size: root.bord_size
 		
@@ -92,7 +92,7 @@ Builder.load_string("""
 		x: self.parent.x-(self.width/2)
 		y: self.parent.y-(self.height/2)
 		background_color: root._bord_background_color
-		line_color: root._bord_line_color
+		outline_color: root._bord_line_color
 		source: root.bord_icon_source
 		size: root.bord_size
 	
@@ -101,7 +101,7 @@ Builder.load_string("""
 		x: self.parent.right-(self.width/2)
 		y: self.parent.y-(self.height/2)
 		background_color: root._bord_background_color
-		line_color: root._bord_line_color
+		outline_color: root._bord_line_color
 		source: root.bord_icon_source
 		size: root.bord_size
 	
@@ -110,7 +110,7 @@ Builder.load_string("""
 		x: self.parent.right - (self.width/2)
 		y: self.parent.top - (self.height/2)
 		background_color: root._bord_background_color
-		line_color: root._bord_line_color
+		outline_color: root._bord_line_color
 		source: root.bord_icon_source
 		size: root.bord_size
 
@@ -119,7 +119,7 @@ Builder.load_string("""
 		x: self.parent.x + (self.parent.width/2) - (self.width/2)
 		y: self.parent.top - (self.height/2)
 		background_color: root._bord_background_color
-		line_color: root._bord_line_color
+		outline_color: root._bord_line_color
 		source: root.bord_icon_source
 		size: root.bord_size
 	
@@ -128,7 +128,7 @@ Builder.load_string("""
 		x: self.parent.x - (self.width/2)
 		y: self.parent.y + (self.parent.height/2) - (self.height/2)
 		background_color: root._bord_background_color
-		line_color: root._bord_line_color
+		outline_color: root._bord_line_color
 		source: root.bord_icon_source
 		size: root.bord_size
 
@@ -137,7 +137,7 @@ Builder.load_string("""
 		x: self.parent.right - (self.width/2)
 		y: self.parent.y + (self.parent.height/2) - (self.height/2)
 		background_color: root._bord_background_color
-		line_color: root._bord_line_color
+		outline_color: root._bord_line_color
 		source: root.bord_icon_source
 		size: root.bord_size
 
@@ -146,7 +146,7 @@ Builder.load_string("""
 		x: self.parent.x + (self.parent.width/2) - (self.width/2)
 		y: self.parent.y - (self.height/2)
 		background_color: root._bord_background_color
-		line_color: root._bord_line_color
+		outline_color: root._bord_line_color
 		source: root.bord_icon_source
 		size: root.bord_size
 
@@ -157,7 +157,7 @@ class GoRectangleResizableBord(GoImage):
 	outline_width = NumericProperty(dp(2))
 	radius = ListProperty([0, 0, 0, 0])
 	background_color = ColorProperty("#FFFFFF")
-	line_color = ColorProperty("#25d2a2")
+	outline_color = ColorProperty("#25d2a2")
 
 
 class GoLineResizableBord(Widget):
@@ -184,7 +184,7 @@ class GoSelectResizableBehavior(Widget):
 	bord_line_color = ColorProperty("#25d2a2")
 	bord_icon_source = StringProperty("")
 	bord_size = ListProperty([dp(8), dp(8)])
-	line_color = ColorProperty([0, 0, 0, 0])
+	outline_color = ColorProperty([0, 0, 0, 0])
 	line_highlight_color = ColorProperty("#12715e")
 
 	last_touch_pos = (0, 0)
@@ -246,10 +246,10 @@ class GoSelectResizableBehavior(Widget):
 
 
 	def on_line_color(self, *args):
-		self.top_line_color = self.line_color
-		self.bottom_line_color = self.line_color
-		self.left_line_color = self.line_color
-		self.right_line_color = self.line_color
+		self.top_line_color = self.outline_color
+		self.bottom_line_color = self.outline_color
+		self.left_line_color = self.outline_color
+		self.right_line_color = self.outline_color
 
 	def on_mouse_pos(self, window, touch):
 		"""

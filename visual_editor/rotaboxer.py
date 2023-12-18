@@ -162,7 +162,7 @@ class Point(ToggleButton):
         self.deselect = False
         self.pol = pol
         self.area_color = 0, 0, 0, 0
-        self.line_color = 0, 0, 0, 0
+        self.outline_color = 0, 0, 0, 0
 
     def on_size(self, *args):
         self.x -= self.size[0] * .5
@@ -178,23 +178,23 @@ class Point(ToggleButton):
     def on_state(self, *args):
         if self.state == 'down':
             if not self.multi_selected:
-                self.line_color = self.down_line_color
+                self.outline_color = self.down_line_color
             self.area_color = self.down_fill_color
         else:
             if not self.multi_selected:
-                self.line_color = self.norm_line_color
+                self.outline_color = self.norm_line_color
             self.area_color = self.norm_fill_color
 
     def on_multi_selected(self, *args):
         if self.multi_selected:
-            self.line_color = self.picked_line_color
+            self.outline_color = self.picked_line_color
         else:
             if self.state == 'down':
                 self.area_color = self.down_fill_color
-                self.line_color = self.down_line_color
+                self.outline_color = self.down_line_color
             else:
                 self.area_color = self.norm_fill_color
-                self.line_color = self.norm_line_color
+                self.outline_color = self.norm_line_color
 
     def on_press(self, *args):
         self.state = 'down'
@@ -547,7 +547,7 @@ class Editor(FloatLayout):
                     cutpoint.pol = point.pol
                     cutpoint.multi_selected = False
                     cutpoint.area_color = cutpoint.norm_fill_color
-                    cutpoint.line_color = cutpoint.norm_line_color
+                    cutpoint.outline_color = cutpoint.norm_line_color
 
                     del xpol['btn_points'][pidx]
 
@@ -566,7 +566,7 @@ class Editor(FloatLayout):
             self.pol = str(point.pol['key'])
             curpoint = frame[self.pol]['btn_points'][self.index]
             curpoint.area_color = curpoint.norm_fill_color
-            curpoint.line_color = curpoint.norm_line_color
+            curpoint.outline_color = curpoint.norm_line_color
             self.index = i - 1
             frame[self.pol]['btn_points'][self.index].state = 'down'
             msg = 'Pasted {} points to polygon {}'.format(
@@ -593,7 +593,7 @@ class Editor(FloatLayout):
                     cutpoint.pol = pol
                     cutpoint.multi_selected = False
                     cutpoint.area_color = cutpoint.norm_fill_color
-                    cutpoint.line_color = cutpoint.norm_line_color
+                    cutpoint.outline_color = cutpoint.norm_line_color
 
                     del xpol['btn_points'][pidx]
 
@@ -623,7 +623,7 @@ class Editor(FloatLayout):
                 point = self.rec[self.frame][entry[0]]['btn_points'][entry[1]]
                 if entry[1] != self.index:
                     point.area_color = point.norm_fill_color
-                    point.line_color = point.norm_line_color
+                    point.outline_color = point.norm_line_color
                 point.multi_selected = False
             except (KeyError, IndexError) as er:
                 print('on empty_cut: ', er)
@@ -761,7 +761,7 @@ class Editor(FloatLayout):
                 for point in pol['btn_points']:
                     self.scat.add_widget(point)
                     point.area_color = point.norm_fill_color
-                    point.line_color = point.norm_line_color
+                    point.outline_color = point.norm_line_color
 
             self.pol = None
             self.index = None
@@ -984,7 +984,7 @@ class Editor(FloatLayout):
                         point = self.rec[f][p]['btn_points'][i]
                         self.scat.add_widget(point)
                         point.area_color = point.norm_fill_color
-                        point.line_color = point.norm_line_color
+                        point.outline_color = point.norm_line_color
 
 # ,,,------------------------ OUTPUT -----------------------
     def unlock_order(self, state=None, *args):
@@ -2658,7 +2658,7 @@ If not in Windows and the user exits the editor without saving changes (not beca
                 point = polygon['btn_points'][i]
                 self.scat.add_widget(point)
                 point.area_color = point.norm_fill_color
-                point.line_color = point.norm_line_color
+                point.outline_color = point.norm_line_color
 
         self.done += 1
         if not self.all_frames or len(self.keys) == self.done:

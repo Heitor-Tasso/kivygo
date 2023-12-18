@@ -336,7 +336,7 @@ class GoKivg(GoWidget):
 
         outline_width: Line width for drawing, default 2
 
-        line_color: Line Color for drawing, default [0,0,0,1]
+        outline_color: Line Color for drawing, default [0,0,0,1]
 
         dur: Duration of each small path drawing animation, default .02
 
@@ -344,7 +344,7 @@ class GoKivg(GoWidget):
         """
         self.fill = kwargs.get("fill", self._fill)
         self.outline_width = kwargs.get("outline_width", self._LINE_WIDTH)
-        self.LINE_COLOR = kwargs.get("line_color", self._LINE_COLOR)
+        self.outline_color = kwargs.get("outline_color", self._LINE_COLOR)
         self.DUR = kwargs.get("dur", self._DUR)
         from_shape_anim = kwargs.get("from_shape_anim", False)
         anim_type = (anim_type) if anim_type in {"seq", "par"} else ("seq")
@@ -517,7 +517,7 @@ class GoKivg(GoWidget):
         self.b.canvas.clear()
 
         with self.b.canvas:
-            Color(*self.LINE_COLOR)
+            Color(*self.outline_color)
 
             line_count = 0
             bezier_count = 0
